@@ -1,0 +1,7 @@
+name: boarding
+version: 0.1.0
+author: Dzenan Ridjanovic <dzenanr@gmail.com>
+description: A simple library to use for simple board games. The library has both model and view. To be used only on the client-side.
+homepage: https://github.com/dzenanr/boarding
+environment:
+  sdk: '>=1.1.0+8 <2.0.0'
