@@ -6,5 +6,9 @@ import 'dart:math';
 part 'model/cell.dart';
 part 'model/grid.dart';
 
+part 'util/color.dart';
+part 'util/random.dart';
+
 part 'view/shape.dart';
 part 'view/surface.dart';
+
