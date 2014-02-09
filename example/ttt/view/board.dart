@@ -4,6 +4,8 @@ class Board extends Surface {
   static const String X_COLOR = 'blue';
   static const String O_COLOR = 'orange';
 
+  bool play = true;
+
   Board(SquareGrid grid, CanvasElement canvas) : super(grid, canvas) {
     var size = canvas.width;           // in pixels
     var cellSize = size / grid.length; // in pixels
@@ -13,21 +15,26 @@ class Board extends Surface {
     LabelElement winnerLabel = querySelector("#winner");
 
     canvas.onMouseDown.listen((MouseEvent e) {
-      int row = (e.offset.y ~/ cellSize).toInt();
-      int column = (e.offset.x ~/ cellSize).toInt();
-      Cell cell = grid.cell(row, column);
-      if (cell.text == null) {
-        if (lastPlay == SquareGrid.O) {
-          cell.text = SquareGrid.X;
-          lastPlay = SquareGrid.X;
-          cell.textColor  = X_COLOR;
+      if (play) {
+        int row = (e.offset.y ~/ cellSize).toInt();
+        int column = (e.offset.x ~/ cellSize).toInt();
+        Cell cell = grid.cell(row, column);
+        if (cell.text == null) {
+          if (lastPlay == SquareGrid.O) {
+            cell.text = SquareGrid.X;
+            lastPlay = SquareGrid.X;
+            cell.textColor  = X_COLOR;
+          }
+          else {
+            cell.text = SquareGrid.O;
+            lastPlay = SquareGrid.O;
+            cell.textColor  = O_COLOR;
+          }
+          if (winner()) {
+            winnerLabel.text = 'winner is ${cell.text}';
+            play = false;
+          }
         }
-        else {
-          cell.text = SquareGrid.O;
-          lastPlay = SquareGrid.O;
-          cell.textColor  = O_COLOR;
-        }
-        if (winner()) winnerLabel.text = 'winner is ${cell.text}';
       }
     });
 

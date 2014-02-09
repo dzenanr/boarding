@@ -1,6 +1,5 @@
 To do
 
 - abstract classes in library?
-- util tests
 - view tests with a web test library
 - memory example

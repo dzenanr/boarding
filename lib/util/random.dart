@@ -7,4 +7,4 @@ num randomNum(num max) {
 
 int randomInt(int max) => new Random().nextInt(max);
 
-randomListElement(List list) => list[randomInt(list.length - 1)];
+randomListElement(List list) => list[randomInt(list.length)];
