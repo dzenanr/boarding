@@ -4,18 +4,19 @@ class Surface {
   num width, height; // in pixels
 
   Grid grid;
+  bool withLines;
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
 
-  Surface(this.grid, this.canvas) {
+  Surface(this.grid, this.canvas, {this.withLines: true}) {
     context = canvas.getContext("2d");
     width = canvas.width;
     height = canvas.height;
   }
 
   clear() {
-    new Rectangle(this, 0, 0, width, height).draw();
+    new Rect(this, 0, 0, width, height).draw();
   }
 
   lines() {
@@ -44,15 +45,17 @@ class Surface {
         var col = cell.column;
         var x = wgap * col + wgap / 2 - (wgap / 2 - cell.textSize) / 2;
         var y = hgap * row + hgap / 2 + (wgap / 2 - cell.textSize) / 2;
-        new Text(this, cell.text, x, y,
-                size: cell.textSize, color: cell.textColor).draw();
+        if (cell.text != null) {
+          new Text(this, cell.text, x, y,
+            size: cell.textSize, color: cell.textColor).draw();
+        }
       }
     }
   }
 
   draw() {
     clear();
-    lines();
+    if (withLines) lines();
     cells();
   }
 }

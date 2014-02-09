@@ -10,35 +10,35 @@ class Circle {
 
   draw() {
     surface.context
+        ..lineWidth = lineWidth
         ..fillStyle = inColor
+        ..strokeStyle = outColor
         ..arc(x, y, radius, 0, PI * 2)
         ..fill()
-        ..lineWidth = lineWidth
-        ..strokeStyle = outColor
         ..stroke();
   }
 }
 
-class Rectangle {
+class Rect {
   Surface surface;
   num x, y, width, height, lineWidth;
   String inColor, outColor;
 
-  Rectangle(this.surface, this.x, this.y, this.width, this.height,
+  Rect(this.surface, this.x, this.y, this.width, this.height,
       {this.lineWidth: 1, this.inColor: 'white', this.outColor: 'black'});
 
   draw() {
     surface.context
+        ..lineWidth = lineWidth
         ..fillStyle = inColor
+        ..strokeStyle = outColor
         ..rect(x, y, width, height)
         ..fill()
-        ..lineWidth = lineWidth
-        ..strokeStyle = outColor
         ..stroke();
   }
 }
 
-class Square extends Rectangle {
+class Square extends Rect {
   num length;
 
   Square(Surface surface, num x, num y, num l,
@@ -53,16 +53,15 @@ class Line {
   //num width; // named optional param gives an errorG!?
   String color;
 
-  Line(this.surface, this.x1, this.y1, this.x2, this.y2,
-      //{lineWidth: 1, color: 'black'});
-      {color: 'black'});
+  Line(this.surface, this.x1, this.y1, this.x2, this.y2, {color: 'black'});
+       //{width: 1, color: 'black'});
 
   draw() {
     surface.context
-        ..moveTo(x1, y1)
-        ..lineTo(x2, y2)
         //..lineWidth = width
         ..strokeStyle = color
+        ..moveTo(x1, y1)
+        ..lineTo(x2, y2)
         ..stroke();
   }
 }
