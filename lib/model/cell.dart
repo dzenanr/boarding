@@ -8,7 +8,13 @@ class Cell {
 
   Grid grid;
 
-  Cell(this.grid, this.row, this.column);
+  Cell(this.grid, this.row, this.column) {
+    if (!(0 <= row  && row    < grid.height &&
+        0 <= column && column < grid.width))
+      throw new Exception(
+        'cell out of grid(${grid.width}, ${grid.height}) '
+        '- row: $row, column: $column');
+  }
 
   bool intersects(num row, num column) {
     if (0 <= row    && row    < grid.height &&
@@ -18,7 +24,8 @@ class Cell {
       }
       return false;
     } else throw new Exception(
-        'cell out of grid - row: $row, column: $column');
+        'cell out of grid(${grid.width}, ${grid.height}) '
+        '- row: $row, column: $column');
   }
 }
 

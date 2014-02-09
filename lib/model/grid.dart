@@ -8,9 +8,9 @@ class Grid {
 
   Grid(this.width, this.height) {
     var cell;
-    for (var x = 0; x < width; x++) {
-      for (var y = 0; y < height; y++) {
-        cell = new Cell(this, x, y);
+    for (var row = 0; row < height; row++) {
+      for (var column = 0; column < width; column++) {
+        cell = new Cell(this, row, column);
         cells.add(cell);
       }
     }
