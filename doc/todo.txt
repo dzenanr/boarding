@@ -2,5 +2,4 @@ To do
 
 - abstract classes in library?
 - tests
-- color optional named params in view/shape.dart
 - memory example
