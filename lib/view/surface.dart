@@ -44,7 +44,8 @@ class Surface {
         var col = cell.column;
         var x = wgap * col + wgap / 2 - (wgap / 2 - cell.textSize) / 2;
         var y = hgap * row + hgap / 2 + (wgap / 2 - cell.textSize) / 2;
-        new Text(this, cell.text, cell.textSize, cell.textColor, x, y).draw();
+        new Text(this, cell.text, x, y,
+                size: cell.textSize, color: cell.textColor).draw();
       }
     }
   }
