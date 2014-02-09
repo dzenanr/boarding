@@ -13,7 +13,9 @@ class Circle {
         ..lineWidth = lineWidth
         ..fillStyle = inColor
         ..strokeStyle = outColor
+        ..beginPath()
         ..arc(x, y, radius, 0, PI * 2)
+        ..closePath()
         ..fill()
         ..stroke();
   }
@@ -32,7 +34,9 @@ class Rect {
         ..lineWidth = lineWidth
         ..fillStyle = inColor
         ..strokeStyle = outColor
+        ..beginPath()
         ..rect(x, y, width, height)
+        ..closePath()
         ..fill()
         ..stroke();
   }
@@ -50,36 +54,40 @@ class Square extends Rect {
 class Line {
   Surface surface;
   num x1, y1, x2, y2;
-  //num width; // named optional param gives an errorG!?
+  num width; // named optional param gives an errorG!?
   String color;
 
-  Line(this.surface, this.x1, this.y1, this.x2, this.y2, {color: 'black'});
-       //{width: 1, color: 'black'});
+  Line(this.surface, this.x1, this.y1, this.x2, this.y2,
+       {this.width: 1, this.color: 'black'});
 
   draw() {
     surface.context
-        //..lineWidth = width
+        ..lineWidth = width
         ..strokeStyle = color
+        ..beginPath()
         ..moveTo(x1, y1)
         ..lineTo(x2, y2)
+        ..closePath()
         ..stroke();
   }
 }
 
-class Text {
+class Tag {
   Surface surface;
   String text;
   num x, y;
   num size;     // in pixels
   String color;
 
-  Text(this.surface, this.text, this.x, this.y,
+  Tag(this.surface, this.text, this.x, this.y,
       {this.size: 12, this.color: 'black'});
 
   draw() {
     surface.context
         ..font = 'bold ${size}px sans-serif'
         ..fillStyle = color
-        ..fillText(text, x, y);
+        ..beginPath()
+        ..fillText(text, x, y)
+        ..closePath();
   }
 }

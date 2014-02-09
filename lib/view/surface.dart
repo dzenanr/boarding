@@ -46,7 +46,7 @@ class Surface {
         var x = wgap * col + wgap / 2 - (wgap / 2 - cell.textSize) / 2;
         var y = hgap * row + hgap / 2 + (wgap / 2 - cell.textSize) / 2;
         if (cell.text != null) {
-          new Text(this, cell.text, x, y,
+          new Tag(this, cell.text, x, y,
             size: cell.textSize, color: cell.textColor).draw();
         }
       }

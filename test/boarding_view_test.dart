@@ -18,6 +18,9 @@ main() {
   var square1 =
     new Square(surface, 40, 500, 60, lineWidth: 8, inColor: 'orange');
   square1.draw();
-  var line1 = new Line(surface, 450, 380, 480, 560, color: '#ff0000');
+  var line1 = new Line(surface, 450, 380, 480, 560, width: 3, color: '#ff0000');
   line1.draw();
+  var tag1 =
+      new Tag(surface, 'Start on DArt', 320, 520, size: 32, color: 'blue');
+  tag1.draw();
 }
