@@ -12,12 +12,8 @@ playAgain(Event e) {
 }
 
 main() {
-  var canvas = querySelector('#canvas');
-  ButtonElement play = querySelector('#play');
-  play.onClick.listen(playAgain);
-  var memory = new Memory(4);
-  var board = new Board(memory, canvas);
-  board.draw();
+  new Board(new Memory(4), querySelector('#canvas')).draw();
+  querySelector('#play').onClick.listen(playAgain);
 }
 
 

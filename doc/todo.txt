@@ -1,4 +1,3 @@
 To do
 
-- in the Grid class use factory constructor
-- view tests with a web test library
+- do view tests with a web test library
