@@ -40,12 +40,27 @@ class Surface {
     var hgap = height / grid.height;
     var cells = grid.cells;
     for (Cell cell in cells) {
-      if (cell.text != null && cell.textSize != null) {
-        var row = cell.row;
-        var col = cell.column;
-        var x = wgap * col + wgap / 2 - (wgap / 2 - cell.textSize) / 2;
-        var y = hgap * row + hgap / 2 + (wgap / 2 - cell.textSize) / 2;
-        if (cell.text != null) {
+      var row = cell.row;
+      var col = cell.column;
+      if (cell.hidden) {
+        var x = wgap * col;
+        var y = hgap * row;
+        new Rect(this, x, y, wgap, hgap,
+            inColor: colorMap()[cell.hiddenColor]).draw();
+        var cx = x + wgap / 2;
+        var cy = y + hgap / 2;
+        var r = 4;
+        new Circle(this, cx, cy, r).draw();
+      } else {
+        if (cell.color != null) {
+          var x = wgap * col;
+          var y = hgap * row;
+          new Rect(this, x, y, wgap, hgap,
+              inColor: colorMap()[cell.color]).draw();
+        }
+        if (cell.text != null && cell.textSize != null) {
+          var x = wgap * col + wgap / 2 - (wgap / 2 - cell.textSize) / 2;
+          var y = hgap * row + hgap / 2 + (wgap / 2 - cell.textSize) / 2;
           new Tag(this, cell.text, x, y,
             size: cell.textSize, color: cell.textColor).draw();
         }

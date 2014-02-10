@@ -8,6 +8,9 @@ class SquareGrid extends Grid {
 
   SquareGrid(int l) : length = l, super(l, l);
 
+  Cell newCell(Grid grid, int row, int column) =>
+      new Cell(this, row, column);
+
   bool lineCompleted() {
     var c;
     var t;

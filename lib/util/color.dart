@@ -21,6 +21,7 @@ Map<String, String> colorMap() {
     'ivory':      '#fffff0',
     'khaki':      '#f0e68c',
     'lightblue':  '#add8e6',
+    'lightgray':  '#f8f8f8',
     'lime':       '#00ff00',
     'linen':      '#faf0e6',
     'magenta':    '#ff00ff',
@@ -63,6 +64,7 @@ List<String> colorList() {
     'ivory',
     'khaki',
     'lightblue',
+    'lightgray',
     'lime',
     'linen',
     'magenta',
@@ -84,6 +86,17 @@ List<String> colorList() {
   ];
 }
 
+List usedColors = [];
+
 String randomColor() => randomListElement(colorList());
 
 String randomColorCode() => colorMap()[randomColor()];
+
+String getFreeRandomColor() {
+  var color;
+  do {
+    color = randomColor();
+  } while (usedColors.any((c) => c == color));
+  usedColors.add(color);
+  return color;
+}

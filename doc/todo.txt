@@ -1,5 +1,4 @@
 To do
 
-- abstract classes in library?
+- in the Grid class use factory constructor
 - view tests with a web test library
-- memory example

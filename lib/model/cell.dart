@@ -2,9 +2,13 @@ part of boarding;
 
 class Cell {
   int row, column;
+  String color;
+  String image;
   String text;
   int textSize; // in pixels
   String textColor;
+  bool hidden = false;
+  String hiddenColor;
 
   Grid grid;
 
@@ -15,6 +19,8 @@ class Cell {
         'cell out of grid(${grid.width}, ${grid.height}) '
         '- row: $row, column: $column');
   }
+
+  bool get shown => !hidden;
 
   bool intersects(num row, num column) {
     if (0 <= row    && row    < grid.height &&
@@ -40,6 +46,7 @@ class Cells {
     _list.add(cell);
   }
 
+  int get length => _list.length;
   Iterator get iterator => _list.iterator;
 
   bool any(bool f(Cell cell)) => _list.any(f);

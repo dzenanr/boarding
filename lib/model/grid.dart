@@ -10,10 +10,14 @@ class Grid {
     var cell;
     for (var row = 0; row < height; row++) {
       for (var column = 0; column < width; column++) {
-        cell = new Cell(this, row, column);
+        cell = newCell(this, row, column);
         cells.add(cell);
       }
     }
+  }
+
+  Cell newCell(Grid grid, int row, int column) {
+    return new Cell(grid, row, column);
   }
 
   Cell cell(int row, int column) {
