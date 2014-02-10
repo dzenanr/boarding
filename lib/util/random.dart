@@ -1,4 +1,4 @@
-part of boarding;
+part of boarding_model;
 
 num randomNum(num max) {
   num random = new Random().nextDouble() * max;

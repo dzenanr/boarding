@@ -1,4 +1,4 @@
-part of boarding;
+part of boarding_model;
 
 class Cell {
   int row, column;

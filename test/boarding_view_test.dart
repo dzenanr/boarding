@@ -1,3 +1,4 @@
+import 'package:boarding/boarding_model.dart';
 import 'package:boarding/boarding.dart';
 import 'dart:html';
 
