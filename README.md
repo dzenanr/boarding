@@ -1,9 +1,10 @@
 
-##boarding library
+##boarding package
 
-**Categories**: education, game, model, view, canvas, libraries, packages, pub.
+**Categories**: education, game, model, view, canvas, libraries, package, pub.
 
-**Description**: A simple library to use for simple board games. The library has both model and view. To be used only on the client-side.
+**Description**: A simple package to use for simple board games. 
+The package has both model and view libraries. 
 
 [Document](http://goo.gl/kXlDOJ)
 
