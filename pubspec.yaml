@@ -7,5 +7,5 @@ environment:
   sdk: '>=1.1.0+8 <2.0.0'
 documentation: http://goo.gl/kXlDOJ
 dependencies:
-  browser: any
-  unittest: any
+  browser: '>=0.9.1 <0.9.2'
+  unittest: '>=0.10.0 <0.10.9'

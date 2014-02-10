@@ -4,7 +4,7 @@ class Grid {
   int width;  // in columns
   int height; // in rows
 
-  Cells cells = new Cells();
+  var cells = new Cells();
 
   Grid(this.width, this.height) {
     var cell;
@@ -23,11 +23,10 @@ class Grid {
   Cell cell(int row, int column) {
     if (0 <= row && row < height && 0 <= column && column < width) {
       for (Cell cell in cells) {
-        if (cell.intersects(row, column)) {
-          return cell;
-        }
+        if (cell.intersects(row, column)) return cell;
       }
     } else throw new Exception(
         'cell out of grid - row: $row, column: $column');
+    return null;
   }
 }
