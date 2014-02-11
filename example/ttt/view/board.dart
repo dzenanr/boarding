@@ -7,8 +7,7 @@ class Board extends Surface {
   bool play = true;
 
   Board(SquareGrid grid, CanvasElement canvas) : super(grid, canvas) {
-    var size = canvas.width;           // in pixels
-    var cellSize = size / grid.length; // in pixels
+    var cellSize = canvas.width / grid.length; // in pixels
     var lastPlay = SquareGrid.O;
 
     for (Cell cell in grid.cells) cell.textSize  = 32;
@@ -16,8 +15,8 @@ class Board extends Surface {
 
     canvas.onMouseDown.listen((MouseEvent e) {
       if (play) {
-        int row = (e.offset.y ~/ cellSize).toInt();
-        int column = (e.offset.x ~/ cellSize).toInt();
+        var row = (e.offset.y ~/ cellSize).toInt();
+        var column = (e.offset.x ~/ cellSize).toInt();
         Cell cell = grid.cell(row, column);
         if (cell.text == null) {
           if (lastPlay == SquareGrid.O) {
