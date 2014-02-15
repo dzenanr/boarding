@@ -28,10 +28,10 @@ class Cell {
       if (this.row == row && this.column == column) {
         return true;
       }
-      return false;
     } else throw new Exception(
         'cell out of grid(${grid.width}, ${grid.height}) '
         '- row: $row, column: $column');
+    return false;
   }
 }
 
