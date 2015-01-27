@@ -2,6 +2,10 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.2* 2015-01-27
+
++ const names are not any more in capital letters
+
 *0.1.1* 2014-02-14
 
 + move return false to the end of the intersects method in the model/Cell class

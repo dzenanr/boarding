@@ -1,8 +1,8 @@
 part of icacoe;
 
 class SquareGrid extends Grid {
-  static const String X = 'X';
-  static const String O = 'O';
+  static const String x = 'X';
+  static const String o = 'O';
 
   int length;
 
@@ -57,6 +57,6 @@ class SquareGrid extends Grid {
   }
 
   bool _completed(List line) =>
-      line.every((t) => t != null && t == X) ||
-      line.every((t) => t != null && t == O);
+      line.every((t) => t != null && t == x) ||
+      line.every((t) => t != null && t == o);
 }

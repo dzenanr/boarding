@@ -1,14 +1,14 @@
 part of icacoe;
 
 class Board extends Surface {
-  static const String X_COLOR = 'blue';
-  static const String O_COLOR = 'orange';
+  static const String xColor = 'blue';
+  static const String oColor = 'orange';
 
   bool play = true;
 
   Board(SquareGrid grid, CanvasElement canvas) : super(grid, canvas) {
     var cellSize = canvas.width / grid.length; // in pixels
-    var lastPlay = SquareGrid.O;
+    var lastPlay = SquareGrid.o;
 
     for (Cell cell in grid.cells) cell.textSize  = 32;
     LabelElement winnerLabel = querySelector("#winner");
@@ -19,15 +19,15 @@ class Board extends Surface {
         var column = (e.offset.x ~/ cellSize).toInt();
         Cell cell = grid.cell(row, column);
         if (cell.text == null) {
-          if (lastPlay == SquareGrid.O) {
-            cell.text = SquareGrid.X;
-            lastPlay = SquareGrid.X;
-            cell.textColor  = X_COLOR;
+          if (lastPlay == SquareGrid.o) {
+            cell.text = SquareGrid.x;
+            lastPlay = SquareGrid.x;
+            cell.textColor  = xColor;
           }
           else {
-            cell.text = SquareGrid.O;
-            lastPlay = SquareGrid.O;
-            cell.textColor  = O_COLOR;
+            cell.text = SquareGrid.o;
+            lastPlay = SquareGrid.o;
+            cell.textColor  = oColor;
           }
           if (winner()) {
             winnerLabel.text = 'winner is ${cell.text}';

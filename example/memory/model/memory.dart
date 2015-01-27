@@ -7,7 +7,7 @@ class MemoryCell extends Cell {
 }
 
 class Memory extends Grid {
-  static const String HIDDEN_CELL_COLOR = 'lightgray';
+  static const String hiddenCellColor = 'lightgray';
 
   int length;
   bool _recalled = false;
@@ -18,7 +18,7 @@ class Memory extends Grid {
     }
     for (MemoryCell mc in cells) {
       mc.hidden = true;
-      mc.hiddenColor = HIDDEN_CELL_COLOR;
+      mc.hiddenColor = hiddenCellColor;
       if (mc.color == null) {
         mc.color = getFreeRandomColor();
         _setFreeTwinRandomCell(mc);
