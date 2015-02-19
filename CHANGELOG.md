@@ -2,6 +2,11 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.3* 2015-02-19
+
++ add moving pieces in the model
++ add Chaos example
+
 *0.1.2* 2015-01-27
 
 + const names are not any more in capital letters

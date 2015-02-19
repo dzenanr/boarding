@@ -1,3 +1,6 @@
 To do
 
+- add collisions to pieces
 - do view tests with a web test library
+- make more examples
+
