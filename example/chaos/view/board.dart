@@ -22,19 +22,19 @@ class Board extends Surface {
       mp.move();
       switch(mp.form) {
         case Form.CIRCLE:
-          new Circle(this, x: mp.x, y: mp.y, width: mp.width, color: mp.colorCode).draw();
+          new Circle(this, mp.x, mp.y, mp.width / 2, color: mp.colorCode).draw();
           break;
         case Form.LINE:
-          new Line(this, x: mp.x, y: mp.y, width: mp.width, height: mp.height, color: mp.colorCode).draw();
+          new Line(this, mp.x, mp.y, mp.width, mp.height, color: mp.colorCode).draw();
           break;
         case Form.RECTANGLE:
-          new Rect(this, x: mp.x, y: mp.y, width: mp.width, height: mp.height, color: mp.colorCode).draw();
+          new Rect(this, mp.x, mp.y, mp.width, mp.height, color: mp.colorCode).draw();
           break;
         case Form.SQUARE:
-          new Square(this, x: mp.x, y: mp.y, width: mp.width, color: mp.colorCode).draw();
+          new Square(this, mp.x, mp.y, mp.width, color: mp.colorCode).draw();
           break;
         case Form.TAG:
-          new Tag(this, x: mp.x, y: mp.y, width: mp.width, text: mp.text, color: mp.colorCode).draw();
+          new Tag(this, mp.x, mp.y, mp.width, mp.text, color: mp.colorCode).draw();
       }
     });
   }
