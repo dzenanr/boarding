@@ -18,18 +18,25 @@ class Board extends Surface {
   
   draw() {
     clear();
-    movingPieces.forEach((mp) => new MovingRectangle(this, mp).draw());
+    movingPieces.forEach((MovingPiece mp) {
+      mp.move();
+      switch(mp.form) {
+        case Form.CIRCLE:
+          new Circle(this, x: mp.x, y: mp.y, width: mp.width, color: mp.colorCode).draw();
+          break;
+        case Form.LINE:
+          new Line(this, x: mp.x, y: mp.y, width: mp.width, height: mp.height, color: mp.colorCode).draw();
+          break;
+        case Form.RECTANGLE:
+          new Rect(this, x: mp.x, y: mp.y, width: mp.width, height: mp.height, color: mp.colorCode).draw();
+          break;
+        case Form.SQUARE:
+          new Square(this, x: mp.x, y: mp.y, width: mp.width, color: mp.colorCode).draw();
+          break;
+        case Form.TAG:
+          new Tag(this, x: mp.x, y: mp.y, width: mp.width, text: mp.text, color: mp.colorCode).draw();
+      }
+    });
   }
 }
 
-class MovingRectangle {
-  Surface surface;
-  MovingPiece mp;
-  
-  MovingRectangle(this.surface, this.mp);
-  
-  draw() {
-    mp.move();
-    new Rect(surface, mp.x, mp.y, mp.width, mp.height, inColor: mp.colorCode).draw();
-  }
-}

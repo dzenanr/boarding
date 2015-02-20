@@ -1,39 +1,46 @@
 part of boarding;
 
-class Circle {
+abstract class Shape {
   Surface surface;
-  num x, y, radius, lineWidth;
-  String inColor, outColor;
+  num x, y, width, height, lineWidth;
+  String color, borderColor;
+  
+  Shape(this.surface, this.x, this.y, this.width, this.height, 
+      this.lineWidth, this.color, this.borderColor);
+  
+  draw();
+}
 
-  Circle(this.surface, this.x, this.y, this.radius,
-      {this.lineWidth: 1, this.inColor: 'white', this.outColor: 'black'});
+class Circle extends Shape {
+  Circle(Surface surface, 
+      {num x, num y, num width, 
+       num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
+      super(surface, x, y, width, width, lineWidth, color, borderColor);
 
   draw() {
     surface.context
         ..lineWidth = lineWidth
-        ..fillStyle = inColor
-        ..strokeStyle = outColor
+        ..fillStyle = color
+        ..strokeStyle = borderColor
         ..beginPath()
-        ..arc(x, y, radius, 0, PI * 2)
+        ..arc(x, y, width / 2, 0, PI * 2)
         ..closePath()
         ..fill()
         ..stroke();
   }
 }
 
-class Rect {
-  Surface surface;
-  num x, y, width, height, lineWidth;
-  String inColor, outColor;
-
-  Rect(this.surface, this.x, this.y, this.width, this.height,
-      {this.lineWidth: 1, this.inColor: 'white', this.outColor: 'black'});
+class Rect extends Shape {
+  Rect(Surface surface, 
+       {num x, num y, num width, num height, 
+        num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
+       super(surface, x, y, width, height, lineWidth, color, borderColor);
 
   draw() {
     surface.context
         ..lineWidth = lineWidth
-        ..fillStyle = inColor
-        ..strokeStyle = outColor
+        ..fillStyle = color
+        ..strokeStyle = borderColor
         ..beginPath()
         ..rect(x, y, width, height)
         ..closePath()
@@ -43,48 +50,41 @@ class Rect {
 }
 
 class Square extends Rect {
-  num length;
-
-  Square(Surface surface, num x, num y, num l,
-      {lineWidth: 1, inColor: 'white', outColor: 'black'}) : length = l,
-      super(surface, x, y, l, l, lineWidth: lineWidth,
-          inColor: inColor, outColor: outColor);
+  Square(Surface surface, 
+      {num x, num y, num width,
+       num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
+      super(surface, x: x, y: y, width: width, height: width, lineWidth: lineWidth, color: color, borderColor: borderColor);
 }
 
-class Line {
-  Surface surface;
-  num x1, y1, x2, y2;
-  num width; // named optional param gives an errorG!?
-  String color;
-
-  Line(this.surface, this.x1, this.y1, this.x2, this.y2,
-       {this.width: 1, this.color: 'black'});
+class Line extends Shape {
+  Line(Surface surface, 
+      {num x, num y, num width, num height,  
+       num lineWidth: 1, String color: 'black', String borderColor: 'black'}):
+      super(surface, x, y, width, height, lineWidth, color, borderColor);
 
   draw() {
     surface.context
-        ..lineWidth = width
+        ..lineWidth = lineWidth
         ..strokeStyle = color
         ..beginPath()
-        ..moveTo(x1, y1)
-        ..lineTo(x2, y2)
+        ..moveTo(x, y)
+        ..lineTo(width, height)
         ..closePath()
         ..stroke();
   }
 }
 
-class Tag {
-  Surface surface;
+class Tag extends Shape {
   String text;
-  num x, y;
-  num size;     // in pixels
-  String color;
 
-  Tag(this.surface, this.text, this.x, this.y,
-      {this.size: 12, this.color: 'black'});
+  Tag(Surface surface, 
+      {num x, num y, num width, this.text,
+       num lineWidth: 1, String color: 'black', String borderColor: 'black'}):
+      super(surface, x, y, width, width, width, color, borderColor);
 
   draw() {
     surface.context
-        ..font = 'bold ${size}px sans-serif'
+        ..font = 'bold ${width}px sans-serif'
         ..fillStyle = color
         ..beginPath()
         ..fillText(text, x, y)

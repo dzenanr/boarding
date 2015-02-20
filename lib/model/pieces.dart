@@ -1,13 +1,19 @@
 part of boarding_model;
 
+enum Form {CIRCLE, LINE, RECTANGLE, SQUARE, TAG}
+
 abstract class Piece {
+  static const Form defaultForm = Form.RECTANGLE;
   static const num widthLimit = 120;
   static const num heightLimit = 80;
-  static const String blackCode = '#000000';
+  static const String defaultText = 'Dart';
+  static const String defaultCode = '#000000';
   
+  Form form = defaultForm; 
   num width = widthLimit;
   num height = heightLimit;
-  String colorCode = blackCode;
+  String text = defaultText;
+  String colorCode = defaultCode;
   num x = 0;
   num y = 0;
 }
@@ -24,9 +30,19 @@ class MovingPiece extends Piece {
   bool movable = true;
   
   randomInit() {
+    var i = randomInt(5);
+    switch (i) {
+      case 0: form = Form.CIRCLE; break;
+      case 1: form = Form.LINE; break;
+      case 2: form = Form.RECTANGLE; break;
+      case 3: form = Form.SQUARE; break;
+      case 4: form = Form.TAG; 
+    }
     width = randomNum(Piece.widthLimit);
     height = randomNum(Piece.widthLimit);
-    colorCode = randomColorCode();
+    text = randomListElement(colorList());
+    //colorCode = randomColorCode();
+    colorCode = colorMap()[text];
     x = randomNum(distanceLimitWidth - width);
     y = randomNum(distanceLimitHeight - height);
     distanceWidth = randomNum(distanceLimitWidth);
@@ -63,7 +79,7 @@ class MovingPieces extends Pieces {
     }
   }
   
-  randomInit() => forEach((p) => p.randomInit()); 
-  onOff() => forEach((p) => p.onOff());
+  randomInit() => forEach((MovingPiece mp) => mp.randomInit()); 
+  onOff() => forEach((MovingPiece mp) => mp.onOff());
 }
 
