@@ -3,13 +3,12 @@ part of boarding;
 class Surface {
   num width, height; // in pixels
 
-  Grid grid;
-  bool withLines;
-
   CanvasElement canvas;
   CanvasRenderingContext2D context;
+  bool withLines;
+  Grid grid;
 
-  Surface(this.grid, this.canvas, {this.withLines: true}) {
+  Surface(this.canvas, {this.withLines: true, this.grid}) {
     context = canvas.getContext("2d");
     width = canvas.width;
     height = canvas.height;
@@ -67,7 +66,9 @@ class Surface {
 
   draw() {
     clear();
-    if (withLines) lines();
-    cells();
+    if (grid != null) {
+      if (withLines) lines();
+      cells();
+    }
   }
 }

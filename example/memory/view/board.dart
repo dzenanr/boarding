@@ -5,8 +5,8 @@ class Board extends Surface {
   Memory memory;
   MemoryCell lastCellClicked;
 
-  Board(Memory memory, CanvasElement canvas) : this.memory = memory,
-      super(memory, canvas) {
+  Board(CanvasElement canvas, Memory memory): this.memory = memory,
+      super(canvas, grid: memory) {
     cellSize = canvas.width / memory.length; // in pixels
     querySelector('#canvas').onMouseDown.listen((MouseEvent e) {
       int row = (e.offset.y ~/ cellSize).toInt();

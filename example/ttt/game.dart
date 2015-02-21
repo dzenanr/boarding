@@ -11,7 +11,7 @@ main() {
   // model
   var grid = new SquareGrid(3);
   // view
-  new Board(grid, querySelector('#canvas')).draw();
+  new Board(querySelector('#canvas'), grid).draw();
 }
 
 

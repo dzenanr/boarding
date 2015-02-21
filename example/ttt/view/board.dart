@@ -6,7 +6,7 @@ class Board extends Surface {
 
   bool play = true;
 
-  Board(SquareGrid grid, CanvasElement canvas) : super(grid, canvas) {
+  Board(CanvasElement canvas, SquareGrid grid) : super(canvas, grid: grid) {
     var cellSize = canvas.width / grid.length; // in pixels
     var lastPlay = SquareGrid.o;
 

@@ -3,7 +3,7 @@ part of chaos;
 class Board extends Surface {
   var movingPieces = new MovingPieces(16);
   
-  Board(Grid2By2 grid, CanvasElement canvas) : super(grid, canvas) {
+  Board(CanvasElement canvas) : super(canvas) {
     movingPieces.randomInit();
     canvas.onMouseDown.listen((MouseEvent e) {
       movingPieces.onOff();
@@ -20,20 +20,20 @@ class Board extends Surface {
     clear();
     movingPieces.forEach((MovingPiece mp) {
       mp.move();
-      switch(mp.form) {
-        case Form.CIRCLE:
+      switch(mp.shape) {
+        case PieceShape.CIRCLE:
           new Circle(this, mp.x, mp.y, mp.width / 2, color: mp.colorCode).draw();
           break;
-        case Form.LINE:
+        case PieceShape.LINE:
           new Line(this, mp.x, mp.y, mp.width, mp.height, color: mp.colorCode).draw();
           break;
-        case Form.RECTANGLE:
+        case PieceShape.RECTANGLE:
           new Rect(this, mp.x, mp.y, mp.width, mp.height, color: mp.colorCode).draw();
           break;
-        case Form.SQUARE:
+        case PieceShape.SQUARE:
           new Square(this, mp.x, mp.y, mp.width, color: mp.colorCode).draw();
           break;
-        case Form.TAG:
+        case PieceShape.TAG:
           new Tag(this, mp.x, mp.y, mp.width, mp.text, color: mp.colorCode).draw();
       }
     });

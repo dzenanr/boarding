@@ -7,7 +7,7 @@ main() {
   var grid = new Grid(2, 4);
   // view
   var canvas = querySelector('#canvas');
-  var surface = new Surface(grid, canvas, withLines: false);
+  var surface = new Surface(canvas, withLines: false, grid: grid);
   surface.draw();
   var circle1 = new Circle(surface, 200, 200, 40, lineWidth: 4, color: 'yellow', borderColor: 'brown');
   circle1.draw();

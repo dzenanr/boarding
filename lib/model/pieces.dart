@@ -1,15 +1,15 @@
 part of boarding_model;
 
-enum Form {CIRCLE, LINE, RECTANGLE, SQUARE, TAG}
+enum PieceShape {CIRCLE, LINE, RECTANGLE, SQUARE, TAG}
 
 abstract class Piece {
-  static const Form defaultForm = Form.RECTANGLE;
+  static const PieceShape defaultShape = PieceShape.RECTANGLE;
   static const num widthLimit = 120;
   static const num heightLimit = 80;
   static const String defaultText = 'Dart';
   static const String defaultCode = '#000000';
   
-  Form form = defaultForm; 
+  PieceShape shape = defaultShape; 
   num width = widthLimit;
   num height = heightLimit;
   String text = defaultText;
@@ -32,11 +32,11 @@ class MovingPiece extends Piece {
   randomInit() {
     var i = randomInt(5);
     switch (i) {
-      case 0: form = Form.CIRCLE; break;
-      case 1: form = Form.LINE; break;
-      case 2: form = Form.RECTANGLE; break;
-      case 3: form = Form.SQUARE; break;
-      case 4: form = Form.TAG; 
+      case 0: shape = PieceShape.CIRCLE; break;
+      case 1: shape = PieceShape.LINE; break;
+      case 2: shape = PieceShape.RECTANGLE; break;
+      case 3: shape = PieceShape.SQUARE; break;
+      case 4: shape = PieceShape.TAG; 
     }
     width = randomNum(Piece.widthLimit);
     height = randomNum(Piece.widthLimit);

@@ -13,7 +13,7 @@ playAgain(Event e) {
 }
 
 main() {
-  new Board(new Memory(4), querySelector('#canvas')).draw();
+  new Board(querySelector('#canvas'), new Memory(4)).draw();
   querySelector('#play').onClick.listen(playAgain);
 }
 
