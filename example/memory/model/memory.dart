@@ -20,7 +20,7 @@ class Memory extends Grid {
       mc.hidden = true;
       mc.hiddenColor = hiddenCellColor;
       if (mc.color == null) {
-        mc.color = getFreeRandomColor();
+        mc.color = getNotUsedColor();
         _setFreeTwinRandomCell(mc);
       }
     }

@@ -1,11 +1,11 @@
 library chaos;
 
 import 'dart:html';
-import 'package:boarding/boarding_model.dart';
+import 'package:boarding/pieces.dart';
 import 'package:boarding/boarding.dart';
 
 part 'view/board.dart';
 
 main() {
-  new Board(querySelector('#canvas')).draw();
+  new Board(querySelector('#canvas'), avoidCollisions: false).draw();
 }

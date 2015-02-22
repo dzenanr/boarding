@@ -1,5 +1,5 @@
 import 'package:unittest/unittest.dart';
-import 'package:boarding/boarding_model.dart';
+import 'package:boarding/util.dart';
 
 testUtil() {
   group('Testing utilities', () {
@@ -13,7 +13,7 @@ testUtil() {
     });
     test('Random list element', () {
       var list = [22, 45.8, 33.8, 44, 8];
-      var re = randomListElement(list);
+      var re = randomElement(list);
       expect(list.contains(re), isTrue);
     });
     test('Random color', () {

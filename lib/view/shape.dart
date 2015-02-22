@@ -80,12 +80,28 @@ class Line extends Shape {
   }
 }
 
+class OneOfLines extends Shape {
+  num x1, y1;
+  
+  OneOfLines(Surface surface, num x, num y, this.x1, this.y1,  
+      {num lineWidth: 1, String color: 'black', String borderColor: 'black'}):
+      super(surface, x, y, lineWidth, null, lineWidth, color, borderColor);
+
+  draw() {
+    surface.context
+        ..lineWidth = lineWidth
+        ..strokeStyle = color
+        ..moveTo(x, y)
+        ..lineTo(x1, y1);
+  }
+}
+
 class Tag extends Shape {
-  num size;
+  num size, maxWidth;
   String text;
 
   Tag(Surface surface, num x, num y, this.size, this.text, 
-      {num lineWidth: 1, String color: 'black', String borderColor: 'black'}):
+      {num lineWidth: 1, num this.maxWidth, String color: 'black', String borderColor: 'black'}):
       super(surface, x, y, null, null, lineWidth, color, borderColor) {
     this.width = size;
     this.height = size;
@@ -93,10 +109,31 @@ class Tag extends Shape {
 
   draw() {
     surface.context
-        ..font = 'bold ${size}px sans-serif'
+        ..font = '${size}px sans-serif'
         ..fillStyle = color
+        ..textAlign = 'center'
         ..beginPath()
         ..fillText(text, x, y)
         ..closePath();
+  }
+}
+
+class OneOfTags extends Shape {
+  num size, maxWidth;
+  String text;
+
+  OneOfTags(Surface surface, num x, num y, this.size, this.text, 
+      {num lineWidth: 1, num this.maxWidth, String color: 'black', String borderColor: 'black'}):
+      super(surface, x, y, null, null, lineWidth, color, borderColor) {
+    this.width = size;
+    this.height = size;
+  }
+
+  draw() {
+    surface.context
+        ..font = '${size}px sans-serif'
+        ..fillStyle = color
+        ..textAlign = 'center'
+        ..fillText(text, x, y, maxWidth);
   }
 }

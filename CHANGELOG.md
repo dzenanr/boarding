@@ -2,6 +2,13 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.4* 2015-02-22
+
++ run programs and random commands
++ avoid collisions
++ art pen
++ reorganize libraries
+
 *0.1.3* 2015-02-19
 
 + add moving pieces in the model

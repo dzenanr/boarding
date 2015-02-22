@@ -2,8 +2,9 @@ library memory;
 
 import 'dart:async';
 import 'dart:html';
-import 'package:boarding/boarding_model.dart';
+import 'package:boarding/grids.dart';
 import 'package:boarding/boarding.dart';
+import 'package:boarding/util.dart';
 
 part 'model/memory.dart';
 part 'view/board.dart';

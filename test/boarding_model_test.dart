@@ -1,5 +1,5 @@
 import 'package:unittest/unittest.dart';
-import 'package:boarding/boarding_model.dart';
+import 'package:boarding/grids.dart';
 
 testModel(Grid grid) {
   group('Testing model', () {

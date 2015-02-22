@@ -1,4 +1,6 @@
-part of boarding_model;
+part of util;
+
+List usedColors = [];
 
 Map<String, String> colorMap() {
   return {
@@ -86,13 +88,7 @@ List<String> colorList() {
   ];
 }
 
-List usedColors = [];
-
-String randomColor() => randomListElement(colorList());
-
-String randomColorCode() => colorMap()[randomColor()];
-
-String getFreeRandomColor() {
+String getNotUsedColor() {
   var color;
   do {
     color = randomColor();
@@ -100,3 +96,7 @@ String getFreeRandomColor() {
   usedColors.add(color);
   return color;
 }
+
+
+
+

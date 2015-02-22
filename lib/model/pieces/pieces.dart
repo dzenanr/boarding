@@ -1,4 +1,4 @@
-part of boarding_model;
+part of pieces;
 
 enum PieceShape {CIRCLE, LINE, RECTANGLE, SQUARE, TAG}
 
@@ -18,7 +18,7 @@ abstract class Piece {
   num y = 0;
 }
 
-class MovingPiece extends Piece {
+class MovablePiece extends Piece {
   static const num distanceLimitWidth = 800;
   static const num distanceLimitHeight = 600;
   static const num speedLimit = 6;
@@ -27,7 +27,7 @@ class MovingPiece extends Piece {
   num distanceHeight = distanceLimitHeight;
   num dx = 1;
   num dy = 1;
-  bool movable = true;
+  bool isMoving = true;
   
   randomInit() {
     var i = randomInt(5);
@@ -40,7 +40,7 @@ class MovingPiece extends Piece {
     }
     width = randomNum(Piece.widthLimit);
     height = randomNum(Piece.widthLimit);
-    text = randomListElement(colorList());
+    text = randomElement(colorList());
     //colorCode = randomColorCode();
     colorCode = colorMap()[text];
     x = randomNum(distanceLimitWidth - width);
@@ -52,7 +52,7 @@ class MovingPiece extends Piece {
   }
 
   move() { 
-    if (movable) {
+    if (isMoving) {
       x += dx;
       y += dy;
       if (x > distanceWidth || x < 0) dx = -dx;
@@ -60,7 +60,39 @@ class MovingPiece extends Piece {
     }
   }
   
-  onOff() => movable = !movable;
+  onOff() => isMoving = !isMoving;
+  
+  avoidCollision(Piece p) {
+    if (p.x < x  && p.y < y) {
+      if (p.x + p.width >= x && p.y + p.height >= y) {
+        dx = -dx; dy = -dy;
+        if (p is MovablePiece) {
+          //p.dx = -p.dx; p.dy = -p.dy;
+        }
+      }
+    } else if (p.x > x  && p.y < y) {
+      if (p.x <= x + width && p.y + p.height >= y) {
+        dx = -dx; dy = -dy;
+        if (p is MovablePiece) {
+          //p.dx = -p.dx; p.dy = -p.dy;
+        }
+      }
+    } else if (p.x < x  && p.y > y) {
+      if (p.x + p.width >= x && p.y <= y + height) {
+        dx = -dx; dy = -dy;
+        if (p is MovablePiece) {
+          //p.dx = -p.dx; p.dy = -p.dy;
+        }
+      }
+    } else if (p.x > x  && p.y > y) {
+      if (p.x <= x + width && p.y <= y + height) {
+        dx = -dx; dy = -dy;
+        if (p is MovablePiece) {
+          //p.dx = -p.dx; p.dy = -p.dy;
+        }
+      }
+    }
+  }
 }
 
 abstract class Pieces {
@@ -70,16 +102,24 @@ abstract class Pieces {
   int get length => _pieceList.length;
   add(Piece piece) => _pieceList.add(piece);
   forEach(Function f(Piece p)) => _pieceList.forEach(f);
+  
+  avoidCollisions(MovablePiece mp) {
+    for (var p in this) {
+      if (p != mp) {
+        mp.avoidCollision(p);
+      }
+    }
+  }
 }
 
-class MovingPieces extends Pieces { 
-  MovingPieces(int count) {
+class MovablePieces extends Pieces { 
+  MovablePieces(int count) {
     for (var i = 0; i < count - 1; i++) {
-      add(new MovingPiece());
+      add(new MovablePiece());
     }
   }
   
-  randomInit() => forEach((MovingPiece mp) => mp.randomInit()); 
-  onOff() => forEach((MovingPiece mp) => mp.onOff());
+  randomInit() => forEach((MovablePiece mp) => mp.randomInit()); 
+  onOff() => forEach((MovablePiece mp) => mp.onOff());
 }
 

@@ -1,4 +1,4 @@
-part of boarding_model;
+part of grids;
 
 class Grid {
   int width;  // in columns

@@ -1,12 +1,13 @@
 part of chaos;
 
 class Board extends Surface {
-  var movingPieces = new MovingPieces(16);
+  var movablePieces = new MovablePieces(16);
+  bool avoidCollisions;
   
-  Board(CanvasElement canvas) : super(canvas) {
-    movingPieces.randomInit();
+  Board(CanvasElement canvas, {this.avoidCollisions: false}) : super(canvas) {
+    movablePieces.randomInit();
     canvas.onMouseDown.listen((MouseEvent e) {
-      movingPieces.onOff();
+      movablePieces.onOff();
     });
     window.animationFrame.then(gameLoop);
   }
@@ -18,8 +19,11 @@ class Board extends Surface {
   
   draw() {
     clear();
-    movingPieces.forEach((MovingPiece mp) {
+    movablePieces.forEach((MovablePiece mp) {
       mp.move();
+      if (avoidCollisions) {
+        movablePieces.avoidCollisions(mp);
+      }
       switch(mp.shape) {
         case PieceShape.CIRCLE:
           new Circle(this, mp.x, mp.y, mp.width / 2, color: mp.colorCode).draw();
