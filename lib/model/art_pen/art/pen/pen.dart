@@ -11,8 +11,8 @@ class Pen {
   static final num randomStepsMax = 180.0;
   static final int randomRepeatMax = 36;
 
-  int drawingWidth;
-  int drawingHeight;
+  int spaceWidth;
+  int spaceHeight;
   String _color;
   int _width;
   bool _down;
@@ -25,8 +25,7 @@ class Pen {
   Concept lineConcept;
   Line lastLine;
 
-  var commands;
-  var examples;
+  List<List> commands;
 
   Pen(ArtRepo artRepo) {
     var artModels = artRepo.getDomainModels(ArtRepo.artDomainCode);
@@ -42,8 +41,8 @@ class Pen {
     _down = true;
     _write = '';
     visible = true;
-    drawingWidth = 600;
-    drawingHeight = 400;
+    spaceWidth = 600;
+    spaceHeight = 400;
 
     lastSegment = new Segment(segments.concept);
     lastSegment.visible = _down;
@@ -51,7 +50,6 @@ class Pen {
     lastLine = null;
 
     commands = new List<List>();
-    examples = exampleList();
   }
 
   erase() {
@@ -59,8 +57,8 @@ class Pen {
     _init();
   }
 
-  num get startX => drawingWidth / 2;
-  num get startY => drawingHeight / 2;
+  num get startX => spaceWidth / 2;
+  num get startY => spaceHeight / 2;
 
   set color(String color) {
     _color = color;
@@ -141,7 +139,7 @@ class Pen {
     lastLine.beginY = previousLine.endY;
     lastLine.endX = x;
     lastLine.endY = y;
-    lastLine.backOnBorder(drawingWidth, drawingHeight);
+    lastLine.backOnBorder(spaceWidth, spaceHeight);
     lastSegment.lines.add(lastLine);
     commands.add(['moveTo', x, y]);
   }
@@ -155,7 +153,7 @@ class Pen {
     lastLine.segment = lastSegment;
     lastLine.angle = turn;
     lastLine.pixels = steps;
-    lastLine.backOnBorder(drawingWidth, drawingHeight);
+    lastLine.backOnBorder(spaceWidth, spaceHeight);
     lastSegment.lines.add(lastLine);
 
     if (repeat > 0) {
@@ -165,7 +163,7 @@ class Pen {
         lastLine.segment = lastSegment;
         lastLine.angle = turn;
         lastLine.pixels = steps;
-        lastLine.backOnBorder(drawingWidth, drawingHeight);
+        lastLine.backOnBorder(spaceWidth, spaceHeight);
         lastSegment.lines.add(lastLine);
       }
     }
@@ -174,12 +172,12 @@ class Pen {
 
   art([int times = 1]) {
     for (var i = 0; i < times; i++) {
-      _double();
+      _duplicate();
     }
     commands.add(['art', times]);
   }
 
-  _double() {
+  _duplicate() {
     if (lastLine != null) {
       Segments copiedSegments = new Segments(segments.concept);
       for (Segment segment in segments) {
@@ -300,15 +298,6 @@ class Pen {
       skip(util.randomSign(randomMaxInt) * util.randomDouble(randomStepsMax),
           angle: util.randomSign(randomMaxInt) * util.randomDouble(randomAngleMax),
           repeat: util.randomInt(randomRepeatMax));
-
-  String randomDemoName() {
-    var seq = randomInt(91);
-    var name;
-    if (seq < 10) { name = 'demo00${seq.toString()}';
-    } else if (seq < 100) { name = 'demo0${seq.toString()}';
-    } else if (seq < 1000) name = 'demo${seq.toString()}';
-    return name;
-  }
 
   String fromCommands() {
     String result = '';
@@ -456,13 +445,8 @@ class Pen {
       print('error in interpretation of commands -- $e');
     }
   }
-
-  example(int seq) {
-    if (seq < examples.length) {
-      var commands = examples[seq];
-      erase();
-      interpret(commands);
-    }
+  
+  displayCommands() {
+    commands.forEach((c) => print('${c.join(', ')};'));
   }
-
 }

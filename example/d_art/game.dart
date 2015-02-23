@@ -37,6 +37,14 @@ var randomCommands = [
                      ];
 */
 
+onako(d_pen.Pen pen) {
+  var tako = '''
+move, 177, 200, 11;
+art, 4;
+  ''';
+  pen.interpret(tako);
+}
+
 rotateSquare(d_pen.Pen pen) {
   square() {
     pen.move(90, 100, 3);
@@ -145,14 +153,15 @@ zigZag(d_pen.Pen pen) {
 }
 
 runRandom(d_pen.Pen pen) {
-  d_pen.randomProgram(pen);
-  //d_pen.randomSequence(pen);
+  //d_pen.randomProgram(pen);
+  d_pen.randomSequence(pen);
   //d_pen.randomExample(pen);
   //d_pen.randomDemo(pen);
 }
 
 runProgram(d_pen.Pen pen) {
-  rotateSquare(pen);
+  onako(pen);
+  //rotateSquare(pen);
   //stairSquare(pen);
   //barGraph(pen);
   //mapMap(pen);
@@ -163,7 +172,8 @@ main() {
   final repo = new d_pen.ArtRepo();
   final board = new Board(querySelector('#canvas'), repo);
   var pen = board.pen;
-  runRandom(pen);
-  //runProgram(pen);  
+  //runRandom(pen);
+  runProgram(pen);  
   board.draw();
+  pen.displayCommands();
 }

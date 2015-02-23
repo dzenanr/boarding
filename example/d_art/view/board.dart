@@ -8,13 +8,12 @@ class Board extends shape.Surface {
   Board(CanvasElement canvas, this.artRepo) : super(canvas) {
     colors = util.colorMap();
     pen = new d_pen.Pen(artRepo);
-    pen.drawingWidth = width;
-    pen.drawingHeight = height;
+    pen.spaceWidth = width;
+    pen.spaceHeight = height;
     draw();
   }
   
   draw() {
-    clear();
     for (d_pen.Segment segment in pen.segments) {
       if (segment.visible) {
         context.beginPath();

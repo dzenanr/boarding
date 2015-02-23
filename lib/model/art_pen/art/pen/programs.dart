@@ -565,7 +565,7 @@ demo16(Pen pen) {
   var s = sequence(11);
   pen.erase();
   pen.down = false;
-  pen.moveTo(pen.drawingWidth, 0);
+  pen.moveTo(pen.spaceWidth, 0);
   pen.down = true;
   for (var k in s) {
     if (k == 1) {
@@ -595,7 +595,7 @@ demo18(Pen pen) {
   var s = sequence(10);
   pen.erase();
   pen.down = false;
-  pen.moveTo(pen.drawingWidth, 0);
+  pen.moveTo(pen.spaceWidth, 0);
   pen.down = true;
   for (var k in s) {
     if (k == 1) {
@@ -630,7 +630,7 @@ demo20(Pen pen) {
   var s = sequence(10);
   pen.erase();
   pen.down = false;
-  pen.moveTo(0, pen.drawingHeight);
+  pen.moveTo(0, pen.spaceHeight);
   pen.down = true;
   for (var k in s) {
     if (k == 1) {
@@ -646,7 +646,7 @@ demo21(Pen pen) {
   var s = sequence(10);
   pen.erase();
   pen.down = false;
-  pen.moveTo(0, pen.drawingHeight/2);
+  pen.moveTo(0, pen.spaceHeight/2);
   pen.down = true;
   for (var k in s) {
     if (k == 1) {

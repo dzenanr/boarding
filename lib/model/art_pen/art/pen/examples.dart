@@ -8,6 +8,15 @@ randomExample(Pen pen) {
   pen.interpret(commands);
 }
 
+String randomExampleName([int no = 100]) {
+  var seq = randomInt(no);
+  var name;
+  if (seq < 10) { name = 'demo00${seq.toString()}';
+  } else if (seq < 100) { name = 'demo0${seq.toString()}';
+  } else if (seq < 1000) name = 'demo${seq.toString()}';
+  return name;
+}
+
 List<String> exampleList() {
   var examples = new List<String>();
   examples.add(example000());

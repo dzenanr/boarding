@@ -2,7 +2,7 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
-*0.1.4* 2015-02-22
+*0.1.4* 2015-02-23
 
 + run programs and random commands
 + avoid collisions
