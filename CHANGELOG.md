@@ -2,11 +2,16 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.5* 2015-02-23
+
++ add falling pieces
++ add drop example
+
 *0.1.4* 2015-02-23
 
-+ run programs and random commands
-+ avoid collisions
-+ art pen
++ add avoid collisions
++ add art pen (with dartling)
++ add run programs and random commands
 + reorganize libraries
 
 *0.1.3* 2015-02-19
@@ -26,5 +31,5 @@ based on [Semantic Versioning](http://semver.org/)
 
 *0.1.0* 2014-02-10
 
-+ create the boarding package
++ create the initial boarding package
 

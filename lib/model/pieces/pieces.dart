@@ -14,8 +14,49 @@ abstract class Piece {
   num height = heightLimit;
   String text = defaultText;
   String colorCode = defaultCode;
+  bool isVisible = true;
+  bool isSelected = false;
+  bool contains(num xx, num yy) {
+    if ((xx > x && xx < x + width) && (yy > y && yy < y + height)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
   num x = 0;
   num y = 0;
+}
+
+class FallingPiece extends Piece {
+  static const num distanceLimit = 600;
+  
+  num distanceHeight = distanceLimit;
+  var shape = PieceShape.RECTANGLE;
+  bool reappear = true;
+  num dy = 2;
+  
+  randomInit() {
+    height = randomNum(Piece.heightLimit);
+    width = height;
+    colorCode = randomColorCode();
+    x = randomNum(distanceLimit - width);
+    y = -randomNum(distanceHeight - height);
+  }
+  
+  move() { 
+    y += dy;
+    if (y >= distanceHeight) {
+      reappear = true;
+    } else {
+      reappear = false;
+    }
+    if (reappear) {
+      var r = randomNum(distanceHeight);
+      y = -r;
+      x = r;
+    }
+  }
 }
 
 class MovablePiece extends Piece {
@@ -39,7 +80,7 @@ class MovablePiece extends Piece {
       case 4: shape = PieceShape.TAG; 
     }
     width = randomNum(Piece.widthLimit);
-    height = randomNum(Piece.widthLimit);
+    height = randomNum(Piece.heightLimit);
     text = randomElement(colorList());
     //colorCode = randomColorCode();
     colorCode = colorMap()[text];
@@ -102,6 +143,27 @@ abstract class Pieces {
   int get length => _pieceList.length;
   add(Piece piece) => _pieceList.add(piece);
   forEach(Function f(Piece p)) => _pieceList.forEach(f);
+}
+
+class FallingPieces extends Pieces { 
+  FallingPieces(int count) {
+    for (var i = 0; i < count; i++) {
+      add(new FallingPiece());
+    }
+  }
+  
+  randomInit() => forEach((FallingPiece fp) => fp.randomInit()); 
+}
+
+class MovablePieces extends Pieces { 
+  MovablePieces(int count) {
+    for (var i = 0; i < count; i++) {
+      add(new MovablePiece());
+    }
+  }
+  
+  randomInit() => forEach((MovablePiece mp) => mp.randomInit()); 
+  onOff() => forEach((MovablePiece mp) => mp.onOff());
   
   avoidCollisions(MovablePiece mp) {
     for (var p in this) {
@@ -110,16 +172,5 @@ abstract class Pieces {
       }
     }
   }
-}
-
-class MovablePieces extends Pieces { 
-  MovablePieces(int count) {
-    for (var i = 0; i < count - 1; i++) {
-      add(new MovablePiece());
-    }
-  }
-  
-  randomInit() => forEach((MovablePiece mp) => mp.randomInit()); 
-  onOff() => forEach((MovablePiece mp) => mp.onOff());
 }
 
