@@ -31,12 +31,10 @@ class RedCar extends Car {
   bool get big => !small;
   
   move() {
-    if (isMoving) {
-      if (x > distanceWidth)  x = distanceWidth - 20;
-      if (x < 0)              x = 20 - width;
-      if (y > distanceHeight) y = distanceHeight - 20;
-      if (y < 0)              y = 20 - height;      
-    }
+    if (x > distanceWidth)  x = distanceWidth - 20;
+    if (x < 0)              x = 20 - width;
+    if (y > distanceHeight) y = distanceHeight - 20;
+    if (y < 0)              y = 20 - height;      
   }
   
   bigger() {
@@ -45,7 +43,6 @@ class RedCar extends Car {
       width = 75;
       height = 30;
       colorCode = bigColorCode;
-      isMoving = true;
     }
   }
 
@@ -55,7 +52,6 @@ class RedCar extends Car {
       width = smallWidth;
       height = smallHeight;
       colorCode = smallColorCode;
-      isMoving = false;
     }
   }
   
