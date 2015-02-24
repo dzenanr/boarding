@@ -66,6 +66,7 @@ class MovablePiece extends Piece {
   
   num distanceWidth = distanceLimitWidth;
   num distanceHeight = distanceLimitHeight;
+  num speed = speedLimit;
   num dx = 1;
   num dy = 1;
   bool isMoving = true;
@@ -81,6 +82,7 @@ class MovablePiece extends Piece {
     }
     width = randomNum(Piece.widthLimit);
     height = randomNum(Piece.heightLimit);
+    speed = randomNum(6) + 1;
     text = randomElement(colorList());
     //colorCode = randomColorCode();
     colorCode = colorMap()[text];
@@ -107,30 +109,18 @@ class MovablePiece extends Piece {
     if (p.x < x  && p.y < y) {
       if (p.x + p.width >= x && p.y + p.height >= y) {
         dx = -dx; dy = -dy;
-        if (p is MovablePiece) {
-          //p.dx = -p.dx; p.dy = -p.dy;
-        }
       }
     } else if (p.x > x  && p.y < y) {
       if (p.x <= x + width && p.y + p.height >= y) {
         dx = -dx; dy = -dy;
-        if (p is MovablePiece) {
-          //p.dx = -p.dx; p.dy = -p.dy;
-        }
       }
     } else if (p.x < x  && p.y > y) {
       if (p.x + p.width >= x && p.y <= y + height) {
         dx = -dx; dy = -dy;
-        if (p is MovablePiece) {
-          //p.dx = -p.dx; p.dy = -p.dy;
-        }
       }
     } else if (p.x > x  && p.y > y) {
       if (p.x <= x + width && p.y <= y + height) {
         dx = -dx; dy = -dy;
-        if (p is MovablePiece) {
-          //p.dx = -p.dx; p.dy = -p.dy;
-        }
       }
     }
   }
@@ -147,6 +137,10 @@ abstract class Pieces {
 
 class FallingPieces extends Pieces { 
   FallingPieces(int count) {
+    createFallingPieces(count);
+  }
+  
+  createFallingPieces(int count) {
     for (var i = 0; i < count; i++) {
       add(new FallingPiece());
     }
@@ -157,6 +151,10 @@ class FallingPieces extends Pieces {
 
 class MovablePieces extends Pieces { 
   MovablePieces(int count) {
+    createMovablePieces(count);
+  }
+  
+  createMovablePieces(int count) {
     for (var i = 0; i < count; i++) {
       add(new MovablePiece());
     }

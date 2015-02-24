@@ -2,6 +2,10 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.6* 2015-02-24
+
++ add crash example
+
 *0.1.5* 2015-02-23
 
 + add falling pieces

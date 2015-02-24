@@ -61,6 +61,46 @@ class Square extends Rect {
       super(surface, x, y, width, width, lineWidth: lineWidth, color: color, borderColor: borderColor);
 }
 
+prepareRoundedRect(Surface surface, num x, num y, num width, num height, num radius) {
+  // http://stackoverflow.com/questions/1255512/how-to-draw-a-rounded-rectangle-on-html-canvas
+  var r2d = PI/180;
+  //ensure that the radius isn't too large for x
+  if ((width - x) - (2 * radius) < 0) {radius = (( width - x ) / 2);}
+  //ensure that the radius isn't too large for y
+  if ((height - y) - (2 * radius) < 0 ) {radius = ((height - y) / 2 );}
+  surface.context
+    ..beginPath()
+    ..moveTo(x + radius, y)
+    ..lineTo(width - radius, y)
+    ..arc(width - radius, y + radius, radius, r2d * 270, r2d * 360, false)
+    ..lineTo(width, height - radius)
+    ..arc(width - radius, height - radius, radius, r2d * 0, r2d * 90, false)
+    ..lineTo(x + radius, height)
+    ..arc(x + radius, height - radius, radius, r2d * 90, r2d * 180, false)
+    ..lineTo(x, y + radius)
+    ..arc(x + radius, y + radius, radius, r2d * 180, r2d * 270, false)
+    ..closePath();
+}
+  
+class RoundedRect extends Rect {
+  num radius;
+  num r2d = PI/180;
+  
+  RoundedRect(Surface surface, num x, num y, num width, num height, 
+      {num this.radius: 10, num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
+      super(surface, x, y, width, height, lineWidth: lineWidth, color: color, borderColor: borderColor);
+  
+  draw() {
+    prepareRoundedRect(surface, x, y, x + width, y + height, 10);
+    surface.context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..fill()
+      ..stroke();
+  }
+}
+
 class Line extends Shape {
   num x1, y1;
   

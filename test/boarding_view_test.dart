@@ -15,10 +15,12 @@ main() {
   rectangle1.draw();
   var rectangle2 = new Rect(surface, 100, 300, 40, 60, color: 'green');
   rectangle2.draw();
-  var square1 = new Square(surface, 40, 500, 60, lineWidth: 8, color: 'orange');
-  square1.draw();
-  var line1 = new Line(surface, 450, 380, 480, 560, lineWidth: 3, color: 'blue');
-  line1.draw();
-  var tag1 = new Tag(surface, 320, 520, 32, 'Start on DArt', color: 'red');
-  tag1.draw();
+  var square = new Square(surface, 40, 500, 60, lineWidth: 8, color: 'orange');
+  square.draw();
+  var roundedRect = new RoundedRect(surface, 280, 310, 80, 40, lineWidth: 2, color: 'red');
+  roundedRect.draw();
+  var line = new Line(surface, 450, 380, 480, 560, lineWidth: 3, color: 'blue');
+  line.draw();
+  var tag = new Tag(surface, 320, 520, 32, 'Start on DArt', color: 'red');
+  tag.draw();
 }
