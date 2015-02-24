@@ -33,7 +33,7 @@ class FallingPiece extends Piece {
   
   num distanceHeight = distanceLimit;
   var shape = PieceShape.RECTANGLE;
-  bool reappear = true;
+  bool toReappear = true;
   num dy = 2;
   
   randomInit() {
@@ -47,11 +47,11 @@ class FallingPiece extends Piece {
   move() { 
     y += dy;
     if (y >= distanceHeight) {
-      reappear = true;
+      toReappear = true;
     } else {
-      reappear = false;
+      toReappear = false;
     }
-    if (reappear) {
+    if (toReappear) {
       var r = randomNum(distanceHeight);
       y = -r;
       x = r;
