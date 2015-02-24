@@ -1,24 +1,5 @@
 part of crash;
 
-class Vehicle extends RoundedRect {
-  Vehicle(Surface surface, num x, num y, num width, num height,
-      {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-      super(surface, x, y, width, height, lineWidth: lineWidth, color: color, borderColor: borderColor);
- 
-  draw() {
-    super.draw();
-    surface.context
-      ..beginPath()
-      ..fillStyle = '#000000'
-      ..rect(x + 12, y - 3, 14, 6)
-      ..rect(x + width - 26, y - 3, 14, 6)
-      ..rect(x + 12, y + height - 3, 14, 6)
-      ..rect(x + width - 26, y + height - 3, 14, 6)
-      ..fill()
-      ..closePath();
-  }
-}
-
 class Board extends Surface {
   static const int carCount = 9; // including the red car
   
