@@ -9,13 +9,16 @@ abstract class Piece {
   static const String defaultText = 'Dart';
   static const String defaultCode = '#000000';
   
-  PieceShape shape = defaultShape; 
+  PieceShape shape = defaultShape;
+  num x = 0;
+  num y = 0;
   num width = widthLimit;
   num height = heightLimit;
   String text = defaultText;
   String colorCode = defaultCode;
   bool isVisible = true;
   bool isSelected = false;
+  
   bool contains(num xx, num yy) {
     if ((xx > x && xx < x + width) && (yy > y && yy < y + height)) {
       return true;
@@ -24,8 +27,6 @@ abstract class Piece {
       return false;
     }
   }
-  num x = 0;
-  num y = 0;
 }
 
 class FallingPiece extends Piece {

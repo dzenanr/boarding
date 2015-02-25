@@ -12,7 +12,7 @@ abstract class Shape {
 }
 
 class Circle extends Shape {
-  num radius; 
+  num radius;
   
   Circle(Surface surface, num x, num y, this.radius, 
       {num lineWidth: 1, String color: 'white', String borderColor: 'black'}): 
@@ -59,6 +59,27 @@ class Square extends Rect {
       {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
       length = width,
       super(surface, x, y, width, width, lineWidth: lineWidth, color: color, borderColor: borderColor);
+}
+
+class SelectedRect extends Rect {
+  static const int sss = 8; // selection square size
+
+  SelectedRect(Surface surface, num x, num y, num width, num height,
+        {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
+        super(surface, x, y, width, height, lineWidth: lineWidth, color: color, borderColor: borderColor); 
+  
+  draw() {
+    super.draw();
+    surface.context
+        ..fillStyle = 'black'
+        ..beginPath()
+        ..rect(x, y, sss, sss)
+        ..rect(x + width - sss, y, sss, sss)
+        ..rect(x + width - sss, y + height - sss, sss, sss)
+        ..rect(x, y + height - sss, sss, sss)
+        ..closePath()
+        ..fill();
+  }
 }
 
 prepareRoundedRect(Surface surface, num x, num y, num width, num height, num radius) {

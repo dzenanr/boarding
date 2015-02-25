@@ -153,8 +153,8 @@ zigZag(d_pen.Pen pen) {
 }
 
 runRandom(d_pen.Pen pen) {
-  //d_pen.randomProgram(pen);
-  d_pen.randomSequence(pen);
+  d_pen.randomProgram(pen);
+  //d_pen.randomSequence(pen);
   //d_pen.randomExample(pen);
   //d_pen.randomDemo(pen);
 }
@@ -172,8 +172,8 @@ main() {
   final repo = new d_pen.ArtRepo();
   final board = new Board(querySelector('#canvas'), repo);
   var pen = board.pen;
-  //runRandom(pen);
-  runProgram(pen);  
+  runRandom(pen);
+  //runProgram(pen);  
   board.draw();
   pen.displayCommands();
 }

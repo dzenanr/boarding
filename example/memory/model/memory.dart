@@ -6,15 +6,14 @@ class MemoryCell extends Cell {
   MemoryCell(Memory memory, int row, int column) : super(memory, row, column);
 }
 
-class Memory extends Grid {
+class Memory extends SquareGrid {
   static const String hiddenCellColor = 'lightgray';
 
-  int length;
   bool _recalled = false;
 
-  Memory(int l) : length = l, super(l, l) {
-    if (length.isOdd) {
-      throw new Exception('Memory length must be an even integer: $l.');
+  Memory(int size): super(size) {
+    if (size.isOdd) {
+      throw new Exception('Memory length must be an even integer: $size.');
     }
     for (MemoryCell mc in cells) {
       mc.hidden = true;
@@ -34,8 +33,8 @@ class Memory extends Grid {
       var row;
       var column;
       while (cells.any((c) => c.twin == null)) {
-        row = randomInt(length);
-        column = randomInt(length);
+        row = randomInt(size);
+        column = randomInt(size);
         MemoryCell tc = cell(row, column);
         if (tc.twin == null && (tc.row != mc.row || tc.column != mc.column)) {
           mc.twin = tc;

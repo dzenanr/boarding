@@ -1,6 +1,6 @@
 To do
 
-- add collisions to pieces
+- check flickering of lines in surface
+- create more examples to increase the generic stuff
 - do view tests with a web test library
-- make more examples
 

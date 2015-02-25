@@ -117,6 +117,8 @@ List<String> exampleList() {
   examples.add(example087());
   examples.add(example088());
   examples.add(example089());
+  
+  examples.add(example090());
 
   return examples;
 }
@@ -2099,6 +2101,45 @@ art, 4;
 art, 4;
   ''';
 }
+
+String example090() {
+  return '''
+move, 271.10685026010583, 157.62388696046716, 33;
+move, 141.41856107436453, 168.77392269589973, 4;
+color, azure;
+move, 0, 92.71474537857497, 0;
+color, lime;
+down, false;
+color, gray;
+move, 312.93905901991184, 175.17319264952732, 7;
+width, 6;
+move, 0, 66.5758035777268, 0;
+color, water;
+move, -157.83183391602972, 0, 0;
+color, grapefruit;
+move, 80.9167350665884, 143.01666976119688, 27;
+move, -119.84039638224874, 0, 0;
+move, 96.39605328745202, 138.37446323075835, 33;
+moveTo, 251.00146675266396, 300.97181502446176;
+move, 62.13089500992397, 0, 0;
+color, gold;
+move, -213.80156285755854, 25.417783565016975, 9;
+move, -229.5400206261143, 0, 0;
+move, -240.08898638631456, 0, 0;
+move, -61.533760066548815, 0, 0;
+move, 116.92174876587664, -97.22627692756798, 32;
+color, chocolate;
+move, -205.0295311288459, -58.78325260748502, 22;
+width, 3;
+color, linen;
+move, 0, 109.38837833405826, 0;
+width, 2;
+color, lime;
+art, 4;
+  ''';
+}
+
+
 
 
 

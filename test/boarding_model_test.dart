@@ -3,8 +3,8 @@ import 'package:boarding/grids.dart';
 
 testModel(Grid grid) {
   group('Testing model', () {
-    var w = grid.width;
-    var h = grid.height;
+    var w = grid.columnCount;
+    var h = grid.rowCount;
     setUp(() {
       expect(grid, isNotNull);
       expect(w, greaterThan(1));

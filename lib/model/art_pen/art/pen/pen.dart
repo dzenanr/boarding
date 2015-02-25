@@ -447,6 +447,7 @@ class Pen {
   }
   
   displayCommands() {
+    print('');
     commands.forEach((c) => print('${c.join(', ')};'));
   }
 }

@@ -1,0 +1,26 @@
+
+
+body {
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+h1, p {
+  color: #333333;
+}
+
+.button {
+  padding: 1px;
+  background: #ffcc99; 
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
+  border-style: outset;
+  border-color: #d7b9c9; 
+  font-weight: bold;
+  text-align: center;
+}
+

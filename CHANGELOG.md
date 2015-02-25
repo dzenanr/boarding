@@ -2,6 +2,12 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.7* 2015-02-25
+
++ add rush example
++ add breakout example
++ add pingpong example
+
 *0.1.6* 2015-02-24
 
 + add crash example

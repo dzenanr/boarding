@@ -13,23 +13,23 @@ class Cell {
   Grid grid;
 
   Cell(this.grid, this.row, this.column) {
-    if (!(0 <= row  && row    < grid.height &&
-        0 <= column && column < grid.width))
+    if (!(0 <= row  && row    < grid.rowCount &&
+        0 <= column && column < grid.columnCount))
       throw new Exception(
-        'cell out of grid(${grid.width}, ${grid.height}) '
+        'cell out of grid(${grid.columnCount}, ${grid.rowCount}) '
         '- row: $row, column: $column');
   }
 
   bool get shown => !hidden;
 
   bool intersects(num row, num column) {
-    if (0 <= row    && row    < grid.height &&
-        0 <= column && column < grid.width) {
+    if (0 <= row    && row    < grid.rowCount &&
+        0 <= column && column < grid.columnCount) {
       if (this.row == row && this.column == column) {
         return true;
       }
     } else throw new Exception(
-        'cell out of grid(${grid.width}, ${grid.height}) '
+        'cell out of grid(${grid.columnCount}, ${grid.rowCount}) '
         '- row: $row, column: $column');
     return false;
   }

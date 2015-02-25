@@ -17,6 +17,8 @@ main() {
   rectangle2.draw();
   var square = new Square(surface, 40, 500, 60, lineWidth: 8, color: 'orange');
   square.draw();
+  var selectedRect = new SelectedRect(surface, 80, 380, 100, 50, color: 'lightgray');
+  selectedRect.draw();
   var roundedRect = new RoundedRect(surface, 280, 310, 80, 40, lineWidth: 2, color: 'red');
   roundedRect.draw();
   var line = new Line(surface, 450, 380, 480, 560, lineWidth: 3, color: 'blue');

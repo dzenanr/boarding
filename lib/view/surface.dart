@@ -2,6 +2,7 @@ part of boarding;
 
 class Surface {
   num width, height; // in pixels
+  Rectangle offset;
 
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -12,22 +13,23 @@ class Surface {
     context = canvas.getContext("2d");
     width = canvas.width;
     height = canvas.height;
+    offset = canvas.offset;
   }
 
   clear() {
-    new Rect(this, 0, 0, width, height).draw();
+    new Rect(this, 0, 0, width, height, borderColor: 'white').draw();
   }
 
   lines() {
-    var wgap = width / grid.width;
-    var hgap = height / grid.height;
+    var wgap = width / grid.columnCount;
+    var hgap = height / grid.rowCount;
     var x, y;
-    for (var row = 1; row < grid.height; row++) {
+    for (var row = 1; row < grid.rowCount; row++) {
       x = 0;
       y = hgap * row;
       new Line(this, x, y, x + width, y).draw();
     }
-    for (var col = 1; col < grid.width; col++) {
+    for (var col = 1; col < grid.columnCount; col++) {
       x = wgap * col;
       y = 0;
       new Line(this, x, y, x, y + height).draw();
@@ -35,8 +37,8 @@ class Surface {
   }
 
   cells() {
-    var wgap = width / grid.width;
-    var hgap = height / grid.height;
+    var wgap = width / grid.columnCount;
+    var hgap = height / grid.rowCount;
     var cells = grid.cells;
     for (Cell cell in cells) {
       var row = cell.row;
@@ -70,5 +72,13 @@ class Surface {
       if (withLines) lines();
       cells();
     }
+  }
+}
+
+class SquareSurface extends Surface {
+  int length; // in pixels
+    
+  SquareSurface(CanvasElement canvas, {bool withLines: true, SquareGrid grid}): super(canvas, withLines: withLines, grid: grid) {
+    length = width;
   }
 }
