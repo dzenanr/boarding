@@ -3,6 +3,8 @@ version: 0.1.7
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 description: A package for board games or canvas drawings. The package has both model and view libraries. See the example folder to see how to use the boarding package.
 homepage: https://github.com/dzenanr/boarding
+environment:
+  sdk: '>=1.8.0 <2.0.0'
 documentation: http://goo.gl/kXlDOJ
 dependencies:
   browser: any
