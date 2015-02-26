@@ -56,9 +56,9 @@ class Square extends Rect {
   num length;
   
   Square(Surface surface, num x, num y, num width,
-      {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-      length = width,
-      super(surface, x, y, width, width, lineWidth: lineWidth, color: color, borderColor: borderColor);
+      {num lineWidth: 1, String color: 'white', String borderColor: 'black'}): length = width,
+      super(surface, x, y, width, width, 
+          lineWidth: lineWidth, color: color, borderColor: borderColor);
 }
 
 class SelectedRect extends Rect {
@@ -66,7 +66,8 @@ class SelectedRect extends Rect {
 
   SelectedRect(Surface surface, num x, num y, num width, num height,
         {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-        super(surface, x, y, width, height, lineWidth: lineWidth, color: color, borderColor: borderColor); 
+        super(surface, x, y, width, height, 
+            lineWidth: lineWidth, color: color, borderColor: borderColor); 
   
   draw() {
     super.draw();
@@ -109,7 +110,8 @@ class RoundedRect extends Rect {
   
   RoundedRect(Surface surface, num x, num y, num width, num height, 
       {num this.radius: 10, num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-      super(surface, x, y, width, height, lineWidth: lineWidth, color: color, borderColor: borderColor);
+      super(surface, x, y, width, height, 
+          lineWidth: lineWidth, color: color, borderColor: borderColor);
   
   draw() {
     prepareRoundedRect(surface, x, y, x + width, y + height, 10);
@@ -125,7 +127,8 @@ class RoundedRect extends Rect {
 class Vehicle extends RoundedRect {
   Vehicle(Surface surface, num x, num y, num width, num height,
       {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-      super(surface, x, y, width, height, lineWidth: lineWidth, color: color, borderColor: borderColor);
+      super(surface, x, y, width, height, 
+          lineWidth: lineWidth, color: color, borderColor: borderColor);
  
   draw() {
     super.draw();

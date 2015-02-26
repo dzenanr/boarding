@@ -11,7 +11,6 @@ class Board extends Surface {
   num startBallY;
   num dx = 2;
   num dy = 4;
-
   Ball ball;
   Racket northRacket;
   Racket southRacket;

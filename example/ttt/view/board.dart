@@ -9,10 +9,8 @@ class Board extends Surface {
   Board(CanvasElement canvas, SquareGrid grid) : super(canvas, grid: grid) {
     var cellSize = canvas.width / grid.length; // in pixels
     var lastPlay = SquareGrid.o;
-
     for (Cell cell in grid.cells) cell.textSize  = 32;
     LabelElement winnerLabel = querySelector("#winner");
-
     canvas.onMouseDown.listen((MouseEvent e) {
       if (play) {
         var row = (e.offset.y ~/ cellSize).toInt();
@@ -29,18 +27,15 @@ class Board extends Surface {
             lastPlay = SquareGrid.o;
             cell.textColor  = oColor;
           }
-          if (winner()) {
+          if (grid.lineCompleted()) {
             winnerLabel.text = 'winner is ${cell.text}';
             play = false;
           }
         }
       }
     });
-
     window.animationFrame.then(gameLoop);
   }
-
-  bool winner() => (grid as SquareGrid).lineCompleted();
 
   gameLoop(num delta) {
     draw();

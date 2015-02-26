@@ -21,7 +21,24 @@ class Cars extends Concepts {
     }
     return null;
   }
+  
+  Car getCarInCell(int row, int column) {
+    for (Car car in this) {
+      if (car.inCell(row, column)) {
+        return car;
+      }
+    }
+    return null;
+  }
 
+  Car getSelectedCarAfterOrBeforeCell(int row, int column) {
+    for (Car car in this) {
+      if (car.isSelected && car.afterOrBeforeCell(row, column)) {
+        return car;
+      }
+    }
+    return null;
+  }
 }
 
 class Car extends Concept {

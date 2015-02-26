@@ -2,6 +2,7 @@ part of memory;
 
 class Board extends Surface {
   num cellSize;
+  
   Memory memory;
   MemoryCell lastCellClicked;
 
@@ -26,12 +27,12 @@ class Board extends Surface {
     window.animationFrame.then(gameLoop);
   }
 
-  void gameLoop(num delta) {
+  gameLoop(num delta) {
     draw();
     window.animationFrame.then(gameLoop);
   }
 
-  void draw() {
+  draw() {
     super.draw();
     if (memory.recalled) { // game over
       context.font = 'bold 25px sans-serif';

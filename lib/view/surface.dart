@@ -3,10 +3,10 @@ part of boarding;
 class Surface {
   num width, height; // in pixels
   Rectangle offset;
-
   CanvasElement canvas;
   CanvasRenderingContext2D context;
   bool withLines;
+  
   Grid grid;
 
   Surface(this.canvas, {this.withLines: true, this.grid}) {
@@ -78,7 +78,8 @@ class Surface {
 class SquareSurface extends Surface {
   int length; // in pixels
     
-  SquareSurface(CanvasElement canvas, {bool withLines: true, SquareGrid grid}): super(canvas, withLines: withLines, grid: grid) {
+  SquareSurface(CanvasElement canvas, {bool withLines: true, SquareGrid grid}): 
+    super(canvas, withLines: withLines, grid: grid) {
     length = width;
   }
 }

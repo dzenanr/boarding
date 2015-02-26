@@ -2,7 +2,6 @@ part of breakout;
 
 class Board extends Surface {
   num speed = 1, dx = 2, dy = 4; 
-
   Bricks bricks;
   Ball ball;
   Racket racket;
