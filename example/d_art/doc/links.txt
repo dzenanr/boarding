@@ -1,0 +1,18 @@
+Logo Links
+
+https://github.com/dzenanr/art_pen
+https://github.com/dzenanr/dart_pen
+
+http://simple.wikipedia.org/wiki/Logo_(programming_language)
+http://el.media.mit.edu/logo-foundation/logo/programming.html
+
+http://turtleacademy.com/
+http://www.calormen.com/jslogo/
+http://www.transum.org/software/Logo/
+
+https://logo.codeplex.com/
+http://www.israelsson.org/~lethe/logobook/0.5.1/toc.html
+http://www.cs.berkeley.edu/~bh/v1-toc2.html
+http://www.cs.berkeley.edu/~bh/v2-toc2.html
+http://www.cs.berkeley.edu/~bh/v3-toc2.html
+
