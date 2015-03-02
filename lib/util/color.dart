@@ -7,7 +7,8 @@ Map<String, String> colorMap() {
     'azure':      '#f0ffff',
     'beer':       '#fbb117',
     'beige':      '#f5f5dc',
-    'blue':       '#0000ff' ,
+    'black':      '#000000',
+    'blue':       '#0000ff',
     'brown':      '#963939',
     'chocolate':  '#d2691e',
     'coral':      '#ff7f50',
@@ -41,6 +42,7 @@ Map<String, String> colorMap() {
     'vanilla':    '#f3e5ab',
     'water':      '#ebf4fa',
     'wheat':      '#f5deb3',
+    'white':      '#ffffff',
     'yellow':     '#ffff00'
   };
 }

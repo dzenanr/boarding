@@ -16,7 +16,7 @@ class Memory extends SquareGrid {
       throw new Exception('Memory length must be an even integer: $size.');
     }
     for (MemoryCell mc in cells) {
-      mc.hidden = true;
+      mc.isHidden = true;
       mc.hiddenColor = hiddenCellColor;
       if (mc.color == null) {
         mc.color = getNotUsedColor();
@@ -35,7 +35,7 @@ class Memory extends SquareGrid {
       while (cells.any((c) => c.twin == null)) {
         row = randomInt(size);
         column = randomInt(size);
-        MemoryCell tc = cell(row, column);
+        MemoryCell tc = cells.cell(row, column);
         if (tc.twin == null && (tc.row != mc.row || tc.column != mc.column)) {
           mc.twin = tc;
           tc.twin = mc;
@@ -48,13 +48,13 @@ class Memory extends SquareGrid {
 
   bool get recalled {
     if (!_recalled) {
-      if (cells.every((c) => c.shown)) _recalled = true;
+      if (cells.every((c) => c.isShown)) _recalled = true;
     }
     return _recalled;
   }
 
   hide() {
-    for (final cell in cells) cell.hidden = true;
+    for (final cell in cells) cell.isHidden = true;
     _recalled = false;
   }
 }

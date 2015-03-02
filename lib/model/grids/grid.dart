@@ -1,6 +1,7 @@
 part of grids;
 
 class Grid {
+  String defaultColor = 'white';
   int columnCount;  
   int rowCount; 
 
@@ -20,14 +21,8 @@ class Grid {
     return new Cell(grid, row, column);
   }
 
-  Cell cell(int row, int column) {
-    if (0 <= row && row < rowCount && 0 <= column && column < columnCount) {
-      for (Cell cell in cells) {
-        if (cell.intersects(row, column)) return cell;
-      }
-    } else throw new Exception(
-        'cell out of grid - row: $row, column: $column');
-    return null;
+  bool contains(int row, int column) {
+    return 0 <= row && row < rowCount && 0 <= column && column < columnCount;
   }
 }
 

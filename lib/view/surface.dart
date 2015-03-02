@@ -17,7 +17,11 @@ class Surface {
   }
 
   clear() {
-    new Rect(this, 0, 0, width, height, borderColor: 'white').draw();
+    if (grid != null) {
+      new Rect(this, 0, 0, width, height, borderColor: grid.defaultColor).draw();
+    } else {
+      new Rect(this, 0, 0, width, height, borderColor: 'white').draw();
+    } 
   }
 
   lines() {
@@ -43,7 +47,7 @@ class Surface {
     for (Cell cell in cells) {
       var row = cell.row;
       var col = cell.column;
-      if (cell.hidden) {
+      if (cell.isHidden) {
         var x = wgap * col;
         var y = hgap * row;
         new Rect(this, x, y, wgap, hgap, color: colorMap()[cell.hiddenColor]).draw();
@@ -60,6 +64,7 @@ class Surface {
         if (cell.text != null && cell.textSize != null) {
           var x = wgap * col + wgap / 2 - (wgap / 2 - cell.textSize) / 2;
           var y = hgap * row + hgap / 2 + (wgap / 2 - cell.textSize) / 2;
+          x = x + cell.textSize / 4;
           new Tag(this, x, y, cell.textSize, cell.text, color: cell.textColor).draw();
         }
       }

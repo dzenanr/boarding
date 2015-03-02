@@ -12,15 +12,15 @@ class Board extends Surface {
     querySelector('#canvas').onMouseDown.listen((MouseEvent e) {
       int row = (e.offset.y ~/ cellSize).toInt();
       int column = (e.offset.x ~/ cellSize).toInt();
-      MemoryCell cell = memory.cell(row, column);
-      cell.hidden = false;
+      MemoryCell cell = memory.cells.cell(row, column);
+      cell.isHidden = false;
       if (cell.twin == lastCellClicked) {
-        lastCellClicked.hidden = false;
+        lastCellClicked.isHidden = false;
         if (memory.recalled) { // game over
           new Timer(const Duration(milliseconds: 5000), () => memory.hide());
         }
-      } else if (cell.twin.hidden) {
-        new Timer(const Duration(milliseconds: 800), () => cell.hidden = true);
+      } else if (cell.twin.isHidden) {
+        new Timer(const Duration(milliseconds: 800), () => cell.isHidden = true);
       }
       lastCellClicked = cell;
     });

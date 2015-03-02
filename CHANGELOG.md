@@ -2,6 +2,10 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.8* 2015-03-02
+
++ add d2048 example
+
 *0.1.7* 2015-02-25
 
 + add rush example
