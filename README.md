@@ -6,7 +6,7 @@
 The package has both model and view libraries. 
 See the example folder to see how to use the boarding package.
 
-There are nine examples with not much code, the rest is done by boarding.
+There are ten examples with not much code, the rest is done by boarding.
 You are invited to contribute more examples in order to make boarding more generic. 
 
 Please enable the enums support in Dart Editor (Tools/Preferences/Experimental).
