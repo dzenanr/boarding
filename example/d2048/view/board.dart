@@ -21,7 +21,7 @@ class Board extends SquareSurface {
           grid.cells.merge(Direction.RIGHT); 
       }
       if (grid.randomCell() == null) {
-        grid.cells.forEach((Cell c) => c.color = 'white'); 
+        grid.cells.forEach((Cell c) => c.color = 'white'); // game over
       }
     });
     window.animationFrame.then(gameLoop);
