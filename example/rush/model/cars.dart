@@ -7,11 +7,7 @@ class Cars extends Concepts {
   Cars.ofParking(this.parking);
   Cars.ofCarBrand(this.carBrand);
 
-  void deselect() {
-    for (Car car in this) {
-      car.isSelected = false;
-    }
-  }
+  void deselect() => forEach((Car car) => car.isSelected = false);
 
   Car getSelectedCar() {
     for (Car car in this) {
@@ -33,7 +29,7 @@ class Cars extends Concepts {
 
   Car getSelectedCarAfterOrBeforeCell(int row, int column) {
     for (Car car in this) {
-      if (car.isSelected && car.afterOrBeforeCell(row, column)) {
+      if (car.isSelected && car.afterCell(row, column) || car.beforeCell(row, column)) {
         return car;
       }
     }
@@ -82,6 +78,7 @@ class Car extends Concept {
     return false;
   }
 
+  // Is this car after the given row and column (cell)?
   bool afterCell(int row, int column) {
     if (orientation == 'horizontal') {
       if (currentRow == row && currentColumn == column + 1) {
@@ -112,11 +109,7 @@ class Car extends Concept {
     return false;
   }
 
-  bool afterOrBeforeCell(int row, int column) {
-    return afterCell(row, column) || beforeCell(row, column);
-  }
-
-  moveToOrTowardCell(int row, int column) {
+  moveToCell(int row, int column) {
     if (afterCell(row, column)) {
       currentRow = row;
       currentColumn = column;

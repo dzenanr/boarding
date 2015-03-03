@@ -1,5 +1,7 @@
 part of grids;
 
+enum Direction {UP, DOWN, LEFT, RIGHT}
+
 class Cell {
   int row, column;
   String color;
@@ -45,20 +47,17 @@ class Cell {
   bool isLeftOf(int row, int column) => this.row == row && this.column == column - 1;
   bool isRightOf(int row, int column) => this.row == row && this.column == column + 1;
   
-  moveUp() {
-    row = row - 1;
-  }
-  
-  moveDown() {
-    row = row + 1;
-  }
-  
-  moveLeft() {
-    column = column - 1;
-  }
-  
-  moveRight() {
-    column = column + 1;
+  move(Direction direction) {
+    switch(direction) {
+      case Direction.UP:
+        row = row - 1; break;
+      case Direction.DOWN:
+        row = row + 1; break;
+      case Direction.LEFT:
+        column = column - 1; break;
+      case Direction.RIGHT:
+        column = column + 1;
+    }
   }
 }
 
@@ -74,29 +73,19 @@ class Cells {
     cellList.forEach((Cell c) => _list.add(c));
   }
 
-  void add(Cell c) {
-    _list.add(c);
-  }
-
   int get length => _list.length;
   Iterator get iterator => _list.iterator;
+  
+  add(Cell c) => _list.add(c);
+  bool remove(Cell c) => _list.remove(c);
 
   forEach(f(Cell c)) => _list.forEach(f);
   bool any(bool f(Cell c)) => _list.any(f);
   bool every(bool f(Cell c)) => _list.every(f);
   Cells where(bool f(Cell c)) => new Cells.fromList(_list.where(f).toList());
   
-  select() {
-    for (Cell c in this) {
-      c.isSelected = true;
-    }
-  }
-  
-  deselect() {
-    for (Cell c in this) {
-      c.isSelected = false;
-    }
-  }
+  select() => forEach((Cell c) => c.isSelected = true);
+  deselect() => forEach((Cell c) => c.isSelected = false);
   
   Cell firstSelectedCell() {
     for (Cell c in this) {
@@ -114,11 +103,22 @@ class Cells {
     return null;
   }
   
-  Cell randomCell() {
-    var i = randomInt(length);
-    return _list[i];
+  Cell neighbor(Cell c, Direction direction) {
+    Cell neighbor;
+    switch(direction) {
+      case Direction.UP:
+        neighbor = cell(c.row - 1, c.column); break;
+      case Direction.DOWN:
+        neighbor = cell(c.row + 1, c.column); break;
+      case Direction.LEFT:
+        neighbor = cell(c.row, c.column - 1); break;
+      case Direction.RIGHT:
+        neighbor = cell(c.row, c.column + 1);
+    }  
+    return neighbor;
   }
   
+  Cell randomCell() => _list[randomInt(length)];
   Cell randomAvailableCell() {
     if (any((Cell c) => c.isAvailable)) {
       var rc = randomCell();
@@ -128,119 +128,35 @@ class Cells {
     return null;
   }
   
-  moveUpIfAvailable() {
+  move(Direction direction) {
     var moved = false;
     for (Cell c in this) {
       if (c.isUsed) {
-        var n = cell(c.row - 1, c.column);
+        Cell n = neighbor(c, direction);
         if (n != null && n.isAvailable) {
-          c.moveUp();
-          n.moveDown();
+          c.move(direction);
+          switch(direction) {
+            case Direction.UP:
+              n.move(Direction.DOWN); break;
+            case Direction.DOWN:
+              n.move(Direction.UP); break;
+            case Direction.LEFT:
+              n.move(Direction.RIGHT); break;
+            case Direction.RIGHT:
+              n.move(Direction.LEFT); 
+          }
           moved = true;
-        }
+        }     
       }
     }
-    if (moved) moveUpIfAvailable();
+    if (moved) move(direction);
   }
   
-  moveDownIfAvailable() {
-    var moved = false;
+  bool merge(Direction direction) {
     for (Cell c in this) {
       if (c.isUsed) {
-        var n = cell(c.row + 1, c.column);
-        if (n != null && n.isAvailable) {
-          c.moveDown();
-          n.moveUp();
-          moved = true;
-        }
-      }
-    }
-    if (moved) moveDownIfAvailable();
-  }
-  
-  moveLeftIfAvailable() {
-    var moved = false;
-    for (Cell c in this) {
-      if (c.isUsed) {
-        var n = cell(c.row, c.column - 1);
-        if (n != null && n.isAvailable) {
-          c.moveLeft();
-          n.moveRight();
-          moved = true;
-        }
-      }
-    }
-    if (moved) moveLeftIfAvailable();
-  }
-  
-  moveRightIfAvailable() {
-    var moved = false;
-    for (Cell c in this) {
-      if (c.isUsed) {
-        var n = cell(c.row, c.column + 1);
-        if (n != null && n.isAvailable) {
-          c.moveRight();
-          n.moveLeft();
-          moved = true;
-        }
-      }
-    }
-    if (moved) moveRightIfAvailable();
-  }
-  
-  bool mergeUpIfEqual() {
-    for (Cell c in this) {
-      if (c.isUsed) {
-        var n = cell(c.row - 1, c.column);
+        Cell n = neighbor(c, direction);
         if (n != null && n.isUsed) {
-          if (c.number == n.number) {
-            n.number = n.number + n.number;
-            c.text = '';
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  bool mergeDownIfEqual() {
-    for (Cell c in this) {
-      if (c.isUsed) {
-        var n = cell(c.row + 1, c.column);
-        if (n != null && !n.isAvailable) {
-          if (c.number == n.number) {
-            n.number = n.number + n.number;
-            c.text = '';
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  bool mergeLeftIfEqual() {
-    for (Cell c in this) {
-      if (c.isUsed) {
-        var n = cell(c.row, c.column - 1);
-        if (n != null && !n.isAvailable) {
-          if (c.number == n.number) {
-            n.number = n.number + n.number;
-            c.text = '';
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
- bool mergeRightIfEqual() {
-    for (Cell c in this) {
-      if (c.isUsed) {
-        var n = cell(c.row, c.column + 1);
-        if (n != null && !n.isAvailable) {
           if (c.number == n.number) {
             n.number = n.number + n.number;
             c.text = '';

@@ -25,7 +25,7 @@ class Board extends SquareSurface {
       } else {
         car = currentParking.cars.getSelectedCarAfterOrBeforeCell(row, column);
         if (car != null) {
-          car.moveToOrTowardCell(row, column);
+          car.moveToCell(row, column);
           if (car.carBrand.code == 'X' && car.currentColumn == grid.size - car.carBrand.size) {
             car.currentColumn = grid.size; // the car exits the parking
           }

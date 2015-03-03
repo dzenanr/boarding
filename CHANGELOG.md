@@ -2,7 +2,7 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
-*0.1.8* 2015-03-02
+*0.1.8* 2015-03-03
 
 + add d2048 example
 

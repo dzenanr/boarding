@@ -9,7 +9,7 @@ part 'model/grid.dart';
 part 'view/board.dart';
 
 main() {
-  new Board(querySelector('#canvas'), new GameGrid(4)).draw();
+  new Board(querySelector('#canvas'), new TileGrid(4)).draw();
 }
 
 
