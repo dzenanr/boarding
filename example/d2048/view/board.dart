@@ -59,7 +59,7 @@ class Board extends SquareSurface {
   num saveBest(num current) {
     var best = loadBest();
     if (current > best) {
-      window.localStorage[d2048Best] = bestLabel.text;
+      window.localStorage[d2048Best] = current.toString();
       return current;
     } 
     return best;
