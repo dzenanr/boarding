@@ -1,5 +1,6 @@
 To do
 
+- save (and load) pieces to (from) the local storage
 - check flickering of lines in surface
 - write a document about the boarding poackage
 - create more examples to increase the generic stuff

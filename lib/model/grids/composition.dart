@@ -8,10 +8,12 @@ class Composition {
   //int length;
   String orientation; // h, v, /, \, L
   bool isSelected = false;
-  var cells = new Cells();  
+  var cells;  
   Grid grid;
   
-  Composition(this.grid);
+  Composition(this.grid) {
+    cells = new Cells(grid);
+  }
   
   Cell cell(int row, int column) {
     for (Cell c in cells) {

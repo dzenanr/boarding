@@ -23,6 +23,53 @@ class Cell {
         '- row: $row, column: $column');
   }
   
+  fromJsonMap(Map<String, Object> jsonMap) {
+    row = jsonMap['row'];
+    column = jsonMap['column'];
+    color = jsonMap['color'];
+    image = jsonMap['image'];
+    _text = jsonMap['text'];
+    textSize = jsonMap['textSize'];
+    textColor = jsonMap['textColor'];
+    _number = jsonMap['number'];
+    isHidden = jsonMap['isHidden'];
+    hiddenColor = jsonMap['hiddenColor'];
+    isSelected = jsonMap['isSelected'];
+  }
+  
+  fromJsonString(String jsonString) {
+    Map<String, Object> jsonMap = JSON.decode(jsonString);
+    fromJsonMap(jsonMap);
+  }
+  
+  Map<String, Object> toJsonMap() {
+    var jsonMap = new Map<String, Object>();
+    jsonMap['row'] = row;
+    jsonMap['column'] = column;
+    jsonMap['color'] = color;
+    jsonMap['image'] = image;
+    jsonMap['text'] = _text;
+    jsonMap['textSize'] = textSize;
+    jsonMap['textColor'] = textColor;
+    jsonMap['number'] = _number;
+    jsonMap['isHidden'] = isHidden;
+    jsonMap['hiddenColor'] = hiddenColor;
+    jsonMap['isSelected'] = isSelected;
+    return jsonMap;
+  }
+  
+  String toJsonString() => JSON.encode(toJsonMap());
+  
+  /**
+   * Compares two cells based on numbers.
+   * If the result is less than 0 then the first cell is less than the second cell,
+   * if it is equal to 0 they are equal and
+   * if the result is greater than 0 then the first cell is greater than the second cell.
+   */
+  int compareTo(Cell c) {
+    return number.compareTo(c.number);
+  }
+  
   String get text => _text;
   set text(String s) {
     _text = s;
@@ -37,10 +84,13 @@ class Cell {
     text = _number.toString();
   }
   
+  empty() => text = '';
+  
+  bool get isEmpty => text == '';
   bool get isShown => !isHidden; 
-  bool get isAvailable => text == null  || text.trim() == '';
+  bool get isAvailable => text == null  || isEmpty;
   bool get isUsed => !isAvailable;
-
+  
   bool isIn(int row, int column) => this.row == row && this.column == column;
   bool isUpOf(int row, int column) => this.row == row - 1 && this.column == column;
   bool isDownOf(int row, int column) => this.row == row + 1 && this.column == column;
@@ -63,26 +113,49 @@ class Cell {
 
 class Cells {
   List<Cell> _list;
+  
+  Grid grid;
 
-  Cells() {
+  Cells(this.grid) {
     _list = new List<Cell>();
   }
   
-  Cells.fromList(List<Cell> cellList) {
-    _list = new List<Cell>();
-    cellList.forEach((Cell c) => _list.add(c));
+  fromJsonList(List<Map<String, Object>> jsonList) {
+    jsonList.forEach((jsonMap) {
+      var c = cell(jsonMap['row'], jsonMap['column']);
+      if (c != null) {
+        c.fromJsonMap(jsonMap);
+      }
+    });
   }
+  
+  fromJsonString(String jsonString) {
+    List<Map<String, Object>> jsonList = JSON.decode(jsonString);
+    fromJsonList(jsonList);
+  }
+  
+  List<Cell> toList() {
+    return _list.toList();
+  }
+  
+  List<Map<String, Object>> toJsonList() {
+    var jsonList = new List<Map<String, Object>>();
+    forEach((Cell c) => jsonList.add(c.toJsonMap()));
+    return jsonList;
+  }
+  
+  String toJsonString() => JSON.encode(toJsonList());
 
   int get length => _list.length;
   Iterator get iterator => _list.iterator;
   
   add(Cell c) => _list.add(c);
-  bool remove(Cell c) => _list.remove(c);
+  empty() => forEach((Cell c) => c.empty());
 
   forEach(f(Cell c)) => _list.forEach(f);
   bool any(bool f(Cell c)) => _list.any(f);
   bool every(bool f(Cell c)) => _list.every(f);
-  Cells where(bool f(Cell c)) => new Cells.fromList(_list.where(f).toList());
+  Cell maxCell() => _list.reduce((Cell c1, Cell c2) => c1.compareTo(c2) == -1 ? c2 : c1);
   
   select() => forEach((Cell c) => c.isSelected = true);
   deselect() => forEach((Cell c) => c.isSelected = false);
@@ -159,7 +232,7 @@ class Cells {
         if (n != null && n.isUsed) {
           if (c.number == n.number) {
             n.number = n.number + n.number;
-            c.text = '';
+            c.empty();
             return true;
           }
         }

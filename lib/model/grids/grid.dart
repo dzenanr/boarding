@@ -5,9 +5,10 @@ class Grid {
   int columnCount;  
   int rowCount; 
 
-  var cells = new Cells();
+  Cells cells;
 
   Grid(this.columnCount, this.rowCount) {
+    cells = new Cells(this);
     var cell;
     for (var row = 0; row < rowCount; row++) {
       for (var column = 0; column < columnCount; column++) {
@@ -29,5 +30,5 @@ class Grid {
 class SquareGrid extends Grid {
   int size; // in cells
   
-  SquareGrid(int s) : size = s, super(s, s);
+  SquareGrid(int s): size = s, super(s, s);
 }

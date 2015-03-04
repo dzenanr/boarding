@@ -2,6 +2,11 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.1.9* 2015-03-04
+
++ save (and load) grid cells to (from) the local storage
++ save (and load) the best score to (from) the local storage
+
 *0.1.8* 2015-03-03
 
 + add d2048 example
