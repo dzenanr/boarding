@@ -10,7 +10,6 @@ abstract class Piece {
   static const String defaultCode = '#000000';
  
   int id;
-  int index;
   PieceShape shape = defaultShape;
   num x = 0;
   num y = 0;
@@ -23,21 +22,9 @@ abstract class Piece {
   
   Piece(this.id);
   
-  PieceShape pieceShape(int index) {
-    switch(index) {
-      case 0: return PieceShape.CIRCLE;
-      case 1: return PieceShape.LINE;
-      case 2: return PieceShape.RECTANGLE;
-      case 3: return PieceShape.SQUARE;
-      case 4: return PieceShape.TAG;
-    }
-    return null;
-  }
-  
   fromJsonMap(Map<String, Object> jsonMap) {
     id  = jsonMap['id'];
-    index = jsonMap['index'];
-    shape = pieceShape(index);
+    shape = PieceShape.values[jsonMap['index']];
     x = jsonMap['x'];
     y = jsonMap['y'];
     width = jsonMap['width'];
@@ -86,8 +73,7 @@ class FallingPiece extends Piece {
   fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
     distanceHeight = jsonMap['distanceHeight'];
-    index = jsonMap['index'];
-    shape = pieceShape(index);
+    shape = PieceShape.values[jsonMap['index']];
     toReappear = jsonMap['toReappear'];
     dy = jsonMap['dy'];
   }
