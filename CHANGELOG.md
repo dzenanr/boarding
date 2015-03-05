@@ -2,6 +2,10 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.2.0* 2015-03-05
+
++ save (and load) pieces to (from) the local storage
+
 *0.1.9* 2015-03-04
 
 + save (and load) grid cells to (from) the local storage

@@ -37,9 +37,9 @@ class Board extends SquareSurface {
             tileGrid.cells.merge(Direction.RIGHT); 
         }
         if (tileGrid.randomAvailableCell() == null) {
-          isGameOver = true;
           bestLabel.text = saveBest(tileGrid.cells.maxCell().number).toString(); 
-          tileGrid.cells.forEach((Cell c) => c.color = 'white'); 
+          tileGrid.cells.forEach((Cell c) => c.color = 'white');
+          isGameOver = true;
         } 
       }
     });
@@ -52,9 +52,7 @@ class Board extends SquareSurface {
     window.animationFrame.then(gameLoop);
   }
   
-  save() {
-    window.localStorage[d2048] = grid.cells.toJsonString();
-  }
+  save() => window.localStorage[d2048] = grid.cells.toJsonString();
   
   num saveBest(num current) {
     var best = loadBest();

@@ -1,0 +1,7 @@
+To Do
+
+- add the New button
+- add a field to enter the number of pieces for the New game
+  (is load still valid?)
+- define the minimal piece size
+- add the best time to hit all per number of pieces

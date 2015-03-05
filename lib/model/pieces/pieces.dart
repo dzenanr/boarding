@@ -8,7 +8,9 @@ abstract class Piece {
   static const num heightLimit = 80;
   static const String defaultText = 'Dart';
   static const String defaultCode = '#000000';
-  
+ 
+  int id;
+  int index;
   PieceShape shape = defaultShape;
   num x = 0;
   num y = 0;
@@ -19,14 +21,56 @@ abstract class Piece {
   bool isVisible = true;
   bool isSelected = false;
   
-  bool contains(num xx, num yy) {
-    if ((xx > x && xx < x + width) && (yy > y && yy < y + height)) {
-      return true;
+  Piece(this.id);
+  
+  PieceShape pieceShape(int index) {
+    switch(index) {
+      case 0: return PieceShape.CIRCLE;
+      case 1: return PieceShape.LINE;
+      case 2: return PieceShape.RECTANGLE;
+      case 3: return PieceShape.SQUARE;
+      case 4: return PieceShape.TAG;
     }
-    else {
-      return false;
-    }
+    return null;
   }
+  
+  fromJsonMap(Map<String, Object> jsonMap) {
+    id  = jsonMap['id'];
+    index = jsonMap['index'];
+    shape = pieceShape(index);
+    x = jsonMap['x'];
+    y = jsonMap['y'];
+    width = jsonMap['width'];
+    height = jsonMap['height'];
+    text = jsonMap['text'];
+    colorCode = jsonMap['colorCode'];
+    isVisible = jsonMap['isVisible'];
+    isSelected = jsonMap['isSelected'];
+  }
+  
+  fromJsonString(String jsonString) {
+    Map<String, Object> jsonMap = JSON.decode(jsonString);
+    fromJsonMap(jsonMap);
+  }
+  
+  Map<String, Object> toJsonMap() {
+    var jsonMap = new Map<String, Object>();
+    jsonMap['id'] = id;
+    jsonMap['index'] = shape.index;
+    jsonMap['x'] = x;
+    jsonMap['y'] = y;
+    jsonMap['width'] = width;
+    jsonMap['height'] = height;
+    jsonMap['text'] = text;
+    jsonMap['colorCode'] = colorCode;
+    jsonMap['isVisible'] = isVisible;
+    jsonMap['isSelected'] = isSelected;
+    return jsonMap;
+  }
+  
+  String toJsonString() => JSON.encode(toJsonMap());
+  
+  bool contains(num xx, num yy) => ((xx >= x && xx <= x + width) && (yy >= y && yy <= y + height));
 }
 
 class FallingPiece extends Piece {
@@ -36,6 +80,26 @@ class FallingPiece extends Piece {
   var shape = PieceShape.RECTANGLE;
   bool toReappear = true;
   num dy = 2;
+  
+  FallingPiece(int id): super(id);
+  
+  fromJsonMap(Map<String, Object> jsonMap) {
+    super.fromJsonMap(jsonMap);
+    distanceHeight = jsonMap['distanceHeight'];
+    index = jsonMap['index'];
+    shape = pieceShape(index);
+    toReappear = jsonMap['toReappear'];
+    dy = jsonMap['dy'];
+  }
+  
+  Map<String, Object> toJsonMap() {
+    var jsonMap = super.toJsonMap();
+    jsonMap['distanceHeight'] = distanceHeight;
+    jsonMap['index'] = shape.index;
+    jsonMap['toReappear'] = toReappear;
+    jsonMap['dy'] = dy;
+    return jsonMap;
+  }
   
   randomInit() {
     height = randomNum(Piece.heightLimit);
@@ -71,6 +135,29 @@ class MovablePiece extends Piece {
   num dx = 1;
   num dy = 1;
   bool isMoving = true;
+  
+  MovablePiece(int id): super(id);
+  
+  fromJsonMap(Map<String, Object> jsonMap) {
+    super.fromJsonMap(jsonMap);
+    distanceWidth = jsonMap['distanceWidth'];
+    distanceHeight = jsonMap['distanceHeight'];
+    speed = jsonMap['speed'];
+    dx = jsonMap['dx'];
+    dy = jsonMap['dy'];
+    isMoving = jsonMap['isMoving'];
+  }
+  
+  Map<String, Object> toJsonMap() {
+    var jsonMap = super.toJsonMap();
+    jsonMap['distanceWidth'] = distanceWidth;
+    jsonMap['distanceHeight'] = distanceHeight;
+    jsonMap['speed'] = speed;
+    jsonMap['dx'] = dx;
+    jsonMap['dy'] = dy;
+    jsonMap['isMoving'] = isMoving;
+    return jsonMap;
+  }
   
   randomInit() {
     var i = randomInt(5);
@@ -130,10 +217,49 @@ class MovablePiece extends Piece {
 abstract class Pieces {
   var _pieceList = new List();
   
+  fromJsonList(List<Map<String, Object>> jsonList) {
+    jsonList.forEach((jsonMap) {
+      var p = piece(jsonMap['id']);
+      if (p != null) {
+        p.fromJsonMap(jsonMap);
+      }
+    });
+  }
+  
+  fromJsonString(String jsonString) {
+    List<Map<String, Object>> jsonList = JSON.decode(jsonString);
+    fromJsonList(jsonList);
+  }
+  
+  List<Map<String, Object>> toJsonList() {
+    var jsonList = new List<Map<String, Object>>();
+    forEach((Piece p) => jsonList.add(p.toJsonMap()));
+    return jsonList;
+  }
+  
+  String toJsonString() => JSON.encode(toJsonList());
+  
   Iterator get iterator => _pieceList.iterator;
   int get length => _pieceList.length;
   add(Piece piece) => _pieceList.add(piece);
   forEach(Function f(Piece p)) => _pieceList.forEach(f);
+  
+  int invisibleCount() {
+    int count = 0;
+    for (Piece p in this) {
+      if (!p.isVisible) {
+        count++;
+      }
+    }
+    return count;
+  }
+  
+  Piece piece(int id) {
+    for (Piece p in this) {
+      if (p.id == id) return p;
+    }
+    return null;
+  }
 }
 
 class FallingPieces extends Pieces { 
@@ -142,8 +268,9 @@ class FallingPieces extends Pieces {
   }
   
   createFallingPieces(int count) {
+    var c = 0;
     for (var i = 0; i < count; i++) {
-      add(new FallingPiece());
+      add(new FallingPiece(++c));
     }
   }
   
@@ -156,8 +283,9 @@ class MovablePieces extends Pieces {
   }
   
   createMovablePieces(int count) {
+    var c = 0;
     for (var i = 0; i < count; i++) {
-      add(new MovablePiece());
+      add(new MovablePiece(++c));
     }
   }
   
