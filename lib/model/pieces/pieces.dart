@@ -255,6 +255,7 @@ abstract class Pieces {
 }
 
 class FallingPieces extends Pieces { 
+  
   FallingPieces(int count) {
     createFallingPieces(count);
   }
@@ -270,6 +271,7 @@ class FallingPieces extends Pieces {
 }
 
 class MovablePieces extends Pieces { 
+  
   MovablePieces(int count) {
     createMovablePieces(count);
   }
@@ -284,7 +286,7 @@ class MovablePieces extends Pieces {
   randomInit() => forEach((MovablePiece mp) => mp.randomInit()); 
   onOff() => forEach((MovablePiece mp) => mp.onOff());
   
-  avoidCollisions(MovablePiece mp) {
+  bool avoidCollisions(MovablePiece mp) {
     bool isCollisionAvoided = false;
     for (var p in this) {
       if (p != mp) {
