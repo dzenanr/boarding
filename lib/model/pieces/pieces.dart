@@ -158,7 +158,6 @@ class MovablePiece extends Piece {
     height = randomNum(Piece.heightLimit);
     speed = randomNum(6) + 1;
     text = randomElement(colorList());
-    //colorCode = randomColorCode();
     colorCode = colorMap()[text];
     x = randomNum(distanceLimitWidth - width);
     y = randomNum(distanceLimitHeight - height);
@@ -179,30 +178,24 @@ class MovablePiece extends Piece {
   
   onOff() => isMoving = !isMoving;
   
-  bool avoidCollision(Piece p) {
-    bool isCollisionAvoided = false;
+  avoidCollision(Piece p) {
     if (p.x < x  && p.y < y) {
       if (p.x + p.width >= x && p.y + p.height >= y) {
         dx = -dx; dy = -dy;
-        isCollisionAvoided = true;
       }
     } else if (p.x > x  && p.y < y) {
       if (p.x <= x + width && p.y + p.height >= y) {
         dx = -dx; dy = -dy;
-        isCollisionAvoided = true;
       }
     } else if (p.x < x  && p.y > y) {
       if (p.x + p.width >= x && p.y <= y + height) {
         dx = -dx; dy = -dy;
-        isCollisionAvoided = true;
       }
     } else if (p.x > x  && p.y > y) {
       if (p.x <= x + width && p.y <= y + height) {
         dx = -dx; dy = -dy;
-        isCollisionAvoided = true;
       }
     }
-    return isCollisionAvoided;
   }
 }
 
@@ -286,16 +279,12 @@ class MovablePieces extends Pieces {
   randomInit() => forEach((MovablePiece mp) => mp.randomInit()); 
   onOff() => forEach((MovablePiece mp) => mp.onOff());
   
-  bool avoidCollisions(MovablePiece mp) {
-    bool isCollisionAvoided = false;
+  avoidCollisions(MovablePiece mp) {
     for (var p in this) {
       if (p != mp) {
-        if (mp.avoidCollision(p)) {
-          isCollisionAvoided = true;
-        }
+        mp.avoidCollision(p);
       }
     }
-    return isCollisionAvoided;
   }
 }
 

@@ -6,12 +6,11 @@ class Board extends Surface {
   static const String hitCount = 'hitCount';
   
   FallingPieces fallingPieces;
-  bool isGameOver = false;
+  bool isGameOver;
   LabelElement hitCountLabel = querySelector('#hit-count');
   
   Board(CanvasElement canvas) : super(canvas) {
-    fallingPieces = new FallingPieces(pieceCount);
-    fallingPieces.randomInit();
+    init();
     querySelector('#save').onClick.listen((e) {
       save();
     });
@@ -20,6 +19,9 @@ class Board extends Surface {
     });
     querySelector('#restart').onClick.listen((e) {
       restart();
+    });
+    querySelector('#start').onClick.listen((e) {
+      start();
     });
     canvas.onMouseDown.listen((MouseEvent e) {
       fallingPieces.forEach((FallingPiece fp) {      
@@ -40,6 +42,13 @@ class Board extends Surface {
       });
     });
     window.animationFrame.then(gameLoop);
+  }
+  
+  init() {
+    fallingPieces = new FallingPieces(pieceCount);
+    fallingPieces.randomInit();
+    hitCountLabel.text = '0';
+    isGameOver = false;
   }
   
   gameLoop(num delta) {
@@ -89,5 +98,9 @@ class Board extends Surface {
     });
     hitCountLabel.text = '0';
     isGameOver = false;
+  }
+  
+  start() {
+    init();
   }
 }

@@ -60,31 +60,31 @@ class RedCar extends Car {
   }
   
   bool accident(Car car) {
-    bool isAccidentHappened = false;
+    bool isAccident = false;
     if (big) {
       if (car.x < x  && car.y < y) {
         if (car.x + car.width >= x && car.y + car.height >= y) {
           smaller();
-          isAccidentHappened = true;
+          isAccident = true;
         }
       } else if (car.x > x  && car.y < y) {
         if (car.x <= x + width && car.y + car.height >= y) {
           smaller();
-          isAccidentHappened = true;
+          isAccident = true;
         }
       } else if (car.x < x  && car.y > y) {
         if (car.x + car.width >= x && car.y <= y + height) {
           smaller();
-          isAccidentHappened = true;
+          isAccident = true;
         }
       } else if (car.x > x  && car.y > y) {
         if (car.x <= x + width && car.y <= y + height) {
           smaller();
-          isAccidentHappened = true;
+          isAccident = true;
         }
       }
     }
-    return isAccidentHappened;
+    return isAccident;
   }
 }
 

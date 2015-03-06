@@ -8,6 +8,8 @@ environment:
 documentation: http://goo.gl/kXlDOJ
 dependencies:
   browser: any
-  dartling: any
+  dartling:
+    git: https://github.com/dzenanr/dartling.git
 dev_dependencies:
   unittest: any
+  

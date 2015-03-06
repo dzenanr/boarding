@@ -5,7 +5,6 @@ class Composition {
   int currentColumn;
   int startRow;
   int startColumn;
-  //int length;
   String orientation; // h, v, /, \, L
   bool isSelected = false;
   var cells;  
