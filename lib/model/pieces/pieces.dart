@@ -179,24 +179,30 @@ class MovablePiece extends Piece {
   
   onOff() => isMoving = !isMoving;
   
-  avoidCollision(Piece p) {
+  bool avoidCollision(Piece p) {
+    bool isCollisionAvoided = false;
     if (p.x < x  && p.y < y) {
       if (p.x + p.width >= x && p.y + p.height >= y) {
         dx = -dx; dy = -dy;
+        isCollisionAvoided = true;
       }
     } else if (p.x > x  && p.y < y) {
       if (p.x <= x + width && p.y + p.height >= y) {
         dx = -dx; dy = -dy;
+        isCollisionAvoided = true;
       }
     } else if (p.x < x  && p.y > y) {
       if (p.x + p.width >= x && p.y <= y + height) {
         dx = -dx; dy = -dy;
+        isCollisionAvoided = true;
       }
     } else if (p.x > x  && p.y > y) {
       if (p.x <= x + width && p.y <= y + height) {
         dx = -dx; dy = -dy;
+        isCollisionAvoided = true;
       }
     }
+    return isCollisionAvoided;
   }
 }
 
@@ -254,9 +260,9 @@ class FallingPieces extends Pieces {
   }
   
   createFallingPieces(int count) {
-    var c = 0;
+    var id = 0;
     for (var i = 0; i < count; i++) {
-      add(new FallingPiece(++c));
+      add(new FallingPiece(++id));
     }
   }
   
@@ -269,9 +275,9 @@ class MovablePieces extends Pieces {
   }
   
   createMovablePieces(int count) {
-    var c = 0;
+    var id = 0;
     for (var i = 0; i < count; i++) {
-      add(new MovablePiece(++c));
+      add(new MovablePiece(++id));
     }
   }
   
@@ -279,11 +285,15 @@ class MovablePieces extends Pieces {
   onOff() => forEach((MovablePiece mp) => mp.onOff());
   
   avoidCollisions(MovablePiece mp) {
+    bool isCollisionAvoided = false;
     for (var p in this) {
       if (p != mp) {
-        mp.avoidCollision(p);
+        if (mp.avoidCollision(p)) {
+          isCollisionAvoided = true;
+        }
       }
     }
+    return isCollisionAvoided;
   }
 }
 

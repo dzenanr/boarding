@@ -29,11 +29,19 @@ class Board extends Surface {
   
   draw() {
     clear();
+    bool isAccidentHappened = false;
     for (NonRedCar car in cars) {
       car.move();
       cars.avoidCollisions(car);
-      cars.forEach((car) => redCar.accident(car));
+      cars.forEach((car) {
+        if (redCar.accident(car)) {
+          isAccidentHappened = true;
+        }
+      });
       new Vehicle(this, car.x, car.y, car.width, car.height, color: car.colorCode).draw();
+    }
+    if (isAccidentHappened) {
+      cars.add(new NonRedCar(cars.length + 1));
     }
     new Vehicle(this, redCar.x, redCar.y, redCar.width, redCar.height, color: redCar.colorCode).draw();
   }

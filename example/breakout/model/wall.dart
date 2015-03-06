@@ -1,7 +1,7 @@
 part of breakout;
 
 class Brick extends Piece {
-  Brick(num width, num height) {
+  Brick(int id, num width, num height): super(id) {
     this.width = width;
     this.height = height;
   }
@@ -21,10 +21,11 @@ class Wall extends Pieces {
     brickCount = rowCount * colCount;
     brickWidth = (width / colCount) - 1;
     bricks = new List(rowCount);
+    var id = 0;
     for (var i = 0; i < rowCount; i++) {
       bricks[i] = new List(colCount);
       for (var j = 0; j < colCount; j++) {
-        var brick = new Brick(brickWidth, brickHeight);
+        var brick = new Brick(++id, brickWidth, brickHeight);
         brick.colorCode = randomColorCode();
         brick.isVisible = true;
         bricks[i][j] = brick;

@@ -4,7 +4,7 @@ abstract class Car extends MovablePiece {
   static const num defaultWidth = 75;
   static const num defaultHeight = 30;
 
-  Car() {
+  Car(int id): super(id) {
     width = defaultWidth;
     height = defaultHeight;
     x = randomNum(distanceWidth - width);
@@ -13,7 +13,8 @@ abstract class Car extends MovablePiece {
 }
 
 class NonRedCar extends Car {
-  NonRedCar() {
+  
+  NonRedCar(int id): super(id) {
     colorCode = randomColorCode();
     speed = randomNum(MovablePiece.speedLimit) + 1;
     dx = randomNum(speed);
@@ -28,6 +29,9 @@ class RedCar extends Car {
   static const String bigColorCode = '#E40000';
   
   bool small = false;
+  
+  RedCar(int id): super(id);
+      
   bool get big => !small;
   
   move() {
@@ -55,18 +59,32 @@ class RedCar extends Car {
     }
   }
   
-  accident(Car car) {
+  bool accident(Car car) {
+    bool isAccidentHappened = false;
     if (big) {
       if (car.x < x  && car.y < y) {
-        if (car.x + car.width >= x && car.y + car.height >= y) smaller();
+        if (car.x + car.width >= x && car.y + car.height >= y) {
+          smaller();
+          isAccidentHappened = true;
+        }
       } else if (car.x > x  && car.y < y) {
-        if (car.x <= x + width && car.y + car.height >= y)     smaller();
+        if (car.x <= x + width && car.y + car.height >= y) {
+          smaller();
+          isAccidentHappened = true;
+        }
       } else if (car.x < x  && car.y > y) {
-        if (car.x + car.width >= x && car.y <= y + height)     smaller();
+        if (car.x + car.width >= x && car.y <= y + height) {
+          smaller();
+          isAccidentHappened = true;
+        }
       } else if (car.x > x  && car.y > y) {
-        if (car.x <= x + width && car.y <= y + height)         smaller();
+        if (car.x <= x + width && car.y <= y + height) {
+          smaller();
+          isAccidentHappened = true;
+        }
       }
     }
+    return isAccidentHappened;
   }
 }
 
@@ -74,13 +92,13 @@ class Cars extends MovablePieces {
   RedCar redCar;
 
   Cars(int count) : super(count) {
-    redCar = new RedCar();
+    redCar = new RedCar(0);
     redCar.colorCode = RedCar.bigColorCode;
   }
   
   createMovablePieces(int count) {
     for (var i = 0; i < count - 1; i++) { 
-      add(new NonRedCar());
+      add(new NonRedCar(i + 1));
     }
   }
 }
