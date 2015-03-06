@@ -7,7 +7,7 @@ environment:
   sdk: '>=1.8.0 <2.0.0'
 documentation: http://goo.gl/kXlDOJ
 dependencies:
-  browser: any
-  dartling: any
+  browser: ^0.10.0+2
+  dartling: ^1.0.6
 dev_dependencies:
-  unittest: any
+  unittest: ^0.9.3
