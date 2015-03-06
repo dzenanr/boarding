@@ -7,10 +7,11 @@ class Board extends Surface {
   
   FallingPieces fallingPieces;
   bool isGameOver;
+  InputElement pieceCountInput = querySelector('#piece-count');
   LabelElement hitCountLabel = querySelector('#hit-count');
   
   Board(CanvasElement canvas) : super(canvas) {
-    init();
+    init(pieceCount);
     querySelector('#save').onClick.listen((e) {
       save();
     });
@@ -44,9 +45,10 @@ class Board extends Surface {
     window.animationFrame.then(gameLoop);
   }
   
-  init() {
-    fallingPieces = new FallingPieces(pieceCount);
+  init(int numberOfPieces) {
+    fallingPieces = new FallingPieces(numberOfPieces);
     fallingPieces.randomInit();
+    pieceCountInput.value = numberOfPieces.toString();
     hitCountLabel.text = '0';
     isGameOver = false;
   }
@@ -82,6 +84,9 @@ class Board extends Surface {
     String gameString = window.localStorage[drop];
     if (gameString != null) { 
       fallingPieces.fromJsonString(gameString);
+      pieceCountInput.value = fallingPieces.length.toString();
+    } else {
+      pieceCountInput.value = pieceCount.toString();
     }
     String hitCountString = window.localStorage[hitCount]; 
     if (hitCountString != null) { 
@@ -101,6 +106,10 @@ class Board extends Surface {
   }
   
   start() {
-    init();
+    try {
+      init(int.parse(pieceCountInput.value));
+    } on FormatException catch(e) {
+      init(pieceCount);
+    }
   }
 }
