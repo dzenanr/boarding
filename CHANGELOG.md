@@ -2,6 +2,13 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.2.1* 2015-03-07
+
++ add bounce example
++ add drawPiece method in Board of the chaos example
++ correct the load method in Board of the drop example
++ use enum values in json for random shape in pieces
+
 *0.2.0* 2015-03-05
 
 + save (and load) pieces to (from) the local storage

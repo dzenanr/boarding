@@ -25,18 +25,26 @@ class Board extends Surface {
       if (avoidCollisions) {
         movablePieces.avoidCollisions(mp);
       }
-      switch(mp.shape) {
-        case PieceShape.CIRCLE:
-          new Circle(this, mp.x, mp.y, mp.width / 2, color: mp.colorCode).draw(); break;
-        case PieceShape.LINE:
-          new Line(this, mp.x, mp.y, mp.width, mp.height, color: mp.colorCode).draw(); break;
-        case PieceShape.RECTANGLE:
-          new Rect(this, mp.x, mp.y, mp.width, mp.height, color: mp.colorCode).draw(); break;
-        case PieceShape.SQUARE:
-          new Square(this, mp.x, mp.y, mp.width, color: mp.colorCode).draw(); break;
-        case PieceShape.TAG:
-          new Tag(this, mp.x, mp.y, mp.width, mp.text, color: mp.colorCode).draw();
-      }
+      drawPiece(mp);
     });
+  }
+  
+  drawPiece(Piece p) {
+    switch(p.shape) {
+      case PieceShape.CIRCLE:
+        new Circle(this, p.x, p.y, p.width / 2, color: p.colorCode).draw(); 
+        break;
+      case PieceShape.LINE:
+        new Line(this, p.x, p.y, p.width, p.height, color: p.colorCode).draw(); 
+        break;
+      case PieceShape.RECTANGLE:
+        new Rect(this, p.x, p.y, p.width, p.height, color: p.colorCode).draw(); 
+        break;
+      case PieceShape.SQUARE:
+        new Square(this, p.x, p.y, p.width, color: p.colorCode).draw(); 
+        break;
+      case PieceShape.TAG:
+        new Tag(this, p.x, p.y, p.width, p.text, color: p.colorCode).draw();
+    }
   }
 }

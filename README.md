@@ -4,9 +4,9 @@
 
 **Description**: A package for board games or canvas drawings. 
 The package has both model and view libraries. 
-See the example folder to see how to use the boarding package.
+See the example folder to find out how to use the boarding package.
 
-There are ten examples with not much code, the rest is done by boarding.
+There are eleven examples with not much code, the rest is done by boarding.
 You are invited to contribute more examples in order to make boarding more generic. 
 
 Please enable the enums support in Dart Editor (Tools/Preferences/Experimental).

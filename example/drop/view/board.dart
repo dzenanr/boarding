@@ -3,6 +3,7 @@ part of drop;
 class Board extends Surface {
   static const int pieceCount = 10;
   static const String drop = 'drop';
+  static const String count = 'count';
   static const String hitCount = 'hitCount';
   
   FallingPieces fallingPieces;
@@ -76,18 +77,27 @@ class Board extends Surface {
   }
   
   save() {
+    window.localStorage[count] = fallingPieces.length.toString();
     window.localStorage[drop] = fallingPieces.toJsonString();
     window.localStorage[hitCount] = fallingPieces.invisibleCount().toString();
   }
   
   load() {
-    String gameString = window.localStorage[drop];
-    if (gameString != null) { 
-      fallingPieces.fromJsonString(gameString);
-      pieceCountInput.value = fallingPieces.length.toString();
+    String countString = window.localStorage[count]; 
+    if (countString != null) { 
+      pieceCountInput.value = countString;
+      try {
+        init(int.parse(countString));
+      } on FormatException catch(e) {
+        init(pieceCount);
+      }
     } else {
       pieceCountInput.value = pieceCount.toString();
     }
+    String gameString = window.localStorage[drop];
+    if (gameString != null) {
+      fallingPieces.fromJsonString(gameString);
+    } 
     String hitCountString = window.localStorage[hitCount]; 
     if (hitCountString != null) { 
       hitCountLabel.text = hitCountString;

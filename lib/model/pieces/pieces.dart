@@ -147,13 +147,7 @@ class MovablePiece extends Piece {
   
   randomInit() {
     var i = randomInt(5);
-    switch (i) {
-      case 0: shape = PieceShape.CIRCLE; break;
-      case 1: shape = PieceShape.LINE; break;
-      case 2: shape = PieceShape.RECTANGLE; break;
-      case 3: shape = PieceShape.SQUARE; break;
-      case 4: shape = PieceShape.TAG; 
-    }
+    shape = PieceShape.values[i];
     width = randomNum(Piece.widthLimit);
     height = randomNum(Piece.heightLimit);
     speed = randomNum(6) + 1;
@@ -207,7 +201,7 @@ abstract class Pieces {
       var p = piece(jsonMap['id']);
       if (p != null) {
         p.fromJsonMap(jsonMap);
-      }
+      } 
     });
   }
   
