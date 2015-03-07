@@ -14,6 +14,16 @@ num randomNum(num max) {
   return random > max ? max : random;
 }
 
+num randomRange(num min, num max) {
+  num random = new Random().nextDouble() * max;
+  if (random < min) {
+    random = min;
+  } else if (random > max) {
+    random = max;
+  } 
+  return random;
+}
+
 num randomNumber(int max) {
   var logic = randomBool();
   var sign = randomSign(8);

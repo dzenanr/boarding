@@ -4,8 +4,10 @@ enum PieceShape {CIRCLE, LINE, RECTANGLE, SQUARE, TAG}
 
 abstract class Piece {
   static const PieceShape defaultShape = PieceShape.RECTANGLE;
-  static const num widthLimit = 120;
-  static const num heightLimit = 80;
+  static const num widthMin = 12;
+  static const num heightMin = 8;
+  static const num widthMax = 120;
+  static const num heightMax = 80;
   static const String defaultText = 'Dart';
   static const String defaultCode = '#000000';
  
@@ -13,8 +15,8 @@ abstract class Piece {
   PieceShape shape = defaultShape;
   num x = 0;
   num y = 0;
-  num width = widthLimit;
-  num height = heightLimit;
+  num width = widthMax;
+  num height = heightMax;
   String text = defaultText;
   String colorCode = defaultCode;
   bool isVisible = true;
@@ -64,7 +66,7 @@ class FallingPiece extends Piece {
   static const num distanceLimit = 600;
   
   num distanceHeight = distanceLimit;
-  var shape = PieceShape.RECTANGLE;
+  var shape = PieceShape.SQUARE;
   bool toReappear = true;
   num dy = 2;
   
@@ -88,7 +90,7 @@ class FallingPiece extends Piece {
   }
   
   randomInit() {
-    height = randomNum(Piece.heightLimit);
+    height = randomRange(Piece.heightMin, Piece.heightMax);
     width = height;
     colorCode = randomColorCode();
     x = randomNum(distanceLimit - width);
@@ -148,8 +150,8 @@ class MovablePiece extends Piece {
   randomInit() {
     var i = randomInt(5);
     shape = PieceShape.values[i];
-    width = randomNum(Piece.widthLimit);
-    height = randomNum(Piece.heightLimit);
+    width = randomRange(Piece.widthMin, Piece.widthMax);
+    height = randomRange(Piece.heightMin, Piece.heightMax);
     speed = randomNum(6) + 1;
     text = randomElement(colorList());
     colorCode = colorMap()[text];

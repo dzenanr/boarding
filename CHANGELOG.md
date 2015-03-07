@@ -8,6 +8,8 @@ based on [Semantic Versioning](http://semver.org/)
 + add drawPiece method in Board of the chaos example
 + correct the load method in Board of the drop example
 + use enum values in json for random shape in pieces
++ add random range in util
++ use random range in random init of pieces
 
 *0.2.0* 2015-03-05
 
