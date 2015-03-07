@@ -90,7 +90,7 @@ class FallingPiece extends Piece {
   }
   
   randomInit() {
-    height = randomRange(Piece.heightMin, Piece.heightMax);
+    height = randomRangeNum(Piece.heightMin, Piece.heightMax);
     width = height;
     colorCode = randomColorCode();
     x = randomNum(distanceLimit - width);
@@ -150,8 +150,8 @@ class MovablePiece extends Piece {
   randomInit() {
     var i = randomInt(5);
     shape = PieceShape.values[i];
-    width = randomRange(Piece.widthMin, Piece.widthMax);
-    height = randomRange(Piece.heightMin, Piece.heightMax);
+    width = randomRangeNum(Piece.widthMin, Piece.widthMax);
+    height = randomRangeNum(Piece.heightMin, Piece.heightMax);
     speed = randomNum(6) + 1;
     text = randomElement(colorList());
     colorCode = colorMap()[text];

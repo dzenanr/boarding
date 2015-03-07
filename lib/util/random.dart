@@ -14,7 +14,7 @@ num randomNum(num max) {
   return random > max ? max : random;
 }
 
-num randomRange(num min, num max) {
+num randomRangeNum(num min, num max) {
   num random = new Random().nextDouble() * max;
   if (random < min) {
     random = min;
