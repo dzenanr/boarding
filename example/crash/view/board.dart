@@ -38,11 +38,11 @@ class Board extends Surface {
           isAccident = true;
         }
       });
-      new Vehicle(this, car.x, car.y, car.width, car.height, color: car.colorCode).draw();
+      drawPiece(car);
     }
     if (isAccident) {
       cars.add(new NonRedCar(cars.length + 1));
     }
-    new Vehicle(this, redCar.x, redCar.y, redCar.width, redCar.height, color: redCar.colorCode).draw();
+    drawPiece(redCar);
   }
 }

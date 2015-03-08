@@ -5,6 +5,7 @@ abstract class Car extends MovablePiece {
   static const num defaultHeight = 30;
 
   Car(int id): super(id) {
+    shape = PieceShape.VEHICLE;
     width = defaultWidth;
     height = defaultHeight;
     x = randomNum(distanceWidth - width);
@@ -30,7 +31,9 @@ class RedCar extends Car {
   
   bool small = false;
   
-  RedCar(int id): super(id);
+  RedCar(int id): super(id) {
+    colorCode = bigColorCode;
+  }
       
   bool get big => !small;
   
@@ -93,7 +96,6 @@ class Cars extends MovablePieces {
 
   Cars(int count) : super(count) {
     redCar = new RedCar(0);
-    redCar.colorCode = RedCar.bigColorCode;
   }
   
   createMovablePieces(int count) {

@@ -1,6 +1,5 @@
 To do
 
-- check flickering of lines in surface
 - write a document about the boarding poackage
 - create more examples to increase the generic stuff
 - do view tests with a web test library

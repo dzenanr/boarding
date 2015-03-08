@@ -78,6 +78,32 @@ class Surface {
       cells();
     }
   }
+  
+  drawPiece(Piece piece) {
+    switch(piece.shape) {
+      case PieceShape.CIRCLE:
+        new Circle(this, piece.x, piece.y, piece.width / 2, color: piece.colorCode).draw(); 
+        break;
+      case PieceShape.LINE:
+        new Line(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
+        break;
+      case PieceShape.RECTANGLE:
+        new Rect(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
+        break;
+      case PieceShape.ROUNDED_RECTANGLE:
+        new RoundedRect(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
+        break;
+      case PieceShape.SQUARE:
+        new Square(this, piece.x, piece.y, piece.width, color: piece.colorCode).draw(); 
+        break;
+      case PieceShape.TAG:
+        new Tag(this, piece.x, piece.y, piece.width, piece.text, color: piece.colorCode).draw();
+        break;
+      case PieceShape.VEHICLE:
+        new Vehicle(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
+        break;
+    }
+  }
 }
 
 class SquareSurface extends Surface {

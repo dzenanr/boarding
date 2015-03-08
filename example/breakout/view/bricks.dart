@@ -17,10 +17,7 @@ class Bricks {
       for (var j = 0; j < colCount; j++) {
         Brick brick = wall.bricks[i][j];
         if (brick.isVisible) {
-          new Rect(board, 
-              (j * (brick.width + padding)) + padding, 
-              (i * (brick.height + padding)) + padding, 
-              brick.width, brick.height, color: brick.colorCode).draw();  
+          board.drawPiece(brick);
           count++;
         }
       }

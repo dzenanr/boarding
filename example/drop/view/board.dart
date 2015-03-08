@@ -38,7 +38,7 @@ class Board extends Surface {
               isGameOver = true;
             }
           } else {
-            fp.isSelected = true;
+            fp.isSelected = true; 
           }
         }
       });
@@ -67,11 +67,9 @@ class Board extends Surface {
       fp.move();
       if (fp.isVisible) {
         if (fp.isSelected) {
-          var r = fp.width / 2;
-          new Circle(this, fp.x + r, fp.y + r, r, color: 'black').draw();
-        } else {
-          new Square(this, fp.x, fp.y, fp.width, color: fp.colorCode).draw();
-        }
+          fp.colorCode = 'black';
+        } 
+        drawPiece(fp);
       }
     });
   }
@@ -110,6 +108,7 @@ class Board extends Surface {
     fallingPieces.forEach((FallingPiece fp) {
       fp.isVisible = true;
       fp.isSelected = false;
+      fp.colorCode = randomColorCode();
     });
     hitCountLabel.text = '0';
     isGameOver = false;

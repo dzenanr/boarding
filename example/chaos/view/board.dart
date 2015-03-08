@@ -28,23 +28,4 @@ class Board extends Surface {
       drawPiece(mp);
     });
   }
-  
-  drawPiece(Piece p) {
-    switch(p.shape) {
-      case PieceShape.CIRCLE:
-        new Circle(this, p.x, p.y, p.width / 2, color: p.colorCode).draw(); 
-        break;
-      case PieceShape.LINE:
-        new Line(this, p.x, p.y, p.width, p.height, color: p.colorCode).draw(); 
-        break;
-      case PieceShape.RECTANGLE:
-        new Rect(this, p.x, p.y, p.width, p.height, color: p.colorCode).draw(); 
-        break;
-      case PieceShape.SQUARE:
-        new Square(this, p.x, p.y, p.width, color: p.colorCode).draw(); 
-        break;
-      case PieceShape.TAG:
-        new Tag(this, p.x, p.y, p.width, p.text, color: p.colorCode).draw();
-    }
-  }
 }

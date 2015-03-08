@@ -1,6 +1,6 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, LINE, RECTANGLE, SQUARE, TAG}
+enum PieceShape {CIRCLE, LINE, RECTANGLE, ROUNDED_RECTANGLE, SQUARE, TAG, VEHICLE}
 
 abstract class Piece {
   static const PieceShape defaultShape = PieceShape.RECTANGLE;
@@ -146,9 +146,9 @@ class MovablePiece extends Piece {
     jsonMap['isMoving'] = isMoving;
     return jsonMap;
   }
-  
+
   randomInit() {
-    var i = randomInt(5);
+    var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
     width = randomRangeNum(Piece.widthMin, Piece.widthMax);
     height = randomRangeNum(Piece.heightMin, Piece.heightMax);

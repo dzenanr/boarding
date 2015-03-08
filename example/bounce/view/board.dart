@@ -5,7 +5,7 @@ class Board extends Surface {
   
   Board(CanvasElement canvas) : super(canvas) {
     movablePieces.randomInit();
-    //movablePieces.forEach((MovablePiece mp) => mp.shape = PieceShape.CIRCLE);
+    movablePieces.forEach((MovablePiece mp) => mp.shape = PieceShape.CIRCLE);
     window.animationFrame.then(gameLoop); 
   }
   
@@ -18,7 +18,7 @@ class Board extends Surface {
     clear();
     movablePieces.forEach((MovablePiece mp) {
       mp.move();
-      new Circle(this, mp.x, mp.y, mp.width / 2, color: mp.colorCode).draw();
+      drawPiece(mp);
     });
   }
 }

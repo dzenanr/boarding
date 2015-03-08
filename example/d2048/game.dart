@@ -2,7 +2,7 @@ library d2048;
 
 import 'dart:html';
 import 'dart:math';
-import 'package:boarding/grids.dart';
+import 'package:boarding/grid.dart';
 import 'package:boarding/boarding.dart';
 
 part 'model/grid.dart';

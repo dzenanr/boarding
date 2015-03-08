@@ -2,24 +2,22 @@ part of util;
 
 randomBool() => new Random().nextBool();
 
+// Range from 0, inclusive, to max, exclusive.
 randomInt(int max) => new Random().nextInt(max);
 
+// Range from 0.0, inclusive, to 1.0, exclusive.
 double randomDouble(double max) {
-  double randomDouble = new Random().nextDouble() * max;
-  return randomDouble > max ? max : randomDouble;
+  return new Random().nextDouble() * max;
 }
 
 num randomNum(num max) {
-  num random = new Random().nextDouble() * max;
-  return random > max ? max : random;
+  return new Random().nextDouble() * max;
 }
 
 num randomRangeNum(num min, num max) {
   num random = new Random().nextDouble() * max;
   if (random < min) {
     random = min;
-  } else if (random > max) {
-    random = max;
   } 
   return random;
 }

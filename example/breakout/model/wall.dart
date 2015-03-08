@@ -2,6 +2,7 @@ part of breakout;
 
 class Brick extends Piece {
   Brick(int id, num width, num height): super(id) {
+    shape = PieceShape.RECTANGLE;
     this.width = width;
     this.height = height;
   }
@@ -26,6 +27,8 @@ class Wall extends Pieces {
       bricks[i] = new List(colCount);
       for (var j = 0; j < colCount; j++) {
         var brick = new Brick(++id, brickWidth, brickHeight);
+        brick.x = (j * (brick.width + 1)) + 1;
+        brick.y = (i * (brick.height + 1)) + 1;
         brick.colorCode = randomColorCode();
         brick.isVisible = true;
         bricks[i][j] = brick;

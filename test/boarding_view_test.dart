@@ -1,4 +1,4 @@
-import 'package:boarding/grids.dart';
+import 'package:boarding/grid.dart';
 import 'package:boarding/boarding.dart';
 import 'dart:html';
 

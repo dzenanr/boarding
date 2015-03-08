@@ -1,7 +1,7 @@
 library rush;
 
 import 'dart:html';
-import 'package:boarding/grids.dart';
+import 'package:boarding/grid.dart';
 import 'package:boarding/boarding.dart';
 
 part 'model/meta/concept.dart';

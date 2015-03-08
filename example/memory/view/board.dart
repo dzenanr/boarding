@@ -35,9 +35,7 @@ class Board extends Surface {
   draw() {
     super.draw();
     if (memory.recalled) { // game over
-      context.font = 'bold 25px sans-serif';
-      context.fillStyle = 'red';
-      context.fillText('YOU WIN', cellSize, cellSize * 2);
+      new Tag(this, cellSize * 2, cellSize * 2, 32, 'YOU WIN', color: 'red').draw();
     }
   }
 }

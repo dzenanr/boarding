@@ -2,7 +2,7 @@ library memory;
 
 import 'dart:async';
 import 'dart:html';
-import 'package:boarding/grids.dart';
+import 'package:boarding/grid.dart';
 import 'package:boarding/boarding.dart';
 import 'package:boarding/util.dart';
 

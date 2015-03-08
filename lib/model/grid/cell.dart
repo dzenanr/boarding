@@ -1,4 +1,4 @@
-part of grids;
+part of grid;
 
 enum Direction {UP, DOWN, LEFT, RIGHT}
 

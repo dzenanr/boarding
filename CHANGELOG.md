@@ -2,10 +2,22 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.2.1* 2015-03-08
+
++ add drawPiece method in Surface 
++ use drawPiece in Bricks of the breakout example
++ use drawPiece in Board of the crash example
++ use drawPiece in Board of the drop example
++ square hit changes only the square color to black in the drop example
++ use Tag for the win message in Board of the memory example 
++ rename random range to random range num in util
++ rename the grids library to grid
++ simplify random functions
+
 *0.2.1* 2015-03-07
 
 + add bounce example
-+ add drawPiece method in Board of the chaos example
++ add drawPiece in Board of the chaos example
 + correct the load method in Board of the drop example
 + use enum values in json for random shape in pieces
 + add random range in util

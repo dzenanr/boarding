@@ -1,4 +1,4 @@
-part of grids;
+part of grid;
 
 class Grid {
   String defaultColor = 'white';
