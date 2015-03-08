@@ -8,7 +8,7 @@ based on [Semantic Versioning](http://semver.org/)
 + use drawPiece in Bricks of the breakout example
 + use drawPiece in Board of the crash example
 + use drawPiece in Board of the drop example
-+ square hit changes only the square color to black in the drop example
++ square hit changes only the square shape to rounded rectangle in the drop example
 + use Tag for the win message in Board of the memory example 
 + rename random range to random range num in util
 + rename the grids library to grid

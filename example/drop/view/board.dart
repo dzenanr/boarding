@@ -67,7 +67,7 @@ class Board extends Surface {
       fp.move();
       if (fp.isVisible) {
         if (fp.isSelected) {
-          fp.colorCode = 'black';
+          fp.shape = PieceShape.ROUNDED_RECTANGLE;
         } 
         drawPiece(fp);
       }
@@ -108,7 +108,7 @@ class Board extends Surface {
     fallingPieces.forEach((FallingPiece fp) {
       fp.isVisible = true;
       fp.isSelected = false;
-      fp.colorCode = randomColorCode();
+      fp.shape = PieceShape.SQUARE;
     });
     hitCountLabel.text = '0';
     isGameOver = false;
