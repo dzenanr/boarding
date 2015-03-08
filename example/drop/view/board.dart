@@ -67,7 +67,7 @@ class Board extends Surface {
       fp.move();
       if (fp.isVisible) {
         if (fp.isSelected) {
-          fp.shape = PieceShape.ROUNDED_RECTANGLE;
+          fp.shape = PieceShape.ROUNDED_RECT;
         } 
         drawPiece(fp);
       }

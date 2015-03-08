@@ -1,9 +1,9 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, LINE, RECTANGLE, ROUNDED_RECTANGLE, SQUARE, TAG, VEHICLE}
+enum PieceShape {CIRCLE, LINE, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, TAG, VEHICLE}
 
 abstract class Piece {
-  static const PieceShape defaultShape = PieceShape.RECTANGLE;
+  static const PieceShape defaultShape = PieceShape.RECT;
   static const num widthMin = 12;
   static const num heightMin = 8;
   static const num widthMax = 120;

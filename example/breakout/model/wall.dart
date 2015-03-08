@@ -2,7 +2,7 @@ part of breakout;
 
 class Brick extends Piece {
   Brick(int id, num width, num height): super(id) {
-    shape = PieceShape.RECTANGLE;
+    shape = PieceShape.RECT;
     this.width = width;
     this.height = height;
   }

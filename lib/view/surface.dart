@@ -87,11 +87,14 @@ class Surface {
       case PieceShape.LINE:
         new Line(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
         break;
-      case PieceShape.RECTANGLE:
+      case PieceShape.RECT:
         new Rect(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
         break;
-      case PieceShape.ROUNDED_RECTANGLE:
+      case PieceShape.ROUNDED_RECT:
         new RoundedRect(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
+        break;
+      case PieceShape.SELECTED_RECT:
+        new SelectedRect(this, piece.x, piece.y, piece.width, piece.height, color: piece.colorCode).draw(); 
         break;
       case PieceShape.SQUARE:
         new Square(this, piece.x, piece.y, piece.width, color: piece.colorCode).draw(); 

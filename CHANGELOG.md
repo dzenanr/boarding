@@ -13,6 +13,10 @@ based on [Semantic Versioning](http://semver.org/)
 + rename random range to random range num in util
 + rename the grids library to grid
 + simplify random functions
++ rename RECTANGLE to RECT in PieceShape enum
++ rename ROUNDED_RECTANGLE to ROUNDED_RECT in PieceShape enum
++ add SELECT_RECT to PieceShape enum
++ update drawPiece method in Surface
 
 *0.2.1* 2015-03-07
 
