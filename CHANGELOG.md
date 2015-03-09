@@ -4,7 +4,7 @@ based on [Semantic Versioning](http://semver.org/)
 
 *0.2.1* 2015-03-09
 
-+ move the accident method from RedCar to MovablePiece in the crash example
++ move the accident method from RedCar in the crash example to MovablePiece 
 + remove the FallingPiece class in pieces
 + remove the FallingPieces class in pieces
 + replace the move method with move([Direction direction]) of MovablePiece in pieces

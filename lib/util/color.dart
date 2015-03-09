@@ -50,8 +50,9 @@ Map<String, String> colorMap() {
 List<String> colorList() {
   return [
     'azure',
-    'beer'
+    'beer',
     'beige',
+    'black',
     'blue',
     'brown',
     'chocolate',
@@ -81,11 +82,12 @@ List<String> colorList() {
     'red',
     'silver',
     'sunyellow',
-    'teagreen'
+    'teagreen',
     'turquoise',
     'vanilla',
     'water',
     'wheat',
+    'white',
     'yellow'
   ];
 }

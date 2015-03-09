@@ -22,6 +22,7 @@ testUtil() {
     });
     test('Random color code', () {
       var rcc = randomColorCode();
+      print(rcc);
       expect(colorMap().containsValue(rcc), isTrue);
     });
   });
