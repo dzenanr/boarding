@@ -10,6 +10,7 @@ based on [Semantic Versioning](http://semver.org/)
 + replace the move method with move([Direction direction]) of MovablePiece in pieces
 + replace FallingPiece with MovablePiece in Board of the drop example
 + show Direction in import in the crash and drop examples
++ add 'black' and 'white' to color list in util
 
 *0.2.1* 2015-03-08
 
