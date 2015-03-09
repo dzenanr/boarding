@@ -29,15 +29,15 @@ class RedCar extends Car {
   static const String smallColorCode = '#000000';
   static const String bigColorCode = '#E40000';
   
-  bool small = false;
+  bool isSmall = false;
   
   RedCar(int id): super(id) {
     colorCode = bigColorCode;
   }
       
-  bool get big => !small;
+  bool get isBig => !isSmall;
   
-  move() {
+  move([Direction direction]) {
     if (x > distanceWidth)  x = distanceWidth - 20;
     if (x < 0)              x = 20 - width;
     if (y > distanceHeight) y = distanceHeight - 20;
@@ -45,8 +45,8 @@ class RedCar extends Car {
   }
   
   bigger() {
-    if (small) {
-      small = false;
+    if (isSmall) {
+      isSmall = false;
       width = 75;
       height = 30;
       colorCode = bigColorCode;
@@ -54,40 +54,12 @@ class RedCar extends Car {
   }
 
   smaller() {
-    if (big) {
-      small = true;
+    if (isBig) {
+      isSmall = true;
       width = smallWidth;
       height = smallHeight;
       colorCode = smallColorCode;
     }
-  }
-  
-  bool accident(Car car) {
-    bool isAccident = false;
-    if (big) {
-      if (car.x < x  && car.y < y) {
-        if (car.x + car.width >= x && car.y + car.height >= y) {
-          smaller();
-          isAccident = true;
-        }
-      } else if (car.x > x  && car.y < y) {
-        if (car.x <= x + width && car.y + car.height >= y) {
-          smaller();
-          isAccident = true;
-        }
-      } else if (car.x < x  && car.y > y) {
-        if (car.x + car.width >= x && car.y <= y + height) {
-          smaller();
-          isAccident = true;
-        }
-      } else if (car.x > x  && car.y > y) {
-        if (car.x <= x + width && car.y <= y + height) {
-          smaller();
-          isAccident = true;
-        }
-      }
-    }
-    return isAccident;
   }
 }
 

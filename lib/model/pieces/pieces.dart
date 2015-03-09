@@ -62,56 +62,6 @@ abstract class Piece {
   bool contains(num xx, num yy) => ((xx >= x && xx <= x + width) && (yy >= y && yy <= y + height));
 }
 
-class FallingPiece extends Piece {
-  static const num distanceLimit = 600;
-  
-  num distanceHeight = distanceLimit;
-  var shape = PieceShape.SQUARE;
-  bool toReappear = true;
-  num dy = 2;
-  
-  FallingPiece(int id): super(id);
-  
-  fromJsonMap(Map<String, Object> jsonMap) {
-    super.fromJsonMap(jsonMap);
-    distanceHeight = jsonMap['distanceHeight'];
-    shape = PieceShape.values[jsonMap['index']];
-    toReappear = jsonMap['toReappear'];
-    dy = jsonMap['dy'];
-  }
-  
-  Map<String, Object> toJsonMap() {
-    var jsonMap = super.toJsonMap();
-    jsonMap['distanceHeight'] = distanceHeight;
-    jsonMap['index'] = shape.index;
-    jsonMap['toReappear'] = toReappear;
-    jsonMap['dy'] = dy;
-    return jsonMap;
-  }
-  
-  randomInit() {
-    height = randomRangeNum(Piece.heightMin, Piece.heightMax);
-    width = height;
-    colorCode = randomColorCode();
-    x = randomNum(distanceLimit - width);
-    y = -randomNum(distanceHeight - height);
-  }
-  
-  move() { 
-    y += dy;
-    if (y >= distanceHeight) {
-      toReappear = true;
-    } else {
-      toReappear = false;
-    }
-    if (toReappear) {
-      var r = randomNum(distanceHeight);
-      y = -r;
-      x = r;
-    }
-  }
-}
-
 class MovablePiece extends Piece {
   static const num distanceLimitWidth = 800;
   static const num distanceLimitHeight = 600;
@@ -162,17 +112,71 @@ class MovablePiece extends Piece {
     dx = randomNum(speedLimit);
     dy = randomNum(speedLimit);
   }
-
-  move() { 
+  
+  move([Direction direction]) {
     if (isMoving) {
-      x += dx;
-      y += dy;
-      if (x > distanceWidth || x < 0) dx = -dx;
-      if (y > distanceHeight || y < 0) dy = -dy;      
+      if (direction == null) {
+        x += dx;
+        y += dy;
+        if (x > distanceWidth || x < 0) dx = -dx;
+        if (y > distanceHeight || y < 0) dy = -dy; 
+      } else {
+        switch(direction) {
+          case Direction.UP:
+            y -= dy;
+            if (y < 0) {
+              x = randomNum(distanceWidth);
+              y = randomNum(distanceHeight);
+            }
+            break;
+          case Direction.DOWN:
+            y += dy; 
+            if (y > distanceHeight) {
+              x = randomNum(distanceWidth);
+              y = -randomNum(distanceHeight);
+            }
+            break;
+          case Direction.LEFT:
+            x -= dx; 
+            if (x < 0) {
+              x = randomNum(distanceWidth);
+              y = randomNum(distanceHeight);
+            }
+            break;
+          case Direction.RIGHT:
+            x += dx;
+            if (x > distanceWidth) {
+              x = -randomNum(distanceWidth);
+              y = randomNum(distanceHeight);
+            } 
+        } 
+      }
     }
   }
   
   onOff() => isMoving = !isMoving;
+  
+  bool accident(Piece p) {
+    bool isAccident = false;
+    if (p.x < x  && p.y < y) {
+      if (p.x + p.width >= x && p.y + p.height >= y) {
+        isAccident = true;
+      }
+    } else if (p.x > x  && p.y < y) {
+      if (p.x <= x + width && p.y + p.height >= y) {
+        isAccident = true;
+      }
+    } else if (p.x < x  && p.y > y) {
+      if (p.x + p.width >= x && p.y <= y + height) {
+        isAccident = true;
+      }
+    } else if (p.x > x  && p.y > y) {
+      if (p.x <= x + width && p.y <= y + height) {
+        isAccident = true;
+      }
+    }
+    return isAccident;
+  }
   
   avoidCollision(Piece p) {
     if (p.x < x  && p.y < y) {
@@ -241,22 +245,6 @@ abstract class Pieces {
     }
     return null;
   }
-}
-
-class FallingPieces extends Pieces { 
-  
-  FallingPieces(int count) {
-    createFallingPieces(count);
-  }
-  
-  createFallingPieces(int count) {
-    var id = 0;
-    for (var i = 0; i < count; i++) {
-      add(new FallingPiece(++id));
-    }
-  }
-  
-  randomInit() => forEach((FallingPiece fp) => fp.randomInit()); 
 }
 
 class MovablePieces extends Pieces { 

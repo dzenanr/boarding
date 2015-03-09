@@ -12,7 +12,7 @@ class Board extends Surface {
     redCar.distanceWidth = canvas.width;
     redCar.distanceHeight = canvas.height;
     document.onMouseDown.listen((MouseEvent e) {
-      if (redCar.small) redCar.bigger();
+      if (redCar.isSmall) redCar.bigger();
     });
     document.onMouseMove.listen((MouseEvent e) {
       redCar.x = e.offset.x - redCar.width  / 2;
@@ -34,7 +34,8 @@ class Board extends Surface {
       car.move();
       cars.avoidCollisions(car);
       cars.forEach((car) {
-        if (redCar.accident(car)) {
+        if (redCar.isBig && redCar.accident(car)) {
+          redCar.smaller();
           isAccident = true;
         }
       });

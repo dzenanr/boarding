@@ -6,7 +6,7 @@ class Board extends Surface {
   static const String count = 'count';
   static const String hitCount = 'hitCount';
   
-  FallingPieces fallingPieces;
+  MovablePieces fallingPieces;
   bool isGameOver;
   InputElement pieceCountInput = querySelector('#piece-count');
   LabelElement hitCountLabel = querySelector('#hit-count');
@@ -26,7 +26,7 @@ class Board extends Surface {
       start();
     });
     canvas.onMouseDown.listen((MouseEvent e) {
-      fallingPieces.forEach((FallingPiece fp) {      
+      fallingPieces.forEach((MovablePiece fp) {      
         var x = e.offset.x;
         var y = e.offset.y;
         if (fp.contains(x, y)) {
@@ -47,8 +47,14 @@ class Board extends Surface {
   }
   
   init(int numberOfPieces) {
-    fallingPieces = new FallingPieces(numberOfPieces);
+    fallingPieces = new MovablePieces(numberOfPieces);
     fallingPieces.randomInit();
+    fallingPieces.forEach((MovablePiece fp) {
+      fp.shape = PieceShape.SQUARE;
+      fp.width = fp.height;
+      fp.dy = 2;
+      fp.distanceHeight = height + 200;
+    });
     pieceCountInput.value = numberOfPieces.toString();
     hitCountLabel.text = '0';
     isGameOver = false;
@@ -63,8 +69,8 @@ class Board extends Surface {
   
   draw() {
     clear();
-    fallingPieces.forEach((FallingPiece fp) {
-      fp.move();
+    fallingPieces.forEach((MovablePiece fp) {
+      fp.move(Direction.DOWN);
       if (fp.isVisible) {
         if (fp.isSelected) {
           fp.shape = PieceShape.ROUNDED_RECT;
@@ -105,7 +111,7 @@ class Board extends Surface {
   }
   
   restart() {
-    fallingPieces.forEach((FallingPiece fp) {
+    fallingPieces.forEach((MovablePiece fp) {
       fp.isVisible = true;
       fp.isSelected = false;
       fp.shape = PieceShape.SQUARE;
