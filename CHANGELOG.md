@@ -9,6 +9,7 @@ based on [Semantic Versioning](http://semver.org/)
 + remove the FallingPieces class in pieces
 + replace the move method with move([Direction direction]) of MovablePiece in pieces
 + replace FallingPiece with MovablePiece in Board of the drop example
++ show Direction in import in the crash and drop examples
 
 *0.2.1* 2015-03-08
 
