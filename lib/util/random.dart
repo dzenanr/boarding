@@ -22,7 +22,7 @@ num randomRangeNum(num min, num max) {
   return random;
 }
 
-num randomNumber(int max) {
+num randomSignNum(int max) {
   var logic = randomBool();
   var sign = randomSign(8);
   if (logic) {
