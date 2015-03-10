@@ -53,7 +53,7 @@ class Board extends Surface {
       fp.shape = PieceShape.SQUARE;
       fp.width = fp.height;
       fp.dy = 2;
-      fp.distanceHeight = height + 200;
+      fp.distanceMaxHeight = height + 200;
     });
     pieceCountInput.value = numberOfPieces.toString();
     hitCountLabel.text = '0';

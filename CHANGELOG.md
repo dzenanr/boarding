@@ -15,6 +15,10 @@ based on [Semantic Versioning](http://semver.org/)
 + rename randomNumber to randomSignNum in util
 + add more random tests
 + add dash example
++ rename distanceWidth to distanceMaxWidth of MovablePiece in pieces
++ rename distanceHeight to distanceMaxHeight of MovablePiece in pieces
++ add distanceMinWidth to MovablePiece 
++ add distanceMinHeight to MovablePiece
 
 *0.2.1* 2015-03-08
 

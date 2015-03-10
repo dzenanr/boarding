@@ -8,8 +8,8 @@ abstract class Car extends MovablePiece {
     shape = PieceShape.VEHICLE;
     width = defaultWidth;
     height = defaultHeight;
-    x = randomNum(distanceWidth - width);
-    y = randomNum(distanceHeight - height);
+    x = randomNum(distanceMaxWidth - width);
+    y = randomNum(distanceMaxHeight - height);
   }
 }
 
@@ -38,9 +38,9 @@ class RedCar extends Car {
   bool get isBig => !isSmall;
   
   move([Direction direction]) {
-    if (x > distanceWidth)  x = distanceWidth - 20;
+    if (x > distanceMaxWidth)  x = distanceMaxWidth - 20;
     if (x < 0)              x = 20 - width;
-    if (y > distanceHeight) y = distanceHeight - 20;
+    if (y > distanceMaxHeight) y = distanceMaxHeight - 20;
     if (y < 0)              y = 20 - height;      
   }
   
