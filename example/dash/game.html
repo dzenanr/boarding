@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dash example for the boarding package.</title>
+    <link rel="stylesheet" href="game.css">
+  </head>
+  <body>
+    <h1>Dash</h1>
+    <p> 
+      You may start with a different number of team members.
+    </p>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <br/>
+    Right Hits by Blue: <label id="hit-right-count" class="marker">0</label>
+    Members: <input id="piece-count" type="text" size="2"/>
+    <button id="start" class="button">Start</button>
+    Left Hits by Red: <label id="hit-left-count" class="marker">0</label>
+
+    <script type="application/dart" src="game.dart"></script>
+  </body>
+</html>

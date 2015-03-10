@@ -34,7 +34,7 @@ class Board extends Surface {
       car.move();
       cars.avoidCollisions(car);
       cars.forEach((car) {
-        if (redCar.isBig && redCar.accident(car)) {
+        if (redCar.isBig && redCar.hit(car)) {
           redCar.smaller();
           isAccident = true;
         }

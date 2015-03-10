@@ -1,4 +1,3 @@
 To Do
 
-- define the minimal piece size
 - add the best time to hit all per number of pieces

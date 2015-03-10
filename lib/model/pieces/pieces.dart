@@ -63,12 +63,14 @@ abstract class Piece {
 }
 
 class MovablePiece extends Piece {
-  static const num distanceLimitWidth = 800;
-  static const num distanceLimitHeight = 600;
+  static const num distanceLimitMinWidth = 600;
+  static const num distanceLimitMaxWidth = 800;
+  static const num distanceLimitMinHeight = 400;
+  static const num distanceLimitMaxHeight = 600;
   static const num speedLimit = 6;
   
-  num distanceWidth = distanceLimitWidth;
-  num distanceHeight = distanceLimitHeight;
+  num distanceWidth = distanceLimitMaxWidth;
+  num distanceHeight = distanceLimitMaxHeight;
   num speed = speedLimit;
   num dx = 1;
   num dy = 1;
@@ -105,10 +107,10 @@ class MovablePiece extends Piece {
     speed = randomNum(6) + 1;
     text = randomElement(colorList());
     colorCode = colorMap()[text];
-    x = randomNum(distanceLimitWidth - width);
-    y = randomNum(distanceLimitHeight - height);
-    distanceWidth = randomNum(distanceLimitWidth);
-    distanceHeight = randomNum(distanceLimitHeight);
+    x = randomNum(distanceLimitMaxWidth - width);
+    y = randomNum(distanceLimitMaxHeight - height);
+    distanceWidth = randomNum(distanceLimitMaxWidth);
+    distanceHeight = randomNum(distanceLimitMaxHeight);
     dx = randomNum(speedLimit);
     dy = randomNum(speedLimit);
   }
@@ -126,7 +128,7 @@ class MovablePiece extends Piece {
             y -= dy;
             if (y < 0) {
               x = randomNum(distanceWidth);
-              y = randomNum(distanceHeight);
+              y = randomRangeNum(distanceLimitMinHeight, distanceHeight);
             }
             break;
           case Direction.DOWN:
@@ -139,7 +141,7 @@ class MovablePiece extends Piece {
           case Direction.LEFT:
             x -= dx; 
             if (x < 0) {
-              x = randomNum(distanceWidth);
+              x = randomRangeNum(distanceLimitMinWidth, distanceWidth);
               y = randomNum(distanceHeight);
             }
             break;
@@ -156,26 +158,26 @@ class MovablePiece extends Piece {
   
   onOff() => isMoving = !isMoving;
   
-  bool accident(Piece p) {
-    bool isAccident = false;
+  bool hit(Piece p) {
+    bool isHit = false;
     if (p.x < x  && p.y < y) {
       if (p.x + p.width >= x && p.y + p.height >= y) {
-        isAccident = true;
+        isHit = true;
       }
     } else if (p.x > x  && p.y < y) {
       if (p.x <= x + width && p.y + p.height >= y) {
-        isAccident = true;
+        isHit = true;
       }
     } else if (p.x < x  && p.y > y) {
       if (p.x + p.width >= x && p.y <= y + height) {
-        isAccident = true;
+        isHit = true;
       }
     } else if (p.x > x  && p.y > y) {
       if (p.x <= x + width && p.y <= y + height) {
-        isAccident = true;
+        isHit = true;
       }
     }
-    return isAccident;
+    return isHit;
   }
   
   avoidCollision(Piece p) {
@@ -228,6 +230,8 @@ abstract class Pieces {
   int get length => _pieceList.length;
   add(Piece piece) => _pieceList.add(piece);
   forEach(Function f(Piece p)) => _pieceList.forEach(f);
+  bool any(bool f(Piece p)) => _pieceList.any(f);
+  bool every(bool f(Piece p)) => _pieceList.every(f);
   
   int invisibleCount() {
     int count = 0;
