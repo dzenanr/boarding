@@ -8,7 +8,7 @@ randomExample(Pen pen) {
   pen.interpret(commands);
 }
 
-String randomExampleName([int no = 100]) {
+String randomExampleName([int no = 102]) {
   var seq = randomInt(no);
   var name;
   if (seq < 10) { name = 'demo00${seq.toString()}';
@@ -117,7 +117,7 @@ List<String> exampleList() {
   examples.add(example087());
   examples.add(example088());
   examples.add(example089());
-  
+
   examples.add(example090());
   examples.add(example091());
   examples.add(example092());
@@ -125,11 +125,12 @@ List<String> exampleList() {
   examples.add(example094());
   examples.add(example095());
   examples.add(example096());
-  examples.add(example097()); 
+  examples.add(example097());
   examples.add(example098());
   examples.add(example099());
-  
+
   examples.add(example100());
+  examples.add(example101());
 
   return examples;
 }
@@ -2511,6 +2512,42 @@ move, 319.5442974338569, 0, 0;
 move, -10.466023959248725, 0, 0;
 move, 0, 145.92639708178382, 0;
 color, crimson;
+  ''';
+}
+
+String example101() {
+  return '''
+move, 169.12844618484542, -68.46144152717567, 30;
+color, cream;
+down, false;
+move, 140.08582159476725, -29.23478478922094, 34;
+move, 349.60789610011403, 86.20033899814358, 2;
+move, 56.4262315097321, 0, 0;
+move, 195.5422820159148, 135.0500828388179, 12;
+move, 215.17579547398654, 131.41165588024305, 28;
+move, -252.88030523306213, 168.66659733864026, 4;
+move, 134.81670914566647, 170.5834144397517, 18;
+move, -86.6932775914276, 0, 0;
+move, -176.68590715736858, -102.2456078365168, 8;
+move, -72.09947372856612, 0, 0;
+art, 7;
+width, 7;
+move, 185.39439154444108, 170.30613383611544, 24;
+move, 0, 142.54479982609416, 0;
+move, -359.0072558217809, 0, 0;
+width, 5;
+color, peach;
+move, -52.50019050685319, -107.36613441558876, 16;
+width, 1;
+move, 119.22230246946974, 22.34653414686285, 2;
+move, 151.7137004151818, 0, 0;
+move, 137.71470403876785, 0, 0;
+move, 4.1767376027181236, 6.078386340631896, 19;
+color, white;
+width, 6;
+move, 257.81624376631083, 84.10359042822688, 31;
+move, 163.92880684261374, -5.060030914327673, 17;
+color, red;
   ''';
 }
 
