@@ -2,7 +2,7 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
-*0.2.1* 2015-03-09
+*0.2.1* 2015-03-09 (Pub)
 
 + move the accident method from RedCar in the crash example to MovablePiece
 + rename the accident method to hit
@@ -45,7 +45,7 @@ based on [Semantic Versioning](http://semver.org/)
 + add random range in util
 + use random range in random init of pieces
 
-*0.2.0* 2015-03-05
+*0.2.0* 2015-03-05 (Pub)
 
 + save (and load) pieces to (from) the local storage
 
@@ -90,12 +90,12 @@ based on [Semantic Versioning](http://semver.org/)
 
 + const names are not any more in capital letters
 
-*0.1.1* 2014-02-14
+*0.1.1* 2014-02-14 (Pub)
 
 + move return false to the end of the intersects method in the model/Cell class
 + use var for a local variable in the ttt example
 
-*0.1.0* 2014-02-10
+*0.1.0* 2014-02-10 (Pub)
 
 + create the initial boarding package
 
