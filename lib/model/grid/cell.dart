@@ -74,7 +74,7 @@ class Cell {
   set text(String s) {
     _text = s;
     if (_text == '') {
-      color = grid.defaultColor;
+      color = grid.color;
     }
   }
 

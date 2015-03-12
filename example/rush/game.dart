@@ -18,7 +18,8 @@ part 'view/board.dart';
 main() {
   final model = new CarParkingModel();
   final grid = new SquareGrid(6);
-  final board = new Board(querySelector('#canvas'), grid, model, 
+  final board = new Board(querySelector('#canvas'), grid, model,
+      //withLines: false, area: 'beginner', parking: 1);
       withLines: false, area: 'intermediate', parking: 2);
   board.draw();
 }

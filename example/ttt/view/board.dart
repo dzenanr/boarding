@@ -34,11 +34,5 @@ class Board extends SquareSurface {
         }
       }
     });
-    window.animationFrame.then(gameLoop);
-  }
-
-  gameLoop(num delta) {
-    draw();
-    window.animationFrame.then(gameLoop);
   }
 }

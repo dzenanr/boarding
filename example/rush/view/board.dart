@@ -9,8 +9,8 @@ class Board extends SquareSurface {
   Area currentArea;
   Parking currentParking;
 
-  Board(CanvasElement canvas, SquareGrid grid, this.carParkingModel, 
-      {bool withLines: true, String this.area: 'beginner', int this.parking: 1}): 
+  Board(CanvasElement canvas, SquareGrid grid, this.carParkingModel,
+      {bool withLines: true, String this.area: 'beginner', int this.parking: 1}):
     super(canvas, withLines: withLines, grid: grid) {
     cellLength = length ~/ grid.size;
     currentArea = carParkingModel.areas.getArea(area);
@@ -26,18 +26,13 @@ class Board extends SquareSurface {
         car = currentParking.cars.getSelectedCarAfterOrBeforeCell(row, column);
         if (car != null) {
           car.moveToCell(row, column);
-          if (car.carBrand.code == 'X' && car.currentColumn == grid.size - car.carBrand.size) {
+          if (car.carBrand.code == 'X' &&
+              car.currentColumn == grid.size - car.carBrand.size) {
             car.currentColumn = grid.size; // the car exits the parking
           }
         }
       }
     });
-    window.animationFrame.then(gameLoop);
-  }
-  
-  gameLoop(num delta) {
-    draw();
-    window.animationFrame.then(gameLoop);
   }
 
   draw() {
@@ -58,9 +53,9 @@ class Board extends SquareSurface {
       }
       String color = car.carBrand.color;
       if (car.isSelected) {
-        new SelectedRect(this, x, y, carWidth, carHeight, color: color).draw();
+        new SelectedRect(canvas, x, y, carWidth, carHeight, color: color).draw();
       } else {
-        new Rect(this, x, y, carWidth, carHeight, color: color).draw();
+        new Rect(canvas, x, y, carWidth, carHeight, color: color).draw();
       }
     }
   }

@@ -2,10 +2,10 @@ part of crash;
 
 class Board extends Surface {
   static const int carCount = 9; // including the red car
-  
+
   Cars cars;
   RedCar redCar;
-  
+
   Board(CanvasElement canvas) : super(canvas) {
     cars = new Cars(carCount);
     redCar = cars.redCar;
@@ -16,17 +16,11 @@ class Board extends Surface {
     });
     document.onMouseMove.listen((MouseEvent e) {
       redCar.x = e.offset.x - redCar.width  / 2;
-      redCar.y = e.offset.y - redCar.height / 2; 
+      redCar.y = e.offset.y - redCar.height / 2;
       redCar.move();
     });
-    window.animationFrame.then(gameLoop);
   }
-  
-  gameLoop(num delta) {
-    draw();
-    window.animationFrame.then(gameLoop);
-  }
-  
+
   draw() {
     clear();
     bool isAccident = false;

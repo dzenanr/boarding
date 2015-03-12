@@ -5,12 +5,12 @@ class Board extends Surface {
   static const String drop = 'drop';
   static const String count = 'count';
   static const String hitCount = 'hitCount';
-  
+
   MovablePieces fallingPieces;
   bool isGameOver;
   InputElement pieceCountInput = querySelector('#piece-count');
   LabelElement hitCountLabel = querySelector('#hit-count');
-  
+
   Board(CanvasElement canvas) : super(canvas) {
     init(pieceCount);
     querySelector('#save').onClick.listen((e) {
@@ -26,7 +26,7 @@ class Board extends Surface {
       start();
     });
     canvas.onMouseDown.listen((MouseEvent e) {
-      fallingPieces.forEach((MovablePiece fp) {      
+      fallingPieces.forEach((MovablePiece fp) {
         var x = e.offset.x;
         var y = e.offset.y;
         if (fp.contains(x, y)) {
@@ -38,14 +38,13 @@ class Board extends Surface {
               isGameOver = true;
             }
           } else {
-            fp.isSelected = true; 
+            fp.isSelected = true;
           }
         }
       });
     });
-    window.animationFrame.then(gameLoop);
   }
-  
+
   init(int numberOfPieces) {
     fallingPieces = new MovablePieces(numberOfPieces);
     fallingPieces.randomInit();
@@ -59,36 +58,31 @@ class Board extends Surface {
     hitCountLabel.text = '0';
     isGameOver = false;
   }
-  
-  gameLoop(num delta) {
-    if (!isGameOver) {
-      draw();
-    }
-    window.animationFrame.then(gameLoop);
-  }
-  
+
   draw() {
-    clear();
-    fallingPieces.forEach((MovablePiece fp) {
-      fp.move(Direction.DOWN);
-      if (fp.isVisible) {
-        if (fp.isSelected) {
-          fp.shape = PieceShape.ROUNDED_RECT;
-        } 
-        drawPiece(fp);
-      }
-    });
+    if (!isGameOver) {
+      clear();
+      fallingPieces.forEach((MovablePiece fp) {
+        fp.move(Direction.DOWN);
+        if (fp.isVisible) {
+          if (fp.isSelected) {
+            fp.shape = PieceShape.ROUNDED_RECT;
+          }
+          drawPiece(fp);
+        }
+      });
+    }
   }
-  
+
   save() {
     window.localStorage[count] = fallingPieces.length.toString();
     window.localStorage[drop] = fallingPieces.toJsonString();
     window.localStorage[hitCount] = fallingPieces.invisibleCount().toString();
   }
-  
+
   load() {
-    String countString = window.localStorage[count]; 
-    if (countString != null) { 
+    String countString = window.localStorage[count];
+    if (countString != null) {
       pieceCountInput.value = countString;
       try {
         init(int.parse(countString));
@@ -101,15 +95,15 @@ class Board extends Surface {
     String gameString = window.localStorage[drop];
     if (gameString != null) {
       fallingPieces.fromJsonString(gameString);
-    } 
-    String hitCountString = window.localStorage[hitCount]; 
-    if (hitCountString != null) { 
+    }
+    String hitCountString = window.localStorage[hitCount];
+    if (hitCountString != null) {
       hitCountLabel.text = hitCountString;
     } else {
       hitCountLabel.text = '0';
     }
   }
-  
+
   restart() {
     fallingPieces.forEach((MovablePiece fp) {
       fp.isVisible = true;
@@ -119,7 +113,7 @@ class Board extends Surface {
     hitCountLabel.text = '0';
     isGameOver = false;
   }
-  
+
   start() {
     try {
       init(int.parse(pieceCountInput.value));

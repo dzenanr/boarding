@@ -70,7 +70,7 @@ stairSquare(d_pen.Pen pen, {num size: 60}) {
   pen.width = 2;
   for (var i in new List(16)) {
     multicolorSquare(size);
-    size = size + 10;         
+    size = size + 10;
     pen.forward(10);
     pen.right(18);
   }
@@ -153,19 +153,19 @@ zigZag(d_pen.Pen pen) {
 }
 
 runRandom(d_pen.Pen pen) {
-  d_pen.randomProgram(pen);
-  //d_pen.randomSequence(pen);
+  //d_pen.randomProgram(pen);
+  d_pen.randomSequence(pen);
   //d_pen.randomExample(pen);
   //d_pen.randomDemo(pen);
 }
 
 runProgram(d_pen.Pen pen) {
-  onako(pen);
+  //onako(pen);
   //rotateSquare(pen);
   //stairSquare(pen);
   //barGraph(pen);
   //mapMap(pen);
-  //zigZag(pen);
+  zigZag(pen);
 }
 
 main() {
@@ -173,7 +173,7 @@ main() {
   final board = new Board(querySelector('#canvas'), repo);
   var pen = board.pen;
   runRandom(pen);
-  //runProgram(pen);  
+  //runProgram(pen);
   board.draw();
   pen.displayCommands();
 }

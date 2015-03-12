@@ -10,6 +10,13 @@ http://api.shephertz.com/app42-dev/ebook-turn-based-games.php
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
 http://www.giantbomb.com/asynchronous-multiplayer/3015-4359/games/
 
+Color
+
+http://en.wikipedia.org/wiki/RGBA_color_space
+http://www.css3.info/preview/rgba/
+http://www.w3schools.com/cssref/css_colors_legal.asp
+http://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_rgba
+
 Companies
 
 http://powerheadgames.com/powerheads-games/async-corp-press/
@@ -38,6 +45,14 @@ http://imgur.com/a/nxA4Y
 Questions
 
 http://stackoverflow.com/questions/11622068/snake-cube-puzzle-correctness
+
+Semantic Versioning
+
+http://semver.org/
+
+Shapes
+
+http://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5
 
 Tutorials
 

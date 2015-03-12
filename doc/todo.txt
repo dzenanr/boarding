@@ -1,5 +1,6 @@
 To do
 
+- add star as a new shape
 - write a document about the boarding poackage
 - create more examples to increase the generic stuff
 - do view tests with a web test library

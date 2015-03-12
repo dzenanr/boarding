@@ -13,6 +13,7 @@ class Ball {
   }
 
   draw() {
-    new Circle(board, x, y, radius, color: color, borderColor: outline).draw();
+    new Circle(board.canvas, x, y, radius,
+        color: color, borderColor: outline).draw();
   }
 }

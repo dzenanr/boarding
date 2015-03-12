@@ -1,7 +1,7 @@
 part of grid;
 
 class Grid {
-  String defaultColor = 'white';
+  String color = 'white';
   int columnCount;  
   int rowCount; 
 

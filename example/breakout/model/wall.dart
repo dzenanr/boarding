@@ -29,7 +29,7 @@ class Wall extends Pieces {
         var brick = new Brick(++id, brickWidth, brickHeight);
         brick.x = (j * (brick.width + 1)) + 1;
         brick.y = (i * (brick.height + 1)) + 1;
-        brick.colorCode = randomColorCode();
+        brick.color = randomColorCode();
         brick.isVisible = true;
         bricks[i][j] = brick;
         add(brick);

@@ -1,0 +1,12 @@
+Links
+
+http://cssdeck.com/item/602/html5-canvas-particles-web-matrix
+https://github.com/dzenanr/attracting_particles
+
+http://en.wikipedia.org/wiki/RGBA_color_space
+http://www.css3.info/preview/rgba/
+http://www.w3schools.com/cssref/css_colors_legal.asp
+http://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_rgba
+
+http://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5
+

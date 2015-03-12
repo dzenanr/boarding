@@ -19,6 +19,10 @@ testUtil() {
       var r = randomRangeNum(0.8, 9.9);
       expect(r, inClosedOpenRange(0.8, 9.9));
     });
+    test('Random range number', () {
+      var r = randomRangeNum(400, 400);
+      expect(r, equals(400));
+    });
     test('Random sign number', () {
       var r = randomSignNum(10);
       expect(r, inClosedOpenRange(-10, 10));

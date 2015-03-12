@@ -32,6 +32,6 @@ class Racket {
   }
 
   draw() {
-    new Rect(board, x, y, w, h).draw();
+    new Rect(board.canvas, x, y, w, h).draw();
   }
 }

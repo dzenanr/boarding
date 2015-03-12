@@ -2,7 +2,7 @@ part of memory;
 
 class Board extends Surface {
   num cellSize;
-  
+
   Memory memory;
   MemoryCell lastCellClicked;
 
@@ -24,18 +24,12 @@ class Board extends Surface {
       }
       lastCellClicked = cell;
     });
-    window.animationFrame.then(gameLoop);
-  }
-
-  gameLoop(num delta) {
-    draw();
-    window.animationFrame.then(gameLoop);
   }
 
   draw() {
     super.draw();
     if (memory.recalled) { // game over
-      new Tag(this, cellSize * 2, cellSize * 2, 32, 'YOU WIN', color: 'red').draw();
+      new Tag(canvas, cellSize * 2, cellSize * 2, 32, 'YOU WIN', color: 'red').draw();
     }
   }
 }

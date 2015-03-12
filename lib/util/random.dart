@@ -2,10 +2,10 @@ part of util;
 
 randomBool() => new Random().nextBool();
 
-// Range from 0, inclusive, to max, exclusive.
+// nextInt(max): range from 0, inclusive, to max, exclusive.
 randomInt(int max) => new Random().nextInt(max);
 
-// Range from 0.0, inclusive, to 1.0, exclusive.
+// nextDouble(): range from 0.0, inclusive, to 1.0, exclusive.
 double randomDouble(double max) {
   return new Random().nextDouble() * max;
 }
@@ -18,7 +18,7 @@ num randomRangeNum(num min, num max) {
   num random = new Random().nextDouble() * max;
   if (random < min) {
     random = min;
-  } 
+  }
   return random;
 }
 

@@ -1,8 +1,26 @@
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
-based on [Semantic Versioning](http://semver.org/)
+*0.2.2* 2015-03-12
 
-*0.2.1* 2015-03-09 (Pub)
++ make speed a derived property in MovablePiece
++ remove spped from json
++ rename colorCode to color in Piece
++ add borderColor to Piece
++ add color to Surface
++ include border color in draw piece in Surface
++ add distance function in pieces
++ add accelerate function in pieces
++ add drawRandomStars and drawStar in shapes
++ add prepareStars and drawStars in shapes
++ add drawDistanceLine in shapes
++ replace surface by canvas in shapes
++ rename shape.dart to shapes.dart
++ add gameLoop to Surface
++ window.animationFrame.then(gameLoop); to Surface
++ add attract example
++ correct bug in getSelectedCarAfterOrBeforeCell of Cars in the rush example
+
+*0.2.1* 2015-03-10 (Pub)
 
 + move the accident method from RedCar in the crash example to MovablePiece
 + rename the accident method to hit
