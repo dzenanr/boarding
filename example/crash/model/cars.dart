@@ -74,7 +74,7 @@ class Cars extends MovablePieces {
     redCar = new RedCar(0);
   }
 
-  createMovablePieces(int count, {Distance distance}) {
+  createMovablePieces(int count, [Distance distance]) {
     for (var i = 0; i < count - 1; i++) {
       add(new NonRedCar(i + 1));
     }

@@ -5,9 +5,10 @@
 + add Dimension and Distance classes to pieces
 + use Dimension in Piece
 + use Distance in MovablePiece
-+ add optional distance name parameter to MovablePiece constructor
++ add optional distance parameter to MovablePiece constructor
 + add randomPosition based on random distance in MovablePiece
-+ add optional distance name parameter to MovablePieces constructor
++ add optional distance parameter to MovablePieces constructor
++ add optional distance parameter to createMovablePieces in MovablePieces
 + rename randomSequence to randomCommandSequence in programs in the art_pen model
 + update examples to use distance
 + improve the move method in RedCar in the crash example

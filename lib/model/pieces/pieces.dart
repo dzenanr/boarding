@@ -169,7 +169,7 @@ class MovablePiece extends Piece {
   num dy = 1;
   bool isMoving = true;
 
-  MovablePiece(int id, {Distance distance}): super(id) {
+  MovablePiece(int id, [Distance distance]): super(id) {
     if (distance == null) {
       _distance =  new Distance();
     } else {
@@ -387,11 +387,11 @@ class Pieces {
 
 class MovablePieces extends Pieces {
 
-  MovablePieces(int count, {Distance distance}) {
-    createMovablePieces(count, distance: distance);
+  MovablePieces(int count, [Distance distance]) {
+    createMovablePieces(count, distance);
   }
 
-  createMovablePieces(int count, {Distance distance}) {
+  createMovablePieces(int count, [Distance distance]) {
     var id = 0;
     if (distance == null) {
       for (var i = 0; i < count; i++) {
@@ -399,7 +399,7 @@ class MovablePieces extends Pieces {
       }
     } else {
       for (var i = 0; i < count; i++) {
-        add(new MovablePiece(++id, distance: distance));
+        add(new MovablePiece(++id, distance));
       }
     }
   }
