@@ -17,6 +17,32 @@ accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
   p2.dx += ax; p2.dy += ay;
 }
 
+class Point {
+  num x = 0;
+  num y = 0;
+
+  Point();
+
+  Point.from(this.x, this.y);
+
+  Point.fromJsonMap(Map<String, num> jsonMap) {
+    x = jsonMap['x'];
+    y = jsonMap['y'];
+  }
+
+  Map<String, num> toJsonMap() {
+    var jsonMap = new Map<String, num>();
+    jsonMap['x'] = x;
+    jsonMap['y'] = y;
+    return jsonMap;
+  }
+
+  random(num width, num height) {
+    x = randomNum(width);
+    y = randomNum(height);
+  }
+}
+
 class Dimension {
   static const num limitMinWidth = 12;
   static const num limitMaxWidth = 120;
@@ -33,13 +59,11 @@ class Dimension {
 
   Dimension();
 
-  Dimension.from(num width, num height) {
+  Dimension.from(this.width, this.height) {
     minWidth = width;
     maxWidth = width;
     minHeight = height;
     maxHeight = height;
-    this.width = width;
-    this.height = height;
   }
 
   Dimension.fromJsonMap(Map<String, num> jsonMap) {

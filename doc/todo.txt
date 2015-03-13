@@ -1,6 +1,7 @@
 To do
 
-- add Position (Point) class
+- use the Point class
+- add equal to the Point, Dimension and Distance classes
 - add sound to the crash example
 - add invade example
 - add the magic boxes example

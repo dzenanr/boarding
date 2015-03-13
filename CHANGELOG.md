@@ -13,6 +13,7 @@
 + update examples to use distance
 + improve the move method in RedCar in the crash example
 + add star as a new shape
++ add Point class
 
 *0.2.2* 2015-03-12
 
