@@ -37,12 +37,12 @@ class RedCar extends Car {
 
   move([Direction direction]) {
     if (x + width > this.distance.width) {
-      //x = distance.width - width;
+      //x = distance.width - width; // error!?
       x = this.distance.width - width;
     }
     if (x - width < 0) {x = 0;}
     if (y + height > this.distance.height) {
-      //y = distance.height - height;
+      //y = distance.height - height; // error!?
       y = this.distance.height - height;
     }
     if (y - height < 0) {y = 0;}

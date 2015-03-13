@@ -10,6 +10,7 @@
 + add optional distance name parameter to MovablePieces constructor
 + rename randomSequence to randomCommandSequence in programs in the art_pen model
 + update examples to use distance
++ improve the move method in RedCar in the crash example
 
 *0.2.2* 2015-03-12
 
