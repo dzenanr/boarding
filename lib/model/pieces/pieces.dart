@@ -1,6 +1,7 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, LINE, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, TAG, VEHICLE}
+enum PieceShape {CIRCLE, LINE, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, STAR,
+  TAG, VEHICLE}
 
 num distance(Piece p1, Piece p2) { // in pixels
   var xd = p1.x - p2.x, yd = p1.y - p2.y;

@@ -22,19 +22,20 @@ prepareRoundedRect(CanvasElement canvas, num x, num y, num width, num height, nu
     ..closePath();
 }
 
-List<Map<String, num>> prepareStars(CanvasElement canvas, int count, {int spikes: 5}) {
+List<Map<String, num>> prepareStars(CanvasElement canvas, int count,
+    {int spikes: 5}) {
   var stars = new List<Map>();
   for (var i = 0; i < count; i++) {
-    var sx = randomNum(canvas.width);
-    var sy = randomNum(canvas.height);
-    var outerRadius = randomNum(spikes + 2);
-    var innerRadius = randomNum(spikes - 2);
+    var x = randomNum(canvas.width);
+    var y = randomNum(canvas.height);
+    var radius = randomNum(spikes * 2);
+    var innerRadius = randomNum(spikes);
     var star = new Map<String, num>();
-    star['sx'] = sx;
-    star['sy'] = sy;
-    star['spikes'] = spikes;
-    star['outerRadius'] = outerRadius;
+    star['x'] = x;
+    star['y'] = y;
+    star['radius'] = radius;
     star['innerRadius'] = innerRadius;
+    star['spikes'] = spikes;
     stars.add(star);
   }
   return stars;
@@ -43,51 +44,53 @@ List<Map<String, num>> prepareStars(CanvasElement canvas, int count, {int spikes
 drawStars(CanvasElement canvas, List<Map<String, num>> stars) {
   for (var i = 0; i < stars.length; i++) {
     var star = stars[i];
-    var sx = star['sx'];
-    var sy = star['sy'];
-    var spikes = star['spikes'];
-    var outerRadius = star['outerRadius'];
+    var x = star['x'];
+    var y = star['y'];
+    var radius = star['radius'];
     var innerRadius = star['innerRadius'];
-    drawStar(canvas, sx, sy, spikes, outerRadius, innerRadius);
+    var spikes = star['spikes'];
+    drawStar(canvas, x, y, radius,
+        innerRadius: innerRadius, spikes: spikes);
   }
 }
 
 drawRandomStars(CanvasElement canvas, int count) {
   for (var i = 0; i < count; i++) {
-    var sx = randomNum(canvas.width);
-    var sy = randomNum(canvas.height);
-    var spikes = 5;
-    var outerRadius = randomNum(7);
-    var innerRadius = randomNum(4);
-    drawStar(canvas, sx, sy, spikes, outerRadius, innerRadius);
+    var x = randomNum(canvas.width);
+    var y = randomNum(canvas.height);
+    var spikes = randomRangeNum(5, 8);
+    var radius = randomNum(spikes * 2);
+    var innerRadius = randomNum(spikes);
+    drawStar(canvas, x, y, radius,
+        innerRadius: innerRadius, spikes: spikes);
   }
 }
 
-drawStar(CanvasElement canvas, num sx, num sy, num spikes,
-         num outerRadius, num innerRadius,
-         {String color: 'white', String borderColor: 'black'}) {
+drawStar(CanvasElement canvas, num x, num y, num radius,
+         {num innerRadius, int spikes: 5,
+           String color: '#ffff99', String borderColor: 'black'}) {
+  // light yellow: #ffff99
   var rot = PI / 2 * 3;
-  var x = sx;
-  var y = sy;
+  var sx = x;
+  var sy = y;
   var step = PI / spikes;
   var context = canvas.getContext('2d');
 
   context.strokeStyle = borderColor;
   context.fillStyle = color;
   context.beginPath();
-  context.moveTo(sx,sy-outerRadius);
+  context.moveTo(x, y - radius);
   for (var i = 0; i < spikes; i++) {
-    x = sx + cos(rot) * outerRadius;
-    y = sy + sin(rot) * outerRadius;
-    context.lineTo(x, y);
+    sx = x + cos(rot) * radius;
+    sy = y + sin(rot) * radius;
+    context.lineTo(sx, sy);
     rot += step;
-
-    x = sx + cos(rot) * innerRadius;
-    y = sy + sin(rot) * innerRadius;
-    context.lineTo(x,y);
+    sx = x + cos(rot) * innerRadius;
+    sy = y + sin(rot) * innerRadius;
+    context.lineTo(sx, sy);
     rot += step;
   }
-  context.lineTo(sx, sy - outerRadius);
+  context.lineTo(x, y - radius);
   context.stroke();
   context.fill();
   context.closePath();
@@ -138,6 +141,27 @@ class Circle extends Shape {
         ..closePath()
         ..fill()
         ..stroke();
+  }
+}
+
+class Star extends Circle {
+  num innerRadius;
+  int spikes;
+
+  Star(CanvasElement canvas, num x, num y, num radius,
+      {num this.innerRadius, int this.spikes: 5, num lineWidth: 1,
+        String color: '#ffff99', String borderColor: 'black'}):
+      super(canvas, x, y, radius,
+          lineWidth: lineWidth, color: color, borderColor: borderColor) {
+    if (innerRadius == null) {
+      innerRadius = radius / 2;
+    }
+  }
+
+  draw() {
+    drawStar(canvas, x, y, radius,
+        innerRadius: innerRadius, spikes: spikes,
+        color: color, borderColor: borderColor);
   }
 }
 

@@ -1,7 +1,9 @@
 To do
 
-- add star as a new shape
 - add Position (Point) class
+- add sound to the crash example
+- add invade example
+- add the magic boxes example
 - write a document about the boarding poackage
 - create more examples to increase the generic stuff
 - do view tests with a web test library

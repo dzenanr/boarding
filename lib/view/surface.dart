@@ -114,6 +114,11 @@ class Surface {
         new Square(canvas, piece.x, piece.y, piece.width,
             color: piece.color, borderColor: piece.borderColor).draw();
         break;
+      case PieceShape.STAR:
+        new Star(canvas, piece.x, piece.y, piece.width / 2,
+            innerRadius: piece.width / 4,
+            color: piece.color, borderColor: piece.borderColor).draw();
+        break;
       case PieceShape.TAG:
         new Tag(canvas, piece.x, piece.y, piece.width, piece.text,
             color: piece.color, borderColor: piece.borderColor).draw();
