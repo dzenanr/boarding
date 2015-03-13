@@ -7,10 +7,15 @@ class Board extends Surface {
   RedCar redCar;
 
   Board(CanvasElement canvas) : super(canvas) {
+    var distance = new Distance.from(canvas.width, canvas.height);
     cars = new Cars(carCount);
+    cars.forEach((Car car) {
+      car.distance = distance;
+      car.x = randomNum(car.distance.width - car.width);
+      car.y = randomNum(car.distance.height - car.height);
+    });
     redCar = cars.redCar;
-    redCar.distanceMaxWidth = canvas.width;
-    redCar.distanceMaxHeight = canvas.height;
+    redCar.distance = distance;
     document.onMouseDown.listen((MouseEvent e) {
       if (redCar.isSmall) redCar.bigger();
     });

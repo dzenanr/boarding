@@ -1,6 +1,7 @@
 To do
 
 - add star as a new shape
+- add Position (Point) class
 - write a document about the boarding poackage
 - create more examples to increase the generic stuff
 - do view tests with a web test library

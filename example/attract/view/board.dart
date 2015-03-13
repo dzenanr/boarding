@@ -17,16 +17,7 @@ class Board extends Surface {
       p.color = 'white';
       p.dx = 1;
       p.dy = 1;
-      p.distanceMinWidth = canvas.width;
-      p.distanceMaxWidth = canvas.width;
-      p.distanceMinHeight = canvas.height;
-      p.distanceMaxHeight = canvas.height;
-      if (p.x + p.width / 2 > p.distanceMinWidth) {
-        p.x = p.distanceMinWidth - p.width / 2;
-      }
-      if (p.y + p.height / 2 > p.distanceMinHeight) {
-        p.y = p.distanceMinHeight - p.height / 2;
-      }
+      p.distance = new Distance.from(canvas.width, canvas.height);
     });
   }
 

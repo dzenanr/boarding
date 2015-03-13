@@ -2,6 +2,17 @@
 
 *0.2.2* 2015-03-12
 
++ add Dimension and Distance classes to pieces
++ use Dimension in Piece
++ use Distance in MovablePiece
++ add optional distance name parameter to MovablePiece constructor
++ add randomPosition based on random distance in MovablePiece
++ add optional distance name parameter to MovablePieces constructor
++ rename randomSequence to randomCommandSequence in programs in the art_pen model
++ update examples to use distance
+
+*0.2.2* 2015-03-12
+
 + make speed a derived property in MovablePiece
 + remove spped from json
 + rename colorCode to color in Piece

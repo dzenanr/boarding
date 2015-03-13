@@ -27,7 +27,9 @@ class Board extends Surface {
       mrp.width = mrp.height;
       mrp.color = 'blue';
       mrp.dx = 2;
-      mrp.distanceMaxHeight = height + 200;
+      mrp.distance.minWidth = width;
+      mrp.distance.maxWidth = width + 200;
+      mrp.distance.minHeight = height;
     });
     movingLeftPieces = new MovablePieces(numberOfPieces);
     movingLeftPieces.randomInit();
@@ -36,7 +38,9 @@ class Board extends Surface {
       mlp.width = mlp.height;
       mlp.color = 'red';
       mlp.dx = 2;
-      mlp.distanceMaxHeight = height + 200;
+      mlp.distance.minWidth = width;
+      mlp.distance.maxWidth = width + 200;
+      mlp.distance.minHeight = height;
     });
     pieceCountInput.value = numberOfPieces.toString();
     hitRightCount = 0;

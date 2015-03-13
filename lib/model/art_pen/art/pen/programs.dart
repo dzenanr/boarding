@@ -108,7 +108,7 @@ randomProgram(Pen pen, [int artCount = 4, int commandsCount = 32]) {
   pen.interpret(program);
 }
 
-randomSequence(Pen pen, {int artCount: 4}) {
+randomCommandSequence(Pen pen, {int artCount: 4}) {
   var commands =
     'colorRandom; '
     'widthRandom; '
@@ -209,7 +209,7 @@ demo(Pen pen, int demo) {
       demo21(pen);
       break;
     default:
-      randomSequence(pen);
+      randomCommandSequence(pen);
       break;
   }
 }

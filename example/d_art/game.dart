@@ -154,7 +154,7 @@ zigZag(d_pen.Pen pen) {
 
 runRandom(d_pen.Pen pen) {
   //d_pen.randomProgram(pen);
-  d_pen.randomSequence(pen);
+  d_pen.randomCommandSequence(pen);
   //d_pen.randomExample(pen);
   //d_pen.randomDemo(pen);
 }
