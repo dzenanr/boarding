@@ -4,10 +4,12 @@ class Board extends Surface {
   var movablePieces;
 
   Board(CanvasElement canvas): super(canvas) {
-    movablePieces = new MovablePieces(32,
-        new Distance.from(canvas.width, canvas.height));
+    movablePieces = new MovablePieces(32);
     movablePieces.randomInit();
-    movablePieces.forEach((MovablePiece p) => p.shape = PieceShape.CIRCLE);
+    movablePieces.forEach((MovablePiece p) {
+      p.shape = PieceShape.CIRCLE;
+      p.distanceSize = new Size(width, height);
+    });
   }
 
   draw() {

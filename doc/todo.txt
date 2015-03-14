@@ -1,11 +1,14 @@
 To do
 
-- use the Point class
-- add equal to the Point, Dimension and Distance classes
+- use only functions in shapes
+- add equal to the Position, Size, MinMaxSize and MinMaxSpace classes
 - add sound to the crash example
-- add invade example
+- add invade example based on the invaders example
+- add detris (tetris) based on the datris example
+- add snake example
+- add parity example
 - add the magic boxes example
 - write a document about the boarding poackage
-- create more examples to increase the generic stuff
+- create even more examples to increase the generic stuff
 - do view tests with a web test library
 

@@ -1,6 +1,28 @@
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
-*0.2.2* 2015-03-12
+*0.2.2* 2015-03-14
+
++ remove Point, Dimension and Distance classes from pieces
++ remove optional distance parameter in MovablePiece constructor
++ remove randomPosition based on random distance in MovablePiece
++ remove optional distance parameter in MovablePieces constructor
++ remove optional distance parameter in createMovablePieces in MovablePieces
++ add util/geo.dart
++ add Position, Size, Box, MinMaxSize and MinMaxSpace classes to geo.dart
++ remove x, y and dimension properties in Piece
++ use box, minMaxSize and minMaxSpace properties in Piece
++ update json methods in Piece 
++ update the randomInit method in Piece
++ add get and set for x, y, width and height derived properties in Piece
++ remove distance property in MovablePiece
++ add _distanceSize property in MovablePiece
++ update json methods in MovablePiece 
++ get and set for _distanceSize property in MovablePiece
++ validate positions in set distanceSize
++ update the randomInit method in MovablePiece
++ update the move method in MovablePiece
+
+*0.2.2* 2015-03-13
 
 + add Dimension and Distance classes to pieces
 + use Dimension in Piece
@@ -12,8 +34,8 @@
 + rename randomSequence to randomCommandSequence in programs in the art_pen model
 + update examples to use distance
 + improve the move method in RedCar in the crash example
-+ add star as a new shape
-+ add Point class
++ add star as a new shape in pieces and shapes
++ add Point class in pieces
 
 *0.2.2* 2015-03-12
 

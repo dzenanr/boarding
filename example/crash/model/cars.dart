@@ -36,14 +36,14 @@ class RedCar extends Car {
   bool get isBig => !isSmall;
 
   move([Direction direction]) {
-    if (x + width > this.distance.width) {
+    if (x + width > this.distanceSize.width) {
       //x = distance.width - width; // error!?
-      x = this.distance.width - width;
+      x = this.distanceSize.width - width;
     }
     if (x - width < 0) {x = 0;}
-    if (y + height > this.distance.height) {
+    if (y + height > this.distanceSize.height) {
       //y = distance.height - height; // error!?
-      y = this.distance.height - height;
+      y = this.distanceSize.height - height;
     }
     if (y - height < 0) {y = 0;}
   }
@@ -74,7 +74,7 @@ class Cars extends MovablePieces {
     redCar = new RedCar(0);
   }
 
-  createMovablePieces(int count, [Distance distance]) {
+  createMovablePieces(int count) {
     for (var i = 0; i < count - 1; i++) {
       add(new NonRedCar(i + 1));
     }

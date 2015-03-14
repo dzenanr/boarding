@@ -17,7 +17,7 @@ class Board extends Surface {
       p.color = 'white';
       p.dx = 1;
       p.dy = 1;
-      p.distance = new Distance.from(canvas.width, canvas.height);
+      p.distanceSize = new Size(width, height);
     });
   }
 

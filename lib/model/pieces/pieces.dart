@@ -17,105 +17,6 @@ accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
   p2.dx += ax; p2.dy += ay;
 }
 
-class Point {
-  num x = 0;
-  num y = 0;
-
-  Point();
-
-  Point.from(this.x, this.y);
-
-  Point.fromJsonMap(Map<String, num> jsonMap) {
-    x = jsonMap['x'];
-    y = jsonMap['y'];
-  }
-
-  Map<String, num> toJsonMap() {
-    var jsonMap = new Map<String, num>();
-    jsonMap['x'] = x;
-    jsonMap['y'] = y;
-    return jsonMap;
-  }
-
-  random(num width, num height) {
-    x = randomNum(width);
-    y = randomNum(height);
-  }
-}
-
-class Dimension {
-  static const num limitMinWidth = 12;
-  static const num limitMaxWidth = 120;
-  static const num limitMinHeight = 8;
-  static const num limitMaxHeight = 80;
-
-  num minWidth = limitMinWidth;
-  num maxWidth = limitMaxWidth;
-  num minHeight = limitMinHeight;
-  num maxHeight = limitMaxHeight;
-
-  num width = limitMaxWidth;
-  num height = limitMaxHeight;
-
-  Dimension();
-
-  Dimension.from(this.width, this.height) {
-    minWidth = width;
-    maxWidth = width;
-    minHeight = height;
-    maxHeight = height;
-  }
-
-  Dimension.fromJsonMap(Map<String, num> jsonMap) {
-    minWidth = jsonMap['minWidth'];
-    maxWidth = jsonMap['maxWidth'];
-    minHeight = jsonMap['minHeight'];
-    maxHeight = jsonMap['maxHeight'];
-    width = jsonMap['width'];
-    height = jsonMap['height'];
-  }
-
-  Map<String, num> toJsonMap() {
-    var jsonMap = new Map<String, num>();
-    jsonMap['minWidth'] = minWidth;
-    jsonMap['maxWidth'] = maxWidth;
-    jsonMap['minHeight'] = minHeight;
-    jsonMap['maxHeight'] = maxHeight;
-    jsonMap['width'] = width;
-    jsonMap['height'] = height;
-    return jsonMap;
-  }
-
-  random() {
-    width = randomRangeNum(minWidth, maxWidth);
-    height = randomRangeNum(minHeight, maxHeight);
-  }
-
-  bool isMinMaxWidthSame() => minWidth == maxWidth && maxWidth == width;
-  bool isMinMaxHeightSame() => minHeight == maxHeight && maxHeight == height;
-}
-
-class Distance extends Dimension {
-  static const num limitMinWidth = 600;
-  static const num limitMaxWidth = 800;
-  static const num limitMinHeight = 400;
-  static const num limitMaxHeight = 600;
-
-  num minWidth = limitMinWidth;
-  num maxWidth = limitMaxWidth;
-  num minHeight = limitMinHeight;
-  num maxHeight = limitMaxHeight;
-
-  num width = limitMaxWidth;
-  num height = limitMaxHeight;
-
-  Distance();
-
-  Distance.from(num width, num height): super.from(width, height);
-
-  Distance.fromJsonMap(Map<String, num> jsonMap): super.fromJsonMap(jsonMap);
-}
-
 class Piece {
   static const PieceShape defaultShape = PieceShape.RECT;
   static const String defaultText = 'Dart';
@@ -123,9 +24,9 @@ class Piece {
 
   int id;
   PieceShape shape = defaultShape;
-  num x = 0;
-  num y = 0;
-  Dimension dimension = new Dimension();
+  Box box = new Box(new Position(0, 0), new Size(24, 16));
+  var minMaxSize = new MinMaxSize();
+  var minMaxSpace = new MinMaxSpace();
   String text = defaultText;
   String color = defaultColor;
   String borderColor = defaultColor;
@@ -134,17 +35,22 @@ class Piece {
 
   Piece(this.id);
 
-  num get width => dimension.width;
-  set width(num width) => dimension.width = width;
-  num get height => dimension.height;
-  set height(num height) => dimension.height = height;
+  num get x => box.position.x;
+  set x(num x) => box.position.x = x;
+  num get y => box.position.y;
+  set y(num y) => box.position.y = y;
+
+  num get width => box.size.width;
+  set width(num width) => box.size.width = width;
+  num get height => box.size.height;
+  set height(num height) => box.size.height = height;
 
   fromJsonMap(Map<String, Object> jsonMap) {
     id  = jsonMap['id'];
     shape = PieceShape.values[jsonMap['index']];
-    x = jsonMap['x'];
-    y = jsonMap['y'];
-    dimension = new Dimension.fromJsonMap(jsonMap['dimension']);
+    box = new Box.fromJsonMap(jsonMap['box']);
+    minMaxSize = new MinMaxSize.fromJsonMap(jsonMap['minMaxSize']);
+    minMaxSpace = new MinMaxSpace.fromJsonMap(jsonMap['minMaxSpace']);
     text = jsonMap['text'];
     color = jsonMap['color'];
     borderColor = jsonMap['borderColor'];
@@ -161,9 +67,9 @@ class Piece {
     var jsonMap = new Map<String, Object>();
     jsonMap['id'] = id;
     jsonMap['index'] = shape.index;
-    jsonMap['x'] = x;
-    jsonMap['y'] = y;
-    jsonMap['dimension'] = dimension.toJsonMap();
+    jsonMap['box'] = box.toJsonMap();
+    jsonMap['minMaxSize'] = minMaxSize.toJsonMap();
+    jsonMap['minMaxSpace'] = minMaxSpace.toJsonMap();
     jsonMap['text'] = text;
     jsonMap['color'] = color;
     jsonMap['borderColor'] = borderColor;
@@ -177,7 +83,10 @@ class Piece {
   randomInit() {
     var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
-    dimension.random();
+    var position = minMaxSpace.randomPosition();
+    var size = minMaxSize.randomSize();
+    box = new Box(position, size);
+    //box = minMaxSpace.randomBox();
     text = randomElement(colorList());
     color = colorMap()[text];
   }
@@ -189,46 +98,20 @@ class Piece {
 class MovablePiece extends Piece {
   static const num speedLimit = 6;
 
-  Distance _distance;
+  Size _distanceSize;
   num dx = 1;
   num dy = 1;
   bool isMoving = true;
 
-  MovablePiece(int id, [Distance distance]): super(id) {
-    if (distance == null) {
-      _distance =  new Distance();
-    } else {
-      _distance = distance;
-    }
+  MovablePiece(int id): super(id) {
+    _distanceSize = minMaxSpace.minSize;
   }
 
   num get speed => max(dx, dy);
 
-  Distance get distance => _distance;
-  set distance(Distance distance) {
-    if (distance != null) {
-      _distance = distance;
-      if (shape == PieceShape.CIRCLE) {
-        if (x + width / 2 > distance.width) {
-          x = distance.width - width / 2;
-        }
-        if (y + height / 2 > distance.height) {
-          y = distance.height - height / 2;
-        }
-      } else {
-        if (x + width > distance.width) {
-          x = distance.width - width;
-        }
-        if (y + height > distance.height) {
-          y = distance.height - height;
-        }
-      }
-    }
-  }
-
   fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
-    distance = new Distance.fromJsonMap(jsonMap['distance']);
+    _distanceSize = new Size.fromJsonMap(jsonMap['distanceSize']);
     dx = jsonMap['dx'];
     dy = jsonMap['dy'];
     isMoving = jsonMap['isMoving'];
@@ -236,29 +119,41 @@ class MovablePiece extends Piece {
 
   Map<String, Object> toJsonMap() {
     var jsonMap = super.toJsonMap();
-    jsonMap['distance'] = distance.toJsonMap();
+    jsonMap['distanceSize'] = _distanceSize.toJsonMap();
     jsonMap['dx'] = dx;
     jsonMap['dy'] = dy;
     jsonMap['isMoving'] = isMoving;
     return jsonMap;
   }
 
-  randomInit() {
-    super.randomInit();
-    randomPosition();
-    dx = randomNum(speedLimit);
-    dy = randomNum(speedLimit);
+  Size get distanceSize => _distanceSize;
+  set distanceSize(Size distanceSize) {
+    _distanceSize = distanceSize;
+    if (shape == PieceShape.CIRCLE) {
+      if (x + width / 2 > distanceSize.width) {
+        x = distanceSize.width - width / 2;
+      }
+      if (y + height / 2 > distanceSize.height) {
+        y = distanceSize.height - height / 2;
+      }
+    } else {
+      if (x + width > distanceSize.width) {
+        x = distanceSize.width - width;
+      }
+      if (y + height > distanceSize.height) {
+        y = distanceSize.height - height;
+      }
+    }
   }
 
-  randomPosition() {
-    distance.random();
-    if (shape == PieceShape.CIRCLE) {
-      x = randomNum(distance.width - width / 2);
-      y = randomNum(distance.height - height / 2);
-    } else {
-      x = randomNum(distance.width - width);
-      y = randomNum(distance.height - height);
-    }
+  randomInit() {
+    super.randomInit();
+    Position position = distanceSize.randomPosition();
+    x = position.x;
+    y = position.y;
+    distanceSize = minMaxSpace.randomSize();
+    dx = randomNum(speedLimit);
+    dy = randomNum(speedLimit);
   }
 
   move([Direction direction]) {
@@ -267,17 +162,19 @@ class MovablePiece extends Piece {
         x += dx;
         y += dy;
         if (shape == PieceShape.CIRCLE) {
-          if (x + width / 2 > distance.width || x - width / 2 < 0) {
+          if (x + width / 2 > distanceSize.width ||
+              x - width / 2 < 0) {
             dx = -dx;
           }
-          if (y + height / 2 > distance.height || y - height / 2 < 0) {
+          if (y + height / 2 > distanceSize.height ||
+              y - height / 2 < 0) {
             dy = -dy;
           }
         } else {
-          if (x > distance.width - width || x < 0) {
+          if (x > distanceSize.width - width || x < 0) {
             dx = -dx;
           }
-          if (y > distance.height - height || y < 0) {
+          if (y > distanceSize.height - height || y < 0) {
             dy = -dy;
           }
         }
@@ -286,29 +183,29 @@ class MovablePiece extends Piece {
           case Direction.UP:
             y -= dy;
             if (y < 0) {
-              x = randomNum(distance.minWidth);
-              y = randomRangeNum(distance.minHeight, distance.maxHeight);
+              x = randomNum(minMaxSpace.minSize.width);
+              y = randomRangeNum(minMaxSpace.minSize.height, minMaxSpace.maxSize.height);
             }
             break;
           case Direction.DOWN:
             y += dy;
-            if (y > distance.maxHeight) {
-              x = randomNum(distance.minWidth);
-              y = -randomRangeNum(distance.minHeight, distance.maxHeight);
+            if (y > minMaxSpace.maxSize.height) {
+              x = randomNum(minMaxSpace.minSize.width);
+              y = -randomRangeNum(minMaxSpace.minSize.height, minMaxSpace.maxSize.height);
             }
             break;
           case Direction.LEFT:
             x -= dx;
             if (x < 0) {
-              x = randomRangeNum(distance.minWidth, distance.maxWidth);
-              y = randomNum(distance.minHeight);
+              x = randomRangeNum(minMaxSpace.minSize.width, minMaxSpace.maxSize.width);
+              y = randomNum(minMaxSpace.minSize.height);
             }
             break;
           case Direction.RIGHT:
             x += dx;
-            if (x > distance.maxWidth) {
-              x = -randomRangeNum(distance.minWidth, distance.maxWidth);
-              y = randomNum(distance.minHeight);
+            if (x > minMaxSpace.maxSize.width) {
+              x = -randomRangeNum(minMaxSpace.minSize.width, minMaxSpace.maxSize.width);
+              y = randomNum(minMaxSpace.minSize.height);
             }
         }
       }
@@ -412,20 +309,14 @@ class Pieces {
 
 class MovablePieces extends Pieces {
 
-  MovablePieces(int count, [Distance distance]) {
-    createMovablePieces(count, distance);
+  MovablePieces(int count) {
+    createMovablePieces(count);
   }
 
-  createMovablePieces(int count, [Distance distance]) {
+  createMovablePieces(int count) {
     var id = 0;
-    if (distance == null) {
-      for (var i = 0; i < count; i++) {
-        add(new MovablePiece(++id));
-      }
-    } else {
-      for (var i = 0; i < count; i++) {
-        add(new MovablePiece(++id, distance));
-      }
+    for (var i = 0; i < count; i++) {
+      add(new MovablePiece(++id));
     }
   }
 
