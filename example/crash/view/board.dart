@@ -5,18 +5,17 @@ class Board extends Surface {
 
   Cars cars;
   RedCar redCar;
-  Size distanceSize;
+  Size space;
 
   Board(CanvasElement canvas) : super(canvas) {
-    distanceSize = new Size(width, height);
+    space = new Size(width, height);
     cars = new Cars(carCount);
     cars.forEach((Car car) {
-      car.distanceSize = distanceSize;
-      car.x = randomNum(car.distanceSize.width - car.width);
-      car.y = randomNum(car.distanceSize.height - car.height);
+      car.space = space;
+      car.randomPosition(space);
     });
     redCar = cars.redCar;
-    redCar.distanceSize = distanceSize;
+    redCar.space = space;
     document.onMouseDown.listen((MouseEvent e) {
       if (redCar.isSmall) redCar.bigger();
     });
@@ -43,9 +42,8 @@ class Board extends Surface {
     }
     if (isAccident) {
       var car = new NonRedCar(cars.length + 1);
-      car.distanceSize = distanceSize;
-      car.x = randomNum(car.distanceSize.width - car.width);
-      car.y = randomNum(car.distanceSize.height - car.height);
+      car.space = space;
+      car.randomPosition(space);
       cars.add(car);
     }
     drawPiece(redCar);

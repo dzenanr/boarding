@@ -15,10 +15,12 @@
 + update the randomInit method in Piece
 + add get and set for x, y, width and height derived properties in Piece
 + remove distance property in MovablePiece
-+ add _distanceSize property in MovablePiece
-+ update json methods in MovablePiece 
-+ get and set for _distanceSize property in MovablePiece
-+ validate positions in set distanceSize
++ add _space property in Piece
++ update json methods in Piece and MovablePiece 
++ add get and set for _space property in Piece
++ validate positions in set space
++ update the randomInit method in Piece
++ add the randomPosition method in Piece
 + update the randomInit method in MovablePiece
 + update the move method in MovablePiece
 

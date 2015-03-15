@@ -36,14 +36,14 @@ class RedCar extends Car {
   bool get isBig => !isSmall;
 
   move([Direction direction]) {
-    if (x + width > this.distanceSize.width) {
+    if (x + width > this.space.width) {
       //x = distance.width - width; // error!?
-      x = this.distanceSize.width - width;
+      x = this.space.width - width;
     }
     if (x - width < 0) {x = 0;}
-    if (y + height > this.distanceSize.height) {
+    if (y + height > this.space.height) {
       //y = distance.height - height; // error!?
-      y = this.distanceSize.height - height;
+      y = this.space.height - height;
     }
     if (y - height < 0) {y = 0;}
   }

@@ -105,6 +105,4 @@ class MinMaxSpace extends MinMaxSize {
 
   Position randomPosition() =>
       new Position(randomNum(minSize.width), randomNum(minSize.height));
-
-  //Box randomBox() => new Box(randomPosition(), super.randomSize());
 }
