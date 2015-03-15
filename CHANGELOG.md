@@ -6,7 +6,9 @@
 + update tests
 + update drawPiece in Surface in surface
 + update examples
-- add a white line in the middle of the table in the pingpong example
++ add a white line in the middle of the table in the pingpong example
++ resolve why some circles are partially out of canvas in the bounce example
++ when the red car is small, hit a car that is not moving to propel it in the crash example
 
 *0.2.2* 2015-03-14
 

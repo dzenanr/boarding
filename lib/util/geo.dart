@@ -37,6 +37,20 @@ class Size {
   Position randomPosition() => new Position(randomNum(width), randomNum(height));
 
   Size randomSize() => new Size(randomNum(width), randomNum(height));
+
+  bool isBigger(Size s) {
+    if (width > s.width && height > s.height) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isMuchBigger(Size s) {
+    if (width > 2 * s.width && height > 2 * s.height) {
+      return true;
+    }
+    return false;
+  }
 }
 
 class Box {

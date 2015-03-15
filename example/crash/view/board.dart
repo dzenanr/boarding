@@ -36,6 +36,8 @@ class Board extends Surface {
         if (redCar.isBig && redCar.hit(car)) {
           redCar.smaller();
           isAccident = true;
+        } else if (redCar.isSmall && redCar.hit(car)) {
+          car.randomPosition(space);
         }
       });
       drawPiece(car);

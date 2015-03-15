@@ -102,11 +102,13 @@ drawStar(CanvasElement canvas, num x, num y, num radius,
 drawDistanceLine(CanvasElement canvas, Piece p1, Piece p2, num minDistance) {
   //RGBA color: rgba(red, green, blue, alpha).
   //The alpha number is between 0.0 (fully transparent) and 1.0 (fully opaque).
+  var p1x = p1.x + (p1.width / 2), p1y = p1.y + (p1.height / 2);
+  var p2x = p2.x + (p2.width / 2), p2y = p2.y + (p2.height / 2);
   var distance12 = distance(p1, p2);
   if (distance12 <= minDistance) {
     var d = 1.2 - distance12 / minDistance;
     var c = 'rgba(255, 255, 255, $d)';
-    drawLine(canvas, p1.x, p1.y, p2.x, p2.y, color: c);
+    drawLine(canvas, p1x, p1y, p2x, p2y, color: c);
   }
 }
 

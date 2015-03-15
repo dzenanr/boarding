@@ -52,20 +52,11 @@ class Piece {
   Size get space => _space;
   set space(Size space) {
     _space = space;
-    if (shape == PieceShape.CIRCLE) {
-      if (x + width / 2 > space.width) {
-        x = space.width - width / 2;
-      }
-      if (y + height / 2 > space.height) {
-        y = space.height - height / 2;
-      }
-    } else {
-      if (x + width > space.width) {
-        x = space.width - width;
-      }
-      if (y + height > space.height) {
-        y = space.height - height;
-      }
+    if (x + width > space.width) {
+      x = space.width - width;
+    }
+    if (y + height > space.height) {
+      y = space.height - height;
     }
   }
 
@@ -122,6 +113,20 @@ class Piece {
 
   bool contains(num xx, num yy) =>
       ((xx >= x && xx <= x + width) && (yy >= y && yy <= y + height));
+
+  bool isBigger(Piece p) {
+    if (box.size.isBigger(p.box.size)) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isMuchBigger(Piece p) {
+    if (box.size.isMuchBigger(p.box.size)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 class MovablePiece extends Piece {
@@ -156,27 +161,30 @@ class MovablePiece extends Piece {
     dy = randomNum(speedLimit);
   }
 
+  bool isFaster(MovablePiece p) {
+    if (speed > p.speed) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isMuchFaster(MovablePiece p) {
+    if (speed > 2 * p.speed) {
+      return true;
+    }
+    return false;
+  }
+
   move([Direction direction]) {
     if (isMoving) {
       if (direction == null) {
         x += dx;
         y += dy;
-        if (shape == PieceShape.CIRCLE) {
-          if (x + width / 2 > space.width ||
-              x - width / 2 < 0) {
-            dx = -dx;
-          }
-          if (y + height / 2 > space.height ||
-              y - height / 2 < 0) {
-            dy = -dy;
-          }
-        } else {
-          if (x > space.width - width || x < 0) {
-            dx = -dx;
-          }
-          if (y > space.height - height || y < 0) {
-            dy = -dy;
-          }
+        if (x > space.width - width || x < 0) {
+          dx = -dx;
+        }
+        if (y > space.height - height || y < 0) {
+          dy = -dy;
         }
       } else {
         switch(direction) {

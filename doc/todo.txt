@@ -1,7 +1,6 @@
 To do
 
-- why some circles are partially out of canvas in the bounce example?
-- when the red car is small hit a car that is not moving to propel it
+- why some circles are partially out of canvas (south only) in the bounce example?
 - use Point instead of Position?
 - make Size and Box unmutable?
 - add methods from Point and Rectangle (MutableEectangle) to Position and Box
