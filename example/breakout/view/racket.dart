@@ -36,7 +36,6 @@ class Racket {
   }
 
   draw() {
-    new Rect(board.canvas, x, y, width, height,
-        color: color, borderColor: outline).draw();
+    drawRect(board.canvas, x, y, width, height, color: color, borderColor: outline);
   }
 }

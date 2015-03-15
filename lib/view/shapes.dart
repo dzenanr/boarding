@@ -74,8 +74,11 @@ drawStar(CanvasElement canvas, num x, num y, num radius,
   var sx = x;
   var sy = y;
   var step = PI / spikes;
+  var ir;
+  if (ir == null) {
+    ir = radius / 2;
+  }
   var context = canvas.getContext('2d');
-
   context.strokeStyle = borderColor;
   context.fillStyle = color;
   context.beginPath();
@@ -85,8 +88,8 @@ drawStar(CanvasElement canvas, num x, num y, num radius,
     sy = y + sin(rot) * radius;
     context.lineTo(sx, sy);
     rot += step;
-    sx = x + cos(rot) * innerRadius;
-    sy = y + sin(rot) * innerRadius;
+    sx = x + cos(rot) * ir;
+    sy = y + sin(rot) * ir;
     context.lineTo(sx, sy);
     rot += step;
   }
@@ -103,237 +106,146 @@ drawDistanceLine(CanvasElement canvas, Piece p1, Piece p2, num minDistance) {
   if (distance12 <= minDistance) {
     var d = 1.2 - distance12 / minDistance;
     var c = 'rgba(255, 255, 255, $d)';
-    new Line(canvas, p1.x, p1.y, p2.x, p2.y, color: c).draw();
+    drawLine(canvas, p1.x, p1.y, p2.x, p2.y, color: c);
   }
 }
 
-abstract class Shape {
-  CanvasElement canvas;
-  CanvasRenderingContext2D context;
-  num x, y, width, height, lineWidth;
-  String color, borderColor;
-
-  Shape(this.canvas, this.x, this.y, this.width, this.height,
-      this.lineWidth, this.color, this.borderColor) {
-    context = canvas.getContext('2d');
-  }
-
-  draw();
+drawCircle(CanvasElement canvas, num x, num y, num radius,
+           {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..arc(x, y, radius, 0, PI * 2)
+      ..closePath()
+      ..fill()
+      ..stroke();
 }
 
-class Circle extends Shape {
-  num radius;
-
-  Circle(CanvasElement canvas, num x, num y, this.radius,
-      {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-      super(canvas, x, y, null, null, lineWidth, color, borderColor) {
-    width = radius * 2;
-    height = radius * 2;
-  }
-
-  draw() {
-    context
-        ..lineWidth = lineWidth
-        ..fillStyle = color
-        ..strokeStyle = borderColor
-        ..beginPath()
-        ..arc(x, y, radius, 0, PI * 2)
-        ..closePath()
-        ..fill()
-        ..stroke();
-  }
+drawRect(CanvasElement canvas, num x, num y, num width, num height,
+         {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..rect(x, y, width, height)
+      ..closePath()
+      ..fill()
+      ..stroke();
 }
 
-class Star extends Circle {
-  num innerRadius;
-  int spikes;
-
-  Star(CanvasElement canvas, num x, num y, num radius,
-      {num this.innerRadius, int this.spikes: 5, num lineWidth: 1,
-        String color: '#ffff99', String borderColor: 'black'}):
-      super(canvas, x, y, radius,
-          lineWidth: lineWidth, color: color, borderColor: borderColor) {
-    if (innerRadius == null) {
-      innerRadius = radius / 2;
-    }
-  }
-
-  draw() {
-    drawStar(canvas, x, y, radius,
-        innerRadius: innerRadius, spikes: spikes,
-        color: color, borderColor: borderColor);
-  }
+drawSquare(CanvasElement canvas, num x, num y, num length,
+         {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..rect(x, y, length, length)
+      ..closePath()
+      ..fill()
+      ..stroke();
 }
 
-class Rect extends Shape {
-  Rect(CanvasElement canvas, num x, num y, num width, num height,
-       {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-       super(canvas, x, y, width, height, lineWidth, color, borderColor);
-
-  draw() {
-    context
-        ..lineWidth = lineWidth
-        ..fillStyle = color
-        ..strokeStyle = borderColor
-        ..beginPath()
-        ..rect(x, y, width, height)
-        ..closePath()
-        ..fill()
-        ..stroke();
-  }
+drawSelectedRect(CanvasElement canvas, num x, num y, num width, num height,
+         {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  const int sss = 8; // selection square size
+  var context = canvas.getContext('2d');
+  drawRect(canvas, x, y, width, height, lineWidth: lineWidth, color: color,
+      borderColor: borderColor);
+  context
+      ..fillStyle = 'black'
+      ..beginPath()
+      ..rect(x, y, sss, sss)
+      ..rect(x + width - sss, y, sss, sss)
+      ..rect(x + width - sss, y + height - sss, sss, sss)
+      ..rect(x, y + height - sss, sss, sss)
+      ..closePath()
+      ..fill();
 }
 
-class Square extends Rect {
-  num length;
-
-  Square(CanvasElement canvas, num x, num y, num width,
-      {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-        length = width,
-      super(canvas, x, y, width, width,
-          lineWidth: lineWidth, color: color, borderColor: borderColor);
-}
-
-class SelectedRect extends Rect {
-  static const int sss = 8; // selection square size
-
-  SelectedRect(CanvasElement canvas, num x, num y, num width, num height,
-        {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-        super(canvas, x, y, width, height,
-            lineWidth: lineWidth, color: color, borderColor: borderColor);
-
-  draw() {
-    super.draw();
-    context
-        ..fillStyle = 'black'
-        ..beginPath()
-        ..rect(x, y, sss, sss)
-        ..rect(x + width - sss, y, sss, sss)
-        ..rect(x + width - sss, y + height - sss, sss, sss)
-        ..rect(x, y + height - sss, sss, sss)
-        ..closePath()
-        ..fill();
-  }
-}
-
-class RoundedRect extends Rect {
-  num radius;
-  num r2d = PI/180;
-
-  RoundedRect(CanvasElement canvas, num x, num y, num width, num height,
-      {num this.radius: 10, num lineWidth: 1,
-        String color: 'white', String borderColor: 'black'}):
-      super(canvas, x, y, width, height,
-          lineWidth: lineWidth, color: color, borderColor: borderColor);
-
-  draw() {
-    prepareRoundedRect(canvas, x, y, x + width, y + height, 10);
-    context
+drawRoundedRect(CanvasElement canvas, num x, num y, num width, num height,
+                {num radius: 10, num lineWidth: 1, String color: 'white',
+                  String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  prepareRoundedRect(canvas, x, y, x + width, y + height, 10);
+  context
       ..lineWidth = lineWidth
       ..fillStyle = color
       ..strokeStyle = borderColor
       ..fill()
       ..stroke();
-  }
 }
 
-class Vehicle extends RoundedRect {
-  Vehicle(CanvasElement canvas, num x, num y, num width, num height,
-      {num lineWidth: 1, String color: 'white', String borderColor: 'black'}):
-      super(canvas, x, y, width, height,
-          lineWidth: lineWidth, color: color, borderColor: borderColor);
+drawVehicle(CanvasElement canvas, num x, num y, num width, num height,
+                {num radius: 10, num lineWidth: 1, String color: 'white',
+                  String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  drawRoundedRect(canvas, x, y, width, height, radius: radius,
+      lineWidth: lineWidth, color: color, borderColor: borderColor);
+  context
+    ..beginPath()
+    ..fillStyle = '#000000'
+    ..rect(x + 12, y - 3, 14, 6)
+    ..rect(x + width - 26, y - 3, 14, 6)
+    ..rect(x + 12, y + height - 3, 14, 6)
+    ..rect(x + width - 26, y + height - 3, 14, 6)
+    ..fill()
+    ..closePath();
+}
 
-  draw() {
-    super.draw();
-    context
+drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2, {num lineWidth: 1,
+  String color: 'black', String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  context
+      ..lineWidth = lineWidth
+      ..strokeStyle = color
       ..beginPath()
-      ..fillStyle = '#000000'
-      ..rect(x + 12, y - 3, 14, 6)
-      ..rect(x + width - 26, y - 3, 14, 6)
-      ..rect(x + 12, y + height - 3, 14, 6)
-      ..rect(x + width - 26, y + height - 3, 14, 6)
-      ..fill()
+      ..moveTo(x1, y1)
+      ..lineTo(x2, y2)
+      ..closePath()
+      ..stroke();
+}
+
+drawOneOfLines(CanvasElement canvas, num x, num y, num x1, num y1, {num lineWidth: 1,
+  String color: 'black', String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  context
+      ..lineWidth = lineWidth
+      ..strokeStyle = color
+      ..moveTo(x, y)
+      ..lineTo(x1, y1);
+}
+
+drawTag(CanvasElement canvas, num x, num y, num size, String text,
+        {num maxWidth: 256, String color: 'black'}) {
+  // maxWidth in pixels
+  var context = canvas.getContext('2d');
+  context
+      ..font = '${size}px sans-serif'
+      ..fillStyle = color
+      ..textAlign = 'center'
+      ..beginPath()
+      ..fillText(text, x, y, maxWidth)
       ..closePath();
-  }
 }
 
-class Line extends Shape {
-  num x1, y1;
-
-  Line(CanvasElement canvas, num x, num y, this.x1, this.y1,
-      {num lineWidth: 1, String color: 'black', String borderColor: 'black'}):
-      super(canvas, x, y, lineWidth, null, lineWidth, color, borderColor);
-
-  draw() {
-    context
-        ..lineWidth = lineWidth
-        ..strokeStyle = color
-        ..beginPath()
-        ..moveTo(x, y)
-        ..lineTo(x1, y1)
-        ..closePath()
-        ..stroke();
-  }
+drawOneOfTags(CanvasElement canvas, num x, num y, num size, String text,
+              {num maxWidth: 64, String color: 'black'}) {
+  var context = canvas.getContext('2d');
+  context
+      ..font = '${size}px sans-serif'
+      ..fillStyle = color
+      ..textAlign = 'center'
+      ..fillText(text, x, y, maxWidth);
 }
 
-class OneOfLines extends Shape {
-  num x1, y1;
 
-  OneOfLines(CanvasElement canvas, num x, num y, this.x1, this.y1,
-      {num lineWidth: 1, String color: 'black', String borderColor: 'black'}):
-      super(canvas, x, y, lineWidth, null, lineWidth, color, borderColor);
-
-  draw() {
-    context
-        ..lineWidth = lineWidth
-        ..strokeStyle = color
-        ..moveTo(x, y)
-        ..lineTo(x1, y1);
-  }
-}
-
-class Tag extends Shape {
-  num size, maxWidth;
-  String text;
-
-  Tag(CanvasElement canvas, num x, num y, this.size, this.text,
-      {num lineWidth: 1, num this.maxWidth,
-        String color: 'black', String borderColor: 'black'}):
-      super(canvas, x, y, null, null, lineWidth, color, borderColor) {
-    this.width = size;
-    this.height = size;
-  }
-
-  draw() {
-    context
-        ..font = '${size}px sans-serif'
-        ..fillStyle = color
-        ..textAlign = 'center'
-        ..beginPath()
-        ..fillText(text, x, y)
-        ..closePath();
-  }
-}
-
-class OneOfTags extends Shape {
-  num size, maxWidth;
-  String text;
-
-  OneOfTags(CanvasElement canvas, num x, num y, this.size, this.text,
-      {num lineWidth: 1, num this.maxWidth,
-        String color: 'black', String borderColor: 'black'}):
-      super(canvas, x, y, null, null, lineWidth, color, borderColor) {
-    this.width = size;
-    this.height = size;
-  }
-
-  draw() {
-    context
-        ..font = '${size}px sans-serif'
-        ..fillStyle = color
-        ..textAlign = 'center'
-        ..fillText(text, x, y, maxWidth);
-  }
-}
 
 
 

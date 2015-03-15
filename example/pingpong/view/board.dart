@@ -35,7 +35,8 @@ class Board extends Surface {
   }
 
   clear() {
-    new Rect(canvas, 0, 0, width, height, color: 'green').draw();
+    drawRect(canvas, 0, 0, width, height, color: 'green');
+    drawLine(canvas, 0, height / 2, width, height / 2, color: 'white');
   }
 
   draw() {

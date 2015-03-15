@@ -163,17 +163,17 @@ runProgram(d_pen.Pen pen) {
   //onako(pen);
   //rotateSquare(pen);
   //stairSquare(pen);
-  //barGraph(pen);
+  barGraph(pen);
   //mapMap(pen);
-  zigZag(pen);
+  //zigZag(pen);
 }
 
 main() {
   final repo = new d_pen.ArtRepo();
   final board = new Board(querySelector('#canvas'), repo);
   var pen = board.pen;
-  runRandom(pen);
-  //runProgram(pen);
+  //runRandom(pen);
+  runProgram(pen);
   board.draw();
   pen.displayCommands();
 }

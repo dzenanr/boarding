@@ -10,6 +10,6 @@ class Ball {
   }
 
   draw() {
-    new Circle(board.canvas, x, y, r).draw();
+    drawCircle(board.canvas, x, y, r);
   }
 }

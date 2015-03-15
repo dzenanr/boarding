@@ -18,13 +18,13 @@ class Board extends shape.Surface {
       if (segment.visible) {
         context.beginPath();
         for (d_pen.Line line in segment.lines) {
-          new shape.OneOfLines(canvas, line.beginX, line.beginY, line.endX, line.endY,
-              lineWidth: segment.width, color: colors[segment.color]).draw();
+          shape.drawOneOfLines(canvas, line.beginX, line.beginY, line.endX,
+              line.endY, lineWidth: segment.width, color: colors[segment.color]);
           if (segment.text != null && segment.text.trim() != '') {
             var x = (line.beginX + line.endX) / 2;
             var y = (line.beginY + line.endY) / 2;
-            new shape.OneOfTags(canvas, x + 2, y - 2, 14, segment.text,
-                maxWidth: line.pixels).draw();
+            shape.drawOneOfTags(canvas, x + 2, y - 2, 14, segment.text,
+                maxWidth: line.pixels);
           }
         }
         context.stroke();

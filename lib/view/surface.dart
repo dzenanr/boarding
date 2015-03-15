@@ -25,11 +25,11 @@ class Surface {
 
   clear() {
     if (grid != null) {
-      new Rect(canvas, 0, 0, width, height,
-          color: grid.color, borderColor: grid.color).draw();
+      drawRect(canvas, 0, 0, width, height,
+               color: grid.color, borderColor: grid.color);
     } else {
-      new Rect(canvas, 0, 0, width, height,
-          color: color, borderColor: color).draw();
+      drawRect(canvas, 0, 0, width, height,
+               color: color, borderColor: color);
     }
   }
 
@@ -40,12 +40,12 @@ class Surface {
     for (var row = 1; row < grid.rowCount; row++) {
       x = 0;
       y = hgap * row;
-      new Line(canvas, x, y, x + width, y).draw();
+      drawLine(canvas, x, y, x + width, y);
     }
     for (var col = 1; col < grid.columnCount; col++) {
       x = wgap * col;
       y = 0;
-      new Line(canvas, x, y, x, y + height).draw();
+      drawLine(canvas, x, y, x, y + height);
     }
   }
 
@@ -59,22 +59,22 @@ class Surface {
       if (cell.isHidden) {
         var x = wgap * col;
         var y = hgap * row;
-        new Rect(canvas, x, y, wgap, hgap, color: colorMap()[cell.hiddenColor]).draw();
+        drawRect(canvas, x, y, wgap, hgap, color: colorMap()[cell.hiddenColor]);
         var cx = x + wgap / 2;
         var cy = y + hgap / 2;
         var r = 4;
-        new Circle(canvas, cx, cy, r).draw();
+        drawCircle(canvas, cx, cy, r);
       } else {
         if (cell.color != null) {
           var x = wgap * col;
           var y = hgap * row;
-          new Rect(canvas, x, y, wgap, hgap, color: colorMap()[cell.color]).draw();
+          drawRect(canvas, x, y, wgap, hgap, color: colorMap()[cell.color]);
         }
         if (cell.text != null && cell.textSize != null) {
           var x = wgap * col + wgap / 2 - (wgap / 2 - cell.textSize) / 2;
           var y = hgap * row + hgap / 2 + (wgap / 2 - cell.textSize) / 2;
           x = x + cell.textSize / 4;
-          new Tag(canvas, x, y, cell.textSize, cell.text, color: cell.textColor).draw();
+          drawTag(canvas, x, y, cell.textSize, cell.text, color: cell.textColor);
         }
       }
     }
@@ -91,41 +91,42 @@ class Surface {
   drawPiece(Piece piece) {
     switch(piece.shape) {
       case PieceShape.CIRCLE:
-        new Circle(canvas, piece.x, piece.y, piece.width / 2,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        var r = piece.width / 2;
+        drawCircle(canvas, piece.x + r, piece.y + r, r,
+                   color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.LINE:
-        new Line(canvas, piece.x, piece.y, piece.width, piece.height,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        drawLine(canvas, piece.x, piece.y, piece.width, piece.height,
+                 color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.RECT:
-        new Rect(canvas, piece.x, piece.y, piece.width, piece.height,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        drawRect(canvas, piece.x, piece.y, piece.width, piece.height,
+                 color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.ROUNDED_RECT:
-        new RoundedRect(canvas, piece.x, piece.y, piece.width, piece.height,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        drawRoundedRect(canvas, piece.x, piece.y, piece.width, piece.height,
+                        color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.SELECTED_RECT:
-        new SelectedRect(canvas, piece.x, piece.y, piece.width, piece.height,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        drawSelectedRect(canvas, piece.x, piece.y, piece.width, piece.height,
+                         color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.SQUARE:
-        new Square(canvas, piece.x, piece.y, piece.width,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        drawSquare(canvas, piece.x, piece.y, piece.width,
+                   color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.STAR:
-        new Star(canvas, piece.x, piece.y, piece.width / 2,
-            innerRadius: piece.width / 4,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        var r = piece.width / 2;
+        drawStar(canvas, piece.x + r, piece.y + r, r,
+                 color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.TAG:
-        new Tag(canvas, piece.x, piece.y, piece.width, piece.text,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        drawTag(canvas, piece.x, piece.y, piece.width, piece.text,
+            color: piece.color);
         break;
       case PieceShape.VEHICLE:
-        new Vehicle(canvas, piece.x, piece.y, piece.width, piece.height,
-            color: piece.color, borderColor: piece.borderColor).draw();
+        drawVehicle(canvas, piece.x, piece.y, piece.width, piece.height,
+                    color: piece.color, borderColor: piece.borderColor);
         break;
     }
   }

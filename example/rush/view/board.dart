@@ -53,9 +53,9 @@ class Board extends SquareSurface {
       }
       String color = car.carBrand.color;
       if (car.isSelected) {
-        new SelectedRect(canvas, x, y, carWidth, carHeight, color: color).draw();
+        drawSelectedRect(canvas, x, y, carWidth, carHeight, color: color);
       } else {
-        new Rect(canvas, x, y, carWidth, carHeight, color: color).draw();
+        drawRect(canvas, x, y, carWidth, carHeight, color: color);
       }
     }
   }

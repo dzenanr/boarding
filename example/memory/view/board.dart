@@ -29,8 +29,7 @@ class Board extends Surface {
   draw() {
     super.draw();
     if (memory.recalled) { // game over
-      new Tag(canvas, cellSize * 2, cellSize * 2, 32, 'YOU WIN',
-          color: 'red').draw();
+      drawTag(canvas, cellSize * 2, cellSize * 2, 32, 'YOU WIN', color: 'red');
     }
   }
 }

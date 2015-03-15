@@ -1,5 +1,13 @@
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.2* 2015-03-15
+
++ use only functions in shapes
++ update tests
++ update drawPiece in Surface in surface
++ update examples
+- add a white line in the middle of the table in the pingpong example
+
 *0.2.2* 2015-03-14
 
 + remove Point, Dimension and Distance classes from pieces
