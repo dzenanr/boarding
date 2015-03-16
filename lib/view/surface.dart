@@ -96,7 +96,8 @@ class Surface {
             color: piece.color, borderColor: piece.borderColor);
         /*
         var r = piece.width / 2;
-        drawCircle(canvas, piece.x + r, piece.y + r, r, lineWidth: piece.lineWidth,
+        drawCircle(canvas, piece.x + r, piece.y + r, r,
+            lineWidth: piece.lineWidth,
             color: piece.color, borderColor: piece.borderColor);
          */
         break;
@@ -108,7 +109,7 @@ class Surface {
       case PieceShape.LINE:
         drawLine(canvas, piece.x, piece.y, piece.width, piece.height,
             lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            color: piece.color); // no borderColor
         break;
       case PieceShape.RECT:
         drawRect(canvas, piece.x, piece.y, piece.width, piece.height,
@@ -136,13 +137,16 @@ class Surface {
             color: piece.color, borderColor: piece.borderColor);
         /*
         var r = piece.width / 2;
-        drawStar(canvas, piece.x + r, piece.y + r, r, lineWidth: piece.lineWidth,
+        drawStar(canvas, piece.x + r, piece.y + r, r,
+            lineWidth: piece.lineWidth,
             color: piece.color, borderColor: piece.borderColor);
          */
         break;
       case PieceShape.TAG:
         drawTag(canvas, piece.x, piece.y, piece.width, piece.text,
-            color: piece.color);
+            // no lineWidth
+            maxWidth: piece.minMaxSize.maxSize.width,
+            color: piece.color); // no borderColor
         break;
       case PieceShape.TRIANGLE:
         drawTriangleWithinSquare(canvas, piece.x, piece.y, piece.width,

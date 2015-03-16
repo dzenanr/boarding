@@ -56,7 +56,9 @@ http://semver.org/
 
 Shapes
 
+http://stackoverflow.com/questions/1255512/how-to-draw-a-rounded-rectangle-on-html-canvas
 http://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5
+http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 
 Tutorials
 

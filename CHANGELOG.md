@@ -1,5 +1,10 @@
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.2* 2015-03-16
+
++ cleanup function parameters in shapes
++ sort functions in shapes by the following the order in enum PieceShape
+
 *0.2.2* 2015-03-15
 
 + use only functions in shapes

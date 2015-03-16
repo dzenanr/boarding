@@ -163,9 +163,9 @@ runProgram(d_pen.Pen pen) {
   //onako(pen);
   //rotateSquare(pen);
   //stairSquare(pen);
-  //barGraph(pen);
+  barGraph(pen);
   //mapMap(pen);
-  zigZag(pen);
+  //zigZag(pen);
 }
 
 main() {

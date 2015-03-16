@@ -3,11 +3,6 @@ part of pieces;
 enum PieceShape {CIRCLE, ELLIPSE, LINE, RECT, ROUNDED_RECT, SELECTED_RECT,
   SQUARE, STAR, TAG, TRIANGLE, VEHICLE}
 
-num distance(Piece p1, Piece p2) { // in pixels
-  var xd = p1.x - p2.x, yd = p1.y - p2.y;
-  return sqrt(xd * xd + yd * yd);
-}
-
 accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
   // Some acceleration depending upon distance.
   var xd = p1.x - p2.x, yd = p1.y - p2.y;
@@ -15,6 +10,11 @@ accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
   // Apply the acceleration.
   p1.dx -= ax; p1.dy -= ay;
   p2.dx += ax; p2.dy += ay;
+}
+
+num distance(Piece p1, Piece p2) { // in pixels
+  var xd = p1.x - p2.x, yd = p1.y - p2.y;
+  return sqrt(xd * xd + yd * yd);
 }
 
 class Piece {
@@ -53,10 +53,10 @@ class Piece {
   Size get space => _space;
   set space(Size space) {
     _space = space;
-    if (x + width > space.width) {
+    if (x > space.width - width) {
       x = space.width - width;
     }
-    if (y + height > space.height) {
+    if (y > space.height - height) {
       y = space.height - height;
     }
   }
@@ -105,9 +105,10 @@ class Piece {
     shape = PieceShape.values[i];
     space = minMaxSpace.randomSize();
     randomPosition(space);
-    lineWidth = randomRangeNum(1, 3.001);
+    lineWidth = randomRangeNum(1, 2.50001);
     text = randomElement(colorList());
     color = colorMap()[text];
+    borderColor = randomColor();
   }
 
   randomPosition(Size size) {
