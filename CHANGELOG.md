@@ -9,6 +9,13 @@
 + add a white line in the middle of the table in the pingpong example
 + resolve why some circles are partially out of canvas in the bounce example
 + when the red car is small, hit a car that is not moving to propel it in the crash example
++ add drawEllipseWithinRect in shapes
++ add drawCircleWithinSquare in shapes
++ add drawTriangleWithinSquare in shapes
++ add ELLIPSE and TRIANGLE to enum PieceShape in pieces
++ update tests
++ add lineWidth property to Piece in pieces
++ update drawPiece in Surface in surface
 
 *0.2.2* 2015-03-14
 

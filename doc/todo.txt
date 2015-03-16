@@ -1,5 +1,7 @@
 To do
 
+- add maxTextWidth, radius, x2, y2 properties to Piece in pieces?
+  (update drawPiece in Surface to include them)
 - why some circles are partially out of canvas (south only) in the bounce example?
 - use Point instead of Position?
 - make Size and Box unmutable?

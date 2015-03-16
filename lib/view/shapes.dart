@@ -67,7 +67,7 @@ drawRandomStars(CanvasElement canvas, int count) {
 }
 
 drawStar(CanvasElement canvas, num x, num y, num radius,
-         {num innerRadius, int spikes: 5,
+         {num innerRadius, int spikes: 5, num lineWidth: 1,
            String color: '#ffff99', String borderColor: 'black'}) {
   // light yellow: #ffff99
   var rot = PI / 2 * 3;
@@ -99,6 +99,33 @@ drawStar(CanvasElement canvas, num x, num y, num radius,
   context.closePath();
 }
 
+drawStarWithinSquare(CanvasElement canvas, num x, num y, num length,
+                    {num innerRadius, int spikes: 5, num lineWidth: 1,
+                     color: 'white', String borderColor: 'black'}) {
+  drawStar(canvas, x + length / 2, y + length / 2, length / 2,
+           innerRadius: innerRadius, spikes: spikes, lineWidth: lineWidth,
+           color: color, borderColor: borderColor);
+}
+
+drawTriangleWithinSquare(CanvasElement canvas, num x, num y, num length,
+                         {num lineWidth: 1, color: 'white',
+                           String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  //var height = 100 * (sqrt(3) / 2);
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..moveTo(x + length / 2, y)
+      ..lineTo(x + length, y + length)
+      ..lineTo(x, y + length)
+      ..lineTo(x + length / 2, y)
+      ..closePath()
+      ..fill()
+      ..stroke();
+}
+
 drawDistanceLine(CanvasElement canvas, Piece p1, Piece p2, num minDistance) {
   //RGBA color: rgba(red, green, blue, alpha).
   //The alpha number is between 0.0 (fully transparent) and 1.0 (fully opaque).
@@ -113,7 +140,8 @@ drawDistanceLine(CanvasElement canvas, Piece p1, Piece p2, num minDistance) {
 }
 
 drawCircle(CanvasElement canvas, num x, num y, num radius,
-           {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+           {num lineWidth: 1, String color: 'white',
+             String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -122,6 +150,40 @@ drawCircle(CanvasElement canvas, num x, num y, num radius,
       ..beginPath()
       ..arc(x, y, radius, 0, PI * 2)
       ..closePath()
+      ..fill()
+      ..stroke();
+}
+
+drawCircleWithinSquare(CanvasElement canvas, num x, num y, num length,
+                       {num lineWidth: 1, String color: 'white',
+                         String borderColor: 'black'}) {
+  drawCircle(canvas, x + length / 2, y + length / 2, length / 2,
+             lineWidth: lineWidth, color: color, borderColor: borderColor);
+}
+
+// http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
+drawEllipseWithinRect(CanvasElement canvas, num x, num y, num width, num height,
+                      {num lineWidth: 1, String color: 'white',
+                        String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  var kappa = .5522848,
+      ox = (width / 2) * kappa,  // control point offset horizontal
+      oy = (height / 2) * kappa, // control point offset vertical
+      xe = x + width,            // x-end
+      ye = y + height,           // y-end
+      xm = x + width / 2,        // x-middle
+      ym = y + height / 2;       // y-middle
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..moveTo(x, ym)
+      ..bezierCurveTo(x, ym - oy, xm - ox, y, xm, y)
+      ..bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym)
+      ..bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye)
+      ..bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym)
+      ..closePath() // use to close off open path
       ..fill()
       ..stroke();
 }
@@ -141,7 +203,8 @@ drawRect(CanvasElement canvas, num x, num y, num width, num height,
 }
 
 drawSquare(CanvasElement canvas, num x, num y, num length,
-         {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+           {num lineWidth: 1, String color: 'white',
+             String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -155,7 +218,8 @@ drawSquare(CanvasElement canvas, num x, num y, num length,
 }
 
 drawSelectedRect(CanvasElement canvas, num x, num y, num width, num height,
-         {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+                 {num lineWidth: 1, String color: 'white',
+                   String borderColor: 'black'}) {
   const int sss = 8; // selection square size
   var context = canvas.getContext('2d');
   drawRect(canvas, x, y, width, height, lineWidth: lineWidth, color: color,
@@ -185,8 +249,8 @@ drawRoundedRect(CanvasElement canvas, num x, num y, num width, num height,
 }
 
 drawVehicle(CanvasElement canvas, num x, num y, num width, num height,
-                {num radius: 10, num lineWidth: 1, String color: 'white',
-                  String borderColor: 'black'}) {
+            {num radius: 10, num lineWidth: 1, String color: 'white',
+              String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   drawRoundedRect(canvas, x, y, width, height, radius: radius,
       lineWidth: lineWidth, color: color, borderColor: borderColor);
@@ -201,8 +265,9 @@ drawVehicle(CanvasElement canvas, num x, num y, num width, num height,
     ..closePath();
 }
 
-drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2, {num lineWidth: 1,
-  String color: 'black', String borderColor: 'black'}) {
+drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,
+         {num lineWidth: 1, String color: 'black',
+           String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -214,8 +279,9 @@ drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2, {num lineWidth: 1
       ..stroke();
 }
 
-drawOneOfLines(CanvasElement canvas, num x, num y, num x1, num y1, {num lineWidth: 1,
-  String color: 'black', String borderColor: 'black'}) {
+drawOneOfLines(CanvasElement canvas, num x, num y, num x1, num y1,
+               {num lineWidth: 1, String color: 'black',
+                 String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth

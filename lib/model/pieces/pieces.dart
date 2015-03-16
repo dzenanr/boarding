@@ -1,7 +1,7 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, LINE, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, STAR,
-  TAG, VEHICLE}
+enum PieceShape {CIRCLE, ELLIPSE, LINE, RECT, ROUNDED_RECT, SELECTED_RECT,
+  SQUARE, STAR, TAG, TRIANGLE, VEHICLE}
 
 num distance(Piece p1, Piece p2) { // in pixels
   var xd = p1.x - p2.x, yd = p1.y - p2.y;
@@ -28,6 +28,7 @@ class Piece {
   Box box;
   var minMaxSpace = new MinMaxSpace();
   Size _space;
+  num lineWidth = 1;
   String text = defaultText;
   String color = defaultColor;
   String borderColor = defaultColor;
@@ -67,6 +68,7 @@ class Piece {
     box = new Box.fromJsonMap(jsonMap['box']);
     minMaxSpace = new MinMaxSpace.fromJsonMap(jsonMap['minMaxSpace']);
     _space = new Size.fromJsonMap(jsonMap['space']);
+    lineWidth = jsonMap['lineWidth'];
     text = jsonMap['text'];
     color = jsonMap['color'];
     borderColor = jsonMap['borderColor'];
@@ -87,6 +89,7 @@ class Piece {
     jsonMap['box'] = box.toJsonMap();
     jsonMap['minMaxSpace'] = minMaxSpace.toJsonMap();
     jsonMap['space'] = _space.toJsonMap();
+    jsonMap['lineWidth'] = lineWidth;
     jsonMap['text'] = text;
     jsonMap['color'] = color;
     jsonMap['borderColor'] = borderColor;
@@ -102,6 +105,7 @@ class Piece {
     shape = PieceShape.values[i];
     space = minMaxSpace.randomSize();
     randomPosition(space);
+    lineWidth = randomRangeNum(1, 3.001);
     text = randomElement(colorList());
     color = colorMap()[text];
   }
