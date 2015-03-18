@@ -22,31 +22,56 @@ drawCircleWithinSquare(CanvasElement canvas, num x, num y, num length,
              lineWidth: lineWidth, color: color, borderColor: borderColor);
 }
 
+//http://www.html5canvastutorials.com/tutorials/html5-canvas-custom-shapes/
+//http://stackoverflow.com/questions/19541192/how-to-draw-cloud-shape-in-html5-canvas
+//http://www.html5canvastutorials.com/advanced/html5-canvas-save-drawing-as-an-image/
+// to do: draw a cloud within a shape (polygon, regular polygon)
+drawCloud(CanvasElement canvas, num x, num y, num width, num height,
+          {num lineWidth: 1, String color: 'white',
+            String borderColor: 'black'}) {
+  var context = canvas.getContext('2d');
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..moveTo(170, 80)
+      ..bezierCurveTo(130, 100, 130, 150, 230, 150)
+      ..bezierCurveTo(250, 180, 320, 180, 340, 150)
+      ..bezierCurveTo(420, 150, 420, 120, 390, 100)
+      ..bezierCurveTo(430, 40, 370, 30, 340, 50)
+      ..bezierCurveTo(320, 5, 250, 20, 250, 50)
+      ..bezierCurveTo(200, 5, 150, 20, 170, 80)
+      ..closePath()
+      ..fill()
+      ..stroke();
+}
+
 //http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 drawEllipseWithinRect(CanvasElement canvas, num x, num y, num width, num height,
                     {num lineWidth: 1, String color: 'white',
                       String borderColor: 'black'}) {
-var context = canvas.getContext('2d');
-var kappa = .5522848,
-    ox = (width / 2) * kappa,  // control point offset horizontal
-    oy = (height / 2) * kappa, // control point offset vertical
-    xe = x + width,            // x-end
-    ye = y + height,           // y-end
-    xm = x + width / 2,        // x-middle
-    ym = y + height / 2;       // y-middle
-context
-    ..lineWidth = lineWidth
-    ..fillStyle = color
-    ..strokeStyle = borderColor
-    ..beginPath()
-    ..moveTo(x, ym)
-    ..bezierCurveTo(x, ym - oy, xm - ox, y, xm, y)
-    ..bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym)
-    ..bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye)
-    ..bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym)
-    ..closePath() // use to close off open path
-    ..fill()
-    ..stroke();
+  var context = canvas.getContext('2d');
+  var kappa = .5522848,
+      ox = (width / 2) * kappa,  // control point offset horizontal
+      oy = (height / 2) * kappa, // control point offset vertical
+      xe = x + width,            // x-end
+      ye = y + height,           // y-end
+      xm = x + width / 2,        // x-middle
+      ym = y + height / 2;       // y-middle
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..moveTo(x, ym)
+      ..bezierCurveTo(x, ym - oy, xm - ox, y, xm, y)
+      ..bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym)
+      ..bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye)
+      ..bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym)
+      ..closePath() // use to close off open path
+      ..fill()
+      ..stroke();
 }
 
 drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,

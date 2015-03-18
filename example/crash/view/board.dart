@@ -11,8 +11,8 @@ class Board extends Surface {
     space = new Size(width, height);
     cars = new Cars(carCount);
     cars.forEach((Car car) {
+      car.box.position = space.randomPosition();
       car.space = space;
-      car.randomPosition(space);
     });
     redCar = cars.redCar;
     redCar.space = space;
@@ -37,15 +37,15 @@ class Board extends Surface {
           redCar.smaller();
           isAccident = true;
         } else if (redCar.isSmall && redCar.hit(car)) {
-          car.randomPosition(space);
+          car.box.position = space.randomPosition();
         }
       });
       drawPiece(car);
     }
     if (isAccident) {
       var car = new NonRedCar(cars.length + 1);
+      car.box.position = space.randomPosition();
       car.space = space;
-      car.randomPosition(space);
       cars.add(car);
     }
     drawPiece(redCar);

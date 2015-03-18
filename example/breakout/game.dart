@@ -6,10 +6,9 @@ import 'package:boarding/pieces.dart';
 import 'package:boarding/boarding.dart';
 import 'package:boarding/util.dart';
 
+part 'model/gear.dart';
 part 'model/wall.dart';
-part 'view/ball.dart';
 part 'view/board.dart';
-part 'view/racket.dart';
 part 'view/bricks.dart';
 
 main() {

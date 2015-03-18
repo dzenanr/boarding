@@ -5,7 +5,7 @@ class Board extends Surface {
   static const num y = 0;
   static const num ballRadius = 8;
   static const num racketWidth = 75;
-  static const num racketHeight = 10;
+  static const num racketHeight = 6;
 
   num startBallX;
   num startBallY;
@@ -35,8 +35,9 @@ class Board extends Surface {
   }
 
   clear() {
-    drawRect(canvas, 0, 0, width, height, color: 'green');
-    drawLine(canvas, 0, height / 2, width, height / 2, color: 'white');
+    drawRect(canvas, 0, 0, width, height, color: 'lightgreen');
+    drawLine(canvas, 0, height / 2, width, height / 2, color: 'green');
+    drawLine(canvas, width / 2, 0, width / 2, height, color: 'white');
   }
 
   draw() {

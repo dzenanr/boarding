@@ -1,5 +1,10 @@
 Links
 
+Animations
+
+http://www.sitepoint.com/basic-animation-with-canvas-and-javascript/
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations
+
 Async Games
 
 http://appadvice.com/applists/show/asynchronous-games
@@ -9,6 +14,36 @@ http://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20as
 http://api.shephertz.com/app42-dev/ebook-turn-based-games.php
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
 http://www.giantbomb.com/asynchronous-multiplayer/3015-4359/games/
+
+Canvas
+
+http://www.creativebloq.com/design/learning-basics-html5-canvas-7112879
+http://www.tutorialrepublic.com/html-tutorial/html5-canvas.php
+http://simonsarris.com/blog/140-canvas-moving-selectable-shapes
+http://eloquentjavascript.net/16_canvas.html
+http://perfectionkills.com/exploring-canvas-drawing-techniques/
+http://www.storminthecastle.com/
+http://tutorials.jenkov.com/html5-canvas/index.html
+
+Canvas Rotation
+
+http://www.lostdecadegames.com/understanding-canvas-rotation/
+http://www.html5canvastutorials.com/advanced/html5-canvas-transform-rotate-tutorial/
+https://gist.github.com/geoffb/6392450
+http://tutorials.jenkov.com/html5-canvas/transformation.html
+http://www.w3resource.com/html5-canvas/html5-canvas-translation-rotation-scaling.php
+
+Bezier Curves
+
+http://devmag.org.za/2011/04/05/bzier-curves-a-tutorial/
+http://pomax.github.io/bezierinfo/
+http://www.html5canvastutorials.com/tutorials/html5-canvas-bezier-curves/
+http://web.iitd.ac.in/~hegde/cad/lecture/L13_Beziercurve.pdf
+http://www.tutorialspoint.com/html5/canvas_drawing_bezier.htm
+https://github.com/antoineleclair/Understanding-Bezier-Curve
+http://antoineleclair.ca/2011/08/27/understanding-quadratic-bezier-curves/
+http://blogs.sitepointstatic.com/examples/tech/canvas-curves/bezier-curve.html
+http://cubic-bezier.com/
 
 Color
 
@@ -21,9 +56,17 @@ Companies
 
 http://powerheadgames.com/powerheads-games/async-corp-press/
 
+http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
+
 Dart Games
 
+http://ondart.me/web_programming.md
 http://www.snakepiece.com/
+
+Education
+
+http://www.codingame.com/start
+http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
 
 Games
 
@@ -35,6 +78,20 @@ http://www.producthunt.com/rrhoover/collections/delightful-indie-games
 Grid Games
 
 http://www.abefehr.com/parity/#
+
+JS
+
+http://perfectionkills.com/
+http://fabricjs.com/fabric-intro-part-1/
+
+Polygons
+
+http://stackoverflow.com/questions/4839993/how-to-draw-polygons-on-an-html5-canvas
+http://www.arungudelli.com/html5/html5-canvas-polygon/
+http://www.storminthecastle.com/2013/07/24/how-you-can-draw-regular-polygons-with-the-html5-canvas-api/
+http://scienceprimer.com/drawing-regular-polygons-javascript-canvas
+http://tutorials.jenkov.com/html5-canvas/paths.html
+https://msdn.microsoft.com/en-us/library/ms745818(v=vs.110).aspx
 
 Programmers
 
@@ -55,16 +112,31 @@ Semantic Versioning
 http://semver.org/
 
 Shapes
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/HTML-canvas-guide/DrawingLinesandShapes/DrawingLinesandShapes.html
+https://support.office.com/en-ca/article/Draw-or-delete-a-line-connector-or-freeform-shape-f26ffb8f-a69c-46a6-8db7-7c9e5071f340
 
+  rounded rectangle
 http://stackoverflow.com/questions/1255512/how-to-draw-a-rounded-rectangle-on-html-canvas
+
+  star
 http://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5
 http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
+
+  cloud
+http://www.html5canvastutorials.com/tutorials/html5-canvas-custom-shapes/
+http://www.html5canvastutorials.com/advanced/html5-canvas-save-drawing-as-an-image/
+http://stackoverflow.com/questions/19541192/how-to-draw-cloud-shape-in-html5-canvas
+http://stackoverflow.com/questions/4927909/is-there-a-good-method-for-dynamically-drawing-clouds-with-html5-canvas-and-java
+http://jsfiddle.net/qs8wf/
 
 Tutorials
 
 http://cwoebker.com/posts/tic-tac-toe
+http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
 http://www.whatgamesare.com/2011/08/synchronous-or-asynchronous-definitions.html
 http://www.gamasutra.com/view/feature/6446/persuasive_games_from_aberrance_.php
 http://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20async%20events/index.html
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
+http://michalbe.blogspot.ca/2010/09/simple-game-with-html5-canvas-part-1.html
 

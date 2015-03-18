@@ -43,7 +43,8 @@ class Wall extends Pieces {
     var colWidth = brickWidth;
     int row = (y / rowHeight).floor();
     int col = (x / colWidth).floor();
-    if (row < rowCount && col < colCount && row >= 0 && col >= 0 && y < rowCount * rowHeight) {
+    if (row < rowCount && col < colCount && 
+        row >= 0 && col >= 0 && y < rowCount * rowHeight) {
       // hit, mark the brick as broken (unvisible)
       Brick brick = bricks[row][col];
       if (brick.isVisible) {

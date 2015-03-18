@@ -32,6 +32,6 @@ class Racket {
   }
 
   draw() {
-    drawRect(board.canvas, x, y, w, h);
+    drawRect(board.canvas, x, y, w, h, color: 'red');
   }
 }

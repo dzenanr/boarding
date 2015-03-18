@@ -1,9 +1,8 @@
 To do
 
 - why some circles are partially out of canvas (south only) in the bounce example?
-- use Point instead of Position?
-- make Size and Box unmutable?
-- add methods from Point and Rectangle (MutableEectangle) to Position and Box
+- draw a cloud within a shape (polygon, regular polygon) in shapes
+- add methods from Point and Rectangle (MutableRectangle) to Position and Box
 - add hashCode and equality (==) to the Position, Size, Box, MinMaxSize and MinMaxSpace classes
   http://stackoverflow.com/questions/10404516/how-can-i-compare-lists-for-equality-in-dart
   http://stackoverflow.com/questions/19713572/how-do-i-compare-two-lists-as-being-equal-and-containing-the-same-objects-in-da
@@ -27,7 +26,10 @@ To do
 - create even more examples to increase the generic stuff
 - do view tests with a web test library
 
+Maybe
 
+- use Point instead of Position? 
+- make Size and Box unmutable? 
   ﻿
 
 

@@ -68,10 +68,10 @@ class Board extends Surface {
       movingRightPieces.forEach((MovablePiece mrp) {
         movingLeftPieces.forEach((MovablePiece mlp) {
           if (mrp.isVisible && mlp.isVisible && mrp.hit(mlp)) {
-            if (mrp.isMuchFaster(mlp) || mrp.isMuchBigger(mlp)) {
+            if (mrp.speed.isMuchFaster(mlp.speed) || mrp.size.isMuchBigger(mlp.size)) {
               hitRightCountLabel.text = (++hitRightCount).toString();
               mlp.isVisible = false;
-            } else if (mlp.isMuchFaster(mrp) || mlp.isMuchBigger(mrp)) {
+            } else if (mlp.speed.isMuchFaster(mrp.speed) || mlp.size.isMuchBigger(mrp.size)) {
               hitLeftCountLabel.text = (++hitLeftCount).toString();
               mrp.isVisible = false;
             } else {

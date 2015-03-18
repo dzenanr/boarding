@@ -35,20 +35,23 @@ class Piece {
   bool isVisible = true;
   bool isSelected = false;
 
-  Piece(this.id) {
-    _space = minMaxSpace.minSize;
+  Piece([this.id = 0]) {
+    _space = minMaxSpace.randomSize();
     box = new Box(_space.randomPosition(), minMaxSize.randomSize());
   }
+  
+  Position get position => box.position;
+  Size get size => box.size;
 
-  num get x => box.position.x;
-  set x(num x) => box.position.x = x;
-  num get y => box.position.y;
-  set y(num y) => box.position.y = y;
+  num get x => position.x;
+  set x(num x) => position.x = x;
+  num get y => position.y;
+  set y(num y) => position.y = y;
 
-  num get width => box.size.width;
-  set width(num width) => box.size.width = width;
-  num get height => box.size.height;
-  set height(num height) => box.size.height = height;
+  num get width => size.width;
+  set width(num width) => size.width = width;
+  num get height => size.height;
+  set height(num height) => size.height = height;
 
   Size get space => _space;
   set space(Size space) {
@@ -103,119 +106,81 @@ class Piece {
   randomInit() {
     var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
-    space = minMaxSpace.randomSize();
-    randomPosition(space);
     lineWidth = randomRangeNum(1, 2.50001);
     text = randomElement(colorList());
     color = colorMap()[text];
     borderColor = randomColor();
   }
 
-  randomPosition(Size size) {
-    x = randomNum(size.width - width);
-    y = randomNum(size.height - height);
-  }
-
   bool contains(num xx, num yy) =>
       ((xx >= x && xx <= x + width) && (yy >= y && yy <= y + height));
-
-  bool isBigger(Piece p) {
-    if (box.size.isBigger(p.box.size)) {
-      return true;
-    }
-    return false;
-  }
-
-  bool isMuchBigger(Piece p) {
-    if (box.size.isMuchBigger(p.box.size)) {
-      return true;
-    }
-    return false;
-  }
 }
 
 class MovablePiece extends Piece {
-  static const num speedLimit = 6;
-
-  num dx = 1;
-  num dy = 1;
+  var speed = new Speed();
   bool isMoving = true;
 
   MovablePiece(int id): super(id);
-
-  num get speed => max(dx, dy);
-
+  
+  num get dx => speed.dx;
+  set dx(num dx) => speed.dx = dx;
+  num get dy => speed.dy;
+  set dy(num dy) => speed.dy = dy;
+  
   fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
-    dx = jsonMap['dx'];
-    dy = jsonMap['dy'];
+    speed = new Speed.fromJsonMap(jsonMap['speed']);
     isMoving = jsonMap['isMoving'];
   }
 
   Map<String, Object> toJsonMap() {
     var jsonMap = super.toJsonMap();
-    jsonMap['dx'] = dx;
-    jsonMap['dy'] = dy;
+    jsonMap['speed'] = speed.toJsonMap();
     jsonMap['isMoving'] = isMoving;
     return jsonMap;
   }
 
   randomInit() {
     super.randomInit();
-    dx = randomNum(speedLimit);
-    dy = randomNum(speedLimit);
-  }
-
-  bool isFaster(MovablePiece p) {
-    if (speed > p.speed) {
-      return true;
-    }
-    return false;
-  }
-
-  bool isMuchFaster(MovablePiece p) {
-    if (speed > 2 * p.speed) {
-      return true;
-    }
-    return false;
+    speed = Speed.random();
   }
 
   move([Direction direction]) {
     if (isMoving) {
       if (direction == null) {
-        x += dx;
-        y += dy;
+        x += speed.dx;
+        y += speed.dy;
         if (x > space.width - width || x < 0) {
-          dx = -dx;
+          speed.dx = -speed.dx;
         }
         if (y > space.height - height || y < 0) {
-          dy = -dy;
+          speed.dy = -speed.dy;
         }
       } else {
         switch(direction) {
           case Direction.UP:
-            y -= dy;
+            y -= speed.dy;
             if (y < 0) {
               x = randomNum(minMaxSpace.minSize.width);
               y = randomRangeNum(minMaxSpace.minSize.height, minMaxSpace.maxSize.height);
             }
             break;
           case Direction.DOWN:
-            y += dy;
+            y += speed.dy;
             if (y > minMaxSpace.maxSize.height) {
               x = randomNum(minMaxSpace.minSize.width);
               y = -randomRangeNum(minMaxSpace.minSize.height, minMaxSpace.maxSize.height);
             }
             break;
           case Direction.LEFT:
-            x -= dx;
+            x -= speed.dx;
             if (x < 0) {
               x = randomRangeNum(minMaxSpace.minSize.width, minMaxSpace.maxSize.width);
               y = randomNum(minMaxSpace.minSize.height);
             }
             break;
           case Direction.RIGHT:
-            x += dx;
+            x += speed.dx;
             if (x > minMaxSpace.maxSize.width) {
               x = -randomRangeNum(minMaxSpace.minSize.width, minMaxSpace.maxSize.width);
               y = randomNum(minMaxSpace.minSize.height);
@@ -252,19 +217,19 @@ class MovablePiece extends Piece {
   avoidCollision(Piece p) {
     if (p.x < x  && p.y < y) {
       if (p.x + p.width >= x && p.y + p.height >= y) {
-        dx = -dx; dy = -dy;
+        speed.changeDirection();
       }
     } else if (p.x > x  && p.y < y) {
       if (p.x <= x + width && p.y + p.height >= y) {
-        dx = -dx; dy = -dy;
+        speed.changeDirection();
       }
     } else if (p.x < x  && p.y > y) {
       if (p.x + p.width >= x && p.y <= y + height) {
-        dx = -dx; dy = -dy;
+        speed.changeDirection();
       }
     } else if (p.x > x  && p.y > y) {
       if (p.x <= x + width && p.y <= y + height) {
-        dx = -dx; dy = -dy;
+        speed.changeDirection();
       }
     }
   }

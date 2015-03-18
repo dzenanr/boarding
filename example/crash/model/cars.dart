@@ -15,9 +15,7 @@ class NonRedCar extends Car {
 
   NonRedCar(int id): super(id) {
     color = randomColorCode();
-    var speed = randomNum(MovablePiece.speedLimit);
-    dx = randomNum(speed);
-    dy = randomNum(speed);
+    speed = Speed.random();
   }
 }
 
@@ -36,16 +34,18 @@ class RedCar extends Car {
   bool get isBig => !isSmall;
 
   move([Direction direction]) {
-    if (x + width > this.space.width) {
-      //x = distance.width - width; // error!?
-      x = this.space.width - width;
+    if (x > space.width - width) {
+      x = space.width - width;
     }
-    if (x - width < 0) {x = 0;}
-    if (y + height > this.space.height) {
-      //y = distance.height - height; // error!?
-      y = this.space.height - height;
+    if (x < 0) {
+      x = 0;
     }
-    if (y - height < 0) {y = 0;}
+    if (y > space.height - height) {
+      y = space.height - height;
+    }
+    if (y < 0) {
+      y = 0;
+    }
   }
 
   bigger() {

@@ -4,7 +4,7 @@ class Position {
   num x;
   num y;
 
-  Position(this.x, this.y);
+  Position([this.x = 0, this.y = 0]);
 
   Position.fromJsonMap(Map<String, num> jsonMap): this(jsonMap['x'], jsonMap['y']);
 
@@ -14,6 +14,50 @@ class Position {
     jsonMap['y'] = y;
     return jsonMap;
   }
+}
+
+class Speed {
+  static const num limit = 6;
+  
+  num dx;
+  num dy;
+
+  Speed([this.dx = 1, this.dy = 1]);
+
+  Speed.fromJsonMap(Map<String, num> jsonMap): this(jsonMap['dx'], jsonMap['dy']);
+
+  Map<String, num> toJsonMap() {
+    var jsonMap = new Map<String, num>();
+    jsonMap['dx'] = dx;
+    jsonMap['dy'] = dy;
+    return jsonMap;
+  }
+  
+  increase() {
+    dx++; 
+    dy++;
+  }
+  
+  double() {
+    dx = 2 * dx;
+    dy = 2 * dy;
+  }
+  
+  decrease() {
+    dx--; 
+    dy--;
+  }
+  
+  changeDirection() {
+    dx = -dx; 
+    dy = -dy;
+  }
+  
+  bool isFaster(Speed s) => dx > s.dx && dy > s.dy;
+  bool isTwiceFaster(Speed s) => dx == 2 * s.dx && dy == 2* s.dy;
+  bool isMuchFaster(Speed s) => dx > 2 * s.dx && dy > 2* s.dy;
+  
+  static Speed random() => new Speed(randomNum(limit), randomNum(limit));
 }
 
 class Size {
@@ -34,23 +78,14 @@ class Size {
     return jsonMap;
   }
 
+  bool isBigger(Size s) => width > s.width && height > s.height;
+  bool isTwiceBigger(Size s) => width == 2 * s.width && height == 2 * s.height;
+  bool isMuchBigger(Size s) => width > 2 * s.width && height > 2 * s.height;
+  
   Position randomPosition() => new Position(randomNum(width), randomNum(height));
 
-  Size randomSize() => new Size(randomNum(width), randomNum(height));
-
-  bool isBigger(Size s) {
-    if (width > s.width && height > s.height) {
-      return true;
-    }
-    return false;
-  }
-
-  bool isMuchBigger(Size s) {
-    if (width > 2 * s.width && height > 2 * s.height) {
-      return true;
-    }
-    return false;
-  }
+  static Size random(num maxWidth, num maxHeight) => 
+      new Size(randomNum(maxWidth), randomNum(maxHeight));
 }
 
 class Box {
@@ -97,13 +132,16 @@ class MinMaxSize {
     jsonMap['maxSize'] = maxSize.toJsonMap();
     return jsonMap;
   }
+  
+  bool isEqualWidth() => minSize.width == maxSize.width;
+  bool isEqualHeight() => minSize.height == maxSize.height;
 
   Size randomSize() =>
       new Size(randomRangeNum(minSize.width, maxSize.width),
                randomRangeNum(minSize.height, maxSize.height));
-
-  bool isEqualWidth() => minSize.width == maxSize.width;
-  bool isEqualHeight() => minSize.height == maxSize.height;
+  
+  Position randomPosition() =>
+      new Position(randomNum(minSize.width), randomNum(minSize.height));
 }
 
 class MinMaxSpace extends MinMaxSize {
@@ -116,7 +154,4 @@ class MinMaxSpace extends MinMaxSize {
   MinMaxSpace.from(Size dimension): super.from(dimension);
 
   MinMaxSpace.fromJsonMap(Map<String, Map> jsonMap): super.fromJsonMap(jsonMap);
-
-  Position randomPosition() =>
-      new Position(randomNum(minSize.width), randomNum(minSize.height));
 }
