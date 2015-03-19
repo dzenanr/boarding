@@ -1,6 +1,18 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.3* 2015-03-19
+
++ add drawPosition to shapes
++ add drawPolygon to shapes
++ add drawPolygonWithinSquare to shapes
++ add POLYGON to enum PieceShape in model/pieces.dart
++ add case PieceShape.POLYGON to Surface in view/surface.dart
++ add LinePath to util/geo.dart
++ use LinePath for linePath property in Piece in model/pieces.dart
++ move lineWidth in Piece to linePath as width
++ add tests
+
 *0.2.3* 2015-03-18
 
 + add Speed class to util/geo.dart

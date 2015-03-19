@@ -87,6 +87,7 @@ http://fabricjs.com/fabric-intro-part-1/
 Polygons
 
 http://stackoverflow.com/questions/4839993/how-to-draw-polygons-on-an-html5-canvas
+http://scienceprimer.com/drawing-regular-polygons-javascript-canvas
 http://www.arungudelli.com/html5/html5-canvas-polygon/
 http://www.storminthecastle.com/2013/07/24/how-you-can-draw-regular-polygons-with-the-html5-canvas-api/
 http://scienceprimer.com/drawing-regular-polygons-javascript-canvas

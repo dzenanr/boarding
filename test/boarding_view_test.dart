@@ -3,14 +3,22 @@ import 'dart:html';
 
 main() {
   var canvas = querySelector('#canvas');
-  drawCircle(canvas, 200, 200, 40, lineWidth: 2, color: 'black',
-      borderColor: 'orange');
-  drawCircleWithinSquare(canvas, 40, 420, 60, lineWidth: 4, color: 'blue');
+  drawPosition(canvas, 10, 20);
+  drawPosition(canvas, 20, 20, lineWidth: 2);
+  drawPosition(canvas, 30, 20, lineWidth: 3);
+  drawPosition(canvas, 40, 20, lineWidth: 4);
+  drawPosition(canvas, 50, 20, lineWidth: 5);
+  drawPosition(canvas, 60, 20, lineWidth: 6);
+  drawPosition(canvas, 70, 20, lineWidth: 7);
+  drawPosition(canvas, 80, 20, lineWidth: 8);
+  drawPosition(canvas, 90, 20, lineWidth: 9);
+  drawCircle(canvas, 200, 200, 40, lineWidth: 2, color: 'black', borderColor: 'orange');
+  drawCircleWithinSquare(canvas, 40, 430, 60, lineWidth: 3, color: 'blue');
   drawRect(canvas, 400, 300, 80, 40);
   drawRect(canvas, 100, 300, 40, 60, color: 'green');
   drawEllipseWithinRect(canvas, 400, 300, 80, 40, color: 'lightgreen');
   drawEllipseWithinRect(canvas, 320, 200, 80, 60, color: 'yellow', borderColor: 'blue');
-  drawSquare(canvas, 40, 500, 60, lineWidth: 8, color: 'orange');
+  drawSquare(canvas, 40, 500, 60, lineWidth: 6, color: 'orange');
   drawSquare(canvas, 10, 30, 40, color: 'lightgray');
   drawSquare(canvas, 50, 190, 40, color: 'lightgreen');
   drawTriangleWithinSquare(canvas, 50, 190, 40);
@@ -23,7 +31,23 @@ main() {
   drawTag(canvas, 30, 50, 16, '4');
   drawStar(canvas, 100, 100, 30, innerRadius: 15, spikes: 5, lineWidth: 2);
   drawSquare(canvas, 200, 200, 20);
-  drawStarWithinSquare(canvas, 200, 200, 20, innerRadius: 5, spikes: 7,
-      borderColor: 'red');
+  drawStarWithinSquare(canvas, 200, 200, 20, innerRadius: 5, spikes: 7, borderColor: 'red');
+  drawPolygon(canvas, 200, 100, 40, 6);
+  drawPosition(canvas, 200, 100);
+  drawPolygon(canvas, 300, 100, 40, 6, lineWidth: 4, color: 'black', borderColor: 'orange');
+  drawPolygon(canvas, 400, 100, 40, 7);
+  drawPolygon(canvas, 500, 100, 30, 8);
+  drawSquare(canvas, 550, 100, 80);
+  drawPolygonWithinSquare(canvas, 550, 100, 80, 40, 6);
+  drawPolygonWithinSquare(canvas, 550, 100, 80, 20, 6);
+  drawPolygonWithinSquare(canvas, 550, 100, 80, 10, 6);
+  drawSquare(canvas, 550, 200, 40);
+  drawPolygonWithinSquare(canvas, 550, 200, 40, 26, 5);
+  drawSquare(canvas, 550, 250, 40);
+  drawPolygonWithinSquare(canvas, 550, 250, 40, 20, 5);
+  drawSquare(canvas, 550, 350, 40);
+  drawPolygonWithinSquare(canvas, 550, 350, 40, 40, 9);
+  drawPolygonWithinSquare(canvas, 550, 450, 40, 20, 10);
+  drawPolygonWithinSquare(canvas, 550, 500, 40, 20, 16);
   //drawCloud(canvas, 200, 200, 80, 40);
 }

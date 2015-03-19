@@ -1,7 +1,7 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, ELLIPSE, LINE, RECT, ROUNDED_RECT, SELECTED_RECT,
-  SQUARE, STAR, TAG, TRIANGLE, VEHICLE}
+enum PieceShape {CIRCLE, ELLIPSE, LINE, POLYGON, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, 
+  STAR, TAG, TRIANGLE, VEHICLE}
 
 accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
   // Some acceleration depending upon distance.
@@ -28,7 +28,7 @@ class Piece {
   Box box;
   var minMaxSpace = new MinMaxSpace();
   Size _space;
-  num lineWidth = 1;
+  var linePath = new LinePath();
   String text = defaultText;
   String color = defaultColor;
   String borderColor = defaultColor;
@@ -58,6 +58,8 @@ class Piece {
     _space = space;
     box.stayWithinSpace(space);
   }
+  
+  num get lineWidth => linePath.width;
 
   fromJsonMap(Map<String, Object> jsonMap) {
     id  = jsonMap['id'];
@@ -66,7 +68,7 @@ class Piece {
     box = new Box.fromJsonMap(jsonMap['box']);
     minMaxSpace = new MinMaxSpace.fromJsonMap(jsonMap['minMaxSpace']);
     _space = new Size.fromJsonMap(jsonMap['space']);
-    lineWidth = jsonMap['lineWidth'];
+    linePath = new LinePath.fromJsonMap(jsonMap['linePath']);
     text = jsonMap['text'];
     color = jsonMap['color'];
     borderColor = jsonMap['borderColor'];
@@ -87,7 +89,7 @@ class Piece {
     jsonMap['box'] = box.toJsonMap();
     jsonMap['minMaxSpace'] = minMaxSpace.toJsonMap();
     jsonMap['space'] = _space.toJsonMap();
-    jsonMap['lineWidth'] = lineWidth;
+    jsonMap['linePath'] = linePath.toJsonMap();
     jsonMap['text'] = text;
     jsonMap['color'] = color;
     jsonMap['borderColor'] = borderColor;
@@ -101,7 +103,9 @@ class Piece {
   randomInit() {
     var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
-    lineWidth = randomRangeNum(1, 2.50001);
+    linePath.width = randomRangeNum(1, 2.50001);
+    linePath.length = width / 2;
+    linePath.count = randomRangeInt(5, 11);
     text = randomElement(colorList());
     color = colorMap()[text];
     borderColor = randomColor();

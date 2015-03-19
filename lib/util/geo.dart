@@ -16,6 +16,25 @@ class Position {
   }
 }
 
+class LinePath {
+  num width;
+  num length;
+  int count;
+  
+  LinePath([this.width = 1, this.length = 40, this.count = 1]);
+
+  LinePath.fromJsonMap(Map<String, num> jsonMap): 
+    this(jsonMap['width'], jsonMap['length'], jsonMap['count']);
+
+  Map<String, num> toJsonMap() {
+    var jsonMap = new Map<String, num>();
+    jsonMap['width'] = width;
+    jsonMap['length'] = length;
+    jsonMap['count'] = count;
+    return jsonMap;
+  }
+}
+
 class Speed {
   static const num limit = 6;
   

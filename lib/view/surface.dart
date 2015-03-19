@@ -92,71 +92,72 @@ class Surface {
     switch(piece.shape) {
       case PieceShape.CIRCLE:
         drawCircleWithinSquare(canvas, piece.x, piece.y, piece.width,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         /*
         var r = piece.width / 2;
         drawCircle(canvas, piece.x + r, piece.y + r, r,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
          */
         break;
       case PieceShape.ELLIPSE:
         drawEllipseWithinRect(canvas, piece.x, piece.y, piece.width, piece.height,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.LINE:
         drawLine(canvas, piece.x, piece.y, piece.width, piece.height,
-            lineWidth: piece.lineWidth,
-            color: piece.color); // no borderColor
+            lineWidth: piece.lineWidth, color: piece.color); // no borderColor
+        break;
+      case PieceShape.POLYGON:
+        var r = piece.width / 2;
+        if (piece.linePath.length > r) {
+          piece.linePath.length = r;
+        }
+        drawPolygonWithinSquare(canvas, piece.x, piece.y, piece.width, piece.linePath.length, piece.linePath.count,
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
+        /*
+        var r = piece.width / 2;
+        var c = r ~/ 4;
+        drawPolygon(canvas, piece.x + r, piece.y + r, r, c,
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
+         */
         break;
       case PieceShape.RECT:
         drawRect(canvas, piece.x, piece.y, piece.width, piece.height,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.ROUNDED_RECT:
         drawRoundedRect(canvas, piece.x, piece.y, piece.width, piece.height,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.SELECTED_RECT:
         drawSelectedRect(canvas, piece.x, piece.y, piece.width, piece.height,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.SQUARE:
         drawSquare(canvas, piece.x, piece.y, piece.width,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.STAR:
         drawStarWithinSquare(canvas, piece.x, piece.y, piece.width,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         /*
         var r = piece.width / 2;
         drawStar(canvas, piece.x + r, piece.y + r, r,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
          */
         break;
       case PieceShape.TAG:
         drawTag(canvas, piece.x, piece.y, piece.width, piece.text,
             // no lineWidth
-            maxWidth: piece.minMaxSize.maxSize.width,
-            color: piece.color); // no borderColor
+            maxWidth: piece.minMaxSize.maxSize.width, color: piece.color); // no borderColor
         break;
       case PieceShape.TRIANGLE:
         drawTriangleWithinSquare(canvas, piece.x, piece.y, piece.width,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.VEHICLE:
         drawVehicle(canvas, piece.x, piece.y, piece.width, piece.height,
-            lineWidth: piece.lineWidth,
-            color: piece.color, borderColor: piece.borderColor);
+            lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
     }
   }

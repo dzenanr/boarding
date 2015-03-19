@@ -5,6 +5,14 @@ randomBool() => new Random().nextBool();
 // nextInt(max): range from 0, inclusive, to max, exclusive.
 randomInt(int max) => new Random().nextInt(max);
 
+int randomRangeInt(int min, int max) {
+  int random = new Random().nextInt(max);
+  if (random < min) {
+    random = min;
+  }
+  return random;
+}
+
 // nextDouble(): range from 0.0, inclusive, to 1.0, exclusive.
 double randomDouble(double max) {
   return new Random().nextDouble() * max;
