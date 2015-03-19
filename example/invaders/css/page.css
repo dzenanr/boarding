@@ -1,0 +1,37 @@
+/* page.css */
+
+/* ===[ begin ]=== */
+
+/*
+  Title:         Web Page Design Style
+  Author:        Timur Ridjanovic
+  Influenced By: http://www.simplebits.com/
+  Created:       2006-09-03
+  Updated:       2011-12-23
+*/
+
+  body {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 16px;
+    background-image: url(img/pattern.gif);
+    color: black;
+    /*background: #ffffff;*/
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+
+
+  section {
+    padding: 5px;
+  }
+
+  p {
+    line-height: 1.5em;
+    text-align: justify;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+/* ===[ end ]=== */

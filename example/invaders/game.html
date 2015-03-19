@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Invaders example for the boarding package.</title>
+    <link rel="stylesheet" href="css/menu.css"/>
+    <link rel="stylesheet" href="css/page.css"/>
+    <link rel="stylesheet" href="css/list.css"/>
+    <link rel="stylesheet" href="css/layout.css"/>
+  </head>
+  <body>
+    <div class="whitebox">
+      <header>
+        <h2>Invaders by Timur Ridjanovic</h2>
+      </header>
+      <nav>
+        <ul>
+          <li>About
+            <ul>
+              <li>
+                <button 
+                  onClick="window.open('http://interactive-resume.appspot.com/');">
+                  Interactive Resume
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <canvas id="canvas" width="950" height="560">
+          <img id ="spaceship" src="css/img/spaceship.png"></img>
+          <img id ="cloud" src="css/img/cloud.png"></img>
+          <img id ="creature" src="css/img/creature.png"></img>
+          <img id ="explosion" src="css/img/explosion.gif"></img>
+        </canvas>
+      </section>
+    </div>
+    <script type="application/dart" src="game.dart"></script>
+  </body>
+</html>

@@ -103,6 +103,12 @@ class Surface {
         drawEllipseWithinRect(canvas, piece.x, piece.y, piece.width, piece.height,
             lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
+      case PieceShape.IMG:
+        var img = document.querySelector('#${piece.imageId}');
+        if (img != null) {
+          drawImg(canvas, piece.x, piece.y, piece.width, piece.height, img);
+        }
+        break;
       case PieceShape.LINE:
         drawLine(canvas, piece.x, piece.y, piece.width, piece.height,
             lineWidth: piece.lineWidth, color: piece.color); // no borderColor

@@ -1,7 +1,5 @@
 part of grid;
 
-enum Direction {UP, DOWN, LEFT, RIGHT}
-
 class Cell {
   int row, column;
   String color;

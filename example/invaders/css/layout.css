@@ -1,0 +1,45 @@
+/* layout.css */
+
+/* ===[ begin ]=== */
+
+/*
+  Title:         Basic Layout Design Style
+  Author:        Timur Ridjanovic
+  Influenced By: http://www.simplebits.com/
+  Created:       2006-09-03
+  Updated:       2011-12-22
+*/
+
+  .whitebox {
+    color: #000000;
+    background: #ffffff;
+    /*padding: 4px;*/
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    border-top-right-radius: 50px 50px;
+    border-bottom-left-radius: 50px 50px;
+    text-align: center;
+  }
+    	
+  footer {
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    /*color: #ffffff;*/
+    color: #000000;
+    background: #663117;
+    padding: 50px;
+    border-top: 2px solid #999999;
+  }
+
+  #scrollpane {
+    width: 1000px;
+    height: 800px;
+    overflow: auto;
+    border: solid 1px black;
+    background-color: black;
+  }
+    		
+/* ===[ end ]=== */

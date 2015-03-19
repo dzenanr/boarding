@@ -13,6 +13,13 @@
 + move lineWidth in Piece to linePath as width
 + add tests
 
++ add String imageId property to Piece in model/pieces.dart
++ add IMG to enum PieceShape in model/pieces.dart
++ add case PieceShape.IMG to Surface in view/surface.dart
++ move enum Direction from Cell in model/grid/cell.dart to util/geo.dart
++ update import in examples 
++ add invaders example with images
+
 *0.2.3* 2015-03-18
 
 + add Speed class to util/geo.dart

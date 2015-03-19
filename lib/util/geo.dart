@@ -1,5 +1,7 @@
 part of util;
 
+enum Direction {UP, DOWN, LEFT, RIGHT}
+
 class Position {
   num x;
   num y;
@@ -76,7 +78,7 @@ class Speed {
   bool isTwiceFaster(Speed s) => dx == 2 * s.dx && dy == 2* s.dy;
   bool isMuchFaster(Speed s) => dx > 2 * s.dx && dy > 2* s.dy;
   
-  static Speed random() => new Speed(randomNum(limit), randomNum(limit));
+  static Speed random() => new Speed(randomRangeNum(1, limit), randomRangeNum(1, limit));
 }
 
 class Size {

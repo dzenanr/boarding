@@ -1,6 +1,6 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, ELLIPSE, LINE, POLYGON, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, 
+enum PieceShape {CIRCLE, ELLIPSE, IMG, LINE, POLYGON, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, 
   STAR, TAG, TRIANGLE, VEHICLE}
 
 accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
@@ -32,6 +32,7 @@ class Piece {
   String text = defaultText;
   String color = defaultColor;
   String borderColor = defaultColor;
+  String imageId;
   bool isVisible = true;
   bool isSelected = false;
 
@@ -72,6 +73,7 @@ class Piece {
     text = jsonMap['text'];
     color = jsonMap['color'];
     borderColor = jsonMap['borderColor'];
+    imageId = jsonMap['imageId'];
     isVisible = jsonMap['isVisible'];
     isSelected = jsonMap['isSelected'];
   }
@@ -93,6 +95,7 @@ class Piece {
     jsonMap['text'] = text;
     jsonMap['color'] = color;
     jsonMap['borderColor'] = borderColor;
+    jsonMap['imageId'] = imageId;
     jsonMap['isVisible'] = isVisible;
     jsonMap['isSelected'] = isSelected;
     return jsonMap;
@@ -119,7 +122,7 @@ class MovablePiece extends Piece {
   var speed = new Speed();
   bool isMoving = true;
 
-  MovablePiece(int id): super(id);
+  MovablePiece([id = 0]): super(id);
   
   num get dx => speed.dx;
   set dx(num dx) => speed.dx = dx;

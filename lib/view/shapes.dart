@@ -23,40 +23,6 @@ drawCircleWithinSquare(CanvasElement canvas, num x, num y, num length,
              lineWidth: lineWidth, color: color, borderColor: borderColor);
 }
 
-drawPosition(CanvasElement canvas, num x, num y, {num lineWidth: 1, String color: 'black'}) {
-  var r = 1 / 2;
-  drawCircle(canvas, x + r, y + r, r, lineWidth: lineWidth, color: color);
-}
-
-// http://scienceprimer.com/drawing-regular-polygons-javascript-canvas
-drawPolygon(CanvasElement canvas, num x, num y, num sideLength, int sideCount, 
-            {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
-  // x center, y center
-  var context = canvas.getContext('2d');
-  context
-      ..lineWidth = lineWidth
-      ..fillStyle = color
-      ..strokeStyle = borderColor
-      ..beginPath()
-      ..moveTo (x +  sideLength * cos(0), y +  sideLength *  sin(0));          
-  for (var i = 1; i <= sideCount; i++) {
-    context.lineTo(x + sideLength * cos(i * 2 * PI / sideCount), 
-                   y + sideLength * sin(i * 2 * PI / sideCount));
-  }
-  context
-      ..closePath()
-      ..fill()
-      ..stroke();
-}
-
-drawPolygonWithinSquare(CanvasElement canvas, num x, num y, num length, num sideLength, int sideCount,
-                        {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
-  // x left, y top
-  var r = length / 2;
-  drawPolygon(canvas, x + r, y + r, sideLength, sideCount,
-             lineWidth: lineWidth, color: color, borderColor: borderColor);
-}
-
 //http://www.html5canvastutorials.com/tutorials/html5-canvas-custom-shapes/
 //http://stackoverflow.com/questions/19541192/how-to-draw-cloud-shape-in-html5-canvas
 //http://www.html5canvastutorials.com/advanced/html5-canvas-save-drawing-as-an-image/
@@ -107,6 +73,14 @@ drawEllipseWithinRect(CanvasElement canvas, num x, num y, num width, num height,
       ..stroke();
 }
 
+drawImg(CanvasElement canvas, num x, num y, num width, num height, ImageElement img) {
+  var context = canvas.getContext('2d');
+  context
+      ..beginPath()
+      ..drawImageToRect(img, new Rectangle(x, y, width, height))
+      ..closePath();
+}
+
 drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,
          {num lineWidth: 1, String color: 'black', String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
@@ -144,6 +118,40 @@ drawDistanceLine(CanvasElement canvas, Piece p1, Piece p2, num minDistance) {
     var c = 'rgba(255, 255, 255, $d)';
     drawLine(canvas, p1x, p1y, p2x, p2y, color: c);
   }
+}
+
+drawPosition(CanvasElement canvas, num x, num y, {num lineWidth: 1, String color: 'black'}) {
+  var r = 1 / 2;
+  drawCircle(canvas, x + r, y + r, r, lineWidth: lineWidth, color: color);
+}
+
+// http://scienceprimer.com/drawing-regular-polygons-javascript-canvas
+drawPolygon(CanvasElement canvas, num x, num y, num sideLength, int sideCount, 
+            {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  // x center, y center
+  var context = canvas.getContext('2d');
+  context
+      ..lineWidth = lineWidth
+      ..fillStyle = color
+      ..strokeStyle = borderColor
+      ..beginPath()
+      ..moveTo (x +  sideLength * cos(0), y +  sideLength *  sin(0));          
+  for (var i = 1; i <= sideCount; i++) {
+    context.lineTo(x + sideLength * cos(i * 2 * PI / sideCount), 
+                   y + sideLength * sin(i * 2 * PI / sideCount));
+  }
+  context
+      ..closePath()
+      ..fill()
+      ..stroke();
+}
+
+drawPolygonWithinSquare(CanvasElement canvas, num x, num y, num length, num sideLength, int sideCount,
+                        {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  // x left, y top
+  var r = length / 2;
+  drawPolygon(canvas, x + r, y + r, sideLength, sideCount,
+             lineWidth: lineWidth, color: color, borderColor: borderColor);
 }
 
 drawRect(CanvasElement canvas, num x, num y, num width, num height,
