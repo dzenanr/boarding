@@ -17,13 +17,9 @@ class Board extends Surface {
     clear();
     stars.forEach((Star star) {
       if (isUp) {
-        if (!star.increase()) {
-          isUp = false;
-        }
+        isUp = star.increase();    
       } else {
-        if (!star.decrease()) {
-          isUp = true;
-        }
+        isUp = !star.decrease();
       }
       star.move();
       drawPiece(star);
