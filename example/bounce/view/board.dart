@@ -1,7 +1,7 @@
 part of bounce;
 
 class Board extends Surface {
-  var movablePieces;
+  MovablePieces movablePieces;
 
   Board(CanvasElement canvas): super(canvas) {
     movablePieces = new MovablePieces(32);

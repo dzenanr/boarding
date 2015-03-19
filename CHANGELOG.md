@@ -1,3 +1,4 @@
+
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
 *0.2.3* 2015-03-18
@@ -8,6 +9,13 @@
 + update the dash example
 + update the pingpong example
 + move the Ball and Racket view classes to model/gear.dart in the breakout example
++ add increase, double, decrease and changeDirection in Speed of util/geo.dart
++ add increase, double and decrease in Size of util/geo
++ add increaseWithin, doubleWithin and decreaseWithin in Size of util/geo.dart
++ add stayWithinSpace in Box of util/geo.dart
++ add jump to MovablePiece
++ add changeDirectionIfOutOfSpace to MovablePiece
++ add stars example
 
 *0.2.2* 2015-03-16 (Pub)
 

@@ -26,9 +26,9 @@ class Board extends Surface {
       start();
     });
     canvas.onMouseDown.listen((MouseEvent e) {
+      var x = e.offset.x;
+      var y = e.offset.y;
       fallingPieces.forEach((MovablePiece fp) {
-        var x = e.offset.x;
-        var y = e.offset.y;
         if (fp.contains(x, y)) {
           if (fp.isSelected) {
             fp.isVisible = false;

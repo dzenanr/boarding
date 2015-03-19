@@ -43,25 +43,20 @@ class Piece {
   Position get position => box.position;
   Size get size => box.size;
 
-  num get x => position.x;
-  set x(num x) => position.x = x;
-  num get y => position.y;
-  set y(num y) => position.y = y;
+  num get x => box.x;
+  set x(num x) => box.x = x;
+  num get y => box.y;
+  set y(num y) => box.y = y;
 
-  num get width => size.width;
-  set width(num width) => size.width = width;
-  num get height => size.height;
-  set height(num height) => size.height = height;
+  num get width => box.width;
+  set width(num width) => box.width = width;
+  num get height => box.height;
+  set height(num height) => box.height = height;
 
   Size get space => _space;
   set space(Size space) {
     _space = space;
-    if (x > space.width - width) {
-      x = space.width - width;
-    }
-    if (y > space.height - height) {
-      y = space.height - height;
-    }
+    box.stayWithinSpace(space);
   }
 
   fromJsonMap(Map<String, Object> jsonMap) {
@@ -150,12 +145,7 @@ class MovablePiece extends Piece {
       if (direction == null) {
         x += speed.dx;
         y += speed.dy;
-        if (x > space.width - width || x < 0) {
-          speed.dx = -speed.dx;
-        }
-        if (y > space.height - height || y < 0) {
-          speed.dy = -speed.dy;
-        }
+        changeDirectionIfOutOfSpace();
       } else {
         switch(direction) {
           case Direction.UP:
@@ -191,6 +181,19 @@ class MovablePiece extends Piece {
   }
 
   onOff() => isMoving = !isMoving;
+  
+  jump() {
+    box.position = space.randomPosition();
+  }
+  
+  changeDirectionIfOutOfSpace() {
+    if (x > space.width - width || x < 0) {
+      speed.dx = -speed.dx;
+    }
+    if (y > space.height - height || y < 0) {
+      speed.dy = -speed.dy;
+    }
+  }
 
   bool hit(Piece p) {
     bool isHit = false;

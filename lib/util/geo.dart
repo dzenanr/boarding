@@ -77,6 +77,63 @@ class Size {
     jsonMap['height'] = height;
     return jsonMap;
   }
+  
+  increase() {
+    width++; 
+    height++;
+  }
+  
+  double() {
+    width = 2 * width;
+    height = 2 * height;
+  }
+  
+  decrease() {
+    width--; 
+    height--;
+  }
+  
+  bool increaseWithin(Size max) {
+    var isIncreased = true;
+    increase();
+    if (width > max.width) {
+      width = max.width;
+      isIncreased = false;
+    }
+    if (height > max.width) {
+      height = max.width;
+      isIncreased = false;
+    }
+    return isIncreased;
+  }
+  
+  doubleWithin(Size max) {
+    var isDoubled = true;
+    double();
+    if (width > max.width) {
+      width = max.width;
+      isDoubled = false;
+    }
+    if (height > max.width) {
+      height = max.width;
+      isDoubled = false;
+    }
+    return isDoubled;
+  }
+  
+  bool decreaseWithin(Size min) {
+    var isDecreased = true;
+    decrease();
+    if (width < min.width) {
+      width = min.width;
+      isDecreased = false;
+    }
+    if (height < min.height) {
+      height = min.height;
+      isDecreased = false;
+    }
+    return isDecreased;
+  }
 
   bool isBigger(Size s) => width > s.width && height > s.height;
   bool isTwiceBigger(Size s) => width == 2 * s.width && height == 2 * s.height;
@@ -104,6 +161,31 @@ class Box {
     jsonMap['position'] = position.toJsonMap();
     jsonMap['size'] = size.toJsonMap();
     return jsonMap;
+  }
+  
+  num get x => position.x;
+  set x(num x) => position.x = x;
+  num get y => position.y;
+  set y(num y) => position.y = y;
+
+  num get width => size.width;
+  set width(num width) => size.width = width;
+  num get height => size.height;
+  set height(num height) => size.height = height;
+  
+  stayWithinSpace(Size space) {
+    if (x < 0) {
+      x = 0;
+    }
+    if (y < 0) {
+      y = 0;
+    }
+    if (x > space.width - width) {
+      x = space.width - width;
+    }
+    if (y > space.height - height) {
+      y = space.height - height;
+    }
   }
 }
 
