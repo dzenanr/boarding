@@ -5,6 +5,10 @@ Animations
 http://www.sitepoint.com/basic-animation-with-canvas-and-javascript/
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations
 
+Art
+
+http://seb.ly/about/
+
 Async Games
 
 http://appadvice.com/applists/show/asynchronous-games
@@ -14,6 +18,10 @@ http://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20as
 http://api.shephertz.com/app42-dev/ebook-turn-based-games.php
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
 http://www.giantbomb.com/asynchronous-multiplayer/3015-4359/games/
+
+Audio
+
+http://stackoverflow.com/questions/14846420/html5-audio-button-works-first-time-pressed-then-stops-working
 
 Canvas
 
@@ -74,10 +82,23 @@ http://blog.coinding.com/coinding-gamedev-hackathon-winners/
 https://github.com/stepanbujnak/kayak
 https://news.ycombinator.com/item?id=9169657
 http://www.producthunt.com/rrhoover/collections/delightful-indie-games
+http://www.lutanho.net/stroke/online.html
+http://www.webresourcesdepot.com/25-amazing-javascript-games-some-fun-and-inspiration/
+http://www.queness.com/post/2584/12-amazing-and-creative-javascript-games
 
 Grid Games
 
 http://www.abefehr.com/parity/#
+
+HTML5 & JS Games
+
+http://www.digitaltrends.com/gaming/best-html-5-javascript-games/
+http://www.creativebloq.com/html5/top-20-html5-games-1122788
+http://codecall.net/2014/02/14/top-12-best-html5-games-of-year-2013/
+http://www.webdesignerdepot.com/2013/10/30-incredibly-addictive-html5-games/
+http://gamasutra.com/blogs/AustinHallock/20140108/208242/10_of_the_Best_HTML5_Games_from_2013.php
+http://www.casualgirlgamer.com/articles/entry/28/The-Best-30-HTML-5-games/
+
 
 JS
 
@@ -140,4 +161,5 @@ http://www.gamasutra.com/view/feature/6446/persuasive_games_from_aberrance_.php
 http://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20async%20events/index.html
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
 http://michalbe.blogspot.ca/2010/09/simple-game-with-html5-canvas-part-1.html
+https://msdn.microsoft.com/en-us/hh563503.aspx
 

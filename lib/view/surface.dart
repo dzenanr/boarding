@@ -104,9 +104,9 @@ class Surface {
             lineWidth: piece.lineWidth, color: piece.color, borderColor: piece.borderColor);
         break;
       case PieceShape.IMG:
-        var img = document.querySelector('#${piece.imageId}');
+        var img = document.querySelector('#${piece.imgId}');
         if (img != null) {
-          drawImg(canvas, piece.x, piece.y, piece.width, piece.height, img);
+          drawImgWithinRect(canvas, piece.x, piece.y, piece.width, piece.height, img);
         }
         break;
       case PieceShape.LINE:

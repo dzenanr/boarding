@@ -73,7 +73,7 @@ drawEllipseWithinRect(CanvasElement canvas, num x, num y, num width, num height,
       ..stroke();
 }
 
-drawImg(CanvasElement canvas, num x, num y, num width, num height, ImageElement img) {
+drawImgWithinRect(CanvasElement canvas, num x, num y, num width, num height, ImageElement img) {
   var context = canvas.getContext('2d');
   context
       ..beginPath()

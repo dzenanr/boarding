@@ -32,7 +32,9 @@ class Piece {
   String text = defaultText;
   String color = defaultColor;
   String borderColor = defaultColor;
-  String imageId;
+  String imgId;
+  String audioId;
+  bool usesAudio = false;
   bool isVisible = true;
   bool isSelected = false;
 
@@ -73,7 +75,9 @@ class Piece {
     text = jsonMap['text'];
     color = jsonMap['color'];
     borderColor = jsonMap['borderColor'];
-    imageId = jsonMap['imageId'];
+    imgId = jsonMap['imgId'];
+    audioId = jsonMap['audioId'];
+    usesAudio = jsonMap['usesAudio'];
     isVisible = jsonMap['isVisible'];
     isSelected = jsonMap['isSelected'];
   }
@@ -95,7 +99,9 @@ class Piece {
     jsonMap['text'] = text;
     jsonMap['color'] = color;
     jsonMap['borderColor'] = borderColor;
-    jsonMap['imageId'] = imageId;
+    jsonMap['imgId'] = imgId;
+    jsonMap['audioId'] = audioId;
+    jsonMap['usesAudio'] = usesAudio;
     jsonMap['isVisible'] = isVisible;
     jsonMap['isSelected'] = isSelected;
     return jsonMap;

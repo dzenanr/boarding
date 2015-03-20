@@ -12,7 +12,7 @@
   <body>
     <div class="whitebox">
       <header>
-        <h2>Invaders by Timur Ridjanovic</h2>
+        <h2>Invaders</h2>
       </header>
       <nav>
         <ul>
@@ -30,11 +30,14 @@
       </nav>
       <section>
         <canvas id="canvas" width="950" height="560">
-          <img id ="spaceship" src="css/img/spaceship.png"></img>
-          <img id ="cloud" src="css/img/cloud.png"></img>
-          <img id ="creature" src="css/img/creature.png"></img>
-          <img id ="explosion" src="css/img/explosion.gif"></img>
+          <img id ="spaceship" src="img/spaceship.png"></img>
+          <img id ="cloud" src="img/cloud.png"></img>
+          <img id ="creature" src="img/creature.png"></img>
+          <img id ="explosion" src="img/explosion.gif"></img>
         </canvas>
+        <audio id="collision"> 
+          <source src="audio/collision.ogg" type="audio/ogg" />
+        </audio>
       </section>
     </div>
     <script type="application/dart" src="game.dart"></script>

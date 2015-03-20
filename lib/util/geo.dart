@@ -208,6 +208,8 @@ class Box {
       y = space.height - height;
     }
   }
+  
+  Rectangle toRect() => new Rectangle(x, y, width, height); 
 }
 
 class MinMaxSize {

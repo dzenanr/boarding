@@ -1,6 +1,13 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.3* 2015-03-20
+
++ add audioId to Piece in model/pieces.dart
++ add usesAudio to Piece in model/pieces.dart
++ update the invaders example to use a sound when a laser hits a creature
++ create a model in the invaders example to initialize moving pieces
+
 *0.2.3* 2015-03-19
 
 + add drawPosition to shapes
