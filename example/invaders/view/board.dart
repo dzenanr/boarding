@@ -11,10 +11,11 @@ class Board extends Surface {
     clouds = new Clouds(5);
     creatures = new Creatures(7);
     spaceship = new Spaceship();
+    //spaceship.usesVideo = true;
     laser = new Laser();
     hitSound = document.querySelector('#${laser.audioId}');   
     invaderVideo = document.querySelector('#${spaceship.videoId}');
-    invaderVideo.hidden = true;   
+    invaderVideo.hidden = true; 
     canvas.onMouseMove.listen((MouseEvent e) {
       spaceship.x = e.offset.x - spaceship.width  / 2;
       spaceship.y = e.offset.y - spaceship.height / 2;
@@ -74,7 +75,7 @@ class Board extends Surface {
         drawPiece(laser);
       }
       drawPiece(spaceship);
-    } else {
+    } else if (spaceship.usesVideo) {   
       invaderVideo.hidden = false; 
       invaderVideo.play();
     }

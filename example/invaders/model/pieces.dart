@@ -8,7 +8,7 @@ class Spaceship extends MovablePiece {
     shape = PieceShape.IMG;
     imgId = 'spaceship';
     videoId = 'invader';
-    usesVideo = true;
+    usesVideo = false;
   }
 }
 

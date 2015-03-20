@@ -93,6 +93,13 @@ Grid Games
 
 http://www.abefehr.com/parity/#
 
+HTML5 & Dart
+
+http://news.dartlang.org/2013/01/more-dart-html5-goodness.html
+http://stackoverflow.com/questions/26069935/dart-web-audio-for-dart-1-6
+https://github.com/alextekartik/dart-test/tree/master/audio_test
+https://github.com/dart-lang/dart-samples
+
 HTML5 & JS Games
 
 http://www.digitaltrends.com/gaming/best-html-5-javascript-games/
