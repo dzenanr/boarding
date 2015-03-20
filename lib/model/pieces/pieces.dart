@@ -35,6 +35,8 @@ class Piece {
   String imgId;
   String audioId;
   bool usesAudio = false;
+  String videoId;
+  bool usesVideo = false;
   bool isVisible = true;
   bool isSelected = false;
 
@@ -78,6 +80,8 @@ class Piece {
     imgId = jsonMap['imgId'];
     audioId = jsonMap['audioId'];
     usesAudio = jsonMap['usesAudio'];
+    videoId = jsonMap['videoId'];
+    usesVideo = jsonMap['usesVideo'];
     isVisible = jsonMap['isVisible'];
     isSelected = jsonMap['isSelected'];
   }
@@ -102,6 +106,8 @@ class Piece {
     jsonMap['imgId'] = imgId;
     jsonMap['audioId'] = audioId;
     jsonMap['usesAudio'] = usesAudio;
+    jsonMap['videoId'] = videoId;
+    jsonMap['usesVideo'] = usesVideo;
     jsonMap['isVisible'] = isVisible;
     jsonMap['isSelected'] = isSelected;
     return jsonMap;

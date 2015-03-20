@@ -22,6 +22,9 @@ http://www.giantbomb.com/asynchronous-multiplayer/3015-4359/games/
 Audio
 
 http://stackoverflow.com/questions/14846420/html5-audio-button-works-first-time-pressed-then-stops-working
+http://www.vorbis.com/
+http://en.wikipedia.org/wiki/Vorbis
+http://www.html5rocks.com/en/tutorials/webaudio/intro/
 
 Canvas
 
@@ -161,4 +164,17 @@ http://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20as
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
 http://michalbe.blogspot.ca/2010/09/simple-game-with-html5-canvas-part-1.html
 https://msdn.microsoft.com/en-us/hh563503.aspx
+
+Video
+
+http://en.wikipedia.org/wiki/HTML5_video
+http://en.wikipedia.org/wiki/WebM
+http://www.webmproject.org/
+http://en.wikipedia.org/wiki/VP8
+http://www.computerhope.com/issues/ch001002.htm
+http://www.webdesignerdepot.com/2013/10/how-to-play-video-with-html5/
+
+
+
+
 

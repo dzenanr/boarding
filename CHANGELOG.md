@@ -8,6 +8,10 @@
 + update the invaders example to use a sound when a laser hits a creature
 + create a model in the invaders example to initialize moving pieces
 
++ add videoId to Piece in model/pieces.dart
++ add usesVideo to Piece in model/pieces.dart
++ update the invaders example to show a video at the end of the game
+
 *0.2.3* 2015-03-19
 
 + add drawPosition to shapes

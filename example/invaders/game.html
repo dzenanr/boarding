@@ -12,7 +12,7 @@
   <body>
     <div class="whitebox">
       <header>
-        <h2>Invaders</h2>
+        <h2>Invaders by Timur & Dzenan Ridjanovic</h2>
       </header>
       <nav>
         <ul>
@@ -35,9 +35,15 @@
           <img id ="creature" src="img/creature.png"></img>
           <img id ="explosion" src="img/explosion.gif"></img>
         </canvas>
+      </section>
+      <section id='audio-video'>
         <audio id="collision"> 
-          <source src="audio/collision.ogg" type="audio/ogg" />
+          <source src="audio/collision.ogg" type="audio/ogg"/>
         </audio>
+        <video id="invader" width="950" height="560" preload="auto" controls>
+          <source src="video/invader.webm"
+                  type='video/webm; codecs="vp8, vorbis"'/>
+        </video>
       </section>
     </div>
     <script type="application/dart" src="game.dart"></script>

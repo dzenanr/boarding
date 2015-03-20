@@ -5,6 +5,7 @@ class Board extends Surface {
   MovablePiece laser, spaceship;
   
   AudioElement hitSound;
+  VideoElement invaderVideo;
   
   Board(CanvasElement canvas) : super(canvas) {  
     clouds = new Clouds(5);
@@ -12,7 +13,8 @@ class Board extends Surface {
     spaceship = new Spaceship();
     laser = new Laser();
     hitSound = document.querySelector('#${laser.audioId}');   
-    
+    invaderVideo = document.querySelector('#${spaceship.videoId}');
+    invaderVideo.hidden = true;   
     canvas.onMouseMove.listen((MouseEvent e) {
       spaceship.x = e.offset.x - spaceship.width  / 2;
       spaceship.y = e.offset.y - spaceship.height / 2;
@@ -72,6 +74,9 @@ class Board extends Surface {
         drawPiece(laser);
       }
       drawPiece(spaceship);
+    } else {
+      invaderVideo.hidden = false; 
+      invaderVideo.play();
     }
   }
 }
