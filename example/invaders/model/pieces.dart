@@ -40,7 +40,7 @@ class Cloud extends MovablePiece {
 class Creature extends MovablePiece {  
   Creature(int id) {
     randomInit();
-    width = 80;
+    width = 104;
     height = 80;
     if (dy < 2) {
       dy = 2;
