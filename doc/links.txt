@@ -179,6 +179,8 @@ http://en.wikipedia.org/wiki/WebM
 http://www.webmproject.org/
 http://en.wikipedia.org/wiki/VP8
 http://www.computerhope.com/issues/ch001002.htm
+https://www.youtube.com/watch?v=dgSsBT-rJuw
+https://www.youtube.com/watch?v=2wTP3_Da_OA
 http://www.webdesignerdepot.com/2013/10/how-to-play-video-with-html5/
 
 

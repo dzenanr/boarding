@@ -11,7 +11,13 @@ class Board extends Surface {
     clouds = new Clouds(5);
     creatures = new Creatures(7);
     spaceship = new Spaceship();
+    //****************************************************************
+    // If the video folder in this example is empty,
+    // load the video from https://www.youtube.com/watch?v=dgSsBT-rJuw
+    // by using http://www.computerhope.com/issues/ch001002.htm 
+    // Uncomment the following line to use the video.
     //spaceship.usesVideo = true;
+    //****************************************************************
     laser = new Laser();
     hitSound = document.querySelector('#${laser.audioId}');   
     invaderVideo = document.querySelector('#${spaceship.videoId}');
