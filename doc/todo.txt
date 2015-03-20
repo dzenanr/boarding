@@ -2,6 +2,7 @@ To do
 
 - why some circles (stars) are partially out of canvas (south only) in the bounce (stars) example?
 - draw a cloud within a shape (polygon, regular polygon) in shapes
+  (see Bezier Curves in doc/links.txt)
 - add methods from Point and Rectangle (MutableRectangle) to Position and Box
 - add hashCode and equality (==) to the Position, Size, Box, MinMaxSize and MinMaxSpace classes
   http://stackoverflow.com/questions/10404516/how-can-i-compare-lists-for-equality-in-dart
@@ -22,13 +23,27 @@ To do
   https://www.airpair.com/javascript/posts/d3-force-layout-internals
   http://www.technologyreview.com/view/535861/pagerank-algorithm-reveals-worlds-all-time-top-soccer-team/
 - write a document about the boarding poackage
-- create even more examples to increase the generic stuff
+- create even more examples to increase the generic stuff (see HTML5 & JS Games in doc/links.txt)
 - do view tests with a web test library
 
 Maybe
 
 - use Point instead of Position? 
 - make Size and Box unmutable? 
+
+New Games
+
+alaclair
+http://alaclair.com/
+
+- create a random number of moving squares (moving pieces) of random sizes per color,
+  where each color represents one song (no visible signs which song)
+- ...
+
+
+  
+  
+  
   ﻿
 
 
