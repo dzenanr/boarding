@@ -1,7 +1,7 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
-*0.2.3* 2015-03-21
+*0.2.3* 2015-03-21 (Pub)
 
 + clouds move up in the invaders example
 + replace the creature image by another one
