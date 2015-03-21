@@ -28,6 +28,7 @@ To do
   https://www.airpair.com/javascript/posts/d3-force-layout-internals
   http://www.technologyreview.com/view/535861/pagerank-algorithm-reveals-worlds-all-time-top-soccer-team/
 - write a document about the boarding poackage
+- create more generic view components
 - create even more examples to increase the generic stuff (see HTML5 & JS Games in doc/links.txt)
 - do view tests with a web test library
 
