@@ -36,7 +36,7 @@ class Board extends Surface {
   
   background() {
     context
-        ..fillStyle = 'lightBlue'
+        ..fillStyle = '#76a8b1' 
         ..beginPath()
         ..fillRect(0, 0, width, height)
         ..closePath();
@@ -51,7 +51,9 @@ class Board extends Surface {
     clear();
     if (creatures.any((Piece p) => p.isVisible)) {
       clouds.forEach((Cloud cloud) {
-        cloud.move(Direction.DOWN);
+        cloud.move(Direction.UP);
+        cloud.minMaxSpace.minSize = new Size(width, height);
+        cloud.minMaxSpace.maxSize = new Size(width + cloud.width, height + cloud.height);
         drawPiece(cloud);
       });
       creatures.forEach((Creature creature) {

@@ -30,8 +30,8 @@ class Laser extends MovablePiece {
 class Cloud extends MovablePiece {  
   Cloud(int id) {
     randomInit();
-    width = 70;
-    height = 70;
+    width = 80;
+    height = 56;
     shape = PieceShape.IMG;
     imgId = 'cloud';
   }
@@ -40,8 +40,8 @@ class Cloud extends MovablePiece {
 class Creature extends MovablePiece {  
   Creature(int id) {
     randomInit();
-    width = 104;
-    height = 80;
+    width = 48;
+    height = 64;
     if (dy < 2) {
       dy = 2;
     }

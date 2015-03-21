@@ -1,6 +1,11 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.3* 2015-03-21
+
++ clouds move up in the invaders example
++ replace the creature image by another one
+
 *0.2.3* 2015-03-20
 
 + add audioId to Piece in model/pieces.dart
