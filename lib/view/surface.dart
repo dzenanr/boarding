@@ -7,10 +7,12 @@ class Surface {
   CanvasElement canvas;
   CanvasRenderingContext2D context;
   bool withLines;
+  bool avoidCollisions;
 
   Grid grid;
+  MovablePieces movablePieces;
 
-  Surface(this.canvas, {this.withLines: true, this.grid}) {
+  Surface(this.canvas, {this.grid, this.withLines: true, this.movablePieces, this.avoidCollisions: false}) {
     context = canvas.getContext('2d');
     width = canvas.width;
     height = canvas.height;
@@ -85,6 +87,15 @@ class Surface {
     if (grid != null) {
       if (withLines) lines();
       cells();
+    }
+    if (movablePieces != null) {
+      movablePieces.forEach((MovablePiece mp) {
+        mp.move();
+        if (avoidCollisions) {
+          movablePieces.avoidCollisions(mp);
+        }
+        drawPiece(mp);
+      });
     }
   }
 

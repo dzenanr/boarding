@@ -1,6 +1,13 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-03-21
+
++ add movablePieces and avoidCollisions properties to Surface in view/surface.dart
++ add movablePieces and avoidCollisions optional named parameters to Surface constructor
++ include movablePieces and conditional avoidCollisions in draw of Surface
++ add (minimal) move example without specific model and view
+
 *0.2.3* 2015-03-21 (Pub)
 
 + clouds move up in the invaders example

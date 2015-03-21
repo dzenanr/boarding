@@ -20,7 +20,8 @@ num distance(Piece p1, Piece p2) { // in pixels
 class Piece {
   static const PieceShape defaultShape = PieceShape.RECT;
   static const String defaultText = 'Dart';
-  static const String defaultColor = '#000000'; // black
+  static const String defaultColor = '#ffffff'; // white
+  static const String defaultBorderColor = '#000000'; // black
 
   int id;
   PieceShape shape = defaultShape;
@@ -31,7 +32,7 @@ class Piece {
   var linePath = new LinePath();
   String text = defaultText;
   String color = defaultColor;
-  String borderColor = defaultColor;
+  String borderColor = defaultBorderColor;
   String imgId;
   String audioId;
   bool usesAudio = false;
@@ -169,7 +170,7 @@ class MovablePiece extends Piece {
         switch(direction) {
           case Direction.UP:
             y -= speed.dy;
-            if (y < 0) {
+            if (y + height < 0) {
               x = randomNum(minMaxSpace.minSize.width);
               y = randomRangeNum(minMaxSpace.minSize.height, minMaxSpace.maxSize.height);
             }
@@ -183,7 +184,7 @@ class MovablePiece extends Piece {
             break;
           case Direction.LEFT:
             x -= speed.dx;
-            if (x < 0) {
+            if (x + width < 0) {
               x = randomRangeNum(minMaxSpace.minSize.width, minMaxSpace.maxSize.width);
               y = randomNum(minMaxSpace.minSize.height);
             }

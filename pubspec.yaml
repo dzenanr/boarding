@@ -1,5 +1,5 @@
 name: boarding
-version: 0.2.3
+version: 0.2.4
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 description: A package for board games or canvas drawings. The package has both model and view libraries. See the example folder to see how to use the boarding package.
 homepage: https://github.com/dzenanr/boarding

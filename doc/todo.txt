@@ -6,7 +6,8 @@ To do
 - add images to the rush example
 - add sound to the rush example
 - add a possibility to create a new parking in the rush example
-- why some circles (stars) are partially out of canvas (south only) in the bounce (stars) example?
+- why some circles (rectangles, stars) are partially out of canvas (south only) 
+  in the bounce (move, stars) example?
 - draw a cloud within a shape (polygon, regular polygon) in shapes
   (see Bezier Curves in doc/links.txt)
 - add methods from Point and Rectangle (MutableRectangle) to Position and Box
