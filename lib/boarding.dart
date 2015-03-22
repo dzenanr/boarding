@@ -3,7 +3,7 @@ library boarding;
 import 'dart:html';
 import 'dart:math';
 
-import 'grid.dart';
+import 'package:boarding/grid.dart';
 import 'package:boarding/pieces.dart';
 import 'package:boarding/util.dart';
 
