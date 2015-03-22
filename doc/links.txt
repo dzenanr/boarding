@@ -26,6 +26,12 @@ http://www.vorbis.com/
 http://en.wikipedia.org/wiki/Vorbis
 http://www.html5rocks.com/en/tutorials/webaudio/intro/
 
+Board Games
+
+http://www.funwithpuzzles.com/2014/07/corners.html
+http://www.funwithpuzzles.com/2012/05/battleship-puzzle-tutorial-conceptis.html
+
+
 Canvas
 
 http://www.creativebloq.com/design/learning-basics-html5-canvas-7112879
@@ -88,6 +94,9 @@ http://www.producthunt.com/rrhoover/collections/delightful-indie-games
 http://www.lutanho.net/stroke/online.html
 http://www.webresourcesdepot.com/25-amazing-javascript-games-some-fun-and-inspiration/
 http://www.queness.com/post/2584/12-amazing-and-creative-javascript-games
+http://www.funwithpuzzles.com/2014/10/online-popular-games.html
+http://www.gamespicnic.com/2014/08/red-remover-gravity-based-game.html
+http://coolmathgames1.net/
 
 Grid Games
 
@@ -121,6 +130,22 @@ JS
 http://perfectionkills.com/
 http://fabricjs.com/fabric-intro-part-1/
 
+Maze Puzzles
+
+http://www.funwithpuzzles.com/2012/04/maze-pix-puzzle-tutorial-conceptis.html
+
+Memory Games
+
+http://www.gamespicnic.com/2014/01/memory-games-main-page.html
+
+Picture Puzzles
+
+http://www.gamespicnic.com/2013/06/picture-puzzles.html
+
+Piece Games
+
+http://www.funwithpuzzles.com/2014/08/square-divide.html
+
 Polygons
 
 http://stackoverflow.com/questions/4839993/how-to-draw-polygons-on-an-html5-canvas
@@ -140,6 +165,7 @@ Puzzles
 https://news.ycombinator.com/item?id=9162585
 http://www.mathematische-basteleien.de/snakecube.htm
 http://imgur.com/a/nxA4Y
+http://www.funwithpuzzles.com/2015/02/mini-puzzles-series.html
 
 Questions
 
@@ -168,6 +194,11 @@ http://stackoverflow.com/questions/19541192/how-to-draw-cloud-shape-in-html5-can
 http://stackoverflow.com/questions/4927909/is-there-a-good-method-for-dynamically-drawing-clouds-with-html5-canvas-and-java
 http://jsfiddle.net/qs8wf/
 
+Sudoku
+
+http://www.funwithpuzzles.com/2014/12/guest-authors-contributions.html
+
+
 Tutorials
 
 http://cwoebker.com/posts/tic-tac-toe
@@ -178,6 +209,8 @@ http://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20as
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
 http://michalbe.blogspot.ca/2010/09/simple-game-with-html5-canvas-part-1.html
 https://msdn.microsoft.com/en-us/hh563503.aspx
+http://www.funwithpuzzles.com/2014/06/logical-puzzles-and-sudoku-tutorials.html
+https://edtechfunction.wordpress.com/2015/03/09/let-the-coding-games-begin-5-awesome-edtech-games-that-teach-programming/
 
 Video
 
@@ -189,6 +222,11 @@ http://www.computerhope.com/issues/ch001002.htm
 https://www.youtube.com/watch?v=dgSsBT-rJuw
 https://www.youtube.com/watch?v=2wTP3_Da_OA
 http://www.webdesignerdepot.com/2013/10/how-to-play-video-with-html5/
+
+Word Games
+
+http://www.gamespicnic.com/2014/09/word-games-main-page.html
+http://www.gamespicnic.com/2012/07/word-search-puzzles-main-page.html
 
 
 
