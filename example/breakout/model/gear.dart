@@ -5,7 +5,7 @@ class Ball extends MovablePiece {
   
   num _radius;
   
-  Ball([id]): super(id) {
+  Ball() {
     shape = PieceShape.CIRCLE;
     radius = defaultRadius;
     color = 'yellow';
@@ -24,7 +24,7 @@ class Racket extends MovablePiece {
   static const num defaultWidth = 75;
   static const num defaultHeight = 10;
   
-  Racket([id]): super(id) {
+  Racket() {
     shape = PieceShape.RECT;
     width = defaultWidth;
     height = defaultHeight;
