@@ -31,6 +31,7 @@
 + add p_art example
 + update tests
 + update examples
++ add bonhomme example
 
 *0.2.4* 2015-03-21
 
