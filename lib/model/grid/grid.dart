@@ -1,13 +1,14 @@
 part of grid;
 
 class Grid {
-  String color = 'white';
   int columnCount;  
   int rowCount; 
+  Color color = new Color('white');
 
   Cells cells;
 
   Grid(this.columnCount, this.rowCount) {
+    color.border = color.main;
     cells = new Cells(this);
     var cell;
     for (var row = 0; row < rowCount; row++) {
@@ -18,8 +19,8 @@ class Grid {
     }
   }
   
-  Cell newCell(Grid grid, int row, int column) {
-    return new Cell(grid, row, column);
+  CellPiece newCell(Grid grid, int row, int column) {
+    return new CellPiece(grid, row, column);
   }
 
   bool contains(int row, int column) {

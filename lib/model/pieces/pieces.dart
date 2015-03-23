@@ -19,31 +19,31 @@ num distance(Piece p1, Piece p2) { // in pixels
 
 class Piece {
   static const PieceShape defaultShape = PieceShape.RECT;
-  static const String defaultText = 'Dart';
-  static const String defaultColor = '#ffffff'; // white
-  static const String defaultBorderColor = '#000000'; // black
+  static const defaultX = 0;
+  static const defaultY = 0;
+  static const defaultWidth = 32;
+  static const defaultHeight = 32;
 
   int id;
   PieceShape shape = defaultShape;
   var minMaxSize = new MinMaxSize();
-  Box box;
+  var box;
   var minMaxSpace = new MinMaxSpace();
-  Size _space;
-  var linePath = new LinePath();
-  String text = defaultText;
-  String color = defaultColor;
-  String borderColor = defaultBorderColor;
+  var _space = new Size();
+  var line = new Line();
+  var text = new Tag();
+  var color = new Color();
   String imgId;
   String audioId;
   bool usesAudio = false;
   String videoId;
   bool usesVideo = false;
   bool isVisible = true;
+  bool isCovered = false;
   bool isSelected = false;
 
   Piece([this.id = 0]) {
-    _space = minMaxSpace.randomSize();
-    box = new Box(_space.randomPosition(), minMaxSize.randomSize());
+    box = new Box(new Position(defaultX, defaultY), new Size(defaultWidth, defaultHeight));
   }
   
   Position get position => box.position;
@@ -64,8 +64,6 @@ class Piece {
     _space = space;
     box.stayWithinSpace(space);
   }
-  
-  num get lineWidth => linePath.width;
 
   fromJsonMap(Map<String, Object> jsonMap) {
     id  = jsonMap['id'];
@@ -74,16 +72,16 @@ class Piece {
     box = new Box.fromJsonMap(jsonMap['box']);
     minMaxSpace = new MinMaxSpace.fromJsonMap(jsonMap['minMaxSpace']);
     _space = new Size.fromJsonMap(jsonMap['space']);
-    linePath = new LinePath.fromJsonMap(jsonMap['linePath']);
-    text = jsonMap['text'];
-    color = jsonMap['color'];
-    borderColor = jsonMap['borderColor'];
+    line = new Line.fromJsonMap(jsonMap['line']);
+    text = new Tag.fromJsonMap(jsonMap['text']);
+    color = new Color.fromJsonMap(jsonMap['color']);
     imgId = jsonMap['imgId'];
     audioId = jsonMap['audioId'];
     usesAudio = jsonMap['usesAudio'];
     videoId = jsonMap['videoId'];
     usesVideo = jsonMap['usesVideo'];
     isVisible = jsonMap['isVisible'];
+    isCovered = jsonMap['isCovered'];
     isSelected = jsonMap['isSelected'];
   }
 
@@ -100,16 +98,16 @@ class Piece {
     jsonMap['box'] = box.toJsonMap();
     jsonMap['minMaxSpace'] = minMaxSpace.toJsonMap();
     jsonMap['space'] = _space.toJsonMap();
-    jsonMap['linePath'] = linePath.toJsonMap();
-    jsonMap['text'] = text;
-    jsonMap['color'] = color;
-    jsonMap['borderColor'] = borderColor;
+    jsonMap['line'] = line.toJsonMap();
+    jsonMap['text'] = text.toJsonMap();
+    jsonMap['color'] = color.toJsonMap();
     jsonMap['imgId'] = imgId;
     jsonMap['audioId'] = audioId;
     jsonMap['usesAudio'] = usesAudio;
     jsonMap['videoId'] = videoId;
     jsonMap['usesVideo'] = usesVideo;
     jsonMap['isVisible'] = isVisible;
+    jsonMap['isCovered'] = isCovered;
     jsonMap['isSelected'] = isSelected;
     return jsonMap;
   }
@@ -119,12 +117,12 @@ class Piece {
   randomInit() {
     var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
-    linePath.width = randomRangeNum(1, 2.50001);
-    linePath.length = width / 2;
-    linePath.count = randomRangeInt(5, 11);
-    text = randomElement(colorList());
-    color = colorMap()[text];
-    borderColor = randomColor();
+    _space = minMaxSpace.randomSize();
+    box.position = _space.randomPosition(); 
+    box.size = minMaxSize.randomSize();
+    line = Line.random(space);
+    text = Tag.random();
+    color = Color.random();
   }
 
   bool contains(num xx, num yy) =>

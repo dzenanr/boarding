@@ -268,7 +268,7 @@ class Pen {
     down = true;
   }
 
-  colorRandom() => color = util.randomColor();
+  colorRandom() => color = util.randomColorName();
   widthRandom() => width = util.randomInt(randomMaxInt);
   downRandom() => down = util.randomBool();
 

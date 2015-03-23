@@ -1,62 +1,34 @@
 part of grid;
 
-class Cell {
+class CellPiece extends Piece {
   int row, column;
-  String color;
-  String image;
-  String _text;
-  int textSize = 16; // in pixels
-  String textColor = 'black';
   num _number = 0;
-  bool isHidden = false;
-  String hiddenColor;
-  bool isSelected = false;
 
   Grid grid;
 
-  Cell(this.grid, this.row, this.column) {
-    if (!grid.contains(row, column)) 
+  CellPiece(this.grid, this.row, this.column) {
+    if (!grid.contains(row, column)) {
       throw new Exception(
         'cell out of grid(${grid.columnCount}, ${grid.rowCount}) '
         '- row: $row, column: $column');
+    }
+    shape = PieceShape.RECT;
   }
   
   fromJsonMap(Map<String, Object> jsonMap) {
+    super.fromJsonMap(jsonMap);
     row = jsonMap['row'];
     column = jsonMap['column'];
-    color = jsonMap['color'];
-    image = jsonMap['image'];
-    _text = jsonMap['text'];
-    textSize = jsonMap['textSize'];
-    textColor = jsonMap['textColor'];
     _number = jsonMap['number'];
-    isHidden = jsonMap['isHidden'];
-    hiddenColor = jsonMap['hiddenColor'];
-    isSelected = jsonMap['isSelected'];
   }
-  
-  fromJsonString(String jsonString) {
-    Map<String, Object> jsonMap = JSON.decode(jsonString);
-    fromJsonMap(jsonMap);
-  }
-  
+
   Map<String, Object> toJsonMap() {
-    var jsonMap = new Map<String, Object>();
+    var jsonMap = super.toJsonMap();
     jsonMap['row'] = row;
     jsonMap['column'] = column;
-    jsonMap['color'] = color;
-    jsonMap['image'] = image;
-    jsonMap['text'] = _text;
-    jsonMap['textSize'] = textSize;
-    jsonMap['textColor'] = textColor;
     jsonMap['number'] = _number;
-    jsonMap['isHidden'] = isHidden;
-    jsonMap['hiddenColor'] = hiddenColor;
-    jsonMap['isSelected'] = isSelected;
     return jsonMap;
   }
-  
-  String toJsonString() => JSON.encode(toJsonMap());
   
   /**
    * Compares two cells based on numbers.
@@ -64,29 +36,20 @@ class Cell {
    * if it is equal to 0 they are equal and
    * if the result is greater than 0 then the first cell is greater than the second cell.
    */
-  int compareTo(Cell c) {
+  int compareTo(CellPiece c) {
     return number.compareTo(c.number);
-  }
-  
-  String get text => _text;
-  set text(String s) {
-    _text = s;
-    if (_text == '') {
-      color = grid.color;
-    }
   }
 
   num get number => _number;
   set number(num n) {
     _number = n;
-    text = _number.toString();
+    text.text = _number.toString();
   }
   
-  empty() => text = '';
+  empty() => text.text = '';
   
-  bool get isEmpty => text == '';
-  bool get isShown => !isHidden; 
-  bool get isAvailable => text == null  || isEmpty;
+  bool get isEmpty => text.text == '';
+  bool get isAvailable => text.text == null  || isEmpty;
   bool get isUsed => !isAvailable;
   
   bool isIn(int row, int column) => this.row == row && this.column == column;
@@ -110,12 +73,12 @@ class Cell {
 }
 
 class Cells {
-  List<Cell> _list;
+  List<CellPiece> _list;
   
   Grid grid;
 
   Cells(this.grid) {
-    _list = new List<Cell>();
+    _list = new List<CellPiece>();
   }
   
   fromJsonList(List<Map<String, Object>> jsonList) {
@@ -132,13 +95,13 @@ class Cells {
     fromJsonList(jsonList);
   }
   
-  List<Cell> toList() {
+  List<CellPiece> toList() {
     return _list.toList();
   }
   
   List<Map<String, Object>> toJsonList() {
     var jsonList = new List<Map<String, Object>>();
-    forEach((Cell c) => jsonList.add(c.toJsonMap()));
+    forEach((CellPiece c) => jsonList.add(c.toJsonMap()));
     return jsonList;
   }
   
@@ -147,19 +110,19 @@ class Cells {
   int get length => _list.length;
   Iterator get iterator => _list.iterator;
   
-  add(Cell c) => _list.add(c);
-  empty() => forEach((Cell c) => c.empty());
+  add(CellPiece c) => _list.add(c);
+  empty() => forEach((CellPiece c) => c.empty());
 
-  forEach(f(Cell c)) => _list.forEach(f);
-  bool any(bool f(Cell c)) => _list.any(f);
-  bool every(bool f(Cell c)) => _list.every(f);
-  Cell maxCell() => _list.reduce((Cell c1, Cell c2) => c1.compareTo(c2) == -1 ? c2 : c1);
+  forEach(f(CellPiece c)) => _list.forEach(f);
+  bool any(bool f(CellPiece c)) => _list.any(f);
+  bool every(bool f(CellPiece c)) => _list.every(f);
+  CellPiece maxCell() => _list.reduce((CellPiece c1, CellPiece c2) => c1.compareTo(c2) == -1 ? c2 : c1);
   
-  select() => forEach((Cell c) => c.isSelected = true);
-  deselect() => forEach((Cell c) => c.isSelected = false);
+  select() => forEach((CellPiece c) => c.isSelected = true);
+  deselect() => forEach((CellPiece c) => c.isSelected = false);
   
-  Cell firstSelectedCell() {
-    for (Cell c in this) {
+  CellPiece firstSelectedCell() {
+    for (CellPiece c in this) {
       if (c.isSelected) {
         return c;
       }
@@ -167,15 +130,15 @@ class Cells {
     return null;
   }
   
-  Cell cell(int row, int column) {
-    for (Cell c in this) {
+  CellPiece cell(int row, int column) {
+    for (CellPiece c in this) {
       if (c.isIn(row, column)) return c;
     }
     return null;
   }
   
-  Cell neighbor(Cell c, Direction direction) {
-    Cell neighbor;
+  CellPiece neighbor(CellPiece c, Direction direction) {
+    CellPiece neighbor;
     switch(direction) {
       case Direction.UP:
         neighbor = cell(c.row - 1, c.column); break;
@@ -189,9 +152,9 @@ class Cells {
     return neighbor;
   }
   
-  Cell randomCell() => _list[randomInt(length)];
-  Cell randomAvailableCell() {
-    if (any((Cell c) => c.isAvailable)) {
+  CellPiece randomCell() => _list[randomInt(length)];
+  CellPiece randomAvailableCell() {
+    if (any((CellPiece c) => c.isAvailable)) {
       var rc = randomCell();
       if (rc.isAvailable) return rc;
       else return randomAvailableCell();
@@ -201,9 +164,9 @@ class Cells {
   
   move(Direction direction) {
     var moved = false;
-    for (Cell c in this) {
+    for (CellPiece c in this) {
       if (c.isUsed) {
-        Cell n = neighbor(c, direction);
+        CellPiece n = neighbor(c, direction);
         if (n != null && n.isAvailable) {
           c.move(direction);
           switch(direction) {
@@ -224,9 +187,9 @@ class Cells {
   }
   
   bool merge(Direction direction) {
-    for (Cell c in this) {
+    for (CellPiece c in this) {
       if (c.isUsed) {
-        Cell n = neighbor(c, direction);
+        CellPiece n = neighbor(c, direction);
         if (n != null && n.isUsed) {
           if (c.number == n.number) {
             n.number = n.number + n.number;

@@ -17,8 +17,8 @@ class Laser extends MovablePiece {
     randomInit();
     width = 4;
     height = 50;
-    color = 'gray';
-    borderColor = 'red';
+    color.main = 'gray';
+    color.border = 'red';
     speed.dy = 6;
     shape = PieceShape.RECT;
     isVisible = false;

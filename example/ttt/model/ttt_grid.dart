@@ -6,8 +6,8 @@ class TttGrid extends SquareGrid {
 
   TttGrid(int size): super(size);
 
-  Cell newCell(Grid grid, int row, int column) =>
-      new Cell(this, row, column);
+  CellPiece newCell(Grid grid, int row, int column) =>
+      new CellPiece(this, row, column);
 
   bool lineCompleted() {
     var c;
@@ -18,7 +18,7 @@ class TttGrid extends SquareGrid {
       line = [];
       for (var y = 0; y < size; y++) {
         c = cells.cell(x, y);
-        t = c.text;
+        t = c.text.text;
         line.add(t);
       }
       if (_completed(line)) return true;
@@ -28,7 +28,7 @@ class TttGrid extends SquareGrid {
       line = [];
       for (var x = 0; x < size; x++) {
         c = cells.cell(x, y);
-        t = c.text;
+        t = c.text.text;
         line.add(t);
       }
       if (_completed(line)) return true;
@@ -37,7 +37,7 @@ class TttGrid extends SquareGrid {
     line = [];
     for (var d = 0; d < size; d++) {
       c = cells.cell(d, d);
-      t = c.text;
+      t = c.text.text;
       line.add(t);
     }
     if (_completed(line)) return true;
@@ -46,7 +46,7 @@ class TttGrid extends SquareGrid {
     var y = size - 1;
     for (var x = 0; x < size; x++) {
       c = cells.cell(x, y);
-      t = c.text;
+      t = c.text.text;
       line.add(t);
       y--;
     }

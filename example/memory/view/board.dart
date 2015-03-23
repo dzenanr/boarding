@@ -13,14 +13,14 @@ class Board extends Surface {
       int row = (e.offset.y ~/ cellSize).toInt();
       int column = (e.offset.x ~/ cellSize).toInt();
       MemoryCell cell = memory.cells.cell(row, column);
-      cell.isHidden = false;
+      cell.isCovered = false;
       if (cell.twin == lastCellClicked) {
-        lastCellClicked.isHidden = false;
+        lastCellClicked.isCovered = false;
         if (memory.recalled) { // game over
           new Timer(const Duration(milliseconds: 5000), () => memory.hide());
         }
-      } else if (cell.twin.isHidden) {
-        new Timer(const Duration(milliseconds: 800), () => cell.isHidden = true);
+      } else if (cell.twin.isCovered) {
+        new Timer(const Duration(milliseconds: 800), () => cell.isCovered = true);
       }
       lastCellClicked = cell;
     });
@@ -29,7 +29,7 @@ class Board extends Surface {
   draw() {
     super.draw();
     if (memory.recalled) { // game over
-      drawTag(canvas, cellSize * 2, cellSize * 2, 32, 'YOU WIN', color: 'red');
+      drawTag(canvas, cellSize * 2, cellSize * 2, 'YOU WIN', size: 32, color: 'red');
     }
   }
 }

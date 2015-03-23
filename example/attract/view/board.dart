@@ -6,7 +6,7 @@ class Board extends Surface {
   num count = 25, minDistance = 100;
 
   Board(CanvasElement canvas): super(canvas) {
-    color = 'black';
+    color.main = 'black';
     stars = prepareStars(canvas, count);
     ps = new MovablePieces(count);
     ps.randomInit();
@@ -14,7 +14,7 @@ class Board extends Surface {
       p.shape = PieceShape.CIRCLE;
       p.width = 12;
       p.height = 12;
-      p.color = 'white';
+      p.color.main = 'white';
       p.dx = 1;
       p.dy = 1;
       p.space = new Size(width, height);

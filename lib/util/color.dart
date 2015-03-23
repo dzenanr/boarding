@@ -1,6 +1,6 @@
 part of util;
 
-List usedColors = [];
+List usedColorNames = [];
 
 Map<String, String> colorMap() {
   return {
@@ -47,7 +47,7 @@ Map<String, String> colorMap() {
   };
 }
 
-List<String> colorList() {
+List<String> colorNameList() {
   return [
     'azure',
     'beer',
@@ -92,13 +92,51 @@ List<String> colorList() {
   ];
 }
 
-String getNotUsedColor() {
-  var color;
+String getNotUsedColorName() {
+  var name;
   do {
-    color = randomColor();
-  } while (usedColors.any((c) => c == color));
-  usedColors.add(color);
-  return color;
+    name = randomColorName();
+  } while (usedColorNames.any((c) => c == name));
+  usedColorNames.add(name);
+  return name;
+}
+
+String getNotUsedColor() {
+  return colorMap()[getNotUsedColorName()];
+}
+
+class Color { // codes
+  //static const String defaultMain =   '#ffffff'; // white
+  static const String defaultBorder = '#000000'; // black
+  static const String defaultCover =  '#6d7b8d'; // light slate gray
+  
+  String main; 
+  String border = defaultBorder;
+  String cover = defaultCover;
+  
+  Color([this.main]);
+  
+  Color.fromJsonMap(Map<String, String> jsonMap) {
+    main = jsonMap['main'];
+    border = jsonMap['border'];
+    cover = jsonMap['cover'];
+  }
+
+  Map<String, String> toJsonMap() {
+    var jsonMap = new Map<String, String>();
+    jsonMap['main'] = main;
+    jsonMap['border'] = border;
+    jsonMap['covery'] = cover;
+    return jsonMap;
+  }
+  
+  static Color random() {
+    var color = new Color();
+    color.main = randomColor();
+    color.border = randomColor();
+    color.cover = randomColor();
+    return color;
+  }
 }
 
 

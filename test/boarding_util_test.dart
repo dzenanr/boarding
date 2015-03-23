@@ -33,11 +33,11 @@ testUtil() {
       expect(list.contains(r), isTrue);
     });
     test('Random color', () {
-      var r = randomColor();
-      expect(colorList().contains(r), isTrue);
+      var r = randomColorName();
+      expect(colorNameList().contains(r), isTrue);
     });
     test('Random color code', () {
-      var r = randomColorCode();
+      var r = randomColor();
       expect(colorMap().containsValue(r), isTrue);
     });
     test('Random bool', () {

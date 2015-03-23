@@ -1,6 +1,37 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-03-23
+
++ add Color class to util/color.dart
++ rename usedColors to usedColorNames
++ rename colorList to colorNameList
++ rename the getNotUsedColor method to getNotUsedColorName
++ add getNotUsedColor method
++ add Tag class to new util/text.dart
++ rename the randomColor method to randomColorName
++ rename the randomColorCode method to randomColor
++ rename the LinePath class to Line in util/geo.dart
++ add 2 positions to Line
++ add static random method with the Size parameter to Line
++ rename linePath to line in Piece in model/pieces.dart
++ replace color and text String properties in Piece with Color and Text properties
++ update json methods in Piece
++ update the randomInit method in Piece
++ update the drawTagLine and drawOneOfLines functions in view/shapes.dart
++ update the drawTag and drawOneOfTags functions in view/shapes.dart
++ update the drawPiece method in view/surface.dart
++ use Color in view/surface.dart
++ use Size in view/surface.dart
++ use fixed position and size Box in the Piece constructor
++ include random space and random box in the randomInit method in the Piece class
++ rename Cell in model/grid/cell.dart into CellPiece
++ extend CellPiece with Piece
++ add isCovered (former isHidden) in Piece
++ add p_art example
++ update tests
++ update examples
+
 *0.2.4* 2015-03-21
 
 + add movablePieces and avoidCollisions properties to Surface in view/surface.dart

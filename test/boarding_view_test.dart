@@ -27,8 +27,8 @@ main() {
   drawVehicle(canvas, 400, 160, 100, 40, color: 'lightgreen');
   drawLine(canvas, 450, 380, 480, 560, lineWidth: 2, color: 'blue');
   drawLine(canvas, 0, 360, 65, 48, lineWidth: 3, color: 'orange');
-  drawTag(canvas, 320, 520, 32, 'Start on DArt', color: 'red');
-  drawTag(canvas, 30, 50, 16, '4');
+  drawTag(canvas, 320, 520, 'Start on DArt', size: 32, color: 'red');
+  drawTag(canvas, 30, 50, '4');
   drawStar(canvas, 100, 100, 30, innerRadius: 15, spikes: 5, lineWidth: 2);
   drawSquare(canvas, 200, 200, 20);
   drawStarWithinSquare(canvas, 200, 200, 20, innerRadius: 5, spikes: 7, borderColor: 'red');

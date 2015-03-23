@@ -18,22 +18,40 @@ class Position {
   }
 }
 
-class LinePath {
+class Line {
+  Position p1, p2;
   num width;
-  num length;
-  int count;
+  num length = 40;
+  int count = 1;
   
-  LinePath([this.width = 1, this.length = 40, this.count = 1]);
+  Line([this.width = 1]);
+  
+  Line.fromJsonMap(Map<String, Object> jsonMap) {
+    p1 = new Position.fromJsonMap(jsonMap['p1']);
+    p2 = new Position.fromJsonMap(jsonMap['p2']);
+    width = jsonMap['width'];
+    length = jsonMap['length'];
+    count = jsonMap['count'];
+  }
 
-  LinePath.fromJsonMap(Map<String, num> jsonMap): 
-    this(jsonMap['width'], jsonMap['length'], jsonMap['count']);
-
-  Map<String, num> toJsonMap() {
-    var jsonMap = new Map<String, num>();
+  Map<String, Object> toJsonMap() {
+    var jsonMap = new Map<String, Object>();
+    jsonMap['p1'] = p1.toJsonMap();
+    jsonMap['p2'] = p2.toJsonMap();
     jsonMap['width'] = width;
     jsonMap['length'] = length;
     jsonMap['count'] = count;
     return jsonMap;
+  }
+  
+  static Line random(Size space) {
+    var line = new Line();
+    line.p1 = space.randomPosition();
+    line.p2 = space.randomPosition();
+    line.width = randomRangeNum(1, 2.50001);
+    line.length = randomRangeNum(8, 32);
+    line.count = randomRangeInt(4, 12);
+    return line;
   }
 }
 
@@ -85,7 +103,7 @@ class Size {
   num width;
   num height;
 
-  Size(this.width, this.height);
+  Size([this.width = 32, this.height = 16]);
 
   Size.fromJsonMap(Map<String, num> jsonMap) {
     width = jsonMap['width'];
@@ -167,9 +185,9 @@ class Size {
 }
 
 class Box {
-  Position position;
-  Size size;
-
+  var position;
+  var size;
+  
   Box(this.position, this.size);
 
   Box.fromJsonMap(Map<String, Map> jsonMap) {

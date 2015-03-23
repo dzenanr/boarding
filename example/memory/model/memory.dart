@@ -1,14 +1,12 @@
 part of memory;
 
-class MemoryCell extends Cell {
+class MemoryCell extends CellPiece {
   MemoryCell twin;
 
-  MemoryCell(Memory memory, int row, int column) : super(memory, row, column);
+  MemoryCell(Memory memory, int row, int column): super(memory, row, column);
 }
 
 class Memory extends SquareGrid {
-  static const String hiddenCellColor = 'lightgray';
-
   bool _recalled = false;
 
   Memory(int size): super(size) {
@@ -16,16 +14,15 @@ class Memory extends SquareGrid {
       throw new Exception('Memory length must be an even integer: $size.');
     }
     for (MemoryCell mc in cells) {
-      mc.isHidden = true;
-      mc.hiddenColor = hiddenCellColor;
-      if (mc.color == null) {
-        mc.color = getNotUsedColor();
+      mc.isCovered = true;
+      if (mc.color.main == null) {
+        mc.color.main = getNotUsedColor();
         _setFreeTwinRandomCell(mc);
       }
     }
   }
 
-  Cell newCell(Grid grid, int row, int column) =>
+  CellPiece newCell(Grid grid, int row, int column) =>
       new MemoryCell(this, row, column);
 
   _setFreeTwinRandomCell(MemoryCell mc) {
@@ -48,13 +45,13 @@ class Memory extends SquareGrid {
 
   bool get recalled {
     if (!_recalled) {
-      if (cells.every((c) => c.isShown)) _recalled = true;
+      if (cells.every((c) => !c.isCovered)) _recalled = true;
     }
     return _recalled;
   }
 
   hide() {
-    for (final cell in cells) cell.isHidden = true;
+    for (final cell in cells) cell.isCovered = true;
     _recalled = false;
   }
 }

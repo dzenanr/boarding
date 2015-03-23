@@ -14,7 +14,7 @@ abstract class Car extends MovablePiece {
 class NonRedCar extends Car {
 
   NonRedCar(int id): super(id) {
-    color = randomColorCode();
+    color.main = randomColor();
     speed = Speed.random();
   }
 }
@@ -28,7 +28,7 @@ class RedCar extends Car {
   bool isSmall = false;
 
   RedCar(int id): super(id) {
-    color = bigColorCode;
+    color.main = bigColorCode;
   }
 
   bool get isBig => !isSmall;
@@ -53,7 +53,7 @@ class RedCar extends Car {
       isSmall = false;
       width = 75;
       height = 30;
-      color = bigColorCode;
+      color.main = bigColorCode;
     }
   }
 
@@ -62,7 +62,7 @@ class RedCar extends Car {
       isSmall = true;
       width = smallWidth;
       height = smallHeight;
-      color = smallColorCode;
+      color.main = smallColorCode;
     }
   }
 }

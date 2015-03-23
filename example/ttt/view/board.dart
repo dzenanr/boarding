@@ -9,26 +9,26 @@ class Board extends SquareSurface {
   Board(CanvasElement canvas, TttGrid grid) : super(canvas, grid: grid) {
     var cellLength = length / grid.size; // in pixels
     var lastPlay = TttGrid.o;
-    for (Cell cell in grid.cells) cell.textSize  = 32;
+    for (CellPiece cell in grid.cells) cell.text.size  = 32;
     LabelElement winnerLabel = querySelector("#winner");
     canvas.onMouseDown.listen((MouseEvent e) {
       if (play) {
         var row = (e.offset.y ~/ cellLength).toInt();
         var column = (e.offset.x ~/ cellLength).toInt();
-        Cell cell = grid.cells.cell(row, column);
-        if (cell.text == null) {
+        CellPiece cell = grid.cells.cell(row, column);
+        if (cell.text.text == null) {
           if (lastPlay == TttGrid.o) {
-            cell.text = TttGrid.x;
+            cell.text.text = TttGrid.x;
             lastPlay = TttGrid.x;
-            cell.textColor  = xColor;
+            cell.text.color.main = xColor;
           }
           else {
-            cell.text = TttGrid.o;
+            cell.text.text = TttGrid.o;
             lastPlay = TttGrid.o;
-            cell.textColor  = oColor;
+            cell.text.color.main = oColor;
           }
           if (grid.lineCompleted()) {
-            winnerLabel.text = 'winner is ${cell.text}';
+            winnerLabel.text = 'winner is ${cell.text.text}';
             play = false;
           }
         }

@@ -23,8 +23,7 @@ class Board extends shape.Surface {
           if (segment.text != null && segment.text.trim() != '') {
             var x = (line.beginX + line.endX) / 2;
             var y = (line.beginY + line.endY) / 2;
-            shape.drawOneOfTags(canvas, x + 2, y - 2, 14, segment.text,
-                maxWidth: line.pixels);
+            shape.drawOneOfTags(canvas, x + 2, y - 2, segment.text, maxWidth: line.pixels);
           }
         }
         context.stroke();

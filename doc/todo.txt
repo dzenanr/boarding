@@ -1,5 +1,6 @@
 To do
 
+- use ImageData to convert an image to a matrix of pixels and use the matrix in p_art
 - add sound to the crash example
 - add images to the memory example
 - add keyboard events to move cars in the rush example
@@ -22,7 +23,6 @@ To do
 - add a game of life example
   http://jimmy.rocketware.co.uk/dart/game-of-life/
 - see Dart Games at http://ondart.me/web_programming.md for more examples
-- add a many small cells grid as a marketing panel example
 - add the magic boxes example
 - add a network layout example
   https://www.airpair.com/javascript/posts/d3-force-layout-internals

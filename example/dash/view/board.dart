@@ -25,7 +25,7 @@ class Board extends Surface {
     movingRightPieces.forEach((MovablePiece mrp) {
       mrp.shape = PieceShape.SQUARE;
       mrp.width = mrp.height;
-      mrp.color = 'blue';
+      mrp.color.main = 'blue';
       mrp.dx = 2;
       mrp.minMaxSpace.minSize.width = width;
       mrp.minMaxSpace.maxSize.width = width + 200;
@@ -36,7 +36,7 @@ class Board extends Surface {
     movingLeftPieces.forEach((MovablePiece mlp) {
       mlp.shape = PieceShape.SQUARE;
       mlp.width = mlp.height;
-      mlp.color = 'red';
+      mlp.color.main = 'red';
       mlp.dx = 2;
       mlp.minMaxSpace.minSize.width = width;
       mlp.minMaxSpace.maxSize.width = width + 200;

@@ -38,7 +38,7 @@ class Board extends SquareSurface {
         }
         if (tileGrid.randomAvailableCell() == null) {
           bestLabel.text = saveBest(tileGrid.cells.maxCell().number).toString();
-          tileGrid.cells.forEach((Cell c) => c.color = 'white');
+          tileGrid.cells.forEach((CellPiece c) => c.color = 'white');
           isGameOver = true;
         }
       }

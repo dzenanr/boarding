@@ -8,7 +8,7 @@ randomExample(Pen pen) {
   pen.interpret(commands);
 }
 
-String randomExampleName([int no = 107]) {
+String randomExampleName([int no = 108]) {
   var seq = randomInt(no);
   var name;
   if (seq < 10) { name = 'demo00${seq.toString()}';
@@ -136,6 +136,7 @@ List<String> exampleList() {
   examples.add(example104());
   examples.add(example105());
   examples.add(example106());
+  examples.add(example107());
 
   return examples;
 }
@@ -2723,6 +2724,39 @@ move, 213.72731172549447, 177.93076238834644, 31;
 art, 4;
   ''';
 }
+
+String example107() {
+  return '''
+color, teagreen;
+width, 2;
+move, 323.7822381211966, -70.72546530736011, 11;
+move, 341.1114753177891, 1.7843687087383375, 22;
+color, grapefruit;
+move, 200.34566358261864, 176.42882287918937, 24;
+move, 285.56648562168516, -145.2167918778835, 28;
+move, 250.60926797969435, 105.08684276758876, 13;
+width, 3;
+move, 75.74891041188272, 71.37807204643148, 34;
+move, 287.15172005220325, 161.9138735077753, 23;
+color, pink;
+move, -215.03290310587005, 151.61706774675378, 32;
+width, 1;
+move, 169.65739529398397, 77.92085942984906, 15;
+moveTo, 300.0, 200.0;
+color, peach;
+move, 326.1547154936804, 55.979642432859116, 12;
+move, 333.96426001238234, -39.12261584851153, 13;
+width, 1;
+move, -164.68667224785358, 127.71882684799071, 21;
+moveTo, 498.9683645813204, 589.0185716802988;
+move, 292.87769408030545, 121.97478626481009, 32;
+width, 7;
+move, 215.94446339391607, 91.43462485013006, 30;
+move, 127.53536033600113, -27.24045046260927, 18;
+art, 4;
+  ''';
+}
+
 
 
 

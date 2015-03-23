@@ -1,10 +1,11 @@
 part of d2048;
 
-class Tile extends Cell {
+class Tile extends CellPiece {
   
   Tile(TileGrid grid, int row, int column): super(grid, row, column) {
-    textSize = 32;
-    textColor = 'blue';
+    color.main = 'lightyellow';
+    text.size = 32;
+    text.color.main = 'blue';
   }
 }
 
@@ -19,13 +20,12 @@ class TileGrid extends SquareGrid {
     randomAvailableCell();
   }
   
-  Cell newCell(Grid grid, int row, int column) => new Tile(this, row, column);
+  CellPiece newCell(Grid grid, int row, int column) => new Tile(this, row, column);
 
-  Cell randomAvailableCell() {
+  CellPiece randomAvailableCell() {
     var c = cells.randomAvailableCell();
     if (c != null) {
       c.number = new Random().nextDouble() < 0.9 ? 2 : 4;
-      c.color = 'yellow';
     }
     return c;
   }

@@ -8,15 +8,15 @@ class Ball extends MovablePiece {
   Ball() {
     shape = PieceShape.CIRCLE;
     radius = defaultRadius;
-    color = 'yellow';
-    borderColor = 'white';
+    color.main = 'yellow';
+    color.border = 'white';
   }
   
   num get radius => _radius;
   set radius(num r) {
     _radius = r;
-    width = radius * 2;
-    height = radius * 2;
+    width = 2 * radius;
+    height = 2 * radius;
   }
 }
 
@@ -28,7 +28,7 @@ class Racket extends MovablePiece {
     shape = PieceShape.RECT;
     width = defaultWidth;
     height = defaultHeight;
-    color = 'white';
-    borderColor = 'green';
+    color.main = 'white';
+    color.border = 'green';
   }
 }

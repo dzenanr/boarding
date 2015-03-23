@@ -82,7 +82,7 @@ drawImgWithinRect(CanvasElement canvas, num x, num y, num width, num height, Ima
 }
 
 drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,
-         {num lineWidth: 1, String color: 'black', String borderColor: 'black'}) {
+         {num lineWidth: 1, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -97,14 +97,14 @@ drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,
       ..stroke();
 }
 
-drawOneOfLines(CanvasElement canvas, num x, num y, num x1, num y1,
-               {num lineWidth: 1, String color: 'black', String borderColor: 'black'}) {
+drawOneOfLines(CanvasElement canvas, num x1, num y1, num x2, num y2,
+               {num lineWidth: 1, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
       ..strokeStyle = color
-      ..moveTo(x, y)
-      ..lineTo(x1, y1);
+      ..moveTo(x1, y1)
+      ..lineTo(x2, y2);
 }
 
 drawDistanceLine(CanvasElement canvas, Piece p1, Piece p2, num minDistance) {
@@ -323,15 +323,13 @@ drawRandomStars(CanvasElement canvas, int count) {
 }
 
 // maxWidth in pixels
-drawTag(CanvasElement canvas, num x, num y, num size, String text,
-       {num maxWidth, num lineWidth: 1, String color: 'black', String borderColor: 'black'}) {
+drawTag(CanvasElement canvas, num x, num y, String text, 
+        {String font: 'sans-serif', num size: 16, String align: 'center', num maxWidth, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
-      ..font = '${size}px sans-serif'
-      //..lineWidth = lineWidth // lineWidth not used
+      ..font = '${size}px ${font}'
       ..fillStyle = color
-      //..strokeStyle = borderColor // borderColor not used
-      ..textAlign = 'center';
+      ..textAlign = align;
   context.beginPath();
   if (maxWidth == null) {
     context.fillText(text, x, y);
@@ -341,18 +339,17 @@ drawTag(CanvasElement canvas, num x, num y, num size, String text,
   context.closePath();
 }
 
-drawOneOfTags(CanvasElement canvas, num x, num y, num size, String text,
-             {num maxWidth, num lineWidth: 1, String color: 'black', 
-               String borderColor: 'black'}) {
+drawOneOfTags(CanvasElement canvas, num x, num y, String text,
+             {String font: 'sans-serif', num size: 16, String align: 'center', num maxWidth, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
-      ..font = '${size}px sans-serif'
+      ..font = '${size}px ${font}'
       ..fillStyle = color
-      ..textAlign = 'center';
+      ..textAlign = align;
   if (maxWidth == null) {
-   context.fillText(text, x, y);
+    context.fillText(text, x, y);
   } else {
-   context.fillText(text, x, y, maxWidth);
+    context.fillText(text, x, y, maxWidth);
   }
 }
 

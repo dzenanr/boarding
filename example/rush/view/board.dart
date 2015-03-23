@@ -10,7 +10,7 @@ class Board extends SquareSurface {
   Parking currentParking;
 
   Board(CanvasElement canvas, SquareGrid grid, this.carParkingModel,
-      {bool withLines: true, String this.area: 'beginner', int this.parking: 1}):
+      {bool withLines: false, String this.area: 'beginner', int this.parking: 1}):
     super(canvas, withLines: withLines, grid: grid) {
     cellLength = length ~/ grid.size;
     currentArea = carParkingModel.areas.getArea(area);
