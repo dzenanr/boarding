@@ -2,6 +2,12 @@ part of util;
 
 randomBool() => new Random().nextBool();
 
+randomRareTrue() {
+  int sign = randomSign(10);
+  if (sign == -1) return true;
+  else return false;
+}
+
 // nextInt(max): range from 0, inclusive, to max, exclusive.
 randomInt(int max) => new Random().nextInt(max);
 

@@ -5,6 +5,8 @@ class Spaceship extends MovablePiece {
     randomInit();
     width = 70;
     height = 70;
+    isCovered = false;
+    isTagged = false;
     shape = PieceShape.IMG;
     imgId = 'spaceship';
     videoId = 'invader';
@@ -17,6 +19,8 @@ class Laser extends MovablePiece {
     randomInit();
     width = 4;
     height = 50;
+    isCovered = false;
+    isTagged = false;
     color.main = 'gray';
     color.border = 'red';
     speed.dy = 6;
@@ -32,6 +36,8 @@ class Cloud extends MovablePiece {
     randomInit();
     width = 80;
     height = 56;
+    isCovered = false;
+    isTagged = false;
     shape = PieceShape.IMG;
     imgId = 'cloud';
   }
@@ -50,6 +56,8 @@ class Creature extends MovablePiece {
     } 
     y = -y;
     var ri = randomInt(7);
+    //isCovered = false;
+    isTagged = false;
     dx = randomSign(ri) * dx; 
     shape = PieceShape.IMG;
     imgId = 'creature';

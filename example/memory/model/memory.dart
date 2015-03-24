@@ -15,10 +15,8 @@ class Memory extends SquareGrid {
     }
     for (MemoryCell mc in cells) {
       mc.isCovered = true;
-      if (mc.color.main == null) {
-        mc.color.main = getNotUsedColor();
-        _setFreeTwinRandomCell(mc);
-      }
+      mc.color.main = getNotUsedColor();
+      _setFreeTwinRandomCell(mc);
     }
   }
 

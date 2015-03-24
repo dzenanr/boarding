@@ -43,13 +43,13 @@ class CellPiece extends Piece {
   num get number => _number;
   set number(num n) {
     _number = n;
-    text.text = _number.toString();
+    tag.text = _number.toString();
   }
   
-  empty() => text.text = '';
+  empty() => tag.text = '';
   
-  bool get isEmpty => text.text == '';
-  bool get isAvailable => text.text == null  || isEmpty;
+  bool get isEmpty => tag.text == '';
+  bool get isAvailable => isEmpty;
   bool get isUsed => !isAvailable;
   
   bool isIn(int row, int column) => this.row == row && this.column == column;

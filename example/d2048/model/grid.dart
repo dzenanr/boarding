@@ -4,8 +4,9 @@ class Tile extends CellPiece {
   
   Tile(TileGrid grid, int row, int column): super(grid, row, column) {
     color.main = 'lightyellow';
-    text.size = 32;
-    text.color.main = 'blue';
+    isTagged = true;
+    tag.size = 32;
+    tag.color.main = 'blue';
   }
 }
 

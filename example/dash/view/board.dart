@@ -26,6 +26,8 @@ class Board extends Surface {
       mrp.shape = PieceShape.SQUARE;
       mrp.width = mrp.height;
       mrp.color.main = 'blue';
+      mrp.isCovered = false;
+      mrp.isTagged = false;
       mrp.dx = 2;
       mrp.minMaxSpace.minSize.width = width;
       mrp.minMaxSpace.maxSize.width = width + 200;
@@ -37,6 +39,8 @@ class Board extends Surface {
       mlp.shape = PieceShape.SQUARE;
       mlp.width = mlp.height;
       mlp.color.main = 'red';
+      mlp.isCovered = false;
+      mlp.isTagged = false;
       mlp.dx = 2;
       mlp.minMaxSpace.minSize.width = width;
       mlp.minMaxSpace.maxSize.width = width + 200;

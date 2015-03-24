@@ -10,11 +10,11 @@ testModel(Grid grid) {
       expect(grid, isNotNull);
       expect(w, greaterThan(1));
       expect(h, greaterThan(1));
-      expect(grid.cells.every((c) => c.text.text == 'empty'), isTrue);
+      expect(grid.cells.every((c) => c.tag.text == 'empty'), isTrue);
     });
     tearDown(() {
       for (CellPiece c in grid.cells) {
-        c.text.text = 'empty';
+        c.tag.text = 'empty';
       }
     });
     test('Cell', () {
@@ -39,7 +39,7 @@ testModel(Grid grid) {
 main() {
   var grid = new Grid(16, 20);
   for (CellPiece cell in grid.cells) {
-    cell.text = new Tag('empty');
+    cell.tag = new Tag('empty');
   }
   testModel(grid);
 }

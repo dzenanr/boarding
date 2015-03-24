@@ -18,7 +18,7 @@ class TttGrid extends SquareGrid {
       line = [];
       for (var y = 0; y < size; y++) {
         c = cells.cell(x, y);
-        t = c.text.text;
+        t = c.tag.text;
         line.add(t);
       }
       if (_completed(line)) return true;
@@ -28,7 +28,7 @@ class TttGrid extends SquareGrid {
       line = [];
       for (var x = 0; x < size; x++) {
         c = cells.cell(x, y);
-        t = c.text.text;
+        t = c.tag.text;
         line.add(t);
       }
       if (_completed(line)) return true;
@@ -37,7 +37,7 @@ class TttGrid extends SquareGrid {
     line = [];
     for (var d = 0; d < size; d++) {
       c = cells.cell(d, d);
-      t = c.text.text;
+      t = c.tag.text;
       line.add(t);
     }
     if (_completed(line)) return true;
@@ -46,7 +46,7 @@ class TttGrid extends SquareGrid {
     var y = size - 1;
     for (var x = 0; x < size; x++) {
       c = cells.cell(x, y);
-      t = c.text.text;
+      t = c.tag.text;
       line.add(t);
       y--;
     }
@@ -55,6 +55,6 @@ class TttGrid extends SquareGrid {
   }
 
   bool _completed(List line) =>
-      line.every((t) => t != null && t == x) ||
-      line.every((t) => t != null && t == o);
+      line.every((String text) => text == x) ||
+      line.every((String text) => text == o);
 }

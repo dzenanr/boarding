@@ -17,6 +17,8 @@ class Board extends Surface {
       p.color.main = 'white';
       p.dx = 1;
       p.dy = 1;
+      p.isCovered = false;
+      p.isTagged = false;
       p.space = new Size(width, height);
     });
   }

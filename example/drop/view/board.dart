@@ -51,6 +51,8 @@ class Board extends Surface {
     fallingPieces.forEach((MovablePiece fp) {
       fp.shape = PieceShape.SQUARE;
       fp.width = fp.height;
+      fp.isCovered = false;
+      fp.isTagged = false;
       fp.dy = 2;
       fp.minMaxSpace.minSize.width = width;
       fp.minMaxSpace.minSize.height = height;

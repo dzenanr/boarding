@@ -8,8 +8,8 @@ class Tag {
   num maxWidth; // in pixels
   var color = new Color();
   
-  Tag([this.text]);
-  
+  Tag([this.text = '']);
+   
   Tag.fromJsonMap(Map<String, Object> jsonMap) {
     text = jsonMap['text'];
     font = jsonMap['font'];

@@ -106,7 +106,7 @@ String getNotUsedColor() {
 }
 
 class Color { // codes
-  //static const String defaultMain =   '#ffffff'; // white
+  static const String defaultMain =   '#ffffff'; // white
   static const String defaultBorder = '#000000'; // black
   static const String defaultCover =  '#6d7b8d'; // light slate gray
   
@@ -114,7 +114,7 @@ class Color { // codes
   String border = defaultBorder;
   String cover = defaultCover;
   
-  Color([this.main]);
+  Color([this.main = defaultMain]);
   
   Color.fromJsonMap(Map<String, String> jsonMap) {
     main = jsonMap['main'];

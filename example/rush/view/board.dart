@@ -10,8 +10,8 @@ class Board extends SquareSurface {
   Parking currentParking;
 
   Board(CanvasElement canvas, SquareGrid grid, this.carParkingModel,
-      {bool withLines: false, String this.area: 'beginner', int this.parking: 1}):
-    super(canvas, withLines: withLines, grid: grid) {
+      {String this.area: 'beginner', int this.parking: 1}):
+    super(canvas, grid: grid) {
     cellLength = length ~/ grid.size;
     currentArea = carParkingModel.areas.getArea(area);
     currentParking = currentArea.parkings.getParkingWithinArea(parking);
@@ -36,7 +36,7 @@ class Board extends SquareSurface {
   }
 
   draw() {
-    super.draw();
+    clear();
     for (Car car in currentParking.cars) {
       context.beginPath();
       int row = car.currentRow;

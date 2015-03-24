@@ -31,7 +31,7 @@ class Piece {
   var minMaxSpace = new MinMaxSpace();
   var _space = new Size();
   var line = new Line();
-  var text = new Tag();
+  var tag = new Tag();
   var color = new Color();
   String imgId;
   String audioId;
@@ -41,6 +41,7 @@ class Piece {
   bool isVisible = true;
   bool isCovered = false;
   bool isSelected = false;
+  bool isTagged = false;
 
   Piece([this.id = 0]) {
     box = new Box(new Position(defaultX, defaultY), new Size(defaultWidth, defaultHeight));
@@ -73,7 +74,7 @@ class Piece {
     minMaxSpace = new MinMaxSpace.fromJsonMap(jsonMap['minMaxSpace']);
     _space = new Size.fromJsonMap(jsonMap['space']);
     line = new Line.fromJsonMap(jsonMap['line']);
-    text = new Tag.fromJsonMap(jsonMap['text']);
+    tag = new Tag.fromJsonMap(jsonMap['tag']);
     color = new Color.fromJsonMap(jsonMap['color']);
     imgId = jsonMap['imgId'];
     audioId = jsonMap['audioId'];
@@ -83,6 +84,7 @@ class Piece {
     isVisible = jsonMap['isVisible'];
     isCovered = jsonMap['isCovered'];
     isSelected = jsonMap['isSelected'];
+    isTagged = jsonMap['isTagged'];
   }
 
   fromJsonString(String jsonString) {
@@ -99,7 +101,7 @@ class Piece {
     jsonMap['minMaxSpace'] = minMaxSpace.toJsonMap();
     jsonMap['space'] = _space.toJsonMap();
     jsonMap['line'] = line.toJsonMap();
-    jsonMap['text'] = text.toJsonMap();
+    jsonMap['tag'] = tag.toJsonMap();
     jsonMap['color'] = color.toJsonMap();
     jsonMap['imgId'] = imgId;
     jsonMap['audioId'] = audioId;
@@ -109,6 +111,7 @@ class Piece {
     jsonMap['isVisible'] = isVisible;
     jsonMap['isCovered'] = isCovered;
     jsonMap['isSelected'] = isSelected;
+    jsonMap['isTagged'] = isTagged;
     return jsonMap;
   }
 
@@ -121,7 +124,9 @@ class Piece {
     box.position = _space.randomPosition(); 
     box.size = minMaxSize.randomSize();
     line = Line.random(space);
-    text = Tag.random();
+    tag = Tag.random();
+    isCovered = randomRareTrue();
+    isTagged = randomRareTrue();
     color = Color.random();
   }
 

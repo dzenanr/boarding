@@ -1,3 +1,4 @@
 To Do
 
+- when hit a covered creature, draw a money image
 - add the best time to hit all creatures
