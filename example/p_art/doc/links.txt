@@ -1,0 +1,18 @@
+Links
+
+Color
+
+http://en.wikipedia.org/wiki/RGBA_color_space
+
+Image Data
+
+http://www.html5canvastutorials.com/advanced/html5-canvas-get-image-data-tutorial/
+http://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_canvas_getimagedata
+
+Pixels
+
+http://beej.us/blog/data/html5s-canvas-2-pixel/
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas
+http://tutorials.jenkov.com/html5-canvas/pixels.html
+https://processing.org/tutorials/pixels/
+

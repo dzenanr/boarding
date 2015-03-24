@@ -27,8 +27,12 @@ class Line {
   Line([this.width = 1]);
   
   Line.fromJsonMap(Map<String, Object> jsonMap) {
-    p1 = new Position.fromJsonMap(jsonMap['p1']);
-    p2 = new Position.fromJsonMap(jsonMap['p2']);
+    var position1 = jsonMap['p1'];
+    var position2 = jsonMap['p2'];
+    if (position1 != null && position2 != null) {
+      p1 = new Position.fromJsonMap(jsonMap['p1']);
+      p2 = new Position.fromJsonMap(jsonMap['p2']);
+    }
     width = jsonMap['width'];
     length = jsonMap['length'];
     count = jsonMap['count'];
@@ -36,8 +40,10 @@ class Line {
 
   Map<String, Object> toJsonMap() {
     var jsonMap = new Map<String, Object>();
-    jsonMap['p1'] = p1.toJsonMap();
-    jsonMap['p2'] = p2.toJsonMap();
+    if (p1 != null && p2 != null) {
+      jsonMap['p1'] = p1.toJsonMap();
+      jsonMap['p2'] = p2.toJsonMap();
+    }
     jsonMap['width'] = width;
     jsonMap['length'] = length;
     jsonMap['count'] = count;
