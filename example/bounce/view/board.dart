@@ -5,8 +5,6 @@ class Board extends Surface {
     movablePieces.randomInit();
     movablePieces.forEach((MovablePiece p) {
       p.shape = PieceShape.CIRCLE;
-      p.isCovered = false;
-      p.isTagged = false;
       p.space = new Size(width, height);
     });
   }

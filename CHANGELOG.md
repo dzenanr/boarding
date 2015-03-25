@@ -6,10 +6,11 @@
 + add randomRareTrue function to util/random.dart
 + add isTagged property to the Piece class in model/pieces.dart
 + update json methods in Piece
-+ use isCovered and isTagged in the randomInit method in Piece
++ use isCovered and isTagged in the randomExtraInit method in Piece
 + in the cells method of the Surface class in the view/surface.dart,
   prepare a cell piece and draw it with the drawPiece method
 + add in drawPiece tests for isVisible, isCovered and isTagged
++ update examples
 
 *0.2.4* 2015-03-23
 

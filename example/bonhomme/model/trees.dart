@@ -6,8 +6,6 @@ class Tree extends MovablePiece {
     shape = PieceShape.IMG;
     width = 45;
     height = 45;
-    isCovered = false;
-    isTagged = false;
     imgId = 'tree';
   }
 }

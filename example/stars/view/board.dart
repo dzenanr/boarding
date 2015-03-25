@@ -9,8 +9,6 @@ class Board extends Surface {
     stars.randomInit();
     stars.forEach((Star star) {
       star.shape = PieceShape.STAR;
-      star.isCovered = false;
-      star.isTagged = false;
       star.space = new Size(width, height);
     });
   }

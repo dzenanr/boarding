@@ -125,9 +125,13 @@ class Piece {
     box.size = minMaxSize.randomSize();
     line = Line.random(space);
     tag = Tag.random();
+    color = Color.random();
+  }
+  
+  randomExtraInit() {
+    randomInit();
     isCovered = randomRareTrue();
     isTagged = randomRareTrue();
-    color = Color.random();
   }
 
   bool contains(num xx, num yy) =>
@@ -160,6 +164,11 @@ class MovablePiece extends Piece {
 
   randomInit() {
     super.randomInit();
+    speed = Speed.random();
+  }
+  
+  randomExtraInit() {
+    super.randomExtraInit();
     speed = Speed.random();
   }
 
@@ -292,6 +301,9 @@ class Pieces {
   forEach(Function f(Piece p)) => _pieceList.forEach(f);
   bool any(bool f(Piece p)) => _pieceList.any(f);
   bool every(bool f(Piece p)) => _pieceList.every(f);
+  
+  randomInit() => forEach((p) => p.randomInit());
+  randomExtraInit() => forEach((p) => p.randomExtraInit());
 
   int invisibleCount() {
     int count = 0;
@@ -324,7 +336,6 @@ class MovablePieces extends Pieces {
     }
   }
 
-  randomInit() => forEach((MovablePiece mp) => mp.randomInit());
   onOff() => forEach((MovablePiece mp) => mp.onOff());
 
   avoidCollisions(MovablePiece mp) {
