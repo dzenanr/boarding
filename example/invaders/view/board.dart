@@ -68,7 +68,13 @@ class Board extends Surface {
           }
           if (!creature.isSelected && laser.isVisible && laser.hit(creature)) {
             creature.isSelected = true;
-            creature.imgId = 'explosion';
+            if (creature.isCovered) {
+              creature.tag.text = '\$';
+              creature.tag.size = 32;
+              creature.isTagged = true;
+            } else {
+              creature.imgId = 'explosion';
+            }
             hitSound.load();
             hitSound.play();
             laser.isVisible = false;

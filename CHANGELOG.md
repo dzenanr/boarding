@@ -1,6 +1,11 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-03-25
+
++ use the randomExtraInit method in Creature in the invaders example
++ check for isCovered in Board.draw() in the invaders example
+
 *0.2.4* 2015-03-24
 
 + add randomRareTrue function to util/random.dart

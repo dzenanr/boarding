@@ -50,7 +50,6 @@ class Creature extends MovablePiece {
     } 
     y = -y;
     var ri = randomInt(7);
-    //isCovered = false;
     isTagged = false;
     dx = randomSign(ri) * dx; 
     shape = PieceShape.IMG;
