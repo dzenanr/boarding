@@ -49,8 +49,6 @@ class CellPiece extends Piece {
   empty() => tag.text = '';
   
   bool get isEmpty => tag.text == '';
-  bool get isAvailable => isEmpty;
-  bool get isUsed => !isAvailable;
   
   bool isIn(int row, int column) => this.row == row && this.column == column;
   bool isUpOf(int row, int column) => this.row == row - 1 && this.column == column;
@@ -154,9 +152,9 @@ class Cells {
   
   CellPiece randomCell() => _list[randomInt(length)];
   CellPiece randomAvailableCell() {
-    if (any((CellPiece c) => c.isAvailable)) {
+    if (any((CellPiece c) => c.isEmpty)) {
       var rc = randomCell();
-      if (rc.isAvailable) return rc;
+      if (rc.isEmpty) return rc;
       else return randomAvailableCell();
     }
     return null;
@@ -165,9 +163,9 @@ class Cells {
   move(Direction direction) {
     var moved = false;
     for (CellPiece c in this) {
-      if (c.isUsed) {
+      if (!c.isEmpty) {
         CellPiece n = neighbor(c, direction);
-        if (n != null && n.isAvailable) {
+        if (n != null && n.isEmpty) {
           c.move(direction);
           switch(direction) {
             case Direction.UP:
@@ -188,9 +186,9 @@ class Cells {
   
   bool merge(Direction direction) {
     for (CellPiece c in this) {
-      if (c.isUsed) {
+      if (!c.isEmpty) {
         CellPiece n = neighbor(c, direction);
-        if (n != null && n.isUsed) {
+        if (n != null && !n.isEmpty) {
           if (c.number == n.number) {
             n.number = n.number + n.number;
             c.empty();

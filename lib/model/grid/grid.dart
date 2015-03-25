@@ -3,7 +3,8 @@ part of grid;
 class Grid {
   int columnCount;  
   int rowCount; 
-  Color color = new Color('white');
+  Size _size;
+  var color = new Color('white');
 
   Cells cells;
 
@@ -19,6 +20,19 @@ class Grid {
     }
   }
   
+  Size get size => _size;
+  set size(Size size) {
+    _size = size;
+    var cellWidth = size.width / columnCount;
+    var cellHeight = size.height / rowCount;
+    for (CellPiece cellPiece in cells) {
+      cellPiece.width = cellWidth;
+      cellPiece.height = cellHeight;
+      cellPiece.x = cellPiece.width * cellPiece.column;
+      cellPiece.y = cellPiece.height * cellPiece.row;
+    }
+  }
+
   CellPiece newCell(Grid grid, int row, int column) {
     return new CellPiece(grid, row, column);
   }
@@ -26,10 +40,13 @@ class Grid {
   bool contains(int row, int column) {
     return 0 <= row && row < rowCount && 0 <= column && column < columnCount;
   }
+  
+  get cellWidth => size.width / columnCount;
+  get cellHeight => size.height / rowCount;
 }
 
 class SquareGrid extends Grid {
-  int size; // in cells
+  int length; // in cells
   
-  SquareGrid(int s): size = s, super(s, s);
+  SquareGrid(int s): length = s, super(s, s);
 }

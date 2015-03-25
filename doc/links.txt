@@ -183,6 +183,8 @@ Shapes
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
 https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/HTML-canvas-guide/DrawingLinesandShapes/DrawingLinesandShapes.html
 https://support.office.com/en-ca/article/Draw-or-delete-a-line-connector-or-freeform-shape-f26ffb8f-a69c-46a6-8db7-7c9e5071f340
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+http://curran.github.io/HTML5Examples/
 
   rounded rectangle
 http://stackoverflow.com/questions/1255512/how-to-draw-a-rounded-rectangle-on-html-canvas

@@ -50,4 +50,5 @@ main() {
   drawPolygonWithinSquare(canvas, 550, 450, 40, 20, 10);
   drawPolygonWithinSquare(canvas, 550, 500, 40, 20, 16);
   //drawCloud(canvas, 200, 200, 80, 40);
+  drawFaceWithinSquare(canvas, 320, 560, 60);
 }

@@ -8,6 +8,7 @@ class Board extends SquareSurface {
   LabelElement bestLabel = querySelector('#best');
 
   Board(CanvasElement canvas, TileGrid tileGrid) : super(canvas, grid: tileGrid) {
+    grid.size = size;
     querySelector('#save').onClick.listen((e) {
       save();
     });

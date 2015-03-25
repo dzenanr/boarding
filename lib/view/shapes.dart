@@ -73,6 +73,14 @@ drawEllipseWithinRect(CanvasElement canvas, num x, num y, num width, num height,
       ..stroke();
 }
 
+drawFaceWithinSquare(CanvasElement canvas, num x, num y, num length, 
+                          {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  drawCircleWithinSquare(canvas, x, y, length, 
+      lineWidth: lineWidth, color: color, borderColor: borderColor);
+  drawCircle(canvas, x + length / 3, y + length / 2.5, length / 8, color: borderColor, borderColor: color);
+  drawCircle(canvas, x + length / 3 * 2, y + length / 2.5, length / 8, color: borderColor, borderColor: color);
+}
+
 drawImgWithinRect(CanvasElement canvas, num x, num y, num width, num height, ImageElement img) {
   var context = canvas.getContext('2d');
   context
@@ -86,14 +94,11 @@ drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
-      //..fillStyle = color
-      //..strokeStyle = borderColor // borderColor not used
       ..strokeStyle = color
       ..beginPath()
       ..moveTo(x1, y1)
       ..lineTo(x2, y2)
       ..closePath()
-      //..fill()
       ..stroke();
 }
 

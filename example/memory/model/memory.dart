@@ -28,8 +28,8 @@ class Memory extends SquareGrid {
       var row;
       var column;
       while (cells.any((c) => c.twin == null)) {
-        row = randomInt(size);
-        column = randomInt(size);
+        row = randomInt(length);
+        column = randomInt(length);
         MemoryCell tc = cells.cell(row, column);
         if (tc.twin == null && (tc.row != mc.row || tc.column != mc.column)) {
           mc.twin = tc;

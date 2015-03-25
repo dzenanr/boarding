@@ -1,6 +1,6 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, ELLIPSE, IMG, LINE, POLYGON, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, 
+enum PieceShape {CIRCLE, ELLIPSE, FACE, IMG, LINE, POLYGON, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, 
   STAR, TAG, TRIANGLE, VEHICLE}
 
 accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {

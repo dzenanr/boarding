@@ -12,7 +12,7 @@ class Board extends SquareSurface {
   Board(CanvasElement canvas, SquareGrid grid, this.carParkingModel,
       {String this.area: 'beginner', int this.parking: 1}):
     super(canvas, grid: grid) {
-    cellLength = length ~/ grid.size;
+    cellLength = length ~/ grid.length;
     currentArea = carParkingModel.areas.getArea(area);
     currentParking = currentArea.parkings.getParkingWithinArea(parking);
     canvas.onMouseDown.listen((MouseEvent e) {
@@ -27,8 +27,8 @@ class Board extends SquareSurface {
         if (car != null) {
           car.moveToCell(row, column);
           if (car.carBrand.code == 'X' &&
-              car.currentColumn == grid.size - car.carBrand.size) {
-            car.currentColumn = grid.size; // the car exits the parking
+              car.currentColumn == grid.length - car.carBrand.size) {
+            car.currentColumn = grid.length; // the car exits the parking
           }
         }
       }

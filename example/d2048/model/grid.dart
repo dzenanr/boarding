@@ -12,7 +12,7 @@ class Tile extends CellPiece {
 
 class TileGrid extends SquareGrid {
   
-  TileGrid(int size): super(size) {
+  TileGrid(int length): super(length) {
     addTwoRandomAvailableCells();
   }
   

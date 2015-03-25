@@ -2,6 +2,30 @@ part of util;
 
 List usedColorNames = [];
 
+Map<String, String> sevenColorMap() {
+  return {
+    'azure':      '#f0ffff',
+    'beer':       '#fbb117',
+    'coral':      '#ff7f50',
+    'cream':      '#ffffcc',
+    'gold':       '#ffd700',
+    'ivory':      '#fffff0',
+    'lightblue':  '#add8e6'
+  };
+}
+
+List<String> sevenColorNameList() {
+  return [
+    'azure',
+    'beer',
+    'coral',
+    'cream',
+    'gold',
+    'ivory',
+    'lightblue'
+  ];
+}
+
 Map<String, String> colorMap() {
   return {
     'azure':      '#f0ffff',

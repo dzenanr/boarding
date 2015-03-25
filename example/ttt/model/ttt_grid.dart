@@ -14,9 +14,9 @@ class TttGrid extends SquareGrid {
     var t;
     var line = [];
     // columns
-    for (var x = 0; x < size; x++) {
+    for (var x = 0; x < length; x++) {
       line = [];
-      for (var y = 0; y < size; y++) {
+      for (var y = 0; y < length; y++) {
         c = cells.cell(x, y);
         t = c.tag.text;
         line.add(t);
@@ -24,9 +24,9 @@ class TttGrid extends SquareGrid {
       if (_completed(line)) return true;
     }
     // rows
-    for (var y = 0; y < size; y++) {
+    for (var y = 0; y < length; y++) {
       line = [];
-      for (var x = 0; x < size; x++) {
+      for (var x = 0; x < length; x++) {
         c = cells.cell(x, y);
         t = c.tag.text;
         line.add(t);
@@ -35,7 +35,7 @@ class TttGrid extends SquareGrid {
     }
     // diagonal: \
     line = [];
-    for (var d = 0; d < size; d++) {
+    for (var d = 0; d < length; d++) {
       c = cells.cell(d, d);
       t = c.tag.text;
       line.add(t);
@@ -43,8 +43,8 @@ class TttGrid extends SquareGrid {
     if (_completed(line)) return true;
     // diagonal: /
     line = [];
-    var y = size - 1;
-    for (var x = 0; x < size; x++) {
+    var y = length - 1;
+    for (var x = 0; x < length; x++) {
       c = cells.cell(x, y);
       t = c.tag.text;
       line.add(t);

@@ -7,7 +7,7 @@ class Board extends SquareSurface {
   bool play = true;
 
   Board(CanvasElement canvas, TttGrid grid) : super(canvas, grid: grid) {
-    var cellLength = length / grid.size; // in pixels
+    var cellLength = length / grid.length; // in pixels
     var lastPlay = TttGrid.o;
     for (CellPiece cell in grid.cells) {
       cell.isTagged = true;

@@ -1,7 +1,7 @@
 part of boarding;
 
 class Surface {
-  Size size; // in pixels
+  Size size; // in pixels length
   Rectangle offset;
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -43,6 +43,9 @@ class Surface {
     clear();
     if (grid != null) {
       if (withLines) lines();
+      if (grid.size == null) {
+        grid.size = size;
+      }
       cells();
     }
     if (movablePieces != null) {
@@ -57,30 +60,21 @@ class Surface {
   }
 
   lines() {
-    var cellWidth = width / grid.columnCount;
-    var cellHeight = height / grid.rowCount;
     var x, y;
     for (var row = 1; row < grid.rowCount; row++) {
       x = 0;
-      y = cellHeight * row;
+      y = grid.cellHeight * row;
       drawLine(canvas, x, y, x + width, y);
     }
     for (var col = 1; col < grid.columnCount; col++) {
-      x = cellWidth * col;
+      x = grid.cellWidth * col;
       y = 0;
       drawLine(canvas, x, y, x, y + height);
     }
   }
 
   cells() {
-    var cellWidth = width / grid.columnCount;
-    var cellHeight = height / grid.rowCount;
-    var cells = grid.cells;
-    for (CellPiece cellPiece in cells) {
-      cellPiece.width = cellWidth;
-      cellPiece.height = cellHeight;
-      cellPiece.x = cellPiece.width * cellPiece.column;
-      cellPiece.y = cellPiece.height * cellPiece.row;
+    for (CellPiece cellPiece in grid.cells) {
       drawPiece(cellPiece);
     } 
   }
@@ -102,6 +96,10 @@ class Surface {
             break;
           case PieceShape.ELLIPSE:
             drawEllipseWithinRect(canvas, piece.x, piece.y, piece.width, piece.height,
+                lineWidth: piece.line.width, color: piece.color.main, borderColor: piece.color.border);
+            break;
+          case PieceShape.FACE:
+            drawFaceWithinSquare(canvas, piece.x, piece.y, piece.width,
                 lineWidth: piece.line.width, color: piece.color.main, borderColor: piece.color.border);
             break;
           case PieceShape.IMG:
