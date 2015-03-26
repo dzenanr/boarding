@@ -1,23 +1,21 @@
 part of rush;
 
-class Board extends SquareSurface {
-  int cellLength; // in pixels
-  String area;
+class Board extends Surface {
+  String zone;
   int parking;
 
   CarParkingModel carParkingModel;
   Area currentArea;
   Parking currentParking;
 
-  Board(CanvasElement canvas, SquareGrid grid, this.carParkingModel,
-      {String this.area: 'beginner', int this.parking: 1}):
+  Board(CanvasElement canvas, Grid grid, this.carParkingModel,
+      {String this.zone: 'beginner', int this.parking: 1}):
     super(canvas, grid: grid) {
-    cellLength = length ~/ grid.length;
-    currentArea = carParkingModel.areas.getArea(area);
+    currentArea = carParkingModel.areas.getArea(zone);
     currentParking = currentArea.parkings.getParkingWithinArea(parking);
     canvas.onMouseDown.listen((MouseEvent e) {
-      int row = e.offset.y ~/ cellLength;
-      int column = e.offset.x ~/ cellLength;
+      int column = e.offset.x ~/ grid.cellWidth;
+      int row = e.offset.y ~/ grid.cellHeight;
       Car car = currentParking.cars.getCarInCell(row, column);
       if (car != null) {
         currentParking.cars.deselect();
@@ -27,8 +25,8 @@ class Board extends SquareSurface {
         if (car != null) {
           car.moveToCell(row, column);
           if (car.carBrand.code == 'X' &&
-              car.currentColumn == grid.length - car.carBrand.size) {
-            car.currentColumn = grid.length; // the car exits the parking
+              car.currentColumn == grid.columnCount - car.carBrand.size) {
+            car.currentColumn = grid.columnCount; // the car exits the parking
           }
         }
       }
@@ -41,15 +39,15 @@ class Board extends SquareSurface {
       context.beginPath();
       int row = car.currentRow;
       int column = car.currentColumn;
-      int x = column * cellLength;
-      int y = row * cellLength;
-      int carSize = car.carBrand.size;
-      int carWidth = cellLength;
-      int carHeight = cellLength;
+      num x = column * grid.cellWidth;
+      num y = row * grid.cellHeight;
+      num carSize = car.carBrand.size;
+      num carWidth = grid.cellWidth;
+      num carHeight = grid.cellHeight;
       if (car.orientation == 'horizontal') {
-        carWidth = cellLength * carSize;
+        carWidth = grid.cellWidth * carSize;
       } else {
-        carHeight = cellLength * carSize;
+        carHeight = grid.cellHeight * carSize;
       }
       String color = car.carBrand.color;
       if (car.isSelected) {

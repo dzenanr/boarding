@@ -1,7 +1,7 @@
 part of p_art;
 
 class ArtCell extends CellPiece {
-  ArtCell(ArtGrid grid, int row, int column): super(grid, row, column) {
+  ArtCell(ArtGrid grid, Cell cell): super(grid, cell) {
     line.width = 0;
     color.main = randomColor();
     color.border = color.main;
@@ -9,7 +9,7 @@ class ArtCell extends CellPiece {
 }
 
 class ArtGrid extends Grid {
-  ArtGrid(int columnCount, int rowCount): super(columnCount, rowCount);
+  ArtGrid(Table table): super(table);
   
-  CellPiece newCell(Grid grid, int row, int column) => new ArtCell(this, row, column);
+  CellPiece newCellPiece(Grid grid, Cell cell) => new ArtCell(this, cell);
 }

@@ -1,7 +1,7 @@
 part of boarding;
 
 class Surface {
-  Size size; // in pixels length
+  Area area; // in pixels 
   Rectangle offset;
   CanvasElement canvas;
   CanvasRenderingContext2D context;
@@ -15,14 +15,18 @@ class Surface {
   Surface(this.canvas, 
       {this.grid, this.withLines: false, this.movablePieces, this.avoidCollisions: false}) {
     context = canvas.getContext('2d');
-    size = new Size(canvas.width, canvas.height);
+    if (grid == null) {
+      area = new Area(canvas.width, canvas.height);
+    } else {
+      area = grid.area;
+    }
     offset = canvas.offset;
     color.border = color.main;
     window.animationFrame.then(gameLoop);
   }
   
-  num get width => size.width;
-  num get height => size.height;
+  num get width => area.width;
+  num get height => area.height;
 
   gameLoop(num delta) {
     draw();
@@ -30,23 +34,20 @@ class Surface {
   }
 
   clear() {
-    if (grid != null) {
-      drawRect(canvas, 0, 0, width, height, 
-          color: grid.color.main, borderColor: grid.color.border);
-    } else {
+    if (grid == null) {
       drawRect(canvas, 0, 0, width, height, 
           color: color.main, borderColor: color.border);
+    } else {
+      drawRect(canvas, grid.x, grid.y, width, height, 
+          color: grid.color.main, borderColor: grid.color.border);
     }
   }
   
   draw() {
     clear();
     if (grid != null) {
-      if (withLines) lines();
-      if (grid.size == null) {
-        grid.size = size;
-      }
-      cells();
+      if (withLines) drawLines();
+      drawCellPieces();
     }
     if (movablePieces != null) {
       movablePieces.forEach((MovablePiece mp) {
@@ -59,22 +60,22 @@ class Surface {
     }
   }
 
-  lines() {
+  drawLines() {
     var x, y;
-    for (var row = 1; row < grid.rowCount; row++) {
-      x = 0;
-      y = grid.cellHeight * row;
-      drawLine(canvas, x, y, x + width, y);
-    }
-    for (var col = 1; col < grid.columnCount; col++) {
-      x = grid.cellWidth * col;
+    for (var col = 1; col < grid.table.columnCount; col++) {
+      x = grid.table.cellWidth * col;
       y = 0;
       drawLine(canvas, x, y, x, y + height);
     }
+    for (var row = 1; row < grid.table.rowCount; row++) {
+      x = 0;
+      y = grid.table.cellHeight * row;
+      drawLine(canvas, x, y, x + width, y);
+    }
   }
 
-  cells() {
-    for (CellPiece cellPiece in grid.cells) {
+  drawCellPieces() {
+    for (CellPiece cellPiece in grid.cellPieces) {
       drawPiece(cellPiece);
     } 
   }
@@ -164,11 +165,3 @@ class Surface {
   }
 }
 
-class SquareSurface extends Surface {
-  int length; // in pixels
-
-  SquareSurface(CanvasElement canvas, {bool withLines: false, SquareGrid grid}):
-    super(canvas, withLines: withLines, grid: grid) {
-    length = width;
-  }
-}

@@ -2,7 +2,7 @@ part of d2048;
 
 class Tile extends CellPiece {
   
-  Tile(TileGrid grid, int row, int column): super(grid, row, column) {
+  Tile(TileGrid grid, Cell cell): super(grid, cell) {
     color.main = 'lightyellow';
     isTagged = true;
     tag.size = 32;
@@ -10,24 +10,24 @@ class Tile extends CellPiece {
   }
 }
 
-class TileGrid extends SquareGrid {
+class TileGrid extends Grid {
   
-  TileGrid(int length): super(length) {
-    addTwoRandomAvailableCells();
+  TileGrid(Table table): super(table) {
+    addTwoRandomAvailableCellPieces();
   }
   
-  addTwoRandomAvailableCells() {
-    randomAvailableCell();
-    randomAvailableCell();
+  addTwoRandomAvailableCellPieces() {
+    randomAvailableCellPiece();
+    randomAvailableCellPiece();
   }
   
-  CellPiece newCell(Grid grid, int row, int column) => new Tile(this, row, column);
+  CellPiece newCellPiece(Grid grid, Cell cell) => new Tile(this, cell);
 
-  CellPiece randomAvailableCell() {
-    var c = cells.randomAvailableCell();
-    if (c != null) {
-      c.number = new Random().nextDouble() < 0.9 ? 2 : 4;
+  CellPiece randomAvailableCellPiece() {
+    var cp = cellPieces.randomAvailableCellPiece();
+    if (cp != null) {
+      cp.number = new Random().nextDouble() < 0.9 ? 2 : 4;
     }
-    return c;
+    return cp;
   }
 }

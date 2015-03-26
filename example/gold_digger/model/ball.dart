@@ -1,21 +1,21 @@
 part of gold_digger;
 
 class Ball extends MovablePiece { 
-  BCell _cell;
+  DCell _dCell;
   
-  Ball(BCell cell) {
-    this.cell = cell;
+  Ball(DCell dCell) {
+    this.dCell = dCell;
     shape = PieceShape.FACE;
     color.main = 'black';
     color.border = 'white';
   }
   
-  BCell get cell => _cell;
-  set cell(BCell cell) {
-    _cell = cell;
-    x = cell.width * cell.column;
-    y = cell.height * cell.row;
-    width = cell.width;
-    height = cell.height;
+  DCell get dCell => _dCell;
+  set dCell(DCell dCell) {
+    _dCell = dCell;
+    x = dCell.width * dCell.cell.column;
+    y = dCell.height * dCell.cell.row;
+    width = dCell.width;
+    height = dCell.height;
   }
 }

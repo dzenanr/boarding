@@ -1,6 +1,6 @@
 part of d2048;
 
-class Board extends SquareSurface {
+class Board extends Surface {
   static const String d2048 = 'd2048';
   static const String d2048Best = 'd2048Best';
 
@@ -8,7 +8,6 @@ class Board extends SquareSurface {
   LabelElement bestLabel = querySelector('#best');
 
   Board(CanvasElement canvas, TileGrid tileGrid) : super(canvas, grid: tileGrid) {
-    grid.size = size;
     querySelector('#save').onClick.listen((e) {
       save();
     });
@@ -22,24 +21,24 @@ class Board extends SquareSurface {
       if (!isGameOver) {
         switch(event.keyCode) {
           case KeyCode.UP:
-            tileGrid.cells.move(Direction.UP);
-            tileGrid.cells.merge(Direction.UP);
+            tileGrid.cellPieces.move(Direction.UP);
+            tileGrid.cellPieces.merge(Direction.UP);
             break;
           case KeyCode.DOWN:
-            tileGrid.cells.move(Direction.DOWN);
-            tileGrid.cells.merge(Direction.DOWN);
+            tileGrid.cellPieces.move(Direction.DOWN);
+            tileGrid.cellPieces.merge(Direction.DOWN);
             break;
           case KeyCode.LEFT:
-            tileGrid.cells.move(Direction.LEFT);
-            tileGrid.cells.merge(Direction.LEFT);
+            tileGrid.cellPieces.move(Direction.LEFT);
+            tileGrid.cellPieces.merge(Direction.LEFT);
             break;
           case KeyCode.RIGHT:
-            tileGrid.cells.move(Direction.RIGHT);
-            tileGrid.cells.merge(Direction.RIGHT);
+            tileGrid.cellPieces.move(Direction.RIGHT);
+            tileGrid.cellPieces.merge(Direction.RIGHT);
         }
-        if (tileGrid.randomAvailableCell() == null) {
-          bestLabel.text = saveBest(tileGrid.cells.maxCell().number).toString();
-          tileGrid.cells.forEach((CellPiece c) => c.color = 'white');
+        if (tileGrid.randomAvailableCellPiece() == null) {
+          bestLabel.text = saveBest(tileGrid.cellPieces.maxCellPiece().number).toString();
+          tileGrid.cellPieces.forEach((CellPiece c) => c.color = 'white');
           isGameOver = true;
         }
       }
@@ -48,7 +47,7 @@ class Board extends SquareSurface {
     window.animationFrame.then(gameLoop);
   }
 
-  save() => window.localStorage[d2048] = grid.cells.toJsonString();
+  save() => window.localStorage[d2048] = grid.cellPieces.toJsonString();
 
   num saveBest(num current) {
     var best = loadBest();
@@ -62,8 +61,8 @@ class Board extends SquareSurface {
   load() {
     String gameString = window.localStorage[d2048];
     if (gameString != null) {
-      grid.cells.empty();
-      grid.cells.fromJsonString(gameString);
+      grid.cellPieces.empty();
+      grid.cellPieces.fromJsonString(gameString);
     }
   }
 
@@ -76,8 +75,8 @@ class Board extends SquareSurface {
   }
 
   newGame() {
-    grid.cells.empty();
-    (grid as TileGrid).addTwoRandomAvailableCells();
+    grid.cellPieces.empty();
+    (grid as TileGrid).addTwoRandomAvailableCellPieces();
     isGameOver = false;
   }
 }

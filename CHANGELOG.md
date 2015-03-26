@@ -1,6 +1,28 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-03-26
+
++ rename Size to Area (width, height) in util/geo.dart
++ add new Size with columnCount and rowCount in geo.dart
++ add Table with Size that extends Box in geo.dart
++ add Cell with column and row in geo.dart
++ add isIn and similar methods to Cell
++ rename MinMaxSize to MinMaxArea in geo.dart
++ update constructor names from .fromJsonMap to .fromJson in util
++ update Composition in model/grid/composition.dart to use Cell
++ rename cell.dart to cell_pieces.dart in model/grid
++ update CellPiece in cell_pieces.dart to use Cell
++ move from CellPiece to Tag the number property and related methods
++ update CellPieces to use tag.number instead of number
++ add compareTo to Tag
++ move compareTo from CellPiece to Piece and use compareTo from Tag
++ update Grid in model/grid/grid.dart to use Table from util/geo.dart
++ add convenience getters to Grid based on Table
++ use Area instead of Size in Surface in view/surface.dart
++ update tests
++ update all examples
+
 *0.2.4* 2015-03-25
 
 + use the randomExtraInit method in Creature in the invaders example

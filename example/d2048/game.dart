@@ -10,7 +10,9 @@ part 'model/grid.dart';
 part 'view/board.dart';
 
 main() {
-  new Board(querySelector('#canvas'), new TileGrid(4)).draw();
+  var canvas = querySelector('#canvas');
+  var table = new Table(new Area(canvas.width, canvas.height), new Size(4, 4));
+  new Board(canvas, new TileGrid(table)).draw();
 }
 
 

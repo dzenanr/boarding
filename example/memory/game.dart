@@ -14,7 +14,9 @@ playAgain(Event e) {
 }
 
 main() {
-  new Board(querySelector('#canvas'), new Memory(4)).draw();
+  var canvas = querySelector('#canvas');
+  var table = new Table(new Area(canvas.width, canvas.height), new Size(4, 4));
+  new Board(querySelector('#canvas'), new Memory(table)).draw();
   querySelector('#play').onClick.listen(playAgain);
 }
 

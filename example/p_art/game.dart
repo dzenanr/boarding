@@ -9,5 +9,7 @@ part 'model/grid.dart';
 part 'view/board.dart';
 
 main() {
-  new Board(querySelector('#canvas'), new ArtGrid(200, 200)).draw();
+  var canvas = querySelector('#canvas');
+  var table = new Table(new Area(canvas.width, canvas.height), new Size(200, 200));
+  new Board(canvas, new ArtGrid(table)).draw();
 }

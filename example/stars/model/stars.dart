@@ -3,8 +3,8 @@ part of stars;
 class Star extends MovablePiece {
   Star(int id): super(id);
   
-  bool increase() => size.increaseWithin(minMaxSize.maxSize);
-  bool decrease() => size.decreaseWithin(minMaxSize.minSize);
+  bool increase() => size.increaseWithin(minMaxArea.maxArea);
+  bool decrease() => size.decreaseWithin(minMaxArea.minArea);
 }
 
 class Stars extends MovablePieces {  

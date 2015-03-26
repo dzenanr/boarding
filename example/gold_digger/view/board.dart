@@ -9,16 +9,15 @@ class Board extends Surface {
   int goldCount = 0;
   int goldCountLimit = 3;
   
-  Board(CanvasElement canvas, BGrid grid) : super(canvas, grid: grid) {
+  Board(CanvasElement canvas, DGrid grid) : super(canvas, grid: grid) {
     LabelElement goldCountLabel = querySelector("#gold-count");
-    grid.size = size;
-    ball = new Ball(grid.cells.cell(0, 0));
+    ball = new Ball(grid.cellPieces.cellPiece(0, 0));
     mainColor = ball.color.main;
     borderColor = ball.color.border;
     new Timer.periodic(const Duration(milliseconds: 1000), (Timer t) {
       secondCount++;
-      ball.cell = grid.cells.randomCell();
-      if (ball.cell.color.main == gold) { 
+      ball.dCell = grid.cellPieces.randomCellPiece();
+      if (ball.dCell.color.main == gold) { 
         ball.color.main = borderColor;
         ball.color.border = mainColor;
         if (++goldCount == goldCountLimit) {

@@ -5,10 +5,10 @@ class Board extends Surface {
 
   Cars cars;
   RedCar redCar;
-  Size space;
+  Area space;
 
   Board(CanvasElement canvas): super(canvas) {
-    space = new Size(width, height);
+    space = new Area(width, height);
     cars = new Cars(carCount);
     cars.forEach((Car car) {
       car.space = space;

@@ -4,42 +4,43 @@ import 'package:boarding/util.dart';
 
 testModel(Grid grid) {
   group('Testing model', () {
-    var w = grid.columnCount;
-    var h = grid.rowCount;
+    var cc = grid.table.columnCount;
+    var rc = grid.table.rowCount;
     setUp(() {
       expect(grid, isNotNull);
-      expect(w, greaterThan(1));
-      expect(h, greaterThan(1));
-      expect(grid.cells.every((c) => c.tag.text == 'empty'), isTrue);
+      expect(cc, greaterThan(1));
+      expect(rc, greaterThan(1));
+      expect(grid.cellPieces.every((c) => c.tag.text == 'empty'), isTrue);
     });
     tearDown(() {
-      for (CellPiece c in grid.cells) {
+      for (CellPiece c in grid.cellPieces) {
         c.tag.text = 'empty';
       }
     });
-    test('Cell', () {
-      CellPiece c = grid.cells.cell(h - 1, w - 1);
-      expect(c, isNotNull);
-      expect(c.row, equals(h - 1));
-      expect(c.column, equals(w - 1));
+    test('Cell Piece', () {
+      CellPiece cp = grid.cellPieces.cellPiece(cc - 1, rc - 1);
+      expect(cp, isNotNull);
+      expect(cp.cell.column, equals(cc - 1));
+      expect(cp.cell.row, equals(rc - 1));
     });
     test('Some cells are red', () {
-      CellPiece c = grid.cells.cell(h - 1, w - 1);
-      c.color.main = 'red';
-      expect(grid.cells.any((c) => c.color.main == 'red'), isTrue);
+      CellPiece cp = grid.cellPieces.cellPiece(cc - 1, rc - 1);
+      cp.color.main = 'red';
+      expect(grid.cellPieces.any((c) => c.color.main == 'red'), isTrue);
     });
     test('Is cell in?', () {
-      CellPiece c = grid.cells.cell(h - 1, w - 1);
-      expect(c.isIn(h - 1, w - 1), isTrue);
-      expect(c.isIn(0, 0), isFalse);
+      CellPiece cp = grid.cellPieces.cellPiece(cc - 1, rc - 1);
+      expect(cp.cell.isIn(cc - 1, rc - 1), isTrue);
+      expect(cp.cell.isIn(0, 0), isFalse);
     });
   });
 }
 
 main() {
-  var grid = new Grid(16, 20);
-  for (CellPiece cell in grid.cells) {
-    cell.tag = new Tag('empty');
+  var table = new Table(new Area(400, 600), new Size(16, 20));
+  var grid = new Grid(table);
+  for (CellPiece cp in grid.cellPieces) {
+    cp.tag = new Tag('empty');
   }
   testModel(grid);
 }

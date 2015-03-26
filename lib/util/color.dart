@@ -140,7 +140,7 @@ class Color { // codes
   
   Color([this.main = defaultMain]);
   
-  Color.fromJsonMap(Map<String, String> jsonMap) {
+  Color.fromJson(Map<String, String> jsonMap) {
     main = jsonMap['main'];
     border = jsonMap['border'];
     cover = jsonMap['cover'];

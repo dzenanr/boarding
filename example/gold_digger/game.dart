@@ -12,5 +12,7 @@ part 'model/grid.dart';
 part 'view/board.dart';
 
 main() {
-  new Board(querySelector('#canvas'), new BGrid(20, 20)).draw();
+  var canvas = querySelector('#canvas');
+  var table = new Table(new Area(canvas.width, canvas.height), new Size(20, 20));
+  new Board(canvas, new DGrid(table)).draw();
 }

@@ -43,7 +43,7 @@ class Board extends Surface {
     ball.x = width / 4;
     ball.y = height / 4;
     _setBallSpeed();
-    ball.space = new Size(width, height);
+    ball.space = new Area(width, height);
     racket.y = height - racket.height;
   }
 

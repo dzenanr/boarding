@@ -26,10 +26,10 @@ class Piece {
 
   int id;
   PieceShape shape = defaultShape;
-  var minMaxSize = new MinMaxSize();
+  var minMaxArea = new MinMaxArea();
   var box;
   var minMaxSpace = new MinMaxSpace();
-  var _space = new Size();
+  var _space = new Area();
   var line = new Line();
   var tag = new Tag();
   var color = new Color();
@@ -44,11 +44,11 @@ class Piece {
   bool isTagged = false;
 
   Piece([this.id = 0]) {
-    box = new Box(new Position(defaultX, defaultY), new Size(defaultWidth, defaultHeight));
+    box = new Box(new Position(defaultX, defaultY), new Area(defaultWidth, defaultHeight));
   }
   
   Position get position => box.position;
-  Size get size => box.size;
+  Area get size => box.area;
 
   num get x => box.x;
   set x(num x) => box.x = x;
@@ -60,8 +60,8 @@ class Piece {
   num get height => box.height;
   set height(num height) => box.height = height;
 
-  Size get space => _space;
-  set space(Size space) {
+  Area get space => _space;
+  set space(Area space) {
     _space = space;
     box.stayWithinSpace(space);
   }
@@ -69,13 +69,13 @@ class Piece {
   fromJsonMap(Map<String, Object> jsonMap) {
     id  = jsonMap['id'];
     shape = PieceShape.values[jsonMap['index']];
-    minMaxSize = new MinMaxSize.fromJsonMap(jsonMap['minMaxSize']);
-    box = new Box.fromJsonMap(jsonMap['box']);
-    minMaxSpace = new MinMaxSpace.fromJsonMap(jsonMap['minMaxSpace']);
-    _space = new Size.fromJsonMap(jsonMap['space']);
-    line = new Line.fromJsonMap(jsonMap['line']);
-    tag = new Tag.fromJsonMap(jsonMap['tag']);
-    color = new Color.fromJsonMap(jsonMap['color']);
+    minMaxArea = new MinMaxArea.fromJson(jsonMap['minMaxArea']);
+    box = new Box.fromJson(jsonMap['box']);
+    minMaxSpace = new MinMaxSpace.fromJson(jsonMap['minMaxSpace']);
+    _space = new Area.fromJson(jsonMap['space']);
+    line = new Line.fromJson(jsonMap['line']);
+    tag = new Tag.fromJson(jsonMap['tag']);
+    color = new Color.fromJson(jsonMap['color']);
     imgId = jsonMap['imgId'];
     audioId = jsonMap['audioId'];
     usesAudio = jsonMap['usesAudio'];
@@ -96,7 +96,7 @@ class Piece {
     var jsonMap = new Map<String, Object>();
     jsonMap['id'] = id;
     jsonMap['index'] = shape.index;
-    jsonMap['minMaxSize'] = minMaxSize.toJsonMap();
+    jsonMap['minMaxArea'] = minMaxArea.toJsonMap();
     jsonMap['box'] = box.toJsonMap();
     jsonMap['minMaxSpace'] = minMaxSpace.toJsonMap();
     jsonMap['space'] = _space.toJsonMap();
@@ -122,7 +122,7 @@ class Piece {
     shape = PieceShape.values[i];
     _space = minMaxSpace.randomSize();
     box.position = _space.randomPosition(); 
-    box.size = minMaxSize.randomSize();
+    box.area = minMaxArea.randomSize();
     line = Line.random(space);
     tag = Tag.random();
     color = Color.random();
@@ -132,6 +132,16 @@ class Piece {
     randomInit();
     isCovered = randomRareTrue();
     isTagged = randomRareTrue();
+  }
+  
+  /**
+   * Compares two pieces based on tags.
+   * If the result is less than 0 then the first piece is less than the second piece,
+   * if it is equal to 0 they are equal and
+   * if the result is greater than 0 then the first piece is greater than the second piece.
+   */
+  int compareTo(Piece p) {
+    return tag.compareTo(p.tag);
   }
 
   bool contains(num xx, num yy) =>
@@ -151,7 +161,7 @@ class MovablePiece extends Piece {
   
   fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
-    speed = new Speed.fromJsonMap(jsonMap['speed']);
+    speed = new Speed.fromJson(jsonMap['speed']);
     isMoving = jsonMap['isMoving'];
   }
 
@@ -183,29 +193,29 @@ class MovablePiece extends Piece {
           case Direction.UP:
             y -= speed.dy;
             if (y + height < 0) {
-              x = randomNum(minMaxSpace.minSize.width);
-              y = randomRangeNum(minMaxSpace.minSize.height, minMaxSpace.maxSize.height);
+              x = randomNum(minMaxSpace.minArea.width);
+              y = randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
             }
             break;
           case Direction.DOWN:
             y += speed.dy;
-            if (y > minMaxSpace.maxSize.height) {
-              x = randomNum(minMaxSpace.minSize.width);
-              y = -randomRangeNum(minMaxSpace.minSize.height, minMaxSpace.maxSize.height);
+            if (y > minMaxSpace.maxArea.height) {
+              x = randomNum(minMaxSpace.minArea.width);
+              y = -randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
             }
             break;
           case Direction.LEFT:
             x -= speed.dx;
             if (x + width < 0) {
-              x = randomRangeNum(minMaxSpace.minSize.width, minMaxSpace.maxSize.width);
-              y = randomNum(minMaxSpace.minSize.height);
+              x = randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
+              y = randomNum(minMaxSpace.minArea.height);
             }
             break;
           case Direction.RIGHT:
             x += speed.dx;
-            if (x > minMaxSpace.maxSize.width) {
-              x = -randomRangeNum(minMaxSpace.minSize.width, minMaxSpace.maxSize.width);
-              y = randomNum(minMaxSpace.minSize.height);
+            if (x > minMaxSpace.maxArea.width) {
+              x = -randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
+              y = randomNum(minMaxSpace.minArea.height);
             }
         }
       }

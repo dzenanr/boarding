@@ -1,52 +1,43 @@
 part of grid;
 
 class Grid {
-  int columnCount;  
-  int rowCount; 
-  Size _size;
+  Table table;
   var color = new Color('white');
 
-  Cells cells;
+  CellPieces cellPieces;
 
-  Grid(this.columnCount, this.rowCount) {
+  Grid(this.table) {
     color.border = color.main;
-    cells = new Cells(this);
-    var cell;
-    for (var row = 0; row < rowCount; row++) {
-      for (var column = 0; column < columnCount; column++) {
-        cell = newCell(this, row, column);
-        cells.add(cell);
+    cellPieces = new CellPieces(this);
+    var cellPiece;
+    for (var column = 0; column < table.columnCount; column++) {
+      for (var row = 0; row < table.rowCount; row++) {
+        cellPiece = newCellPiece(this, new Cell(column, row));
+        cellPieces.add(cellPiece);
       }
     }
-  }
-  
-  Size get size => _size;
-  set size(Size size) {
-    _size = size;
-    var cellWidth = size.width / columnCount;
-    var cellHeight = size.height / rowCount;
-    for (CellPiece cellPiece in cells) {
-      cellPiece.width = cellWidth;
-      cellPiece.height = cellHeight;
-      cellPiece.x = cellPiece.width * cellPiece.column;
-      cellPiece.y = cellPiece.height * cellPiece.row;
+    for (CellPiece cp in cellPieces) {
+      cp.width = table.cellWidth;
+      cp.height = table.cellHeight;
+      cp.x = cp.width * cp.cell.column;
+      cp.y = cp.height * cp.cell.row;
     }
   }
-
-  CellPiece newCell(Grid grid, int row, int column) {
-    return new CellPiece(grid, row, column);
-  }
-
-  bool contains(int row, int column) {
-    return 0 <= row && row < rowCount && 0 <= column && column < columnCount;
-  }
   
-  get cellWidth => size.width / columnCount;
-  get cellHeight => size.height / rowCount;
+  Position get position => table.position;
+  num get x => table.position.x;
+  num get y => table.position.y;
+  Area get area => table.area;
+  num get width => table.area.width;
+  num get height => table.area.height;
+  Size get size => table.size;
+  int get columnCount => table.size.columnCount;
+  int get rowCount => table.size.columnCount;
+  num get cellWidth => table.cellWidth;
+  num get cellHeight => table.cellHeight;
+
+  CellPiece newCellPiece(Grid grid, Cell cell) => new CellPiece(grid, cell);
+
+  bool contains(Cell cell) => table.contains(cell);
 }
 
-class SquareGrid extends Grid {
-  int length; // in cells
-  
-  SquareGrid(int s): length = s, super(s, s);
-}

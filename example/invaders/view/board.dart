@@ -7,7 +7,7 @@ class Board extends Surface {
   AudioElement hitSound;
   VideoElement invaderVideo;
   
-  Board(CanvasElement canvas) : super(canvas) {  
+  Board(CanvasElement canvas): super(canvas) {  
     clouds = new Clouds(5);
     creatures = new Creatures(7);
     spaceship = new Spaceship();
@@ -52,8 +52,8 @@ class Board extends Surface {
     if (creatures.any((Piece p) => p.isVisible)) {
       clouds.forEach((Cloud cloud) {
         cloud.move(Direction.UP);
-        cloud.minMaxSpace.minSize = new Size(width, height);
-        cloud.minMaxSpace.maxSize = new Size(width + cloud.width, height + cloud.height);
+        //cloud.minMaxSpace.minSize = new Size(width, height);
+        //cloud.minMaxSpace.maxSize = new Size(width + cloud.width, height + cloud.height);
         drawPiece(cloud);
       });
       creatures.forEach((Creature creature) {
@@ -70,7 +70,7 @@ class Board extends Surface {
             creature.isSelected = true;
             if (creature.isCovered) {
               creature.tag.text = '\$';
-              creature.tag.size = 32;
+              creature.tag.area = 32;
               creature.isTagged = true;
             } else {
               creature.imgId = 'explosion';

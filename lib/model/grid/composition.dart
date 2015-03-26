@@ -1,37 +1,44 @@
 part of grid;
 
 class Composition {
-  int currentRow;
-  int currentColumn;
-  int startRow;
-  int startColumn;
+  Cell currentCell;
+  Cell startCell;
   String orientation; // h, v, /, \, L
   bool isSelected = false;
-  var cells;  
+  CellPieces cellPieces;  
   Grid grid;
   
   Composition(this.grid) {
-    cells = new Cells(grid);
+    cellPieces = new CellPieces(grid);
   }
   
-  CellPiece cell(int row, int column) {
-    for (CellPiece c in cells) {
-      if (c.isIn(row, column)) return c;
+  CellPiece cellPiece(int column, int row) {
+    for (CellPiece cp in cellPieces) {
+      if (cp.cell.isIn(column, row)) return cp;
     }
     return null;
   }
   
-  bool isIn(int row, int column) => cells.any((CellPiece c) => c.isIn(row, column)); 
-  bool isUpOf(int row, int column) => cells.any((CellPiece c) => c.isUpOf(row, column)); 
-  bool isDownOf(int row, int column) => cells.any((CellPiece c) => c.isDownOf(row, column));
-  bool isLeftOf(int row, int column) => cells.any((CellPiece c) => c.isLeftOf(row, column));  
-  bool isRightOf(int row, int column) => cells.any((CellPiece c) => c.isRightOf(row, column));
+  bool isIn(int column, int row) => 
+      cellPieces.any((CellPiece cp) => cp.cell.isIn(column, row)); 
+  bool isLeftOf(int column, int row) => 
+      cellPieces.any((CellPiece cp) => cp.cell.isLeftOf(column, row));  
+  bool isRightOf(int column, int row) => 
+      cellPieces.any((CellPiece cp) => cp.cell.isRightOf(column, row));
+  bool isUpOf(int column, int row) => 
+      cellPieces.any((CellPiece cp) => cp.cell.isUpOf(column, row)); 
+  bool isDownOf(int column, int row) => 
+      cellPieces.any((CellPiece cp) => cp.cell.isDownOf(column, row));
   
-  select() => cells.forEach((CellPiece c) => c.isSelected = true);
-  deselect() => cells.forEach((CellPiece c) => c.isSelected = false);
+  select() => cellPieces.forEach((CellPiece cp) => cp.isSelected = true);
+  deselect() => cellPieces.forEach((CellPiece cp) => cp.isSelected = false);
   
-  moveToCell(int row, int column) {
-    currentRow = row;
-    currentColumn = column;
+  moveToCell(Cell c) {
+    currentCell = c;
+  }
+  
+  moveToColumnRow(int column, int row) {
+    currentCell.column = column;
+    currentCell.row = row;
   }
 }

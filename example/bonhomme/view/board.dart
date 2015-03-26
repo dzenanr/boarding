@@ -5,7 +5,7 @@ class Board extends Surface {
 
   Trees trees;
   Bonhomme bonhomme;
-  Size space;
+  Area space;
   bool gameOver = false;
   LabelElement winner;
   int hitCount = 0;
@@ -13,7 +13,7 @@ class Board extends Surface {
   Board(CanvasElement canvas, Trees trees): this.trees = trees, 
       super(canvas, movablePieces: trees) {
     winner = querySelector("#winner");
-    space = new Size(width, height);
+    space = new Area(width, height);
     trees.forEach((Tree tree) {
       tree.space = space;
     });

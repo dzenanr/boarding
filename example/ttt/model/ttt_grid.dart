@@ -1,52 +1,51 @@
 part of icacoe;
 
-class TttGrid extends SquareGrid {
-  static const String x = 'X';
-  static const String o = 'O';
+class TttGrid extends Grid {
+  static const String xx = 'X';
+  static const String oo = 'O';
 
-  TttGrid(int size): super(size);
+  TttGrid(Table table): super(table);
 
-  CellPiece newCell(Grid grid, int row, int column) =>
-      new CellPiece(this, row, column);
+  CellPiece newCellPiece(Grid grid, Cell cell) => new CellPiece(this, cell);
 
   bool lineCompleted() {
-    var c;
+    var cp;
     var t;
     var line = [];
     // columns
-    for (var x = 0; x < length; x++) {
+    for (var x = 0; x < columnCount; x++) {
       line = [];
-      for (var y = 0; y < length; y++) {
-        c = cells.cell(x, y);
-        t = c.tag.text;
+      for (var y = 0; y < rowCount; y++) {
+        cp = cellPieces.cellPiece(x, y);
+        t = cp.tag.text;
         line.add(t);
       }
       if (_completed(line)) return true;
     }
     // rows
-    for (var y = 0; y < length; y++) {
+    for (var y = 0; y < rowCount; y++) {
       line = [];
-      for (var x = 0; x < length; x++) {
-        c = cells.cell(x, y);
-        t = c.tag.text;
+      for (var x = 0; x < columnCount; x++) {
+        cp = cellPieces.cellPiece(x, y);
+        t = cp.tag.text;
         line.add(t);
       }
       if (_completed(line)) return true;
     }
     // diagonal: \
     line = [];
-    for (var d = 0; d < length; d++) {
-      c = cells.cell(d, d);
-      t = c.tag.text;
+    for (var d = 0; d < rowCount; d++) {
+      cp = cellPieces.cellPiece(d, d);
+      t = cp.tag.text;
       line.add(t);
     }
     if (_completed(line)) return true;
     // diagonal: /
     line = [];
-    var y = length - 1;
-    for (var x = 0; x < length; x++) {
-      c = cells.cell(x, y);
-      t = c.tag.text;
+    var y = rowCount - 1;
+    for (var x = 0; x < columnCount; x++) {
+      cp = cellPieces.cellPiece(x, y);
+      t = cp.tag.text;
       line.add(t);
       y--;
     }
@@ -55,6 +54,6 @@ class TttGrid extends SquareGrid {
   }
 
   bool _completed(List line) =>
-      line.every((String text) => text == x) ||
-      line.every((String text) => text == o);
+      line.every((String text) => text == xx) ||
+      line.every((String text) => text == oo);
 }

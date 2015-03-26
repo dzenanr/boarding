@@ -3,35 +3,37 @@ part of memory;
 class MemoryCell extends CellPiece {
   MemoryCell twin;
 
-  MemoryCell(Memory memory, int row, int column): super(memory, row, column);
+  MemoryCell(Memory memory, Cell cell): super(memory, cell);
 }
 
-class Memory extends SquareGrid {
+class Memory extends Grid {
   bool _recalled = false;
 
-  Memory(int size): super(size) {
-    if (size.isOdd) {
-      throw new Exception('Memory length must be an even integer: $size.');
+  Memory(Table table): super(table) {
+    if (columnCount.isOdd || rowCount.isOdd) {
+      var msg = 'Memory size must be an even integer: (${size.columnCount}, ${size.rowCount})';
+      print(msg);
+      throw new Exception(msg);
     }
-    for (MemoryCell mc in cells) {
+    for (MemoryCell mc in cellPieces) {
       mc.isCovered = true;
       mc.color.main = getNotUsedColor();
       _setFreeTwinRandomCell(mc);
     }
   }
 
-  CellPiece newCell(Grid grid, int row, int column) =>
-      new MemoryCell(this, row, column);
+  CellPiece newCellPiece(Grid grid, Cell cell) => new MemoryCell(this, cell);
 
   _setFreeTwinRandomCell(MemoryCell mc) {
     if (mc.twin == null) {
-      var row;
       var column;
-      while (cells.any((c) => c.twin == null)) {
-        row = randomInt(length);
-        column = randomInt(length);
-        MemoryCell tc = cells.cell(row, column);
-        if (tc.twin == null && (tc.row != mc.row || tc.column != mc.column)) {
+      var row;
+      while (cellPieces.any((c) => c.twin == null)) {
+        column = randomInt(columnCount);
+        row = randomInt(rowCount);
+        MemoryCell tc = cellPieces.cellPiece(column, row);
+        if (tc.twin == null && 
+            (tc.cell.column != mc.cell.column || tc.cell.row != mc.cell.row)) {
           mc.twin = tc;
           tc.twin = mc;
           tc.color = mc.color;
@@ -43,13 +45,13 @@ class Memory extends SquareGrid {
 
   bool get recalled {
     if (!_recalled) {
-      if (cells.every((c) => !c.isCovered)) _recalled = true;
+      if (cellPieces.every((c) => !c.isCovered)) _recalled = true;
     }
     return _recalled;
   }
 
   hide() {
-    for (final cell in cells) cell.isCovered = true;
+    for (final cell in cellPieces) cell.isCovered = true;
     _recalled = false;
   }
 }

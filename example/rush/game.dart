@@ -2,6 +2,7 @@ library rush;
 
 import 'dart:html';
 import 'package:boarding/grid.dart';
+import 'package:boarding/util.dart' as util;
 import 'package:boarding/boarding.dart';
 
 part 'model/meta/concept.dart';
@@ -16,9 +17,11 @@ part 'model/parkings.dart';
 part 'view/board.dart';
 
 main() {
-  final model = new CarParkingModel();
-  final grid = new SquareGrid(6);
-  final board = new Board(querySelector('#canvas'), grid, model, area: 'beginner', parking: 1);
-      //area: 'intermediate', parking: 2);
+  var model = new CarParkingModel();
+  var canvas = querySelector('#canvas');
+  var table = new util.Table(new util.Area(canvas.width, canvas.height), new util.Size(6, 6));
+  var grid = new Grid(table);
+  var board = new Board(canvas, grid, model, zone: 'beginner', parking: 1);
+      //zone: 'intermediate', parking: 2);
   board.draw();
 }

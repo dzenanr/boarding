@@ -1,5 +1,8 @@
 To do
 
+- moving pieces in the d2408 game do not behave correctly
+- test the memory game with size 4 by 5
+- include grid x and y when drawing a piece
 - use ImageData to convert an image to a matrix of pixels and use the matrix in p_art
 - add sound to the crash example
 - add images to the memory example

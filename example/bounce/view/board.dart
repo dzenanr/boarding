@@ -5,7 +5,7 @@ class Board extends Surface {
     movablePieces.randomInit();
     movablePieces.forEach((MovablePiece p) {
       p.shape = PieceShape.CIRCLE;
-      p.space = new Size(width, height);
+      p.space = new Area(width, height);
     });
   }
 }
