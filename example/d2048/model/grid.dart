@@ -26,7 +26,7 @@ class TileGrid extends Grid {
   CellPiece randomAvailableCellPiece() {
     var cp = cellPieces.randomAvailableCellPiece();
     if (cp != null) {
-      cp.number = new Random().nextDouble() < 0.9 ? 2 : 4;
+      cp.tag.number = new Random().nextDouble() < 0.9 ? 2 : 4;
     }
     return cp;
   }

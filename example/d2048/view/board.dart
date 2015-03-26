@@ -37,7 +37,7 @@ class Board extends Surface {
             tileGrid.cellPieces.merge(Direction.RIGHT);
         }
         if (tileGrid.randomAvailableCellPiece() == null) {
-          bestLabel.text = saveBest(tileGrid.cellPieces.maxCellPiece().number).toString();
+          bestLabel.text = saveBest(tileGrid.cellPieces.maxCellPiece().tag.number).toString();
           tileGrid.cellPieces.forEach((CellPiece c) => c.color = 'white');
           isGameOver = true;
         }
