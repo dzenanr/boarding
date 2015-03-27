@@ -19,7 +19,7 @@ class Board extends Surface {
       _setBallSpeed();
     });
     document.onMouseMove.listen((MouseEvent event) {
-      var minX = offset.left;
+      var minX = canvas.offset.left;
       var maxX = minX + width;
       if (event.page.x > minX && event.page.x < maxX) {
         var x = max(event.page.x - minX - (racket.width / 2), 0);

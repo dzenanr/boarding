@@ -2,7 +2,6 @@ part of boarding;
 
 class Surface {
   Area area; // in pixels 
-  Rectangle offset;
   CanvasElement canvas;
   CanvasRenderingContext2D context;
   Color color = new Color('white');
@@ -15,12 +14,7 @@ class Surface {
   Surface(this.canvas, 
       {this.grid, this.withLines: false, this.movablePieces, this.avoidCollisions: false}) {
     context = canvas.getContext('2d');
-    if (grid == null) {
-      area = new Area(canvas.width, canvas.height);
-    } else {
-      area = grid.area;
-    }
-    offset = canvas.offset;
+    area = new Area(canvas.width, canvas.height);
     color.border = color.main;
     window.animationFrame.then(gameLoop);
   }

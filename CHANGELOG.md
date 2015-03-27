@@ -1,6 +1,13 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-03-27
+
++ use canvas width and height only for the area property in the Surface class in view/surface.dart
++ remove the offset property from Surface
++ update the Board class in the breakout example to use canvas.offset
++ update the Racket class in the pingpong example to use canvas.offset
+
 *0.2.4* 2015-03-26
 
 + rename Size to Area (width, height) in util/geo.dart

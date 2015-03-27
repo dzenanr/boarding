@@ -22,7 +22,7 @@ class Racket {
     });
     // Change a position of the racket with the mouse left or right mouvement.
     document.onMouseMove.listen((MouseEvent event) {
-      var minX = board.offset.left;
+      var minX = board.canvas.offset.left;
       var maxX = minX + board.width;
       if (event.page.x > minX && event.page.x < maxX) {
         x = max(event.page.x - minX - (w / 2), 0);
