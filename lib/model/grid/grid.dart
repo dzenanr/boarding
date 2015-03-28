@@ -57,6 +57,11 @@ class MazeCell extends CellPiece {
 //www.migapro.com/depth-first-search
 class MazeGrid extends Grid {
   MazeGrid(Table table): super(table) {
+    if (columnCount.isOdd || rowCount.isOdd) {
+      var msg = 'Maze grid size must be an even integer: (${size.columnCount}, ${size.rowCount})';
+      print(msg);
+      throw new Exception(msg);
+    }
     var sp = randomCellPiece();
     path(sp.cell.column, sp.cell.row);
   }

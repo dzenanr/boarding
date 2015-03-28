@@ -7,7 +7,9 @@
 + add cellPiece and randomCellPiece methods to Grid in model/grid/grid.dart
 
 + move MazeGrid and MazeCell from the maze example to model/grid/grid.dart
-+ adapt the maze example
++ adapt the maze example (simpler)
++ add an exception for an odd grid size in MazeGrid in model/grid/grid.dart
+
 
 *0.2.4* 2015-03-27
 
