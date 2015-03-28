@@ -6,6 +6,9 @@
 + add text to index.html in the maze example
 + add cellPiece and randomCellPiece methods to Grid in model/grid/grid.dart
 
++ move MazeGrid and MazeCell from the maze example to model/grid/grid.dart
++ adapt the maze example
+
 *0.2.4* 2015-03-27
 
 + use canvas width and height only for the area property in the Surface class in view/surface.dart
