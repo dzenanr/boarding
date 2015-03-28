@@ -8,6 +8,7 @@
 
 + move MazeGrid and MazeCell from the maze example to model/grid/grid.dart
 + adapt the maze example (simpler)
+
 + add an exception for an odd grid size in MazeGrid in model/grid/grid.dart
 
 
