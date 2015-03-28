@@ -8,6 +8,10 @@
 + update the Board class in the breakout example to use canvas.offset
 + update the Racket class in the pingpong example to use canvas.offset
 
++ add the randomCell method to the Table class in util/geo.dart
++ add isMarked property to the Tage class in util/text.dart
++ add maze generation example
+
 *0.2.4* 2015-03-26
 
 + rename Size to Area (width, height) in util/geo.dart

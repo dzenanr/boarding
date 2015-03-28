@@ -1,5 +1,9 @@
 Links
 
+Algorithms
+
+http://bost.ocks.org/mike/algorithms/
+
 Animations
 
 http://www.sitepoint.com/basic-animation-with-canvas-and-javascript/
@@ -129,6 +133,10 @@ JS
 
 http://perfectionkills.com/
 http://fabricjs.com/fabric-intro-part-1/
+
+JS Games
+
+http://www.kielack.de/games.htm
 
 Maze Puzzles
 

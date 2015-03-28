@@ -6,8 +6,9 @@ class Tag {
   num size = 16;
   String align = 'center';
   num maxWidth; // in pixels
-  var color = new Color();
+  var color = new Color('#000000'); // black
   num _number = 0;
+  bool isMarked = false;
   
   Tag([this.text = '']);
    
@@ -19,6 +20,7 @@ class Tag {
     maxWidth = jsonMap['maxWidth'];
     color = new Color.fromJson(jsonMap['color']);
     _number = jsonMap['number'];
+    isMarked = jsonMap['isMarked'];
   }
 
   Map<String, Object> toJsonMap() {
@@ -30,6 +32,7 @@ class Tag {
     jsonMap['maxWidth'] = maxWidth;
     jsonMap['color'] = color.toJsonMap();
     jsonMap['number'] = _number;
+    jsonMap['isMarked'] = isMarked;
     return jsonMap;
   }
   

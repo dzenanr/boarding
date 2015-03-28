@@ -137,14 +137,14 @@ class CellPieces {
         if (n != null && n.tag.isEmpty) {
           cp.move(direction);
           switch(direction) {
-            case Direction.UP:
-              n.move(Direction.DOWN); break;
-            case Direction.DOWN:
-              n.move(Direction.UP); break;
             case Direction.LEFT:
               n.move(Direction.RIGHT); break;
             case Direction.RIGHT:
-              n.move(Direction.LEFT); 
+              n.move(Direction.LEFT); break;
+            case Direction.UP:
+              n.move(Direction.DOWN); break;
+            case Direction.DOWN:
+              n.move(Direction.UP); 
           }
           moved = true;
         }     

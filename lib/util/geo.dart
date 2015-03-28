@@ -2,6 +2,11 @@ part of util;
 
 enum Direction {UP, DOWN, LEFT, RIGHT}
 
+Direction randomDirection() {
+  var i = randomInt(Direction.values.length);
+  return Direction.values[i];
+}
+
 class Position {
   num x;
   num y;
@@ -286,6 +291,10 @@ class Table extends Box {
   bool contains(Cell cell) =>
     0 <= cell.column && cell.column < size.columnCount &&
     0 <= cell.row && cell.row < size.rowCount;
+  
+  int randomColumn() => randomInt(size.columnCount);
+  int randomRow() => randomInt(size.rowCount);
+  Cell randomCell() => new Cell(randomColumn(), randomRow());
 }
 
 class Cell {
