@@ -1,4 +1,4 @@
-part of maze_gen;
+part of maze;
 
 //www.migapro.com/depth-first-search
 class MazeGrid extends Grid {

@@ -1,4 +1,7 @@
 To Do
 
 - make a maze game
+- make a maze solver
+  http://www.primaryobjects.com/maze/
+
 

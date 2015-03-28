@@ -1,4 +1,4 @@
-part of maze_gen;
+part of maze;
 
 class Board extends Surface {
   Board(CanvasElement canvas, MazeGrid grid) : super(canvas, grid: grid) {

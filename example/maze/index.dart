@@ -1,4 +1,4 @@
-library maze_gen;
+library maze;
 
 import 'dart:html';
 import 'package:boarding/grid.dart';
