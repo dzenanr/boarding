@@ -1,6 +1,11 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-03-28
+
++ add text to index.html in the maze example
++ add cellPiece and randomCellPiece methods to Grid in model/grid/grid.dart
+
 *0.2.4* 2015-03-27
 
 + use canvas width and height only for the area property in the Surface class in view/surface.dart

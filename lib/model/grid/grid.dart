@@ -39,5 +39,8 @@ class Grid {
   CellPiece newCellPiece(Grid grid, Cell cell) => new CellPiece(grid, cell);
 
   bool contains(Cell cell) => table.contains(cell);
+  
+  CellPiece cellPiece(int column, int row) => cellPieces.cellPiece(column, row);
+  CellPiece randomCellPiece() => cellPieces.randomCellPiece();
 }
 
