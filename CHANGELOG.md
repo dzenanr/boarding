@@ -12,6 +12,9 @@
 + add isMarked property to the Tage class in util/text.dart
 + add maze generation example
 
++ use isMarked from Tag in MazeGrid to find a path
++ rename the gen method to path in MazeGrid
+
 *0.2.4* 2015-03-26
 
 + rename Size to Area (width, height) in util/geo.dart
