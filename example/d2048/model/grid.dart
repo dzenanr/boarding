@@ -1,17 +1,18 @@
 part of d2048;
 
 class Tile extends CellPiece {
+  static const String tileColor = 'lightyellow';
+  static const String tagColor = 'blue';
   
   Tile(TileGrid grid, Cell cell): super(grid, cell) {
-    color.main = 'lightyellow';
+    color.main = tileColor;
     isTagged = true;
     tag.size = 32;
-    tag.color.main = 'blue';
+    tag.color.main = tagColor;
   }
 }
 
-class TileGrid extends Grid {
-  
+class TileGrid extends Grid {  
   TileGrid(Table table): super(table) {
     addTwoRandomAvailableCellPieces();
   }

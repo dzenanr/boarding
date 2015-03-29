@@ -1,6 +1,18 @@
 part of util;
 
-enum Direction {UP, DOWN, LEFT, RIGHT}
+enum DirectDirection {LEFT, RIGHT, UP, DOWN}
+enum DiagonalDirection {LEFT_UP, RIGHT_UP, LEFT_DOWN, RIGHT_DOWN}
+enum Direction {LEFT, RIGHT, UP, DOWN, LEFT_UP, RIGHT_UP, LEFT_DOWN, RIGHT_DOWN}
+
+DirectDirection randomDirectDirection() {
+  var i = randomInt(DirectDirection.values.length);
+  return DirectDirection.values[i];
+}
+
+DiagonalDirection randomDiagonalDirection() {
+  var i = randomInt(DiagonalDirection.values.length);
+  return DiagonalDirection.values[i];
+}
 
 Direction randomDirection() {
   var i = randomInt(Direction.values.length);

@@ -190,6 +190,20 @@ class MovablePiece extends Piece {
         changeDirectionIfOutOfSpace();
       } else {
         switch(direction) {
+          case Direction.LEFT:
+            x -= speed.dx;
+            if (x + width < 0) {
+              x = randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
+              y = randomNum(minMaxSpace.minArea.height);
+            }
+            break;
+          case Direction.RIGHT:
+            x += speed.dx;
+            if (x > minMaxSpace.maxArea.width) {
+              x = -randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
+              y = randomNum(minMaxSpace.minArea.height);
+            }
+            break;
           case Direction.UP:
             y -= speed.dy;
             if (y + height < 0) {
@@ -204,18 +218,52 @@ class MovablePiece extends Piece {
               y = -randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
             }
             break;
-          case Direction.LEFT:
+          case Direction.LEFT_UP:
             x -= speed.dx;
+            y -= speed.dy;
             if (x + width < 0) {
               x = randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
               y = randomNum(minMaxSpace.minArea.height);
             }
-            break;
-          case Direction.RIGHT:
+            if (y + height < 0) {
+              x = randomNum(minMaxSpace.minArea.width);
+              y = randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
+            }
+            break;           
+          case Direction.RIGHT_UP:
             x += speed.dx;
+            y -= speed.dy;
             if (x > minMaxSpace.maxArea.width) {
               x = -randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
               y = randomNum(minMaxSpace.minArea.height);
+            }
+            if (y + height < 0) {
+              x = randomNum(minMaxSpace.minArea.width);
+              y = randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
+            }
+            break;           
+          case Direction.LEFT_DOWN:
+            x -= speed.dx;
+            y += speed.dy;
+            if (x + width < 0) {
+              x = randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
+              y = randomNum(minMaxSpace.minArea.height);
+            }
+            if (y > minMaxSpace.maxArea.height) {
+              x = randomNum(minMaxSpace.minArea.width);
+              y = -randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
+            }
+            break;
+          case Direction.RIGHT_DOWN:
+            x += speed.dx;
+            y += speed.dy;
+            if (x > minMaxSpace.maxArea.width) {
+              x = -randomRangeNum(minMaxSpace.minArea.width, minMaxSpace.maxArea.width);
+              y = randomNum(minMaxSpace.minArea.height);
+            }
+            if (y > minMaxSpace.maxArea.height) {
+              x = randomNum(minMaxSpace.minArea.width);
+              y = -randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
             }
         }
       }

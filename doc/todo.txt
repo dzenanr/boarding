@@ -1,6 +1,5 @@
 To do
 
-- moving pieces in the d2408 game do not behave correctly
 - test the memory game with size 4 by 5
 - test the maze eample with size 20 by 15
 - include grid x and grid y when drawing a piece

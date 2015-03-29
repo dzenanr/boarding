@@ -3,6 +3,7 @@ Links
 Algorithms
 
 http://bost.ocks.org/mike/algorithms/
+http://www.jamisbuck.org/mazes/
 
 Animations
 

@@ -70,7 +70,7 @@ class Board extends Surface {
             creature.isSelected = true;
             if (creature.isCovered) {
               creature.tag.text = '\$';
-              creature.tag.area = 32;
+              creature.tag.size = 32;
               creature.isTagged = true;
             } else {
               creature.imgId = 'explosion';

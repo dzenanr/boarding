@@ -20,14 +20,6 @@ class Board extends Surface {
     document.onKeyDown.listen((KeyboardEvent event) {
       if (!isGameOver) {
         switch(event.keyCode) {
-          case KeyCode.UP:
-            tileGrid.cellPieces.move(Direction.UP);
-            tileGrid.cellPieces.merge(Direction.UP);
-            break;
-          case KeyCode.DOWN:
-            tileGrid.cellPieces.move(Direction.DOWN);
-            tileGrid.cellPieces.merge(Direction.DOWN);
-            break;
           case KeyCode.LEFT:
             tileGrid.cellPieces.move(Direction.LEFT);
             tileGrid.cellPieces.merge(Direction.LEFT);
@@ -35,16 +27,30 @@ class Board extends Surface {
           case KeyCode.RIGHT:
             tileGrid.cellPieces.move(Direction.RIGHT);
             tileGrid.cellPieces.merge(Direction.RIGHT);
+            break;
+          case KeyCode.UP:
+            tileGrid.cellPieces.move(Direction.UP);
+            tileGrid.cellPieces.merge(Direction.UP);
+            break;
+          case KeyCode.DOWN:
+            tileGrid.cellPieces.move(Direction.DOWN);
+            tileGrid.cellPieces.merge(Direction.DOWN);
         }
         if (tileGrid.randomAvailableCellPiece() == null) {
           bestLabel.text = saveBest(tileGrid.cellPieces.maxCellPiece().tag.number).toString();
-          tileGrid.cellPieces.forEach((CellPiece c) => c.color = 'white');
+          tileGrid.cellPieces.forEach((CellPiece cp) => cp.color.main = Tile.tileColor);
           isGameOver = true;
         }
       }
     });
     bestLabel.text = loadBest().toString();
     window.animationFrame.then(gameLoop);
+  }
+  
+  draw() {
+    if (!isGameOver) { 
+      super.draw();
+    }
   }
 
   save() => window.localStorage[d2048] = grid.cellPieces.toJsonString();
@@ -63,6 +69,7 @@ class Board extends Surface {
     if (gameString != null) {
       grid.cellPieces.empty();
       grid.cellPieces.fromJsonString(gameString);
+      isGameOver = false;
     }
   }
 

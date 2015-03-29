@@ -24,16 +24,68 @@ class CellPiece extends Piece {
     return jsonMap;
   }
   
+  bool isDirectNeighborOf(CellPiece np) {
+    return cell.column == np.cell.column - 1 || 
+           cell.column == np.cell.column + 1 || 
+           cell.row == np.cell.row - 1 || 
+           cell.row == np.cell.row + 1;
+  }
+  
+  bool isDiagonalNeighborOf(CellPiece np) {
+    return (cell.column == np.cell.column - 1 && cell.row == np.cell.row - 1) ||
+           (cell.column == np.cell.column + 1 && cell.row == np.cell.row - 1) ||
+           (cell.column == np.cell.column - 1 && cell.row == np.cell.row + 1) ||
+           (cell.column == np.cell.column + 1 && cell.row == np.cell.row + 1);
+  }
+  
+  bool isNeighborOf(CellPiece np) {
+    return isDirectNeighborOf(np) || isDiagonalNeighborOf(np);
+  }
+  
+  swap(CellPiece np) {
+    var cpx = x;
+    var cpy = y;
+    var cpc = cell.column;
+    var cpr = cell.row;
+    x = np.x;
+    y = np.y;
+    cell.column = np.cell.column;
+    cell.row = np.cell.row;
+    np.x = cpx;
+    np.y = cpy;
+    np.cell.column = cpc;
+    np.cell.row = cpr;
+  }
+  
   move(Direction direction) {
     switch(direction) {
-      case Direction.UP:
-        cell.row = cell.row - 1; break;
-      case Direction.DOWN:
-        cell.row = cell.row + 1; break;
       case Direction.LEFT:
-        cell.column = cell.column - 1; break;
+        cell.column = cell.column - 1; 
+        break;
       case Direction.RIGHT:
+        cell.column = cell.column + 1; 
+        break;
+      case Direction.UP:
+        cell.row = cell.row - 1; 
+        break;
+      case Direction.DOWN:
+        cell.row = cell.row + 1; 
+        break;
+      case Direction.LEFT_UP:
+        cell.column = cell.column - 1; 
+        cell.row = cell.row - 1; 
+        break;
+      case Direction.RIGHT_UP:
+        cell.column = cell.column + 1; 
+        cell.row = cell.row - 1;
+        break;
+      case Direction.LEFT_DOWN:
+        cell.column = cell.column - 1;
+        cell.row = cell.row + 1; 
+        break;
+      case Direction.RIGHT_DOWN:
         cell.column = cell.column + 1;
+        cell.row = cell.row + 1;
     }
   }
 }
@@ -49,7 +101,8 @@ class CellPieces {
   
   fromJsonList(List<Map<String, Object>> jsonList) {
     jsonList.forEach((jsonMap) {
-      var cp = cellPiece(jsonMap['row'], jsonMap['column']);
+      var cell = jsonMap['cell'];
+      var cp = cellPiece(cell['column'], cell['row']);
       if (cp != null) {
         cp.fromJsonMap(jsonMap);
       }
@@ -108,13 +161,28 @@ class CellPieces {
     CellPiece neighbor;
     switch(direction) {
       case Direction.LEFT:
-        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row); break;
+        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row); 
+        break;
       case Direction.RIGHT:
-        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row); break;
+        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row); 
+        break;
       case Direction.UP:
-        neighbor = cellPiece(cp.cell.column, cp.cell.row - 1); break;
+        neighbor = cellPiece(cp.cell.column, cp.cell.row - 1); 
+        break;
       case Direction.DOWN:
         neighbor = cellPiece(cp.cell.column, cp.cell.row + 1); 
+        break;
+      case Direction.LEFT_UP:
+        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row - 1); 
+        break;
+      case Direction.RIGHT_UP:
+        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row - 1); 
+        break;
+      case Direction.LEFT_DOWN:
+        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row + 1); 
+        break;
+      case Direction.RIGHT_DOWN:
+        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row + 1); 
     }  
     return neighbor;
   }
@@ -133,19 +201,9 @@ class CellPieces {
     var moved = false;
     for (CellPiece cp in this) {
       if (!cp.tag.isEmpty) {
-        CellPiece n = neighbor(cp, direction);
-        if (n != null && n.tag.isEmpty) {
-          cp.move(direction);
-          switch(direction) {
-            case Direction.LEFT:
-              n.move(Direction.RIGHT); break;
-            case Direction.RIGHT:
-              n.move(Direction.LEFT); break;
-            case Direction.UP:
-              n.move(Direction.DOWN); break;
-            case Direction.DOWN:
-              n.move(Direction.UP); 
-          }
+        CellPiece np = neighbor(cp, direction);
+        if (np != null && np.tag.isEmpty) {
+          cp.swap(np);
           moved = true;
         }     
       }
@@ -153,7 +211,8 @@ class CellPieces {
     if (moved) move(direction);
   }
   
-  bool merge(Direction direction) {
+  merge(Direction direction) {
+    var merged = false;
     for (CellPiece cp in this) {
       if (!cp.tag.isEmpty) {
         CellPiece n = neighbor(cp, direction);
@@ -161,11 +220,11 @@ class CellPieces {
           if (cp.tag.number == n.tag.number) {
             n.tag.number = n.tag.number + n.tag.number;
             cp.tag.empty();
-            return true;
+            merged = true;
           }
         }
       }
     }
-    return false;
+    if (merged) merge(direction);
   }
 }

@@ -11,6 +11,27 @@
 
 + add an exception for an odd grid size in MazeGrid in model/grid/grid.dart
 
++ add swap method to CellPiece in model/grid/cell_pieces.dart
++ add isNeighborOf method to CellPiece
++ use column before row in the fromJsonList method in CellPieces
++ use the swap method in the move method in CellPieces in model/grid/cell_pieces.dart
++ use the recursion in the merge method in CellPieces in model/grid/cell_pieces.dart
++ add draw method with isGameOver check in Board in the d2048 game
++ use the LEFT, RIGHT key codes before the UP, DOWN key codes in Board in the d2048 game
++ set isGameOver to false in the load method in Board
++ use the tag size (not area) in the invaders game
++ extend the Direction enum with LEFT_UP, RIGHT_UP, LEFT_DOWN and RIGHT_DOWN in util/geo.dart
++ add diagonal directions in the move method in CellPiece in model/grid/cell_pieces.dart
++ type return in the isNeighborOf method in CellPiece
++ add diagonal directions in isNeighborOf
++ rename the isNeighborOf method to isDirectNeighborOf
++ add isDiagonalNeighborOf and new isNeighborOf methods to CellPiece
++ add diagonal neighbors in the neighbor method in CellPieces in model/grid/cell_pieces.dart
++ add diagonal directions in the move method in MovablePiece in model/pieces/pieces.dart
++ add DirectDirection and DiagonalDirection enums in util/geo.dart
++ add randomDirectDirection and randomDiagonalDirection methods in util/geo.dart
++ use DirectDirection in the path method in MazeGrid in model/grid/grid.dart
++ rename rds to dds and rd to dd variables in the path method
 
 *0.2.4* 2015-03-27
 

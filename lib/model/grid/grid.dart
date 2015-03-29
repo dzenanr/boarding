@@ -67,13 +67,13 @@ class MazeGrid extends Grid {
   }
   
   path(int c, int r) {
-    var rds = new List<Direction>();
+    var dds = new List<DirectDirection>();
     for (var i = 0; i < 4; i++) {
-      rds.add(randomDirection());
+      dds.add(randomDirectDirection());
     }
-    for (var rd in rds) {
-      switch(rd) {
-        case Direction.LEFT:
+    for (var dd in dds) {
+      switch(dd) {
+        case DirectDirection.LEFT:
           // if 2 cells left is outside
           if (c - 2 <= 0) {
             continue;
@@ -86,7 +86,7 @@ class MazeGrid extends Grid {
               path(c - 2, r);
           }
           break;
-        case Direction.RIGHT:
+        case DirectDirection.RIGHT:
           // if 2 cells right is outside
           if (c + 2 >= table.size.columnCount - 1) {
             continue;
@@ -99,7 +99,7 @@ class MazeGrid extends Grid {
               path(c + 2, r);
           }          
           break;
-        case Direction.UP:
+        case DirectDirection.UP:
           // if 2 cells up is outside
           if (r - 2 <= 0) {
             continue;
@@ -112,7 +112,7 @@ class MazeGrid extends Grid {
               path(c, r - 2);
           }
           break;
-        case Direction.DOWN:
+        case DirectDirection.DOWN:
           // if 2 cells down is outside
           if (r + 2 >= table.size.rowCount - 1) {
             continue;
