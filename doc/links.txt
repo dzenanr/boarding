@@ -18,6 +18,7 @@ Art
 
 http://seb.ly/about/
 https://news.ycombinator.com/item?id=9285245
+http://www.azarask.in/blog/post/contextfreejs-algorithm-ink-making-art-with-javascript/
 
 Async Games
 
@@ -40,7 +41,6 @@ Board Games
 
 http://www.funwithpuzzles.com/2014/07/corners.html
 http://www.funwithpuzzles.com/2012/05/battleship-puzzle-tutorial-conceptis.html
-
 
 Canvas
 
@@ -276,6 +276,10 @@ http://www.webdesignerdepot.com/2013/10/how-to-play-video-with-html5/
 Visual Design
 
 http://www.visualmess.com/index.html
+
+Visualization
+
+http://processingjs.org/
 
 Word Games
 
