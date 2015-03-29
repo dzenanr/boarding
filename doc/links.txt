@@ -17,6 +17,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_anima
 Art
 
 http://seb.ly/about/
+https://news.ycombinator.com/item?id=9285245
 
 Async Games
 
@@ -158,6 +159,7 @@ http://stackoverflow.com/questions/11611398/which-image-formats-are-supported-by
 http://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support
 http://graphicssoft.about.com/library/glossary/bldefstandardformat.htm
 http://www.scantips.com/basics09.html
+http://stackoverflow.com/questions/8479058/how-do-i-find-waldo-with-mathematica
 
 JS
 
