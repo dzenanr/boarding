@@ -1,5 +1,9 @@
 Links
 
+2D
+
+http://www.greatandlittle.com/studios/index.php?post/2013/05/31/Simplot-A-2D-Canvas-Plotting-Library-for-Dart
+
 Algorithms
 
 http://bost.ocks.org/mike/algorithms/
@@ -102,6 +106,31 @@ http://www.queness.com/post/2584/12-amazing-and-creative-javascript-games
 http://www.funwithpuzzles.com/2014/10/online-popular-games.html
 http://www.gamespicnic.com/2014/08/red-remover-gravity-based-game.html
 http://coolmathgames1.net/
+http://www.kongregate.com/
+http://js13kgames.com/
+
+Game a Month
+
+http://www.onegameamonth.com/
+https://github.com/OneGameAMonth
+http://www.reddit.com/r/OneGameAMonth/
+http://gamedevelopment.tutsplus.com/articles/1gam-how-to-succeed-at-making-one-game-a-month--gamedev-3695
+http://www.usebox.net/jjm/one-game-a-month/
+http://www.slant.co/topics/1871/viewpoints/4/~what-are-the-best-recurring-game-jams~one-game-a-month-%231gam
+http://mcfunkypants.com/2012/12-games-in-12-months/
+http://rexonegameamonth.tumblr.com/
+http://fireside.gamejolt.com/post/jam-favorites-one-game-a-month-january-d4usudv2
+http://www.kongregate.com/forums/4-game-programming/topics/315612-one-game-a-month
+https://lakitusdevcartridge.wordpress.com/tag/one-game-a-month/
+http://www.davideaversa.it/2015/01/one-game-a-month-december-2014/
+
+http://snoutup.com/2014/05/14/one-game-a-month-ideas/
+https://news.ycombinator.com/item?id=8756157
+
+Game Education
+
+http://www.onemonthgameschool.com/
+http://www.pepwuper.com/
 
 Grid Games
 
@@ -213,6 +242,10 @@ Sudoku
 
 http://www.funwithpuzzles.com/2014/12/guest-authors-contributions.html
 
+Tetris
+
+https://news.ycombinator.com/item?id=9282391
+https://github.com/mbrenman/TetrisPlayground
 
 Tutorials
 
@@ -237,6 +270,10 @@ http://www.computerhope.com/issues/ch001002.htm
 https://www.youtube.com/watch?v=dgSsBT-rJuw
 https://www.youtube.com/watch?v=2wTP3_Da_OA
 http://www.webdesignerdepot.com/2013/10/how-to-play-video-with-html5/
+
+Visual Design
+
+http://www.visualmess.com/index.html
 
 Word Games
 

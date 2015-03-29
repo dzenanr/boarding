@@ -1,6 +1,14 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-03-29 (Pub)
+
++ rename text.dart to tag.dart in util
++ remove the restriction of even size only in MazeGrid in model/grid/grid.dart
++ change int get rowCount => table.size.ColumnCount; to int get rowCount => table.size.rowCount;
+  in Grid in model/grid/grid.dart
++ remove print(msg); from Memory in the memory game
+
 *0.2.4* 2015-03-28
 
 + add text to index.html in the maze example

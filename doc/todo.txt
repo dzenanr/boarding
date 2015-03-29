@@ -1,8 +1,10 @@
 To do
 
-- test the memory game with size 4 by 5
-- test the maze eample with size 20 by 15
 - include grid x and grid y when drawing a piece
+- create different backgrounds for Surface and its canvas in view/surface.dart
+- create more shapes (fence, net, ...)
+- use model/grid/composition.dart in detris (tetris) 
+  based on the datris example (https://github.com/dzenanr/datris)
 - use ImageData to convert an image to a matrix of pixels and use the matrix in p_art
 - add sound to the crash example
 - add images to the memory example
@@ -17,7 +19,6 @@ To do
 - add hashCode and equality (==) to the Position, Size, Box, MinMaxSize and MinMaxSpace classes
   http://stackoverflow.com/questions/10404516/how-can-i-compare-lists-for-equality-in-dart
   http://stackoverflow.com/questions/19713572/how-do-i-compare-two-lists-as-being-equal-and-containing-the-same-objects-in-da
-- add detris (tetris) based on the datris example
 - add snake example
 - add parity example
 - add how many squares example (4 by 4 grid): sum of squares 1^2 + 2^2 + 3^2  + 4^2 = 30;
@@ -38,7 +39,13 @@ To do
 Maybe
 
 - use Point instead of Position? 
-- make Size and Box unmutable? 
+- make Size and Box unmutable?
+- add a list of lists of cells in util/table?
+  https://groups.google.com/a/dartlang.org/forum/#!topic/misc/tcbkTj950go
+  https://groups.google.com/a/dartlang.org/forum/#!topic/misc/9D-hRMzZt3Q
+  http://stackoverflow.com/questions/665299/are-2-dimensional-lists-possible-in-c
+  https://www.dartlang.org/articles/emulating-functions/ 
+  http://en.wikipedia.org/wiki/List_comprehension  
 
 New Games
 

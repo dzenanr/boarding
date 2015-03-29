@@ -5,4 +5,4 @@ import 'dart:math';
 part 'util/color.dart';
 part 'util/geo.dart';
 part 'util/random.dart';
-part 'util/text.dart';
+part 'util/tag.dart';

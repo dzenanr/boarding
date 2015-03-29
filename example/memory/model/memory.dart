@@ -12,7 +12,6 @@ class Memory extends Grid {
   Memory(Table table): super(table) {
     if (columnCount.isOdd || rowCount.isOdd) {
       var msg = 'Memory size must be an even integer: (${size.columnCount}, ${size.rowCount})';
-      print(msg);
       throw new Exception(msg);
     }
     for (MemoryCell mc in cellPieces) {

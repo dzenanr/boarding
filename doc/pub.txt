@@ -1,0 +1,26 @@
+Pub Package Manager
+
+https://pub.dartlang.org/
+https://pub.dartlang.org/packages/boarding
+
+Dart Standalone VM
+
+https://www.dartlang.org/tools/dart-vm/
+
+Pub Publish
+
+https://www.dartlang.org/tools/pub/cmd/pub-lish.html
+
+Windows Console Window
+
+http://stackoverflow.com/questions/60950/is-there-a-better-windows-console-window
+
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub.bat
+cd C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin
+
+C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\boarding
+cd C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\boarding
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub publish --dry-run
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub publish 
+
+
