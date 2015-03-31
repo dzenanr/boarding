@@ -29,6 +29,7 @@ http://docs.yoyogames.com/source/dadiospice/001_advanced%20use/more%20about%20as
 http://api.shephertz.com/app42-dev/ebook-turn-based-games.php
 http://www.indieflashblog.com/how-to-create-an-asynchronous-multiplayer-game.html
 http://www.giantbomb.com/asynchronous-multiplayer/3015-4359/games/
+http://tutorialzine.com/2012/08/nodejs-drawing-game/
 
 Audio
 
@@ -36,6 +37,10 @@ http://stackoverflow.com/questions/14846420/html5-audio-button-works-first-time-
 http://www.vorbis.com/
 http://en.wikipedia.org/wiki/Vorbis
 http://www.html5rocks.com/en/tutorials/webaudio/intro/
+
+Background
+
+https://www.udemy.com/create-a-html5-game-from-scratch/
 
 Board Games
 
@@ -90,10 +95,20 @@ Dart Games
 http://ondart.me/web_programming.md
 http://www.snakepiece.com/
 
+Design
+
+http://www.gamasutra.com/category/design/
+
+DOM
+
+http://buildnewgames.com/dom-sprites/
+
 Education
 
 http://www.codingame.com/start
 http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
+https://www.udacity.com/course/cs255
+https://www.udemy.com/create-a-html5-game-from-scratch/
 
 Games
 
@@ -133,6 +148,10 @@ Game Education
 http://www.onemonthgameschool.com/
 http://www.pepwuper.com/
 
+Game Engines
+
+https://gist.github.com/bebraw/768272
+
 Grid Games
 
 http://www.abefehr.com/parity/#
@@ -161,6 +180,10 @@ http://graphicssoft.about.com/library/glossary/bldefstandardformat.htm
 http://www.scantips.com/basics09.html
 http://stackoverflow.com/questions/8479058/how-do-i-find-waldo-with-mathematica
 
+Invaders
+
+http://appinventor.mit.edu/explore/ai2/space-invaders.html
+
 JS
 
 http://perfectionkills.com/
@@ -177,6 +200,10 @@ http://www.funwithpuzzles.com/2012/04/maze-pix-puzzle-tutorial-conceptis.html
 Memory Games
 
 http://www.gamespicnic.com/2014/01/memory-games-main-page.html
+
+Mobile
+
+http://www.smashingmagazine.com/2012/10/19/design-your-own-mobile-game/
 
 Picture Puzzles
 
@@ -210,10 +237,24 @@ https://news.ycombinator.com/item?id=9162585
 http://www.mathematische-basteleien.de/snakecube.htm
 http://imgur.com/a/nxA4Y
 http://www.funwithpuzzles.com/2015/02/mini-puzzles-series.html
+http://regexcrossword.com/challenges/hamlet/puzzles/1
+http://www.mit.edu/~puzzle/2013/coinheist.com/rubik/a_regular_crossword/answer/index.html
+
+Regular Expressions
+
+https://news.ycombinator.com/item?id=9288605
+http://regexcrossword.com/challenges/hamlet/puzzles/1
 
 Questions
 
 http://stackoverflow.com/questions/11622068/snake-cube-puzzle-correctness
+
+Resources
+
+http://html5devstarter.enclavegames.com/
+http://www.gamedevacademy.org/
+http://www.codingame.com/start
+http://www.codingame.com/leaderboards/challenge/the-great-escape
 
 Semantic Versioning
 
@@ -240,6 +281,14 @@ http://stackoverflow.com/questions/19541192/how-to-draw-cloud-shape-in-html5-can
 http://stackoverflow.com/questions/4927909/is-there-a-good-method-for-dynamically-drawing-clouds-with-html5-canvas-and-java
 http://jsfiddle.net/qs8wf/
 
+Snake
+
+http://thecodeplayer.com/walkthrough/html5-game-tutorial-make-a-snake-game-using-html5-canvas-jquery
+
+Sprites
+
+http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/
+
 Sudoku
 
 http://www.funwithpuzzles.com/2014/12/guest-authors-contributions.html
@@ -261,6 +310,22 @@ http://michalbe.blogspot.ca/2010/09/simple-game-with-html5-canvas-part-1.html
 https://msdn.microsoft.com/en-us/hh563503.aspx
 http://www.funwithpuzzles.com/2014/06/logical-puzzles-and-sudoku-tutorials.html
 https://edtechfunction.wordpress.com/2015/03/09/let-the-coding-games-begin-5-awesome-edtech-games-that-teach-programming/
+http://www.html5rocks.com/en/tutorials/canvas/notearsgame/
+http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
+http://spyrestudios.com/30-tutorials-for-html5-browser-games/
+http://www.iguanademos.com/Jare/docs/html5/Lessons/
+http://www.somethinghitme.com/2013/01/09/creating-a-canvas-platformer-tutorial-part-one/tut1-1/
+http://blog.sklambert.com/html5-game-tutorial-module-pattern/
+http://blog.sklambert.com/html5-canvas-game-panning-a-background/
+https://www.youtube.com/watch?v=riUx2G75mas
+http://jlongster.com/Making-Sprite-based-Games-with-Canvas
+http://html5gamedev.samlancashire.com/
+http://codetheory.in/20-best-canvas-tutorials-and-examples-that-will-make-you-a-canvas-master/
+http://cssdeck.com/labs/ping-pong-game-tutorial-with-html5-canvas-and-sounds
+http://www.canvasdemos.com/type/tutorials/
+http://www.gamedev5.com/2013/06/tutorial-1-dragon-of-bosnia-basic-html.html
+http://www.script-tutorials.com/tag/game-development/
+http://www.sitepoint.com/the-complete-guide-to-building-html5-games-with-canvas-and-svg/
 
 Video
 
@@ -280,6 +345,10 @@ http://www.visualmess.com/index.html
 Visualization
 
 http://processingjs.org/
+
+Wiki
+
+https://github.com/DaRaFF/jsgamewiki
 
 Word Games
 

@@ -2,8 +2,13 @@ To do
 
 - include grid x and grid y when drawing a piece
 - create different backgrounds for Surface and its canvas in view/surface.dart
+  https://www.udemy.com/create-a-html5-game-from-scratch/
 - create more shapes (fence, net, ...)
-- use model/grid/composition.dart in detris (tetris) 
+- add more useful methods to classes in util
+  http://docs.closure-library.googlecode.com/git/index.html
+  http://docs.closure-library.googlecode.com/git/namespace_goog_color.html
+  consult http://docs.closure-library.googlecode.com/git/class_goog_math_Rect.html
+- use model/grid/composition.dart in detris (tetris)
   based on the datris example (https://github.com/dzenanr/datris)
 - use ImageData to convert an image to a matrix of pixels and use the matrix in p_art
 - add sound to the crash example
@@ -38,14 +43,14 @@ To do
 
 Maybe
 
-- use Point instead of Position? 
+- use Point instead of Position?
 - make Size and Box unmutable?
 - add a list of lists of cells in util/table?
   https://groups.google.com/a/dartlang.org/forum/#!topic/misc/tcbkTj950go
   https://groups.google.com/a/dartlang.org/forum/#!topic/misc/9D-hRMzZt3Q
   http://stackoverflow.com/questions/665299/are-2-dimensional-lists-possible-in-c
-  https://www.dartlang.org/articles/emulating-functions/ 
-  http://en.wikipedia.org/wiki/List_comprehension  
+  https://www.dartlang.org/articles/emulating-functions/
+  http://en.wikipedia.org/wiki/List_comprehension
 
 New Games
 
@@ -57,9 +62,9 @@ http://alaclair.com/
 - ...
 
 
-  
-  
-  
+
+
+
   ﻿
 
 
