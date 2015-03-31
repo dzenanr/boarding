@@ -42,6 +42,18 @@ Background
 
 https://www.udemy.com/create-a-html5-game-from-scratch/
 
+Bezier Curves
+
+http://devmag.org.za/2011/04/05/bzier-curves-a-tutorial/
+http://pomax.github.io/bezierinfo/
+http://www.html5canvastutorials.com/tutorials/html5-canvas-bezier-curves/
+http://web.iitd.ac.in/~hegde/cad/lecture/L13_Beziercurve.pdf
+http://www.tutorialspoint.com/html5/canvas_drawing_bezier.htm
+https://github.com/antoineleclair/Understanding-Bezier-Curve
+http://antoineleclair.ca/2011/08/27/understanding-quadratic-bezier-curves/
+http://blogs.sitepointstatic.com/examples/tech/canvas-curves/bezier-curve.html
+http://cubic-bezier.com/
+
 Board Games
 
 http://www.funwithpuzzles.com/2014/07/corners.html
@@ -65,18 +77,6 @@ https://gist.github.com/geoffb/6392450
 http://tutorials.jenkov.com/html5-canvas/transformation.html
 http://www.w3resource.com/html5-canvas/html5-canvas-translation-rotation-scaling.php
 
-Bezier Curves
-
-http://devmag.org.za/2011/04/05/bzier-curves-a-tutorial/
-http://pomax.github.io/bezierinfo/
-http://www.html5canvastutorials.com/tutorials/html5-canvas-bezier-curves/
-http://web.iitd.ac.in/~hegde/cad/lecture/L13_Beziercurve.pdf
-http://www.tutorialspoint.com/html5/canvas_drawing_bezier.htm
-https://github.com/antoineleclair/Understanding-Bezier-Curve
-http://antoineleclair.ca/2011/08/27/understanding-quadratic-bezier-curves/
-http://blogs.sitepointstatic.com/examples/tech/canvas-curves/bezier-curve.html
-http://cubic-bezier.com/
-
 Color
 
 http://en.wikipedia.org/wiki/RGBA_color_space
@@ -89,6 +89,10 @@ Companies
 http://powerheadgames.com/powerheads-games/async-corp-press/
 
 http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
+
+CSS
+
+https://pub.dartlang.org/packages/less_dart
 
 Dart Games
 
