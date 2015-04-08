@@ -14,6 +14,10 @@ Animations
 http://www.sitepoint.com/basic-animation-with-canvas-and-javascript/
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations
 
+Apps
+
+https://chrome.google.com/webstore/category/collection/multiplayer_games
+
 Art
 
 http://seb.ly/about/
@@ -54,10 +58,29 @@ http://antoineleclair.ca/2011/08/27/understanding-quadratic-bezier-curves/
 http://blogs.sitepointstatic.com/examples/tech/canvas-curves/bezier-curve.html
 http://cubic-bezier.com/
 
+Blogs
+
+https://www.packtpub.com/books/content/year-was-2014-game-development
+http://blog.artillery.com/
+
 Board Games
 
 http://www.funwithpuzzles.com/2014/07/corners.html
 http://www.funwithpuzzles.com/2012/05/battleship-puzzle-tutorial-conceptis.html
+https://diceygoblin.com/blog/the-full-history-of-board-games/
+https://news.ycombinator.com/item?id=9341381
+https://boardgamegeek.com/
+https://diceygoblin.com/about
+https://www.youtube.com/playlist?list=PL7atuZxmT956cWFGxqSyRdn6GWhBxiAwE
+
+Books
+
+https://www.packtpub.com/game-development/html5-game-development-hotshot
+http://www.apress.com/9781430266976
+http://it-ebooks.info/book/670/
+http://it-ebooks.info/book/1217/
+http://jessefreeman.com/books/
+http://corehtml5games.com/#/
 
 Canvas
 
@@ -77,6 +100,10 @@ https://gist.github.com/geoffb/6392450
 http://tutorials.jenkov.com/html5-canvas/transformation.html
 http://www.w3resource.com/html5-canvas/html5-canvas-translation-rotation-scaling.php
 
+Code Review
+
+http://fabiensanglard.net/doom3_bfg/index.php
+
 Color
 
 http://en.wikipedia.org/wiki/RGBA_color_space
@@ -87,8 +114,17 @@ http://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_rgba
 Companies
 
 http://powerheadgames.com/powerheads-games/async-corp-press/
-
 http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
+
+
+Communities
+
+https://p2pu.org/he/groups/beginning-game-development-with-html-5/
+
+Courses
+
+https://academy.zenva.com/?zva_src=latebacker
+https://www.class-central.com/mooc/551/udacity-html5-game-development
 
 CSS
 
@@ -103,9 +139,17 @@ Design
 
 http://www.gamasutra.com/category/design/
 
+Diagrams
+
+http://modeling-languages.com/javascript-drawing-libraries-diagrams/
+
 DOM
 
 http://buildnewgames.com/dom-sprites/
+
+Editor
+
+http://overlap2d.com/
 
 Education
 
@@ -128,6 +172,10 @@ http://www.gamespicnic.com/2014/08/red-remover-gravity-based-game.html
 http://coolmathgames1.net/
 http://www.kongregate.com/
 http://js13kgames.com/
+http://www.designer-daily.com/10-cool-html5-games-and-how-to-create-your-own-23820
+http://www.merixgames.com/
+http://www.coffeedoggames.com/
+http://coolmathgames1.net/
 
 Game a Month
 
@@ -147,6 +195,11 @@ http://www.davideaversa.it/2015/01/one-game-a-month-december-2014/
 http://snoutup.com/2014/05/14/one-game-a-month-ideas/
 https://news.ycombinator.com/item?id=8756157
 
+Game Editor
+
+http://overlap2d.com/
+https://www.youtube.com/watch?v=I0g-t0nZ-qE
+
 Game Education
 
 http://www.onemonthgameschool.com/
@@ -155,6 +208,20 @@ http://www.pepwuper.com/
 Game Engines
 
 https://gist.github.com/bebraw/768272
+https://playcanvas.com/
+http://booty5.com/booty5-html5-game-maker-1-9-available-tiled-maps/
+
+Game Development Frameworks
+
+http://libgdx.badlogicgames.com/index.html
+
+Gesture
+
+http://samposoftware.com/products/signsense/
+
+Gravity
+
+http://www.ibm.com/developerworks/library/wa-html5-game9/
 
 Grid Games
 
@@ -183,6 +250,7 @@ http://en.wikipedia.org/wiki/Comparison_of_web_browsers#Image_format_support
 http://graphicssoft.about.com/library/glossary/bldefstandardformat.htm
 http://www.scantips.com/basics09.html
 http://stackoverflow.com/questions/8479058/how-do-i-find-waldo-with-mathematica
+https://www.vectoropenstock.com/free-vectors/pattern/
 
 Invaders
 
@@ -197,6 +265,10 @@ JS Games
 
 http://www.kielack.de/games.htm
 
+Market
+
+http://www.marketjs.com/
+
 Maze Puzzles
 
 http://www.funwithpuzzles.com/2012/04/maze-pix-puzzle-tutorial-conceptis.html
@@ -208,6 +280,15 @@ http://www.gamespicnic.com/2014/01/memory-games-main-page.html
 Mobile
 
 http://www.smashingmagazine.com/2012/10/19/design-your-own-mobile-game/
+http://html5hub.com/how-to-make-a-mobile-virtual-pet-game-with-html5-and-cordova/
+
+Particles
+
+https://news.ycombinator.com/item?id=9333254
+
+Performance
+
+https://news.ycombinator.com/item?id=9333254
 
 Picture Puzzles
 
@@ -216,16 +297,6 @@ http://www.gamespicnic.com/2013/06/picture-puzzles.html
 Piece Games
 
 http://www.funwithpuzzles.com/2014/08/square-divide.html
-
-Polygons
-
-http://stackoverflow.com/questions/4839993/how-to-draw-polygons-on-an-html5-canvas
-http://scienceprimer.com/drawing-regular-polygons-javascript-canvas
-http://www.arungudelli.com/html5/html5-canvas-polygon/
-http://www.storminthecastle.com/2013/07/24/how-you-can-draw-regular-polygons-with-the-html5-canvas-api/
-http://scienceprimer.com/drawing-regular-polygons-javascript-canvas
-http://tutorials.jenkov.com/html5-canvas/paths.html
-https://msdn.microsoft.com/en-us/library/ms745818(v=vs.110).aspx
 
 Polymer
 
@@ -243,11 +314,16 @@ http://imgur.com/a/nxA4Y
 http://www.funwithpuzzles.com/2015/02/mini-puzzles-series.html
 http://regexcrossword.com/challenges/hamlet/puzzles/1
 http://www.mit.edu/~puzzle/2013/coinheist.com/rubik/a_regular_crossword/answer/index.html
+http://www.puzzlegames.net/bubble-jungle.html
 
 Regular Expressions
 
 https://news.ycombinator.com/item?id=9288605
 http://regexcrossword.com/challenges/hamlet/puzzles/1
+
+Research
+
+http://www.tiltfactor.org/
 
 Questions
 
@@ -255,10 +331,17 @@ http://stackoverflow.com/questions/11622068/snake-cube-puzzle-correctness
 
 Resources
 
+http://www.html5gamedevelopment.com/
 http://html5devstarter.enclavegames.com/
 http://www.gamedevacademy.org/
 http://www.codingame.com/start
 http://www.codingame.com/leaderboards/challenge/the-great-escape
+https://hacks.mozilla.org/2013/09/getting-started-with-html5-game-development/
+http://html5devstarter.enclavegames.com/
+http://www.photonstorm.com/html5
+http://html5-games.github.io/
+http://www.quora.com/What-are-best-free-resources-for-learning-HTML5-game-development
+http://www.reddit.com/r/html5gamedevs/
 
 Semantic Versioning
 
@@ -285,9 +368,20 @@ http://stackoverflow.com/questions/19541192/how-to-draw-cloud-shape-in-html5-can
 http://stackoverflow.com/questions/4927909/is-there-a-good-method-for-dynamically-drawing-clouds-with-html5-canvas-and-java
 http://jsfiddle.net/qs8wf/
 
+Slides
+
+https://docs.google.com/presentation/d/1HK947ywibadLLdbAAv5SBYjQ22UER7gbJyXss85GLmg/edit#slide=id.p
+http://www.slideshare.net/gawd/game-development-with-html5
+http://talks.caktusgroup.com/lightning-talks/2012/html5-game-development/#/
+http://blog.sethladd.com/2011/05/source-code-slides-and-video-for-html5.html
+
 Snake
 
 http://thecodeplayer.com/walkthrough/html5-game-tutorial-make-a-snake-game-using-html5-canvas-jquery
+
+Sound
+
+http://www.ibm.com/developerworks/library/wa-html5-game9/
 
 Sprites
 
@@ -301,6 +395,17 @@ Tetris
 
 https://news.ycombinator.com/item?id=9282391
 https://github.com/mbrenman/TetrisPlayground
+
+Tips
+
+https://msdn.microsoft.com/en-us/hh563503.aspx
+http://clay.io/blog/tag/html5-game-development-tips/
+
+Tools
+
+http://compilgames.net/
+http://www.gameclosure.com/
+http://stackoverflow.com/questions/7376727/html-5-game-development-tools
 
 Tutorials
 
@@ -330,6 +435,19 @@ http://www.canvasdemos.com/type/tutorials/
 http://www.gamedev5.com/2013/06/tutorial-1-dragon-of-bosnia-basic-html.html
 http://www.script-tutorials.com/tag/game-development/
 http://www.sitepoint.com/the-complete-guide-to-building-html5-games-with-canvas-and-svg/
+http://www.iguanademos.com/Jare/docs/html5/Lessons/
+http://code.tutsplus.com/tutorials/build-your-first-game-with-html5--net-20786
+http://code.tutsplus.com/articles/learn-html5-with-this-simple-avoider-game-tutorial--active-9653
+http://www.gamedevacademy.org/how-to-make-a-html5-game/
+http://thecodeplayer.com/walkthrough/html5-game-tutorial-make-a-snake-game-using-html5-canvas-jquery
+https://software.intel.com/en-us/xdk/docs/getstarted-gamedev
+http://blog.sklambert.com/
+http://www.script-tutorials.com/html5-game-development-lesson-1/
+http://www.adityaravishankar.com/2011/10/html5-game-development-tutorial-breakout-i-introduction-to-canvas/
+http://html5gamedev.samlancashire.com/
+http://buildnewgames.com/
+http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
+http://www.tutshunt.com/
 
 Video
 
@@ -341,6 +459,8 @@ http://www.computerhope.com/issues/ch001002.htm
 https://www.youtube.com/watch?v=dgSsBT-rJuw
 https://www.youtube.com/watch?v=2wTP3_Da_OA
 http://www.webdesignerdepot.com/2013/10/how-to-play-video-with-html5/
+http://gdcvault.com/play/1021862/Classic-Game-Postmortem
+http://www.sparepartsapp.com/
 
 Visual Design
 

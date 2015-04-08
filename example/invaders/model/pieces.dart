@@ -1,6 +1,6 @@
 part of invaders;
 
-class Spaceship extends MovablePiece {  
+class Spaceship extends MovablePiece {
   Spaceship() {
     randomInit();
     width = 70;
@@ -12,7 +12,7 @@ class Spaceship extends MovablePiece {
   }
 }
 
-class Laser extends MovablePiece {  
+class Laser extends MovablePiece {
   Laser() {
     randomInit();
     width = 4;
@@ -27,7 +27,7 @@ class Laser extends MovablePiece {
   }
 }
 
-class Cloud extends MovablePiece {  
+class Cloud extends MovablePiece {
   Cloud(int id) {
     randomInit();
     width = 80;
@@ -37,7 +37,7 @@ class Cloud extends MovablePiece {
   }
 }
 
-class Creature extends MovablePiece {  
+class Creature extends MovablePiece {
   Creature(int id) {
     randomExtraInit();
     width = 48;
@@ -47,11 +47,11 @@ class Creature extends MovablePiece {
     }
     if (dx >= dy) {
       dx = dy - 1;
-    } 
+    }
     y = -y;
     var ri = randomInt(7);
     isTagged = false;
-    dx = randomSign(ri) * dx; 
+    dx = randomSign(ri) * dx;
     shape = PieceShape.IMG;
     imgId = 'creature';
   }
@@ -61,9 +61,8 @@ class Clouds extends MovablePieces {
   Clouds(int count): super(count);
 
   createMovablePieces(int count) {
-    var id = 0;
-    for (var i = 0; i < count; i++) {
-      add(new Cloud(++id));
+    for (var i = 1; i <= count; i++) {
+      add(new Cloud(i));
     }
   }
 }
@@ -72,9 +71,8 @@ class Creatures extends MovablePieces {
   Creatures(int count): super(count);
 
   createMovablePieces(int count) {
-    var id = 0;
-    for (var i = 0; i < count; i++) {
-      add(new Creature(++id));
+    for (var i = 1; i <= count; i++) {
+      add(new Creature(i));
     }
   }
 }
