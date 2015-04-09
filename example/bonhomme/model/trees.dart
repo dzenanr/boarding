@@ -14,7 +14,7 @@ class Trees extends MovablePieces {
   Trees(int count) : super(count);
 
   createMovablePieces(int count) {
-    for (var i = 1; i <= count; i++) {
+    for (var i = 0; i < count; i++) {
       add(new Tree(i));
     }
   }

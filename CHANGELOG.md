@@ -1,6 +1,11 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.4* 2015-04-09
+
++ use loop index for piece id in the bonhomme, invaders & stars games
++ add firstWhere in Pieces in model/pieces/pieces.dart
+
 *0.2.4* 2015-03-29 (Pub)
 
 + rename text.dart to tag.dart in util
