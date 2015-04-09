@@ -3,7 +3,7 @@
 
 *0.2.4* 2015-04-09
 
-+ add the lanes example
++ add lanes example
 + use loop index for piece id in the bonhomme, invaders & stars games
 + add firstWhere in Pieces in model/pieces/pieces.dart
 
