@@ -389,9 +389,8 @@ class MovablePieces extends Pieces {
   }
 
   createMovablePieces(int count) {
-    var id = 0;
     for (var i = 0; i < count; i++) {
-      add(new MovablePiece(++id));
+      add(new MovablePiece(i));
     }
   }
 
