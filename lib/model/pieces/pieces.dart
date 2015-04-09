@@ -1,6 +1,6 @@
 part of pieces;
 
-enum PieceShape {CIRCLE, ELLIPSE, FACE, IMG, LINE, POLYGON, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE, 
+enum PieceShape {CIRCLE, ELLIPSE, FACE, IMG, LINE, POLYGON, RECT, ROUNDED_RECT, SELECTED_RECT, SQUARE,
   STAR, TAG, TRIANGLE, VEHICLE}
 
 accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
@@ -46,7 +46,7 @@ class Piece {
   Piece([this.id = 0]) {
     box = new Box(new Position(defaultX, defaultY), new Area(defaultWidth, defaultHeight));
   }
-  
+
   Position get position => box.position;
   Area get size => box.area;
 
@@ -121,19 +121,19 @@ class Piece {
     var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
     _space = minMaxSpace.randomSize();
-    box.position = _space.randomPosition(); 
+    box.position = _space.randomPosition();
     box.area = minMaxArea.randomSize();
     line = Line.random(space);
     tag = Tag.random();
     color = Color.random();
   }
-  
+
   randomExtraInit() {
     randomInit();
     isCovered = randomRareTrue();
     isTagged = randomRareTrue();
   }
-  
+
   /**
    * Compares two pieces based on tags.
    * If the result is less than 0 then the first piece is less than the second piece,
@@ -153,12 +153,12 @@ class MovablePiece extends Piece {
   bool isMoving = true;
 
   MovablePiece([id = 0]): super(id);
-  
+
   num get dx => speed.dx;
   set dx(num dx) => speed.dx = dx;
   num get dy => speed.dy;
   set dy(num dy) => speed.dy = dy;
-  
+
   fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
     speed = new Speed.fromJson(jsonMap['speed']);
@@ -176,7 +176,7 @@ class MovablePiece extends Piece {
     super.randomInit();
     speed = Speed.random();
   }
-  
+
   randomExtraInit() {
     super.randomExtraInit();
     speed = Speed.random();
@@ -229,7 +229,7 @@ class MovablePiece extends Piece {
               x = randomNum(minMaxSpace.minArea.width);
               y = randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
             }
-            break;           
+            break;
           case Direction.RIGHT_UP:
             x += speed.dx;
             y -= speed.dy;
@@ -241,7 +241,7 @@ class MovablePiece extends Piece {
               x = randomNum(minMaxSpace.minArea.width);
               y = randomRangeNum(minMaxSpace.minArea.height, minMaxSpace.maxArea.height);
             }
-            break;           
+            break;
           case Direction.LEFT_DOWN:
             x -= speed.dx;
             y += speed.dy;
@@ -271,11 +271,11 @@ class MovablePiece extends Piece {
   }
 
   onOff() => isMoving = !isMoving;
-  
+
   jump() {
     box.position = space.randomPosition();
   }
-  
+
   changeDirectionIfOutOfSpace() {
     if (x > space.width - width || x < 0) {
       speed.dx = -speed.dx;
@@ -359,7 +359,8 @@ class Pieces {
   forEach(Function f(Piece p)) => _pieceList.forEach(f);
   bool any(bool f(Piece p)) => _pieceList.any(f);
   bool every(bool f(Piece p)) => _pieceList.every(f);
-  
+  Piece firstWhere(bool f(Piece p)) => _pieceList.firstWhere(f);
+
   randomInit() => forEach((p) => p.randomInit());
   randomExtraInit() => forEach((p) => p.randomExtraInit());
 
