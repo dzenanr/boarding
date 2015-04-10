@@ -112,7 +112,7 @@ class Surface {
             if (piece.line.length > r) {
               piece.line.length = r;
             }
-            drawPolygonWithinSquare(canvas, piece.x, piece.y, piece.width, piece.line.length, piece.line.count,
+            drawPolygonWithinSquare(canvas, piece.x, piece.y, piece.width, piece.line.length, piece.line.score,
                 lineWidth: piece.line.width, color: piece.color.main, borderColor: piece.color.border);
             break;
           case PieceShape.RECT:

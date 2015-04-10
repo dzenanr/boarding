@@ -40,9 +40,9 @@ class Line {
   num width;
   num length = 40;
   int count = 1;
-  
+
   Line([this.width = 1]);
-  
+
   Line.fromJson(Map<String, Object> jsonMap) {
     var position1 = jsonMap['p1'];
     var position2 = jsonMap['p2'];
@@ -66,7 +66,7 @@ class Line {
     jsonMap['count'] = count;
     return jsonMap;
   }
-  
+
   static Line random(Area space) {
     var line = new Line();
     line.p1 = space.randomPosition();
@@ -80,7 +80,7 @@ class Line {
 
 class Speed {
   static const num limit = 6;
-  
+
   num dx;
   num dy;
 
@@ -94,31 +94,31 @@ class Speed {
     jsonMap['dy'] = dy;
     return jsonMap;
   }
-  
+
   increase() {
-    dx++; 
+    dx++;
     dy++;
   }
-  
+
   double() {
     dx = 2 * dx;
     dy = 2 * dy;
   }
-  
+
   decrease() {
-    dx--; 
+    dx--;
     dy--;
   }
-  
+
   changeDirection() {
-    dx = -dx; 
+    dx = -dx;
     dy = -dy;
   }
-  
+
   bool isFaster(Speed s) => dx > s.dx && dy > s.dy;
   bool isTwiceFaster(Speed s) => dx == 2 * s.dx && dy == 2* s.dy;
   bool isMuchFaster(Speed s) => dx > 2 * s.dx && dy > 2* s.dy;
-  
+
   static Speed random() => new Speed(randomRangeNum(1, limit), randomRangeNum(1, limit));
 }
 
@@ -139,22 +139,22 @@ class Area {
     jsonMap['height'] = height;
     return jsonMap;
   }
-  
+
   increase() {
-    width++; 
+    width++;
     height++;
   }
-  
+
   double() {
     width = 2 * width;
     height = 2 * height;
   }
-  
+
   decrease() {
-    width--; 
+    width--;
     height--;
   }
-  
+
   bool increaseWithin(Area max) {
     var isIncreased = true;
     increase();
@@ -168,7 +168,7 @@ class Area {
     }
     return isIncreased;
   }
-  
+
   doubleWithin(Area max) {
     var isDoubled = true;
     double();
@@ -182,7 +182,7 @@ class Area {
     }
     return isDoubled;
   }
-  
+
   bool decreaseWithin(Area min) {
     var isDecreased = true;
     decrease();
@@ -200,23 +200,23 @@ class Area {
   bool isBigger(Area s) => width > s.width && height > s.height;
   bool isTwiceBigger(Area s) => width == 2 * s.width && height == 2 * s.height;
   bool isMuchBigger(Area s) => width > 2 * s.width && height > 2 * s.height;
-  
+
   Position randomPosition() => new Position(randomNum(width), randomNum(height));
 
-  static Area random(num maxWidth, num maxHeight) => 
+  static Area random(num maxWidth, num maxHeight) =>
       new Area(randomNum(maxWidth), randomNum(maxHeight));
 }
 
 class Box {
   Position position;
   Area area;
-  
+
   Box(this.position, this.area);
 
   Box.fromJson(Map<String, Object> jsonMap) {
     fromJsonMap(jsonMap);
   }
-  
+
   fromJsonMap(Map<String, Object> jsonMap) {
     position = new Position.fromJson(jsonMap['position']);
     area = new Area.fromJson(jsonMap['area']);
@@ -228,17 +228,17 @@ class Box {
     jsonMap['area'] = area.toJsonMap();
     return jsonMap;
   }
-  
+
   num get x => position.x;
   set x(num x) => position.x = x;
   num get y => position.y;
   set y(num y) => position.y = y;
-  
+
   num get width => area.width;
   set width(num width) => area.width = width;
   num get height => area.height;
   set height(num height) => area.height = height;
-  
+
   stayWithinSpace(Area space) {
     if (x < 0) {
       x = 0;
@@ -253,17 +253,17 @@ class Box {
       y = space.height - height;
     }
   }
-  
-  Rectangle toRect() => new Rectangle(x, y, width, height); 
+
+  Rectangle toRect() => new Rectangle(x, y, width, height);
 }
 
 class Size {
   int columnCount;
   int rowCount;
-  
+
   Size([this.columnCount = 12, this.rowCount = 8]);
 
-  Size.fromJson(Map<String, Object> jsonMap): 
+  Size.fromJson(Map<String, Object> jsonMap):
     this(jsonMap['columnCount'], jsonMap['rowCount']);
 
   Map<String, Object> toJsonMap() {
@@ -276,13 +276,13 @@ class Size {
 
 class Table extends Box {
   Size size;
-  
+
   Table(Area area, this.size): super(new Position(), area);
-  
+
   Table.fromJson(Map<String, Object> jsonMap): super.fromJson(jsonMap) {
     size = new Size.fromJson(jsonMap['size']);
   }
-  
+
   fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
     size = new Size.fromJson(jsonMap['size']);
@@ -293,17 +293,17 @@ class Table extends Box {
     jsonMap['size'] = size.toJsonMap();
     return jsonMap;
   }
-  
+
   num get columnCount => size.columnCount;
   num get rowCount => size.rowCount;
-  
+
   num get cellWidth => area.width / size.columnCount;
   num get cellHeight => area.height / size.rowCount;
-  
+
   bool contains(Cell cell) =>
     0 <= cell.column && cell.column < size.columnCount &&
     0 <= cell.row && cell.row < size.rowCount;
-  
+
   int randomColumn() => randomInt(size.columnCount);
   int randomRow() => randomInt(size.rowCount);
   Cell randomCell() => new Cell(randomColumn(), randomRow());
@@ -312,7 +312,7 @@ class Table extends Box {
 class Cell {
   int column;
   int row;
-  
+
   Cell([this.column = 0, this.row = 0]);
 
   Cell.fromJson(Map<String, Object> jsonMap): this(jsonMap['column'], jsonMap['row']);
@@ -323,13 +323,13 @@ class Cell {
     jsonMap['row'] = row;
     return jsonMap;
   }
-  
+
   bool isInCell(Cell c) => column == c.column && row == c.row;
   bool isLeftOfCell(Cell c) => column == column - 1 && row == row;
   bool isRightOfCell(Cell c) => column == column + 1 && row == row;
   bool isUpOfCell(Cell c) => column == column && row == row - 1;
   bool isDownOfCell(Cell c) => column == column && row == row + 1;
-  
+
   bool isIn(int c, int r) => column == c && row == r;
   bool isLeftOf(int c, int r) => column == c - 1 && row == r;
   bool isRightOf(int c, int r) => column == c + 1 && row == r;
@@ -362,14 +362,14 @@ class MinMaxArea {
     jsonMap['maxArea'] = maxArea.toJsonMap();
     return jsonMap;
   }
-  
+
   bool isEqualWidth() => minArea.width == maxArea.width;
   bool isEqualHeight() => minArea.height == maxArea.height;
 
   Area randomSize() =>
       new Area(randomRangeNum(minArea.width, maxArea.width),
                randomRangeNum(minArea.height, maxArea.height));
-  
+
   Position randomPosition() =>
       new Position(randomNum(minArea.width), randomNum(minArea.height));
 }

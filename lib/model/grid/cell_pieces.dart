@@ -12,7 +12,7 @@ class CellPiece extends Piece {
     }
     shape = PieceShape.RECT;
   }
-  
+
   fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
     cell = new Cell.fromJson(jsonMap['cell']);
@@ -23,25 +23,25 @@ class CellPiece extends Piece {
     jsonMap['cell'] = cell.toJsonMap();
     return jsonMap;
   }
-  
+
   bool isDirectNeighborOf(CellPiece np) {
-    return cell.column == np.cell.column - 1 || 
-           cell.column == np.cell.column + 1 || 
-           cell.row == np.cell.row - 1 || 
+    return cell.column == np.cell.column - 1 ||
+           cell.column == np.cell.column + 1 ||
+           cell.row == np.cell.row - 1 ||
            cell.row == np.cell.row + 1;
   }
-  
+
   bool isDiagonalNeighborOf(CellPiece np) {
     return (cell.column == np.cell.column - 1 && cell.row == np.cell.row - 1) ||
            (cell.column == np.cell.column + 1 && cell.row == np.cell.row - 1) ||
            (cell.column == np.cell.column - 1 && cell.row == np.cell.row + 1) ||
            (cell.column == np.cell.column + 1 && cell.row == np.cell.row + 1);
   }
-  
+
   bool isNeighborOf(CellPiece np) {
     return isDirectNeighborOf(np) || isDiagonalNeighborOf(np);
   }
-  
+
   swap(CellPiece np) {
     var cpx = x;
     var cpy = y;
@@ -56,32 +56,32 @@ class CellPiece extends Piece {
     np.cell.column = cpc;
     np.cell.row = cpr;
   }
-  
+
   move(Direction direction) {
     switch(direction) {
       case Direction.LEFT:
-        cell.column = cell.column - 1; 
+        cell.column = cell.column - 1;
         break;
       case Direction.RIGHT:
-        cell.column = cell.column + 1; 
+        cell.column = cell.column + 1;
         break;
       case Direction.UP:
-        cell.row = cell.row - 1; 
+        cell.row = cell.row - 1;
         break;
       case Direction.DOWN:
-        cell.row = cell.row + 1; 
+        cell.row = cell.row + 1;
         break;
       case Direction.LEFT_UP:
-        cell.column = cell.column - 1; 
-        cell.row = cell.row - 1; 
+        cell.column = cell.column - 1;
+        cell.row = cell.row - 1;
         break;
       case Direction.RIGHT_UP:
-        cell.column = cell.column + 1; 
+        cell.column = cell.column + 1;
         cell.row = cell.row - 1;
         break;
       case Direction.LEFT_DOWN:
         cell.column = cell.column - 1;
-        cell.row = cell.row + 1; 
+        cell.row = cell.row + 1;
         break;
       case Direction.RIGHT_DOWN:
         cell.column = cell.column + 1;
@@ -92,13 +92,13 @@ class CellPiece extends Piece {
 
 class CellPieces {
   List<CellPiece> _list;
-  
+
   Grid grid;
 
   CellPieces(this.grid) {
     _list = new List<CellPiece>();
   }
-  
+
   fromJsonList(List<Map<String, Object>> jsonList) {
     jsonList.forEach((jsonMap) {
       var cell = jsonMap['cell'];
@@ -108,39 +108,40 @@ class CellPieces {
       }
     });
   }
-  
+
   fromJsonString(String jsonString) {
     List<Map<String, Object>> jsonList = JSON.decode(jsonString);
     fromJsonList(jsonList);
   }
-  
+
   List<CellPiece> toList() {
     return _list.toList();
   }
-  
+
   List<Map<String, Object>> toJsonList() {
     var jsonList = new List<Map<String, Object>>();
     forEach((CellPiece cp) => jsonList.add(cp.toJsonMap()));
     return jsonList;
   }
-  
+
   String toJsonString() => JSON.encode(toJsonList());
 
   int get length => _list.length;
   Iterator get iterator => _list.iterator;
-  
+
   add(CellPiece cp) => _list.add(cp);
   empty() => forEach((CellPiece cp) => cp.tag.empty());
+  unmark() => forEach((CellPiece cp) => cp.tag.isMarked = false);
 
   forEach(f(CellPiece cp)) => _list.forEach(f);
   bool any(bool f(CellPiece cp)) => _list.any(f);
   bool every(bool f(CellPiece cp)) => _list.every(f);
-  CellPiece maxCellPiece() => 
+  CellPiece maxCellPiece() =>
       _list.reduce((CellPiece cp1, CellPiece cp2) => cp1.compareTo(cp2) == -1 ? cp2 : cp1);
-  
+
   select() => forEach((CellPiece cp) => cp.isSelected = true);
   deselect() => forEach((CellPiece cp) => cp.isSelected = false);
-  
+
   CellPiece firstSelectedCellPiece() {
     for (CellPiece cp in this) {
       if (cp.isSelected) {
@@ -149,44 +150,60 @@ class CellPieces {
     }
     return null;
   }
-  
+
   CellPiece cellPiece(int column, int row) {
     for (CellPiece cp in this) {
       if (cp.cell.isIn(column, row)) return cp;
     }
     return null;
   }
-  
+
+  bool isCellOrdered({int start: 0, int increment: 1}) {
+    var ordered = true;
+    var count = start;
+    for (var r = 0; r < grid.rowCount; r++) {
+      for (var c = 0; c < grid.columnCount; c++) {
+        var cp = cellPiece(c, r);
+        if (cp.tag.number != count) {
+          ordered = false;
+          break;
+        }
+        count = count + increment;
+      }
+    }
+    return ordered;
+  }
+
   CellPiece neighbor(CellPiece cp, Direction direction) {
     CellPiece neighbor;
     switch(direction) {
       case Direction.LEFT:
-        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row); 
+        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row);
         break;
       case Direction.RIGHT:
-        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row); 
+        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row);
         break;
       case Direction.UP:
-        neighbor = cellPiece(cp.cell.column, cp.cell.row - 1); 
+        neighbor = cellPiece(cp.cell.column, cp.cell.row - 1);
         break;
       case Direction.DOWN:
-        neighbor = cellPiece(cp.cell.column, cp.cell.row + 1); 
+        neighbor = cellPiece(cp.cell.column, cp.cell.row + 1);
         break;
       case Direction.LEFT_UP:
-        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row - 1); 
+        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row - 1);
         break;
       case Direction.RIGHT_UP:
-        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row - 1); 
+        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row - 1);
         break;
       case Direction.LEFT_DOWN:
-        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row + 1); 
+        neighbor = cellPiece(cp.cell.column - 1, cp.cell.row + 1);
         break;
       case Direction.RIGHT_DOWN:
-        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row + 1); 
-    }  
+        neighbor = cellPiece(cp.cell.column + 1, cp.cell.row + 1);
+    }
     return neighbor;
   }
-  
+
   CellPiece randomCellPiece() => _list[randomInt(length)];
   CellPiece randomAvailableCellPiece() {
     if (any((CellPiece cp) => cp.tag.isEmpty)) {
@@ -196,21 +213,21 @@ class CellPieces {
     }
     return null;
   }
-  
+
   move(Direction direction) {
     var moved = false;
     for (CellPiece cp in this) {
-      if (!cp.tag.isEmpty) {
+      if (!cp.tag.isEmpty && !cp.tag.isMarked) {
         CellPiece np = neighbor(cp, direction);
-        if (np != null && np.tag.isEmpty) {
+        if (np != null && np.tag.isEmpty && !np.tag.isMarked) {
           cp.swap(np);
           moved = true;
-        }     
+        }
       }
     }
     if (moved) move(direction);
   }
-  
+
   merge(Direction direction) {
     var merged = false;
     for (CellPiece cp in this) {
@@ -226,5 +243,28 @@ class CellPieces {
       }
     }
     if (merged) merge(direction);
+  }
+
+  bump(Direction direction) {
+    for (CellPiece cp in this) {
+      if (!cp.tag.isEmpty && !cp.tag.isMarked) {
+        CellPiece n = neighbor(cp, direction);
+        if (n != null && !n.tag.isEmpty && !n.tag.isMarked) {
+          if (direction == Direction.LEFT) {
+            n.tag.number = n.tag.number - 1;
+            cp.tag.empty();
+          } else if (direction == Direction.RIGHT) {
+            n.tag.number = n.tag.number + 1;
+            cp.tag.empty();
+          } else if (direction == Direction.UP) {
+            n.tag.number = n.tag.number - 1;
+            cp.tag.empty();
+          } else if (direction == Direction.DOWN) {
+            n.tag.number = n.tag.number + 1;
+            cp.tag.empty();
+          }
+        }
+      }
+    }
   }
 }

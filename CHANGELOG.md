@@ -1,11 +1,12 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
-*0.2.4* 2015-04-09
+*0.2.5* 2015-04-09
 
 + add lanes example
 + use loop index for piece id in the bonhomme, invaders & stars games
 + add firstWhere in Pieces in model/pieces/pieces.dart
++ add order game
 
 *0.2.4* 2015-03-29 (Pub)
 

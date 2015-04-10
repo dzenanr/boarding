@@ -9,9 +9,9 @@ class Tag {
   var color = new Color('#000000'); // black
   num _number = 0;
   bool isMarked = false;
-  
+
   Tag([this.text = '']);
-   
+
   Tag.fromJson(Map<String, Object> jsonMap) {
     text = jsonMap['text'];
     font = jsonMap['font'];
@@ -35,16 +35,16 @@ class Tag {
     jsonMap['isMarked'] = isMarked;
     return jsonMap;
   }
-  
+
   num get number => _number;
   set number(num n) {
     _number = n;
     text = _number.toString();
   }
-  
+
   empty() => text = '';
   bool get isEmpty => text == '';
-  
+
   /**
    * Compares two tags based on numbers.
    * If the result is less than 0 then the first tag is less than the second tag,
@@ -54,7 +54,7 @@ class Tag {
   int compareTo(Tag t) {
     return number.compareTo(t.number);
   }
-  
+
   static Tag random() {
     var tag = new Tag();
     tag.text = randomElement(colorNameList());

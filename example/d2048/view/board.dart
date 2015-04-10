@@ -44,11 +44,10 @@ class Board extends Surface {
       }
     });
     bestLabel.text = loadBest().toString();
-    window.animationFrame.then(gameLoop);
   }
-  
+
   draw() {
-    if (!isGameOver) { 
+    if (!isGameOver) {
       super.draw();
     }
   }
@@ -65,7 +64,7 @@ class Board extends Surface {
   }
 
   load() {
-    String gameString = window.localStorage[d2048];
+    var gameString = window.localStorage[d2048];
     if (gameString != null) {
       grid.cellPieces.empty();
       grid.cellPieces.fromJsonString(gameString);

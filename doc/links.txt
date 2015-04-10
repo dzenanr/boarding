@@ -111,15 +111,18 @@ http://www.css3.info/preview/rgba/
 http://www.w3schools.com/cssref/css_colors_legal.asp
 http://www.w3schools.com/cssref/tryit.asp?filename=trycss_color_rgba
 
+Communities
+
+https://p2pu.org/he/groups/beginning-game-development-with-html-5/
+
 Companies
 
 http://powerheadgames.com/powerheads-games/async-corp-press/
 http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
 
+Cosmic Web
 
-Communities
-
-https://p2pu.org/he/groups/beginning-game-development-with-html-5/
+http://ucrtoday.ucr.edu/25894
 
 Courses
 
@@ -129,6 +132,10 @@ https://www.class-central.com/mooc/551/udacity-html5-game-development
 CSS
 
 https://pub.dartlang.org/packages/less_dart
+
+Dart
+
+https://www.blossom.co/blog/who-is-behind-dart
 
 Dart Games
 
@@ -209,11 +216,13 @@ Game Engines
 
 https://gist.github.com/bebraw/768272
 https://playcanvas.com/
+https://github.com/playcanvas/engine
 http://booty5.com/booty5-html5-game-maker-1-9-available-tiled-maps/
 
 Game Development Frameworks
 
 http://libgdx.badlogicgames.com/index.html
+https://phaser.io/
 
 Gesture
 
@@ -264,6 +273,11 @@ http://fabricjs.com/fabric-intro-part-1/
 JS Games
 
 http://www.kielack.de/games.htm
+http://www.adhyet.com/flamingnotes/
+
+JS Games with Node.js
+
+https://github.com/lallassu/wizardwarz
 
 Market
 
