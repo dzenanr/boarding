@@ -9,6 +9,10 @@ Algorithms
 http://bost.ocks.org/mike/algorithms/
 http://www.jamisbuck.org/mazes/
 
+Android
+
+http://appinventor.mit.edu/explore/ai2/beginner-videos.html
+
 Animations
 
 http://www.sitepoint.com/basic-animation-with-canvas-and-javascript/
@@ -46,6 +50,10 @@ Background
 
 https://www.udemy.com/create-a-html5-game-from-scratch/
 
+Battleship
+
+http://pages.cpsc.ucalgary.ca/~verwaal/courses/231/info/Project%20Specification%20-%20Connect.pdf
+
 Bezier Curves
 
 http://devmag.org.za/2011/04/05/bzier-curves-a-tutorial/
@@ -62,6 +70,10 @@ Blogs
 
 https://www.packtpub.com/books/content/year-was-2014-game-development
 http://blog.artillery.com/
+http://brokenbytes.blogspot.ca/2015/03/the-making-of-p0-snake-part-1.html
+http://www.cnet.com/news/top-ten-gaming-blogs/
+http://nerdbusiness.com/blog/top-2-most-popular-game-blogs-web/
+http://www.games2girls.com/p/thefamousblogger
 
 Board Games
 
@@ -81,6 +93,10 @@ http://it-ebooks.info/book/670/
 http://it-ebooks.info/book/1217/
 http://jessefreeman.com/books/
 http://corehtml5games.com/#/
+
+Bubble Shooter
+
+http://www.shooter-bubble.com/
 
 Canvas
 
@@ -120,6 +136,15 @@ Companies
 http://powerheadgames.com/powerheads-games/async-corp-press/
 http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
 
+Connect
+
+http://code.tutsplus.com/tutorials/build-your-own-oop-connect-4-game--active-2386
+http://www.dreamincode.net/forums/topic/97190-connect-four-tutorial/
+http://www.ce.unipr.it/~gbe/cn4rules.html
+http://www.codeproject.com/Articles/7787/Learning-Connect-Four
+http://pages.cpsc.ucalgary.ca/~verwaal/courses/231/info/Project%20Specification%20-%20Connect.pdf
+https://www.mathsisfun.com/games/connect4.html
+
 Cosmic Web
 
 http://ucrtoday.ucr.edu/25894
@@ -154,6 +179,21 @@ DOM
 
 http://buildnewgames.com/dom-sprites/
 
+DOM & Canvas
+
+http://www.ibm.com/developerworks/library/wa-htmlmark/
+http://www.mrspeaker.net/2011/04/02/canvas-vs-inputs/
+http://community.createjs.com/discussions/createjs/513-canvas-based-text-input-field-without-the-need-of-domelements
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_DOM_objects_into_a_canvas
+http://robert.ocallahan.org/2011/11/drawing-dom-content-to-canvas.html
+http://goldfirestudios.com/blog/108/CanvasInput-HTML5-Canvas-Text-Input
+https://github.com/goldfire/CanvasInput
+http://stackoverflow.com/questions/11041026/how-to-position-some-input-elements-inside-an-html5-canvas-element
+http://stackoverflow.com/questions/4797748/can-i-put-an-html-button-inside-the-canvas
+http://clay.io/blog/domless-inputs-with-html5-canvas/
+http://answers.playcanvas.com/questions/15/how-can-i-add-a-hud-to-my-playcanvas-game
+http://www.jumis.com/cme-wcag.html
+
 Editor
 
 http://overlap2d.com/
@@ -164,6 +204,14 @@ http://www.codingame.com/start
 http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
 https://www.udacity.com/course/cs255
 https://www.udemy.com/create-a-html5-game-from-scratch/
+http://futurestudent.vfs.edu/programming/
+http://www.codeavengers.com/javascriptOverview
+https://www3.ntu.edu.sg/home/ehchua/programming/
+http://www.appinventor.org/
+
+Frisbee
+
+http://code.tutsplus.com/tutorials/build-a-simple-flash-frisbee-game-with-as3--active-9263
 
 Games
 
@@ -183,6 +231,12 @@ http://www.designer-daily.com/10-cool-html5-games-and-how-to-create-your-own-238
 http://www.merixgames.com/
 http://www.coffeedoggames.com/
 http://coolmathgames1.net/
+http://developingforios.com/?p=288
+http://www.tripwiremagazine.com/2011/06/flash-game-tutorial.html
+http://www.coolgames.com/popular-games/
+http://www.addictinggames.com/hot-games/index.jsp
+http://list25.com/25-most-popular-video-games-ever/
+http://goldfirestudios.com/
 
 Game a Month
 
@@ -228,6 +282,10 @@ Gesture
 
 http://samposoftware.com/products/signsense/
 
+Graphs
+
+http://jdh.hamkins.org/math-for-eight-year-olds/
+
 Gravity
 
 http://www.ibm.com/developerworks/library/wa-html5-game9/
@@ -235,6 +293,11 @@ http://www.ibm.com/developerworks/library/wa-html5-game9/
 Grid Games
 
 http://www.abefehr.com/parity/#
+
+Health
+
+https://news.ycombinator.com/item?id=9353998
+http://news.stanford.edu/news/2014/april/walking-vs-sitting-042414.html?hn
 
 HTML5 & Dart
 
@@ -260,6 +323,7 @@ http://graphicssoft.about.com/library/glossary/bldefstandardformat.htm
 http://www.scantips.com/basics09.html
 http://stackoverflow.com/questions/8479058/how-do-i-find-waldo-with-mathematica
 https://www.vectoropenstock.com/free-vectors/pattern/
+http://www.getloupe.com/
 
 Invaders
 
@@ -290,6 +354,10 @@ http://www.funwithpuzzles.com/2012/04/maze-pix-puzzle-tutorial-conceptis.html
 Memory Games
 
 http://www.gamespicnic.com/2014/01/memory-games-main-page.html
+
+Minesweeper
+
+http://code.tutsplus.com/tutorials/build-a-minesweeper-game-within-200-lines-of-code--active-8578
 
 Mobile
 
@@ -330,6 +398,10 @@ http://regexcrossword.com/challenges/hamlet/puzzles/1
 http://www.mit.edu/~puzzle/2013/coinheist.com/rubik/a_regular_crossword/answer/index.html
 http://www.puzzlegames.net/bubble-jungle.html
 
+Questions
+
+http://stackoverflow.com/questions/11622068/snake-cube-puzzle-correctness
+
 Regular Expressions
 
 https://news.ycombinator.com/item?id=9288605
@@ -338,10 +410,7 @@ http://regexcrossword.com/challenges/hamlet/puzzles/1
 Research
 
 http://www.tiltfactor.org/
-
-Questions
-
-http://stackoverflow.com/questions/11622068/snake-cube-puzzle-correctness
+http://appinventor.mit.edu/explore/research.html
 
 Resources
 
@@ -356,12 +425,15 @@ http://www.photonstorm.com/html5
 http://html5-games.github.io/
 http://www.quora.com/What-are-best-free-resources-for-learning-HTML5-game-development
 http://www.reddit.com/r/html5gamedevs/
+http://blog.digitaltutors.com/
+http://www.sitepoint.com/web-designers-guide-to-programming/
 
 Semantic Versioning
 
 http://semver.org/
 
 Shapes
+
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
 https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/HTML-canvas-guide/DrawingLinesandShapes/DrawingLinesandShapes.html
 https://support.office.com/en-ca/article/Draw-or-delete-a-line-connector-or-freeform-shape-f26ffb8f-a69c-46a6-8db7-7c9e5071f340
@@ -392,18 +464,34 @@ http://blog.sethladd.com/2011/05/source-code-slides-and-video-for-html5.html
 Snake
 
 http://thecodeplayer.com/walkthrough/html5-game-tutorial-make-a-snake-game-using-html5-canvas-jquery
+http://code.tutsplus.com/tutorials/build-a-classic-snake-game-in-as3--active-10973
+http://code.tutsplus.com/tutorials/build-a-classic-snake-game-in-actionscript-20--active-2637
+http://brokenbytes.blogspot.ca/2015/03/the-making-of-p0-snake-part-1.html
+http://brokenbytes.blogspot.ca/2015/03/the-making-of-p0-snake-part-2-it-talks.html
+http://brokenbytes.blogspot.ca/2015/04/the-making-of-p0-snake-part-3-audio.html
 
 Sound
 
 http://www.ibm.com/developerworks/library/wa-html5-game9/
+http://createdigitalmusic.com/2014/10/nasa-posts-huge-library-space-sounds-youre-free-use/
+http://brokenbytes.blogspot.ca/2015/03/the-making-of-p0-snake-part-2-it-talks.html
+http://brokenbytes.blogspot.ca/2015/04/the-making-of-p0-snake-part-3-audio.html
 
 Sprites
 
 http://www.williammalone.com/articles/create-html5-canvas-javascript-sprite-animation/
 
+Strategy
+
+http://www.fierz.ch/strategy1.htm
+
 Sudoku
 
 http://www.funwithpuzzles.com/2014/12/guest-authors-contributions.html
+
+Swap
+
+http://code.tutsplus.com/tutorials/create-an-html5-canvas-tile-swapping-puzzle--active-10747
 
 Tetris
 
@@ -423,6 +511,7 @@ http://stackoverflow.com/questions/7376727/html-5-game-development-tools
 
 Tutorials
 
+http://code.tutsplus.com/categories/games
 http://cwoebker.com/posts/tic-tac-toe
 http://www.codingame.com/blog/en/2015/03/1-hour-to-teach-programming-with-codingame-in-fun-way.html
 http://www.whatgamesare.com/2011/08/synchronous-or-asynchronous-definitions.html
@@ -462,6 +551,8 @@ http://html5gamedev.samlancashire.com/
 http://buildnewgames.com/
 http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
 http://www.tutshunt.com/
+http://www.skilledup.com/articles/free-tutorials-learning-game-development/
+http://www.good-tutorials.com/tutorials/flash/game-development?page=3
 
 Video
 

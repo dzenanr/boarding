@@ -1,6 +1,6 @@
 part of drop;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const int pieceCount = 10;
   static const String drop = 'drop';
   static const String count = 'count';
@@ -11,7 +11,8 @@ class Board extends Surface {
   InputElement pieceCountInput = querySelector('#piece-count');
   LabelElement hitCountLabel = querySelector('#hit-count');
 
-  Board(CanvasElement canvas) : super(canvas) {
+  Board(CanvasElement canvas) {
+    this.canvas = canvas;
     init(pieceCount);
     querySelector('#save').onClick.listen((e) {
       save();
@@ -46,7 +47,8 @@ class Board extends Surface {
   }
 
   init(int numberOfPieces) {
-    fallingPieces = new MovablePieces(numberOfPieces);
+    fallingPieces = new MovablePieces();
+    fallingPieces.create(numberOfPieces);
     fallingPieces.randomInit();
     fallingPieces.forEach((MovablePiece fp) {
       fp.shape = PieceShape.SQUARE;

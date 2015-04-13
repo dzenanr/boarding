@@ -20,12 +20,15 @@ Direction randomDirection() {
 }
 
 class Position {
-  num x;
-  num y;
+  num x = 0;
+  num y = 0;
 
-  Position([this.x = 0, this.y = 0]);
+  Position();
 
-  Position.fromJson(Map<String, Object> jsonMap): this(jsonMap['x'], jsonMap['y']);
+  Position.from(this.x, this.y);
+
+  Position.fromJson(Map<String, Object> jsonMap):
+    this.from(jsonMap['x'], jsonMap['y']);
 
   Map<String, Object> toJsonMap() {
     var jsonMap = new Map<String, Object>();
@@ -37,11 +40,13 @@ class Position {
 
 class Line {
   Position p1, p2;
-  num width;
+  num width = 1;
   num length = 40;
   int count = 1;
 
-  Line([this.width = 1]);
+  Line();
+
+  Line.from(this.p1, this.p2);
 
   Line.fromJson(Map<String, Object> jsonMap) {
     var position1 = jsonMap['p1'];
@@ -81,12 +86,15 @@ class Line {
 class Speed {
   static const num limit = 6;
 
-  num dx;
-  num dy;
+  num dx = 1;
+  num dy = 1;
 
-  Speed([this.dx = 1, this.dy = 1]);
+  Speed();
 
-  Speed.fromJson(Map<String, Object> jsonMap): this(jsonMap['dx'], jsonMap['dy']);
+  Speed.from(this.dx, this.dy);
+
+  Speed.fromJson(Map<String, Object> jsonMap):
+    this.from(jsonMap['dx'], jsonMap['dy']);
 
   Map<String, Object> toJsonMap() {
     var jsonMap = new Map<String, Object>();
@@ -119,19 +127,20 @@ class Speed {
   bool isTwiceFaster(Speed s) => dx == 2 * s.dx && dy == 2* s.dy;
   bool isMuchFaster(Speed s) => dx > 2 * s.dx && dy > 2* s.dy;
 
-  static Speed random() => new Speed(randomRangeNum(1, limit), randomRangeNum(1, limit));
+  static Speed random() =>
+      new Speed.from(randomRangeNum(1, limit), randomRangeNum(1, limit));
 }
 
 class Area {
-  num width;
-  num height;
+  num width = 64;
+  num height = 32;
 
-  Area([this.width = 64, this.height = 32]);
+  Area();
 
-  Area.fromJson(Map<String, Object> jsonMap) {
-    width = jsonMap['width'];
-    height = jsonMap['height'];
-  }
+  Area.from(this.width, this.height);
+
+  Area.fromJson(Map<String, Object> jsonMap):
+    this.from(jsonMap['width'], jsonMap['height']);
 
   Map<String, Object> toJsonMap() {
     var jsonMap = new Map<String, Object>();
@@ -201,17 +210,23 @@ class Area {
   bool isTwiceBigger(Area s) => width == 2 * s.width && height == 2 * s.height;
   bool isMuchBigger(Area s) => width > 2 * s.width && height > 2 * s.height;
 
-  Position randomPosition() => new Position(randomNum(width), randomNum(height));
+  Position randomPosition() =>
+      new Position.from(randomNum(width), randomNum(height));
 
   static Area random(num maxWidth, num maxHeight) =>
-      new Area(randomNum(maxWidth), randomNum(maxHeight));
+      new Area.from(randomNum(maxWidth), randomNum(maxHeight));
 }
 
 class Box {
   Position position;
   Area area;
 
-  Box(this.position, this.area);
+  Box() {
+    position = new Position();
+    area = new Area();
+  }
+
+  Box.from(this.position, this.area);
 
   Box.fromJson(Map<String, Object> jsonMap) {
     fromJsonMap(jsonMap);
@@ -258,13 +273,15 @@ class Box {
 }
 
 class Size {
-  int columnCount;
-  int rowCount;
+  int columnCount = 12;
+  int rowCount = 8;
 
-  Size([this.columnCount = 12, this.rowCount = 8]);
+  Size();
+
+  Size.from(this.columnCount, this.rowCount);
 
   Size.fromJson(Map<String, Object> jsonMap):
-    this(jsonMap['columnCount'], jsonMap['rowCount']);
+    this.from(jsonMap['columnCount'], jsonMap['rowCount']);
 
   Map<String, Object> toJsonMap() {
     var jsonMap = new Map<String, Object>();
@@ -277,15 +294,19 @@ class Size {
 class Table extends Box {
   Size size;
 
-  Table(Area area, this.size): super(new Position(), area);
+  Table() {
+    size = new Size();
+  }
+
+  Table.from(this.size, Area area): super.from(new Position(), area);
 
   Table.fromJson(Map<String, Object> jsonMap): super.fromJson(jsonMap) {
     size = new Size.fromJson(jsonMap['size']);
   }
 
   fromJsonMap(Map<String, Object> jsonMap) {
-    super.fromJsonMap(jsonMap);
     size = new Size.fromJson(jsonMap['size']);
+    super.fromJsonMap(jsonMap);
   }
 
   Map<String, Object> toJsonMap() {
@@ -306,16 +327,19 @@ class Table extends Box {
 
   int randomColumn() => randomInt(size.columnCount);
   int randomRow() => randomInt(size.rowCount);
-  Cell randomCell() => new Cell(randomColumn(), randomRow());
+  Cell randomCell() => new Cell.from(randomColumn(), randomRow());
 }
 
 class Cell {
-  int column;
-  int row;
+  int column = 0;
+  int row = 0;
 
-  Cell([this.column = 0, this.row = 0]);
+  Cell();
 
-  Cell.fromJson(Map<String, Object> jsonMap): this(jsonMap['column'], jsonMap['row']);
+  Cell.from(this.column, this.row);
+
+  Cell.fromJson(Map<String, Object> jsonMap):
+    this.from(jsonMap['column'], jsonMap['row']);
 
   Map<String, Object> toJsonMap() {
     var jsonMap = new Map<String, Object>();
@@ -342,8 +366,8 @@ class MinMaxArea {
   Area maxArea;
 
   MinMaxArea() {
-    minArea = new Area(12, 8);
-    maxArea = new Area(120, 80);
+    minArea = new Area.from(12, 8);
+    maxArea = new Area.from(120, 80);
   }
 
   MinMaxArea.from(Area area) {
@@ -367,18 +391,18 @@ class MinMaxArea {
   bool isEqualHeight() => minArea.height == maxArea.height;
 
   Area randomSize() =>
-      new Area(randomRangeNum(minArea.width, maxArea.width),
-               randomRangeNum(minArea.height, maxArea.height));
+      new Area.from(randomRangeNum(minArea.width, maxArea.width),
+                    randomRangeNum(minArea.height, maxArea.height));
 
   Position randomPosition() =>
-      new Position(randomNum(minArea.width), randomNum(minArea.height));
+      new Position.from(randomNum(minArea.width), randomNum(minArea.height));
 }
 
 class MinMaxSpace extends MinMaxArea {
 
   MinMaxSpace() {
-    minArea = new Area(600, 400);
-    maxArea = new Area(800, 600);
+    minArea = new Area.from(600, 400);
+    maxArea = new Area.from(800, 600);
   }
 
   MinMaxSpace.from(Area area): super.from(area);

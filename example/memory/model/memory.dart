@@ -3,7 +3,10 @@ part of memory;
 class MemoryCell extends CellPiece {
   MemoryCell twin;
 
-  MemoryCell(Memory memory, Cell cell): super(memory, cell);
+  MemoryCell(Memory memory, Cell cell) {
+    this.grid = memory;
+    this.cell = cell;
+  }
 }
 
 class Memory extends Grid {
@@ -31,7 +34,7 @@ class Memory extends Grid {
         column = randomInt(columnCount);
         row = randomInt(rowCount);
         MemoryCell tc = cellPieces.cellPiece(column, row);
-        if (tc.twin == null && 
+        if (tc.twin == null &&
             (tc.cell.column != mc.cell.column || tc.cell.row != mc.cell.row)) {
           mc.twin = tc;
           tc.twin = mc;

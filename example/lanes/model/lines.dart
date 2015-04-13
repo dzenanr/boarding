@@ -3,7 +3,8 @@ part of lanes;
 class YellowLine extends MovablePiece {
   YellowLine nextLine;
 
-  YellowLine(int id): super(id) {
+  YellowLine(int id) {
+    this.id = id;
     width = 15;
     height = 50;
     color.main = 'yellow';
@@ -22,9 +23,11 @@ class YellowLine extends MovablePiece {
  }
 
 class YellowLines extends MovablePieces {
-  YellowLines(int count): super(count);
+  YellowLines(int count) {
+    create(count);
+  }
 
-  createMovablePieces(int count) {
+  create(int count) {
     var nextLine = new YellowLine(0);
     nextLine.y = -nextLine.height;
     add(nextLine);

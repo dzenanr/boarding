@@ -1,4 +1,7 @@
 Links
 
 https://github.com/dzenanr/icacoe
+http://code.tutsplus.com/tutorials/build-an-intelligent-tic-tac-toe-game-with-as3--active-3636
+https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html
+
 

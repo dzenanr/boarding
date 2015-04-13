@@ -1,8 +1,9 @@
 part of breakout;
 
 class Brick extends Piece {
-  Brick(int id, num width, num height): super(id) {
+  Brick(int id, num width, num height) {
     shape = PieceShape.RECT;
+    this.id = id;
     this.width = width;
     this.height = height;
   }
@@ -10,14 +11,14 @@ class Brick extends Piece {
 
 class Wall extends Pieces {
   static const num brickDefaultHeight = 15;
-  
+
   num rowCount, colCount;
   num width; // in pixels
   num brickCount;
   num brickWidth;
   num brickHeight = brickDefaultHeight;
   List bricks;
-  
+
   Wall(this.rowCount, this.colCount, this.width) {
     brickCount = rowCount * colCount;
     brickWidth = (width / colCount) - 1;
@@ -34,16 +35,16 @@ class Wall extends Pieces {
         bricks[i][j] = brick;
         add(brick);
       }
-    }  
+    }
   }
-  
+
   // collision detection: http://www.metanetsoftware.com/
   bool contains(num x, num y) {
     var rowHeight = brickHeight;
     var colWidth = brickWidth;
     int row = (y / rowHeight).floor();
     int col = (x / colWidth).floor();
-    if (row < rowCount && col < colCount && 
+    if (row < rowCount && col < colCount &&
         row >= 0 && col >= 0 && y < rowCount * rowHeight) {
       // hit, mark the brick as broken (unvisible)
       Brick brick = bricks[row][col];
@@ -51,7 +52,7 @@ class Wall extends Pieces {
         brick.isVisible = false;
         return true;
       }
-    } 
+    }
     return false;
   }
 }

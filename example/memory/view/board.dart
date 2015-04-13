@@ -1,11 +1,12 @@
 part of memory;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   Memory memory;
   MemoryCell lastCellClicked;
 
-  Board(CanvasElement canvas, Memory memory): this.memory = memory,
-      super(canvas, grid: memory) {
+  Board(CanvasElement canvas, this.memory) {
+    this.canvas = canvas;
+    grid = memory;
     querySelector('#canvas').onMouseDown.listen((MouseEvent e) {
       int column = (e.offset.x ~/ memory.cellWidth).toInt();
       int row = (e.offset.y ~/ memory.cellHeight).toInt();
@@ -26,7 +27,7 @@ class Board extends Surface {
   draw() {
     super.draw();
     if (memory.recalled) { // game over
-      drawTag(canvas, memory.cellWidth * 2, memory.cellHeight * 2, 'YOU WIN', size: 32, 
+      drawTag(canvas, memory.cellWidth * 2, memory.cellHeight * 2, 'YOU WIN', size: 32,
           color: 'red');
     }
   }

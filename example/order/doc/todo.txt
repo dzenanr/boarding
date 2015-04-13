@@ -1,2 +1,12 @@
 To Do
 
+- add a descending option
+- add an option of randomly generateing all 16 numbers and then order
+- what is the minumum number of steps?
+- can we use sorting algorithms in this game?
+- change a row color when a row is ordered
+- when at half, change the order from ascending to descending
+- relate an image to the ordered tiles
+  (show the image at the beginning and at the end)
+
+

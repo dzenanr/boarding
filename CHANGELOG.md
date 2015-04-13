@@ -1,6 +1,15 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.6* 2015-04-13
+
++ add the default constructor to all classes in util
++ prepare classes in model/pieces/pieces.dart as mixins
++ prepare classes in model/grid/composition.dart as mixins
++ prepare the Composition class in model/grid/composition.dart as mixin
++ prepare the Surface class in view/surface.dart as mixin
++ update examples
+
 *0.2.5* 2015-04-09
 
 + add lanes example

@@ -37,10 +37,10 @@ testModel(Grid grid) {
 }
 
 main() {
-  var table = new Table(new Area(400, 600), new Size(16, 20));
+  var table = new Table.from(new Size.from(16, 20), new Area.from(400, 600));
   var grid = new Grid(table);
   for (CellPiece cp in grid.cellPieces) {
-    cp.tag = new Tag('empty');
+    cp.tag = new Tag.from('empty');
   }
   testModel(grid);
 }

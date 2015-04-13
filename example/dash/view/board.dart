@@ -1,6 +1,6 @@
 part of dash;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const int pieceCount = 10;
 
   MovablePieces movingRightPieces;
@@ -12,7 +12,8 @@ class Board extends Surface {
   LabelElement hitRightCountLabel = querySelector('#hit-right-count');
   LabelElement hitLeftCountLabel = querySelector('#hit-left-count');
 
-  Board(CanvasElement canvas) : super(canvas) {
+  Board(CanvasElement canvas) {
+    this.canvas = canvas;
     init(pieceCount);
     querySelector('#start').onClick.listen((e) {
       start();
@@ -20,7 +21,8 @@ class Board extends Surface {
   }
 
   init(int numberOfPieces) {
-    movingRightPieces = new MovablePieces(numberOfPieces);
+    movingRightPieces = new MovablePieces();
+    movingRightPieces.create(numberOfPieces);
     movingRightPieces.randomInit();
     movingRightPieces.forEach((MovablePiece mrp) {
       mrp.shape = PieceShape.SQUARE;
@@ -31,7 +33,8 @@ class Board extends Surface {
       mrp.minMaxSpace.maxArea.width = width + 200;
       mrp.minMaxSpace.minArea.height = height;
     });
-    movingLeftPieces = new MovablePieces(numberOfPieces);
+    movingLeftPieces = new MovablePieces();
+    movingLeftPieces.create(numberOfPieces);
     movingLeftPieces.randomInit();
     movingLeftPieces.forEach((MovablePiece mlp) {
       mlp.shape = PieceShape.SQUARE;

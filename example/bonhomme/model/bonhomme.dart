@@ -1,7 +1,7 @@
 part of bonhomme;
 
 class Bonhomme extends MovablePiece {
-  Bonhomme([int id]): super(id) {
+  Bonhomme() {
     randomInit();
     shape = PieceShape.IMG;
     width = 60;

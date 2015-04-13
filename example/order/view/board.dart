@@ -1,6 +1,6 @@
 part of order;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const String order = 'order';
   static const String orderScore = 'orderScore';
   static const String orderBest = 'orderBest';
@@ -10,7 +10,9 @@ class Board extends Surface {
   LabelElement scoreLabel = querySelector('#score');
   LabelElement bestLabel = querySelector('#best');
 
-  Board(CanvasElement canvas, TileGrid tileGrid) : super(canvas, grid: tileGrid) {
+  Board(CanvasElement canvas, TileGrid tileGrid) {
+    this.canvas = canvas;
+    this.grid = tileGrid;
     querySelector('#save').onClick.listen((e) {
       save();
     });

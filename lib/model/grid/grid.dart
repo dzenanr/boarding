@@ -2,17 +2,18 @@ part of grid;
 
 class Grid {
   Table table;
-  var color = new Color('white');
+  var color = new Color.from('white');
 
   CellPieces cellPieces;
 
   Grid(this.table) {
     color.border = color.main;
-    cellPieces = new CellPieces(this);
+    cellPieces = new CellPieces();
+    cellPieces.grid = this;
     var cellPiece;
     for (var column = 0; column < table.columnCount; column++) {
       for (var row = 0; row < table.rowCount; row++) {
-        cellPiece = newCellPiece(this, new Cell(column, row));
+        cellPiece = newCellPiece(this, new Cell.from(column, row));
         cellPieces.add(cellPiece);
       }
     }
@@ -23,7 +24,7 @@ class Grid {
       cp.y = cp.height * cp.cell.row;
     }
   }
-  
+
   Position get position => table.position;
   num get x => table.position.x;
   num get y => table.position.y;
@@ -36,21 +37,28 @@ class Grid {
   num get cellWidth => table.cellWidth;
   num get cellHeight => table.cellHeight;
 
-  CellPiece newCellPiece(Grid grid, Cell cell) => new CellPiece(grid, cell);
+  CellPiece newCellPiece(Grid grid, Cell cell) {
+    var cp = new CellPiece();
+    cp.grid = grid;
+    cp.cell = cell;
+    return cp;
+  }
 
   bool contains(Cell cell) => table.contains(cell);
-  
+
   CellPiece cellPiece(int column, int row) => cellPieces.cellPiece(column, row);
   CellPiece randomCellPiece() => cellPieces.randomCellPiece();
 }
 
-class MazeCell extends CellPiece { 
+class MazeCell extends CellPiece {
   static const String wallColor = 'black';
   static const String pathColor = 'orange';
-  
-  MazeCell(MazeGrid grid, Cell cell): super(grid, cell) {
-    line.width = 0; 
-    color.main = wallColor; 
+
+  MazeCell(Grid grid, Cell cell) {
+    this.grid = grid;
+    this.cell = cell;
+    line.width = 0;
+    color.main = wallColor;
   }
 }
 
@@ -60,7 +68,7 @@ class MazeGrid extends Grid {
     var sp = randomCellPiece();
     path(sp.cell.column, sp.cell.row);
   }
-  
+
   path(int c, int r) {
     var dds = new List<DirectDirection>();
     for (var i = 0; i < 4; i++) {
@@ -92,7 +100,7 @@ class MazeGrid extends Grid {
               cp2.tag.isMarked = true;
               cp1.tag.isMarked = true;
               path(c + 2, r);
-          }          
+          }
           break;
         case DirectDirection.UP:
           // if 2 cells up is outside
@@ -118,11 +126,11 @@ class MazeGrid extends Grid {
               cp2.tag.isMarked = true;
               cp1.tag.isMarked = true;
               path(c, r + 2);
-          }    
+          }
       }
     }
   }
-  
+
   CellPiece newCellPiece(Grid grid, Cell cell) => new MazeCell(this, cell);
 }
 

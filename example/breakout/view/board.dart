@@ -1,14 +1,15 @@
 part of breakout;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   Bricks bricks;
   var ball = new Ball();
   var racket = new Racket();
   bool isGameOver;
-  
+
   SelectElement selectSpeed;
 
-  Board(CanvasElement canvas): super(canvas) {
+  Board(CanvasElement canvas) {
+    this.canvas = canvas;
     clear();
     querySelector('#play').onClick.listen((e) {
       init();
@@ -28,12 +29,12 @@ class Board extends Surface {
     });
     init();
   }
-  
+
   _setBallSpeed() {
     switch (selectSpeed.value) {
-      case '1': ball.speed = new Speed(2, 4); break;
-      case '2': ball.speed = new Speed(3, 6); break;
-      case '3': ball.speed = new Speed(4, 8);
+      case '1': ball.speed = new Speed.from(2, 4); break;
+      case '2': ball.speed = new Speed.from(3, 6); break;
+      case '3': ball.speed = new Speed.from(4, 8);
     }
   }
 
@@ -43,7 +44,7 @@ class Board extends Surface {
     ball.x = width / 4;
     ball.y = height / 4;
     _setBallSpeed();
-    ball.space = new Area(width, height);
+    ball.space = new Area.from(width, height);
     racket.y = height - racket.height;
   }
 

@@ -1,0 +1,23 @@
+Problems
+
+MovablePiece mixin
+
+in examples/stars/model/stars.dart:
+change
+class Star extends MovablePiece {
+to
+class Star extends Object with MovablePiece {
+
+stars/model/stars.dart': error: line 3 pos 32: mixin class 'MovablePiece' must extend class 'Object'
+class Star extends Object with MovablePiece {
+
+In lib/model/pieces/pieces.dart:
+no constructor in Piece
+no super in Piece
+class Piece {
+
+no constructor in MovablePiece
+no super in MovablePiece
+class MovablePiece extends Object with Piece {
+
+http://blog.sethladd.com/2013/03/first-look-at-dart-mixins.html

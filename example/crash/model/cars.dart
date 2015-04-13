@@ -4,7 +4,8 @@ abstract class Car extends MovablePiece {
   static const num defaultWidth = 75;
   static const num defaultHeight = 30;
 
-  Car(int id): super(id) {
+  Car(int id) {
+    this.id = id;
     shape = PieceShape.VEHICLE;
     width = defaultWidth;
     height = defaultHeight;
@@ -70,11 +71,12 @@ class RedCar extends Car {
 class Cars extends MovablePieces {
   RedCar redCar;
 
-  Cars(int count) : super(count) {
+  Cars(int count) {
     redCar = new RedCar(0);
+    create(count);
   }
 
-  createMovablePieces(int count) {
+  create(int count) {
     for (var i = 0; i < count - 1; i++) {
       add(new NonRedCar(i + 1));
     }

@@ -1,31 +1,32 @@
 part of attract;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   List<Map<String, num>> stars;
-  MovablePieces ps;
   num count = 25, minDistance = 100;
 
-  Board(CanvasElement canvas): super(canvas) {
+  Board(CanvasElement canvas) {
     color.main = 'black';
+    this.canvas = canvas;
     stars = prepareStars(canvas, count);
-    ps = new MovablePieces(count);
-    ps.randomInit();
-    ps.forEach((MovablePiece p) {
+    movablePieces = new MovablePieces();
+    movablePieces.create(count);
+    movablePieces.randomInit();
+    movablePieces.forEach((MovablePiece p) {
       p.shape = PieceShape.CIRCLE;
       p.width = 12;
       p.height = 12;
       p.color.main = 'white';
       p.dx = 1;
       p.dy = 1;
-      p.space = new Area(width, height);
+      p.space = new Area.from(width, height);
     });
   }
 
   draw() {
     clear();
     drawStars(canvas, stars);
-    ps.forEach((MovablePiece p1) {
-      ps.forEach((MovablePiece p2) {
+    movablePieces.forEach((MovablePiece p1) {
+      movablePieces.forEach((MovablePiece p2) {
         if (p1.id != p2.id) {
           if (distance(p1, p2) <= minDistance) {
             drawDistanceLine(canvas, p1, p2, minDistance);

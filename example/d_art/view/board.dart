@@ -1,11 +1,12 @@
 part of d_art;
 
-class Board extends shape.Surface {
+class Board extends Object with shape.Surface {
   Map<String, String> colors;
   d_pen.Pen pen;
   d_pen.ArtRepo artRepo;
 
-  Board(CanvasElement canvas, this.artRepo) : super(canvas) {
+  Board(CanvasElement canvas, this.artRepo) {
+    this.canvas = canvas;
     colors = util.colorMap();
     pen = new d_pen.Pen(artRepo);
     pen.spaceWidth = width;

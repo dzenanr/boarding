@@ -1,25 +1,16 @@
 part of grid;
 
-class CellPiece extends Piece {
+class CellPiece extends Object with Piece {
   Cell cell;
   Grid grid;
 
-  CellPiece(this.grid, this.cell) {
-    if (!grid.table.contains(cell)) {
-      throw new Exception(
-        'cell out of grid(${grid.table.size.columnCount}, ${grid.table.size.rowCount}) '
-        '- column: ${cell.column}, row: ${cell.row}');
-    }
-    shape = PieceShape.RECT;
-  }
-
   fromJsonMap(Map<String, Object> jsonMap) {
-    super.fromJsonMap(jsonMap);
+    fromJsonMapToPiece(jsonMap);
     cell = new Cell.fromJson(jsonMap['cell']);
   }
 
   Map<String, Object> toJsonMap() {
-    var jsonMap = super.toJsonMap();
+    var jsonMap = fromPieceToJsonMap();
     jsonMap['cell'] = cell.toJsonMap();
     return jsonMap;
   }
@@ -91,13 +82,9 @@ class CellPiece extends Piece {
 }
 
 class CellPieces {
-  List<CellPiece> _list;
+  List<CellPiece> _list = new List<CellPiece>();
 
   Grid grid;
-
-  CellPieces(this.grid) {
-    _list = new List<CellPiece>();
-  }
 
   fromJsonList(List<Map<String, Object>> jsonList) {
     jsonList.forEach((jsonMap) {

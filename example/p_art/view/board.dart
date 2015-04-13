@@ -1,5 +1,8 @@
 part of p_art;
 
-class Board extends Surface {
-  Board(CanvasElement canvas, ArtGrid grid) : super(canvas, grid: grid);
+class Board extends Object with Surface {
+  Board(CanvasElement canvas, ArtGrid grid) {
+    this.canvas = canvas;
+    this.grid = grid;
+  }
 }

@@ -1,10 +1,11 @@
 part of lanes;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   YellowLines yellowLines;
 
-  Board(CanvasElement canvas): super(canvas) {
+  Board(CanvasElement canvas) {
     color.main = 'black';
+    this.canvas = canvas;
     yellowLines = new YellowLines(9);
     yellowLines.forEach((var yellowLine) {
       yellowLine.space = area;

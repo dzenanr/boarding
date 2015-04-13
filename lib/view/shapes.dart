@@ -1,7 +1,7 @@
 part of boarding;
 
 drawCircle(CanvasElement canvas, num x, num y, num radius,
-           {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   // x center, y center
   var context = canvas.getContext('2d');
   context
@@ -16,7 +16,7 @@ drawCircle(CanvasElement canvas, num x, num y, num radius,
 }
 
 drawCircleWithinSquare(CanvasElement canvas, num x, num y, num length,
-                       {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   // x left, y top
   var r = length / 2;
   drawCircle(canvas, x + r, y + r, r,
@@ -28,7 +28,7 @@ drawCircleWithinSquare(CanvasElement canvas, num x, num y, num length,
 //http://www.html5canvastutorials.com/advanced/html5-canvas-save-drawing-as-an-image/
 // to do: draw a cloud within a shape (polygon, regular polygon)
 drawCloud(CanvasElement canvas, num x, num y, num width, num height,
-          {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -49,7 +49,7 @@ drawCloud(CanvasElement canvas, num x, num y, num width, num height,
 
 //http://stackoverflow.com/questions/2172798/how-to-draw-an-oval-in-html5-canvas
 drawEllipseWithinRect(CanvasElement canvas, num x, num y, num width, num height,
-                    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   var kappa = .5522848,
       ox = (width / 2) * kappa,  // control point offset horizontal
@@ -73,15 +73,18 @@ drawEllipseWithinRect(CanvasElement canvas, num x, num y, num width, num height,
       ..stroke();
 }
 
-drawFaceWithinSquare(CanvasElement canvas, num x, num y, num length, 
-                          {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
-  drawCircleWithinSquare(canvas, x, y, length, 
+drawFaceWithinSquare(CanvasElement canvas, num x, num y, num length,
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+  drawCircleWithinSquare(canvas, x, y, length,
       lineWidth: lineWidth, color: color, borderColor: borderColor);
-  drawCircle(canvas, x + length / 3, y + length / 2.5, length / 8, color: borderColor, borderColor: color);
-  drawCircle(canvas, x + length / 3 * 2, y + length / 2.5, length / 8, color: borderColor, borderColor: color);
+  drawCircle(canvas, x + length / 3, y + length / 2.5, length / 8,
+      color: borderColor, borderColor: color);
+  drawCircle(canvas, x + length / 3 * 2, y + length / 2.5, length / 8,
+      color: borderColor, borderColor: color);
 }
 
-drawImgWithinRect(CanvasElement canvas, num x, num y, num width, num height, ImageElement img) {
+drawImgWithinRect(CanvasElement canvas, num x, num y, num width, num height,
+    ImageElement img) {
   var context = canvas.getContext('2d');
   context
       ..beginPath()
@@ -90,7 +93,7 @@ drawImgWithinRect(CanvasElement canvas, num x, num y, num width, num height, Ima
 }
 
 drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,
-         {num lineWidth: 1, String color: 'black'}) {
+    {num lineWidth: 1, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -103,7 +106,7 @@ drawLine(CanvasElement canvas, num x1, num y1, num x2, num y2,
 }
 
 drawOneOfLines(CanvasElement canvas, num x1, num y1, num x2, num y2,
-               {num lineWidth: 1, String color: 'black'}) {
+    {num lineWidth: 1, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -125,14 +128,15 @@ drawDistanceLine(CanvasElement canvas, Piece p1, Piece p2, num minDistance) {
   }
 }
 
-drawPosition(CanvasElement canvas, num x, num y, {num lineWidth: 1, String color: 'black'}) {
+drawPosition(CanvasElement canvas, num x, num y,
+    {num lineWidth: 1, String color: 'black'}) {
   var r = 1 / 2;
   drawCircle(canvas, x + r, y + r, r, lineWidth: lineWidth, color: color);
 }
 
 // http://scienceprimer.com/drawing-regular-polygons-javascript-canvas
-drawPolygon(CanvasElement canvas, num x, num y, num sideLength, int sideCount, 
-            {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+drawPolygon(CanvasElement canvas, num x, num y, num sideLength, int sideCount,
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   // x center, y center
   var context = canvas.getContext('2d');
   context
@@ -140,9 +144,9 @@ drawPolygon(CanvasElement canvas, num x, num y, num sideLength, int sideCount,
       ..fillStyle = color
       ..strokeStyle = borderColor
       ..beginPath()
-      ..moveTo (x +  sideLength * cos(0), y +  sideLength *  sin(0));          
+      ..moveTo (x +  sideLength * cos(0), y +  sideLength *  sin(0));
   for (var i = 1; i <= sideCount; i++) {
-    context.lineTo(x + sideLength * cos(i * 2 * PI / sideCount), 
+    context.lineTo(x + sideLength * cos(i * 2 * PI / sideCount),
                    y + sideLength * sin(i * 2 * PI / sideCount));
   }
   context
@@ -151,8 +155,9 @@ drawPolygon(CanvasElement canvas, num x, num y, num sideLength, int sideCount,
       ..stroke();
 }
 
-drawPolygonWithinSquare(CanvasElement canvas, num x, num y, num length, num sideLength, int sideCount,
-                        {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+drawPolygonWithinSquare(CanvasElement canvas, num x, num y, num length,
+                        num sideLength, int sideCount,
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   // x left, y top
   var r = length / 2;
   drawPolygon(canvas, x + r, y + r, sideLength, sideCount,
@@ -160,7 +165,7 @@ drawPolygonWithinSquare(CanvasElement canvas, num x, num y, num length, num side
 }
 
 drawRect(CanvasElement canvas, num x, num y, num width, num height,
-         {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -174,7 +179,8 @@ drawRect(CanvasElement canvas, num x, num y, num width, num height,
 }
 
 //http://stackoverflow.com/questions/1255512/how-to-draw-a-rounded-rectangle-on-html-canvas
-prepareRoundedRect(CanvasElement canvas, num x, num y, num width, num height, num radius) {
+prepareRoundedRect(CanvasElement canvas, num x, num y, num width, num height,
+                   num radius) {
   var r2d = PI / 180;
   //ensure that the radius isn't too large for x
   if ((width - x) - (2 * radius) < 0) {radius = (( width - x ) / 2);}
@@ -195,9 +201,9 @@ prepareRoundedRect(CanvasElement canvas, num x, num y, num width, num height, nu
       ..closePath();
 }
 
-drawRoundedRect(CanvasElement canvas, num x, num y, num width, num height, 
-                {num radius: 10, num lineWidth: 1, String color: 'white', 
-                  String borderColor: 'black'}) {
+drawRoundedRect(CanvasElement canvas, num x, num y, num width, num height,
+    {num radius: 10, num lineWidth: 1, String color: 'white',
+     String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   prepareRoundedRect(canvas, x, y, x + width, y + height, radius);
   context
@@ -209,7 +215,7 @@ drawRoundedRect(CanvasElement canvas, num x, num y, num width, num height,
 }
 
 drawSelectedRect(CanvasElement canvas, num x, num y, num width, num height,
-                 {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   const int sss = 8; // selection square size
   var context = canvas.getContext('2d');
   drawRect(canvas, x, y, width, height, lineWidth: lineWidth, color: color,
@@ -226,7 +232,7 @@ drawSelectedRect(CanvasElement canvas, num x, num y, num width, num height,
 }
 
 drawSquare(CanvasElement canvas, num x, num y, num length,
-           {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, String color: 'white', String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..lineWidth = lineWidth
@@ -241,8 +247,8 @@ drawSquare(CanvasElement canvas, num x, num y, num length,
 
 //http://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5
 drawStar(CanvasElement canvas, num x, num y, num radius,
-         {num innerRadius, int spikes: 5, num lineWidth: 1, String color: '#ffff99', 
-           String borderColor: 'black'}) {
+    {num innerRadius, int spikes: 5, num lineWidth: 1, String color: '#ffff99',
+     String borderColor: 'black'}) {
   // light yellow: #ffff99
   var rot = PI / 2 * 3;
   var sx = x;
@@ -277,14 +283,15 @@ drawStar(CanvasElement canvas, num x, num y, num radius,
 }
 
 drawStarWithinSquare(CanvasElement canvas, num x, num y, num length,
-                    {num innerRadius, int spikes: 5, num lineWidth: 1, color: 'white', 
-                      String borderColor: 'black'}) {
+    {num innerRadius, int spikes: 5, num lineWidth: 1, color: 'white',
+     String borderColor: 'black'}) {
   drawStar(canvas, x + length / 2, y + length / 2, length / 2,
            innerRadius: innerRadius, spikes: spikes, lineWidth: lineWidth,
            color: color, borderColor: borderColor);
 }
 
-List<Map<String, num>> prepareStars(CanvasElement canvas, int count, {int spikes: 5}) {
+List<Map<String, num>> prepareStars(CanvasElement canvas, int count,
+    {int spikes: 5}) {
   var stars = new List<Map>();
   for (var i = 0; i < count; i++) {
     var x = randomNum(canvas.width);
@@ -328,8 +335,9 @@ drawRandomStars(CanvasElement canvas, int count) {
 }
 
 // maxWidth in pixels
-drawTag(CanvasElement canvas, num x, num y, String text, 
-        {String font: 'sans-serif', num size: 16, String align: 'center', num maxWidth, String color: 'black'}) {
+drawTag(CanvasElement canvas, num x, num y, String text,
+    {String font: 'sans-serif', num size: 16, String align: 'center',
+     num maxWidth, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..font = '${size}px ${font}'
@@ -345,7 +353,8 @@ drawTag(CanvasElement canvas, num x, num y, String text,
 }
 
 drawOneOfTags(CanvasElement canvas, num x, num y, String text,
-             {String font: 'sans-serif', num size: 16, String align: 'center', num maxWidth, String color: 'black'}) {
+    {String font: 'sans-serif', num size: 16, String align: 'center',
+     num maxWidth, String color: 'black'}) {
   var context = canvas.getContext('2d');
   context
       ..font = '${size}px ${font}'
@@ -359,7 +368,7 @@ drawOneOfTags(CanvasElement canvas, num x, num y, String text,
 }
 
 drawTriangleWithinSquare(CanvasElement canvas, num x, num y, num length,
-                         {num lineWidth: 1, color: 'white', String borderColor: 'black'}) {
+    {num lineWidth: 1, color: 'white', String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   //var height = 100 * (sqrt(3) / 2);
   context
@@ -377,8 +386,8 @@ drawTriangleWithinSquare(CanvasElement canvas, num x, num y, num length,
 }
 
 drawVehicle(CanvasElement canvas, num x, num y, num width, num height,
-            {num radius: 10, num lineWidth: 1, String color: 'white', 
-              String borderColor: 'black'}) {
+    {num radius: 10, num lineWidth: 1, String color: 'white',
+     String borderColor: 'black'}) {
   var context = canvas.getContext('2d');
   drawRoundedRect(canvas, x, y, width, height, radius: radius,
       lineWidth: lineWidth, color: color, borderColor: borderColor);

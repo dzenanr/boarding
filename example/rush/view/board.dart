@@ -1,6 +1,6 @@
 part of rush;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   String zone;
   int parking;
 
@@ -9,8 +9,9 @@ class Board extends Surface {
   Parking currentParking;
 
   Board(CanvasElement canvas, Grid grid, this.carParkingModel,
-      {String this.zone: 'beginner', int this.parking: 1}):
-    super(canvas, grid: grid) {
+      {String this.zone: 'beginner', int this.parking: 1}) {
+    this.canvas = canvas;
+    this.grid = grid;
     currentArea = carParkingModel.areas.getArea(zone);
     currentParking = currentArea.parkings.getParkingWithinArea(parking);
     canvas.onMouseDown.listen((MouseEvent e) {

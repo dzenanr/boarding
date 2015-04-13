@@ -1,6 +1,6 @@
 part of pingpong;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const num x = 0;
   static const num y = 0;
   static const num ballRadius = 8;
@@ -16,7 +16,8 @@ class Board extends Surface {
   Racket southRacket;
   bool isGameOver;
 
-  Board(CanvasElement canvas): super(canvas) {
+  Board(CanvasElement canvas) {
+    this.canvas = canvas;
     startBallX = width ~/ 2;
     startBallY = height ~/ 2;
     init();

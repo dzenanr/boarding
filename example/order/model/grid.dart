@@ -5,7 +5,9 @@ class Tile extends CellPiece {
   static const String markedTileColor = 'orange';
   static const String tagColor = 'blue';
 
-  Tile(TileGrid grid, Cell cell): super(grid, cell) {
+  Tile(TileGrid grid, Cell cell) {
+    this.grid = grid;
+    this.cell = cell;
     color.main = tileColor;
     isTagged = true;
     tag.size = 32;

@@ -6,7 +6,12 @@ class TttGrid extends Grid {
 
   TttGrid(Table table): super(table);
 
-  CellPiece newCellPiece(Grid grid, Cell cell) => new CellPiece(this, cell);
+  CellPiece newCellPiece(Grid grid, Cell cell) {
+    var cp = new CellPiece();
+    cp.grid = this;
+    cp.cell = cell;
+    return cp;
+  }
 
   bool lineCompleted() {
     var cp;

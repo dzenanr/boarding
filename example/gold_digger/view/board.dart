@@ -1,6 +1,6 @@
 part of gold_digger;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const String gold = '#ffd700';
   Ball ball;
   String mainColor;
@@ -8,8 +8,10 @@ class Board extends Surface {
   int secondCount = 0;
   int goldCount = 0;
   int goldCountLimit = 3;
-  
-  Board(CanvasElement canvas, DGrid grid) : super(canvas, grid: grid) {
+
+  Board(CanvasElement canvas, DGrid grid) {
+    this.canvas = canvas;
+    this.grid = grid;
     LabelElement goldCountLabel = querySelector("#gold-count");
     ball = new Ball(grid.cellPieces.cellPiece(0, 0));
     mainColor = ball.color.main;
@@ -17,12 +19,12 @@ class Board extends Surface {
     new Timer.periodic(const Duration(milliseconds: 1000), (Timer t) {
       secondCount++;
       ball.dCell = grid.cellPieces.randomCellPiece();
-      if (ball.dCell.color.main == gold) { 
+      if (ball.dCell.color.main == gold) {
         ball.color.main = borderColor;
         ball.color.border = mainColor;
         if (++goldCount == goldCountLimit) {
           t.cancel();
-        } 
+        }
         if (goldCount == 1) {
           goldCountLabel.text = 'dug ${goldCount} gold piece in ${secondCount} seconds';
         } else {
@@ -34,7 +36,7 @@ class Board extends Surface {
       }
     });
   }
-  
+
   draw() {
     super.draw();
     drawPiece(ball);

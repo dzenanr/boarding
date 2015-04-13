@@ -5,7 +5,10 @@ import 'package:boarding/pieces.dart';
 import 'package:boarding/boarding.dart';
 
 main() {
-  var mps = new MovablePieces(8);
-  mps.randomInit();
-  new Surface(querySelector('#canvas'), movablePieces: mps).draw();
+  var surface = new Surface();
+  surface.canvas = querySelector('#canvas');
+  surface.movablePieces = new MovablePieces();
+  surface.movablePieces.create(8);
+  surface.movablePieces.randomInit();
+  surface.draw();
 }

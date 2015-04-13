@@ -1,16 +1,18 @@
 part of util;
 
 class Tag {
-  String text;
+  String text = '';
   String font = 'sans-serif';
   num size = 16;
   String align = 'center';
   num maxWidth; // in pixels
-  var color = new Color('#000000'); // black
+  var color = new Color.from('#000000'); // black
   num _number = 0;
   bool isMarked = false;
 
-  Tag([this.text = '']);
+  Tag();
+
+  Tag.from(this.text);
 
   Tag.fromJson(Map<String, Object> jsonMap) {
     text = jsonMap['text'];

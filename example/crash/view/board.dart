@@ -1,14 +1,15 @@
 part of crash;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const int carCount = 9; // including the red car
 
   Cars cars;
   RedCar redCar;
   Area space;
 
-  Board(CanvasElement canvas): super(canvas) {
-    space = new Area(width, height);
+  Board(CanvasElement canvas) {
+    this.canvas = canvas;
+    space = new Area.from(width, height);
     cars = new Cars(carCount);
     cars.forEach((Car car) {
       car.space = space;

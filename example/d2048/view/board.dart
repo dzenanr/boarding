@@ -1,13 +1,15 @@
 part of d2048;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const String d2048 = 'd2048';
   static const String d2048Best = 'd2048Best';
 
   bool isGameOver = false;
   LabelElement bestLabel = querySelector('#best');
 
-  Board(CanvasElement canvas, TileGrid tileGrid) : super(canvas, grid: tileGrid) {
+  Board(CanvasElement canvas, TileGrid tileGrid) {
+    this.canvas = canvas;
+    this.grid = tileGrid;
     querySelector('#save').onClick.listen((e) {
       save();
     });

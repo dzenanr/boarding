@@ -28,7 +28,8 @@ class Laser extends MovablePiece {
 }
 
 class Cloud extends MovablePiece {
-  Cloud(int id): super(id) {
+  Cloud(int id) {
+    this.id = id;
     randomInit();
     width = 80;
     height = 56;
@@ -38,7 +39,8 @@ class Cloud extends MovablePiece {
 }
 
 class Creature extends MovablePiece {
-  Creature(int id): super(id) {
+  Creature(int id) {
+    this.id = id;
     randomExtraInit();
     width = 48;
     height = 64;
@@ -58,9 +60,11 @@ class Creature extends MovablePiece {
 }
 
 class Clouds extends MovablePieces {
-  Clouds(int count): super(count);
+  Clouds(int count) {
+    create(count);
+  }
 
-  createMovablePieces(int count) {
+  create(int count) {
     for (var i = 0; i < count; i++) {
       add(new Cloud(i));
     }
@@ -68,9 +72,11 @@ class Clouds extends MovablePieces {
 }
 
 class Creatures extends MovablePieces {
-  Creatures(int count): super(count);
+  Creatures(int count) {
+    create(count);
+  }
 
-  createMovablePieces(int count) {
+  create(int count) {
     for (var i = 0; i < count; i++) {
       add(new Creature(i));
     }

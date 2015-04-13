@@ -1,24 +1,25 @@
 part of boarding;
 
 class Surface {
-  Area area; // in pixels 
-  CanvasElement canvas;
+  Area area; // in pixels
+  CanvasElement _canvas;
   CanvasRenderingContext2D context;
-  Color color = new Color('white');
-  bool withLines;
-  bool avoidCollisions;
+  Color color = new Color.from('white');
+  bool withLines = false;
+  bool avoidCollisions = false;
 
   Grid grid;
   MovablePieces movablePieces;
 
-  Surface(this.canvas, 
-      {this.grid, this.withLines: false, this.movablePieces, this.avoidCollisions: false}) {
+  CanvasElement get canvas => _canvas;
+  set canvas(CanvasElement canvas) {
+    _canvas = canvas;
     context = canvas.getContext('2d');
-    area = new Area(canvas.width, canvas.height);
+    area = new Area.from(canvas.width, canvas.height);
     color.border = color.main;
     window.animationFrame.then(gameLoop);
   }
-  
+
   num get width => area.width;
   num get height => area.height;
 
@@ -29,14 +30,14 @@ class Surface {
 
   clear() {
     if (grid == null) {
-      drawRect(canvas, 0, 0, width, height, 
+      drawRect(canvas, 0, 0, width, height,
           color: color.main, borderColor: color.border);
     } else {
-      drawRect(canvas, grid.x, grid.y, width, height, 
+      drawRect(canvas, grid.x, grid.y, width, height,
           color: grid.color.main, borderColor: grid.color.border);
     }
   }
-  
+
   draw() {
     clear();
     if (grid != null) {
@@ -71,7 +72,7 @@ class Surface {
   drawCellPieces() {
     for (CellPiece cellPiece in grid.cellPieces) {
       drawPiece(cellPiece);
-    } 
+    }
   }
 
   drawPiece(Piece piece) {
@@ -112,7 +113,7 @@ class Surface {
             if (piece.line.length > r) {
               piece.line.length = r;
             }
-            drawPolygonWithinSquare(canvas, piece.x, piece.y, piece.width, piece.line.length, piece.line.score,
+            drawPolygonWithinSquare(canvas, piece.x, piece.y, piece.width, piece.line.length, piece.line.count,
                 lineWidth: piece.line.width, color: piece.color.main, borderColor: piece.color.border);
             break;
           case PieceShape.RECT:
@@ -136,8 +137,8 @@ class Surface {
                 lineWidth: piece.line.width, color: piece.color.main, borderColor: piece.color.border);
             break;
           case PieceShape.TAG:
-            drawTag(canvas, piece.x, piece.y, piece.tag.text, font: piece.tag.font, size: piece.tag.size, 
-                align: piece.tag.align, maxWidth: piece.tag.maxWidth, color: piece.tag.color.main); 
+            drawTag(canvas, piece.x, piece.y, piece.tag.text, font: piece.tag.font, size: piece.tag.size,
+                align: piece.tag.align, maxWidth: piece.tag.maxWidth, color: piece.tag.color.main);
             break;
           case PieceShape.TRIANGLE:
             drawTriangleWithinSquare(canvas, piece.x, piece.y, piece.width,

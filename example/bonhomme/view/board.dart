@@ -1,7 +1,7 @@
 part of bonhomme;
 
 class Board extends Surface {
-  static const int treeCount = 8; 
+  static const int treeCount = 8;
 
   Trees trees;
   Bonhomme bonhomme;
@@ -10,10 +10,11 @@ class Board extends Surface {
   LabelElement winner;
   int hitCount = 0;
 
-  Board(CanvasElement canvas, Trees trees): this.trees = trees, 
-      super(canvas, movablePieces: trees) {
+  Board(CanvasElement canvas, this.trees) {
+    this.canvas = canvas;
+    movablePieces = trees;
     winner = querySelector("#winner");
-    space = new Area(width, height);
+    space = new Area.from(width, height);
     trees.forEach((Tree tree) {
       tree.space = space;
     });
@@ -35,15 +36,15 @@ class Board extends Surface {
           tree.imgId = 'tree2';
           tree.isMoving = false;
           drawPiece(tree);
-        } 
+        }
       });
       if (hitCount > 4) {
-        gameOver = true; 
+        gameOver = true;
         winner.text = 'you lost';
       }
       drawPiece(bonhomme);
       if (bonhomme.x > width) {
-        gameOver = true; 
+        gameOver = true;
         winner.text = 'you won';
       }
     }

@@ -133,13 +133,15 @@ class Color { // codes
   static const String defaultMain =   '#ffffff'; // white
   static const String defaultBorder = '#000000'; // black
   static const String defaultCover =  '#6d7b8d'; // light slate gray
-  
-  String main; 
+
+  String main = defaultMain;
   String border = defaultBorder;
   String cover = defaultCover;
-  
-  Color([this.main = defaultMain]);
-  
+
+  Color();
+
+  Color.from(this.main);
+
   Color.fromJson(Map<String, String> jsonMap) {
     main = jsonMap['main'];
     border = jsonMap['border'];
@@ -153,7 +155,7 @@ class Color { // codes
     jsonMap['covery'] = cover;
     return jsonMap;
   }
-  
+
   static Color random() {
     var color = new Color();
     color.main = randomColor();
