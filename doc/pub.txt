@@ -24,4 +24,7 @@ cd C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\boarding
 C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub publish --dry-run
 C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub publish
 
-
+In a web browser, go to https://accounts.google.com/o/oauth2/auth?access_type=of
+fline&approval_prompt=force&response_type=code&client_id=818368855108-8grd2eg9tj
+9f38os6f1urbcvsq399u8n.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Floca
+lhost%3A63943&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email

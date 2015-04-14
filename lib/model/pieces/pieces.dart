@@ -43,8 +43,8 @@ class Piece {
   bool isSelected = false;
   bool isTagged = false;
   // movable part
+  bool isMovable = true;
   var speed = new Speed();
-  bool isMoving = true;
 
   Position get position => box.position;
   Area get size => box.area;
@@ -91,8 +91,8 @@ class Piece {
     isSelected = jsonMap['isSelected'];
     isTagged = jsonMap['isTagged'];
     // movable part
+    isMovable = jsonMap['isMovable'];
     speed = new Speed.fromJson(jsonMap['speed']);
-    isMoving = jsonMap['isMoving'];
   }
 
   fromJsonString(String jsonString) {
@@ -121,8 +121,8 @@ class Piece {
     jsonMap['isSelected'] = isSelected;
     jsonMap['isTagged'] = isTagged;
     // movable part
+    jsonMap['isMovable'] = isMovable;
     jsonMap['speed'] = speed.toJsonMap();
-    jsonMap['isMoving'] = isMoving;
     return jsonMap;
   }
 
@@ -165,7 +165,7 @@ class Piece {
   // movable part
 
   move([Direction direction]) {
-    if (isMoving) {
+    if (isMovable) {
       if (direction == null) {
         x += speed.dx;
         y += speed.dy;
@@ -264,7 +264,7 @@ class Piece {
     }
   }
 
-  onOff() => isMoving = !isMoving;
+  onOff() => isMovable = !isMovable;
 
   jump() {
     box.position = space.randomPosition();

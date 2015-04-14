@@ -5,12 +5,12 @@ class CellPiece extends Object with Piece {
   Grid grid;
 
   fromJsonMap(Map<String, Object> jsonMap) {
-    fromJsonMap(jsonMap);
+    super.fromJsonMap(jsonMap);
     cell = new Cell.fromJson(jsonMap['cell']);
   }
 
   Map<String, Object> toJsonMap() {
-    var jsonMap = toJsonMap();
+    var jsonMap = super.toJsonMap();
     jsonMap['cell'] = cell.toJsonMap();
     return jsonMap;
   }
@@ -48,35 +48,41 @@ class CellPiece extends Object with Piece {
     np.cell.row = cpr;
   }
 
-  move(Direction direction) {
-    switch(direction) {
-      case Direction.LEFT:
-        cell.column = cell.column - 1;
-        break;
-      case Direction.RIGHT:
-        cell.column = cell.column + 1;
-        break;
-      case Direction.UP:
-        cell.row = cell.row - 1;
-        break;
-      case Direction.DOWN:
-        cell.row = cell.row + 1;
-        break;
-      case Direction.LEFT_UP:
-        cell.column = cell.column - 1;
-        cell.row = cell.row - 1;
-        break;
-      case Direction.RIGHT_UP:
-        cell.column = cell.column + 1;
-        cell.row = cell.row - 1;
-        break;
-      case Direction.LEFT_DOWN:
-        cell.column = cell.column - 1;
-        cell.row = cell.row + 1;
-        break;
-      case Direction.RIGHT_DOWN:
-        cell.column = cell.column + 1;
-        cell.row = cell.row + 1;
+  move([Direction direction]) {
+    if (isMovable) {
+      if (direction == null) {
+        var i = randomInt(Direction.values.length);
+        direction = Direction.values[i];
+      }
+      switch(direction) {
+        case Direction.LEFT:
+          cell.column = cell.column - 1;
+          break;
+        case Direction.RIGHT:
+          cell.column = cell.column + 1;
+          break;
+        case Direction.UP:
+          cell.row = cell.row - 1;
+          break;
+        case Direction.DOWN:
+          cell.row = cell.row + 1;
+          break;
+        case Direction.LEFT_UP:
+          cell.column = cell.column - 1;
+          cell.row = cell.row - 1;
+          break;
+        case Direction.RIGHT_UP:
+          cell.column = cell.column + 1;
+          cell.row = cell.row - 1;
+          break;
+        case Direction.LEFT_DOWN:
+          cell.column = cell.column - 1;
+          cell.row = cell.row + 1;
+          break;
+        case Direction.RIGHT_DOWN:
+          cell.column = cell.column + 1;
+          cell.row = cell.row + 1;
+      }
     }
   }
 }

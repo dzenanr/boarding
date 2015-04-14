@@ -1,7 +1,16 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
-*0.2.6* 2015-04-13
+*0.2.7* 2015-04-14 (Pub)
+
++ rename fallingPieces to pieces in the Board class of the stars example
++ rename isMoving to isMovable in the Piece class in model/pieces/pieces.dart
++ change move(Direction direction) to move([Direction direction]) in the CellPiece class 
+  in model/grid/cell_pieces.dart
++ improve text in the home page of the drop example
++ use super in json methods in the CellPiece class in model/grid/cell_pieces.dart
+
+*0.2.6* 2015-04-13 (Pub)
 
 + add the default constructor to all classes in util
 + prepare classes in model/pieces/pieces.dart as mixins

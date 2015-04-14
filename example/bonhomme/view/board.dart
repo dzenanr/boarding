@@ -31,10 +31,10 @@ class Board extends Object with Surface {
     if (!gameOver) {
       super.draw();
       trees.forEach((Tree tree) {
-        if (tree.isMoving && bonhomme.hit(tree)) {
+        if (tree.isMovable && bonhomme.hit(tree)) {
           hitCount++;
           tree.imgId = 'tree2';
-          tree.isMoving = false;
+          tree.isMovable = false;
           drawPiece(tree);
         }
       });

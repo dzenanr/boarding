@@ -6,7 +6,7 @@ class Board extends Object with Surface {
   static const String count = 'count';
   static const String hitCount = 'hitCount';
 
-  Pieces fallingPieces;
+  Pieces pieces;
   bool isGameOver;
   InputElement pieceCountInput = querySelector('#piece-count');
   LabelElement hitCountLabel = querySelector('#hit-count');
@@ -29,11 +29,11 @@ class Board extends Object with Surface {
     canvas.onMouseDown.listen((MouseEvent e) {
       var x = e.offset.x;
       var y = e.offset.y;
-      fallingPieces.forEach((Piece fp) {
+      pieces.forEach((Piece fp) {
         if (fp.contains(x, y)) {
           if (fp.isSelected) {
             fp.isVisible = false;
-            var invisibleCount = fallingPieces.invisibleCount();
+            var invisibleCount = pieces.invisibleCount();
             hitCountLabel.text = invisibleCount.toString();
             if (invisibleCount == pieceCount) {
               isGameOver = true;
@@ -47,16 +47,16 @@ class Board extends Object with Surface {
   }
 
   init(int numberOfPieces) {
-    fallingPieces = new Pieces();
-    fallingPieces.create(numberOfPieces);
-    fallingPieces.randomInit();
-    fallingPieces.forEach((Piece fp) {
-      fp.shape = PieceShape.SQUARE;
-      fp.width = fp.height;
-      fp.dy = 2;
-      fp.minMaxSpace.minArea.width = width;
-      fp.minMaxSpace.minArea.height = height;
-      fp.minMaxSpace.maxArea.height = height + 200;
+    pieces = new Pieces();
+    pieces.create(numberOfPieces);
+    pieces.randomInit();
+    pieces.forEach((Piece p) {
+      p.shape = PieceShape.SQUARE;
+      p.width = p.height;
+      p.dy = 2;
+      p.minMaxSpace.minArea.width = width;
+      p.minMaxSpace.minArea.height = height;
+      p.minMaxSpace.maxArea.height = height + 200;
     });
     pieceCountInput.value = numberOfPieces.toString();
     hitCountLabel.text = '0';
@@ -66,22 +66,22 @@ class Board extends Object with Surface {
   draw() {
     if (!isGameOver) {
       clear();
-      fallingPieces.forEach((Piece fp) {
-        fp.move(Direction.DOWN);
-        if (fp.isVisible) {
-          if (fp.isSelected) {
-            fp.shape = PieceShape.ROUNDED_RECT;
+      pieces.forEach((Piece p) {
+        p.move(Direction.DOWN);
+        if (p.isVisible) {
+          if (p.isSelected) {
+            p.shape = PieceShape.ROUNDED_RECT;
           }
-          drawPiece(fp);
+          drawPiece(p);
         }
       });
     }
   }
 
   save() {
-    window.localStorage[count] = fallingPieces.length.toString();
-    window.localStorage[drop] = fallingPieces.toJsonString();
-    window.localStorage[hitCount] = fallingPieces.invisibleCount().toString();
+    window.localStorage[count] = pieces.length.toString();
+    window.localStorage[drop] = pieces.toJsonString();
+    window.localStorage[hitCount] = pieces.invisibleCount().toString();
   }
 
   load() {
@@ -98,7 +98,7 @@ class Board extends Object with Surface {
     }
     String gameString = window.localStorage[drop];
     if (gameString != null) {
-      fallingPieces.fromJsonString(gameString);
+      pieces.fromJsonString(gameString);
     }
     String hitCountString = window.localStorage[hitCount];
     if (hitCountString != null) {
@@ -109,7 +109,7 @@ class Board extends Object with Surface {
   }
 
   restart() {
-    fallingPieces.forEach((Piece fp) {
+    pieces.forEach((Piece fp) {
       fp.isVisible = true;
       fp.isSelected = false;
       fp.shape = PieceShape.SQUARE;
