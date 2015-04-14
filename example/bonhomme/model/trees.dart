@@ -1,6 +1,6 @@
 part of bonhomme;
 
-class Tree extends MovablePiece {
+class Tree extends Object with Piece {
   Tree(int id) {
     this.id = id;
     randomInit();
@@ -11,7 +11,7 @@ class Tree extends MovablePiece {
   }
 }
 
-class Trees extends MovablePieces {
+class Trees extends Object with Pieces {
   Trees(int count) {
     create(count);
   }

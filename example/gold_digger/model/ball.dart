@@ -1,15 +1,15 @@
 part of gold_digger;
 
-class Ball extends MovablePiece { 
+class Ball extends Object with Piece {
   DCell _dCell;
-  
+
   Ball(DCell dCell) {
     this.dCell = dCell;
     shape = PieceShape.FACE;
     color.main = 'black';
     color.border = 'white';
   }
-  
+
   DCell get dCell => _dCell;
   set dCell(DCell dCell) {
     _dCell = dCell;

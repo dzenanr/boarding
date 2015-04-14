@@ -3,8 +3,8 @@ part of dash;
 class Board extends Object with Surface {
   static const int pieceCount = 10;
 
-  MovablePieces movingRightPieces;
-  MovablePieces movingLeftPieces;
+  Pieces rightPieces;
+  Pieces leftPieces;
   int hitRightCount = 0;
   int hitLeftCount = 0;
   bool isGameOver;
@@ -21,29 +21,29 @@ class Board extends Object with Surface {
   }
 
   init(int numberOfPieces) {
-    movingRightPieces = new MovablePieces();
-    movingRightPieces.create(numberOfPieces);
-    movingRightPieces.randomInit();
-    movingRightPieces.forEach((MovablePiece mrp) {
-      mrp.shape = PieceShape.SQUARE;
-      mrp.width = mrp.height;
-      mrp.color.main = 'blue';
-      mrp.dx = 2;
-      mrp.minMaxSpace.minArea.width = width;
-      mrp.minMaxSpace.maxArea.width = width + 200;
-      mrp.minMaxSpace.minArea.height = height;
+    rightPieces = new Pieces();
+    rightPieces.create(numberOfPieces);
+    rightPieces.randomInit();
+    rightPieces.forEach((Piece rp) {
+      rp.shape = PieceShape.SQUARE;
+      rp.width = rp.height;
+      rp.color.main = 'blue';
+      rp.dx = 2;
+      rp.minMaxSpace.minArea.width = width;
+      rp.minMaxSpace.maxArea.width = width + 200;
+      rp.minMaxSpace.minArea.height = height;
     });
-    movingLeftPieces = new MovablePieces();
-    movingLeftPieces.create(numberOfPieces);
-    movingLeftPieces.randomInit();
-    movingLeftPieces.forEach((MovablePiece mlp) {
-      mlp.shape = PieceShape.SQUARE;
-      mlp.width = mlp.height;
-      mlp.color.main = 'red';
-      mlp.dx = 2;
-      mlp.minMaxSpace.minArea.width = width;
-      mlp.minMaxSpace.maxArea.width = width + 200;
-      mlp.minMaxSpace.minArea.height = height;
+    leftPieces = new Pieces();
+    leftPieces.create(numberOfPieces);
+    leftPieces.randomInit();
+    leftPieces.forEach((Piece lp) {
+      lp.shape = PieceShape.SQUARE;
+      lp.width = lp.height;
+      lp.color.main = 'red';
+      lp.dx = 2;
+      lp.minMaxSpace.minArea.width = width;
+      lp.minMaxSpace.maxArea.width = width + 200;
+      lp.minMaxSpace.minArea.height = height;
     });
     pieceCountInput.value = numberOfPieces.toString();
     hitRightCount = 0;
@@ -56,40 +56,42 @@ class Board extends Object with Surface {
   draw() {
     if (!isGameOver) {
       clear();
-      movingRightPieces.forEach((MovablePiece mrp) {
-        if (mrp.isVisible) {
-          mrp.move(Direction.RIGHT);
-          drawPiece(mrp);
+      rightPieces.forEach((Piece rp) {
+        if (rp.isVisible) {
+          rp.move(Direction.RIGHT);
+          drawPiece(rp);
         }
       });
-      movingLeftPieces.forEach((MovablePiece mlp) {
-        if (mlp.isVisible) {
-          mlp.move(Direction.LEFT);
-          drawPiece(mlp);
+      leftPieces.forEach((Piece lp) {
+        if (lp.isVisible) {
+          lp.move(Direction.LEFT);
+          drawPiece(lp);
         }
       });
-      movingRightPieces.forEach((MovablePiece mrp) {
-        movingLeftPieces.forEach((MovablePiece mlp) {
-          if (mrp.isVisible && mlp.isVisible && mrp.hit(mlp)) {
-            if (mrp.speed.isMuchFaster(mlp.speed) || mrp.size.isMuchBigger(mlp.size)) {
+      rightPieces.forEach((Piece rp) {
+        leftPieces.forEach((Piece lp) {
+          if (rp.isVisible && lp.isVisible && rp.hit(lp)) {
+            if (rp.speed.isMuchFaster(lp.speed) ||
+                rp.size.isMuchBigger(lp.size)) {
               hitRightCountLabel.text = (++hitRightCount).toString();
-              mlp.isVisible = false;
-            } else if (mlp.speed.isMuchFaster(mrp.speed) || mlp.size.isMuchBigger(mrp.size)) {
+              lp.isVisible = false;
+            } else if (lp.speed.isMuchFaster(rp.speed) ||
+                       lp.size.isMuchBigger(rp.size)) {
               hitLeftCountLabel.text = (++hitLeftCount).toString();
-              mrp.isVisible = false;
+              rp.isVisible = false;
             } else {
               hitRightCountLabel.text = (++hitRightCount).toString();
               hitLeftCountLabel.text = (++hitLeftCount).toString();
-              mrp.isVisible = false;
-              mlp.isVisible = false;
+              rp.isVisible = false;
+              lp.isVisible = false;
             }
           }
         });
       });
-      if (movingRightPieces.every((Piece p) => !p.isVisible)) {
+      if (rightPieces.every((Piece p) => !p.isVisible)) {
         isGameOver = true;
       }
-      if (movingLeftPieces.every((Piece p) => !p.isVisible)) {
+      if (leftPieces.every((Piece p) => !p.isVisible)) {
         isGameOver = true;
       }
     }

@@ -9,7 +9,7 @@ class Surface {
   bool avoidCollisions = false;
 
   Grid grid;
-  MovablePieces movablePieces;
+  Pieces pieces;
 
   CanvasElement get canvas => _canvas;
   set canvas(CanvasElement canvas) {
@@ -44,13 +44,13 @@ class Surface {
       if (withLines) drawLines();
       drawCellPieces();
     }
-    if (movablePieces != null) {
-      movablePieces.forEach((MovablePiece mp) {
-        mp.move();
+    if (pieces != null) {
+      pieces.forEach((Piece p) {
+        p.move();
         if (avoidCollisions) {
-          movablePieces.avoidCollisions(mp);
+          pieces.avoidCollisions(p);
         }
-        drawPiece(mp);
+        drawPiece(p);
       });
     }
   }

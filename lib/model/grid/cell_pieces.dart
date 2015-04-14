@@ -5,12 +5,12 @@ class CellPiece extends Object with Piece {
   Grid grid;
 
   fromJsonMap(Map<String, Object> jsonMap) {
-    fromJsonMapToPiece(jsonMap);
+    fromJsonMap(jsonMap);
     cell = new Cell.fromJson(jsonMap['cell']);
   }
 
   Map<String, Object> toJsonMap() {
-    var jsonMap = fromPieceToJsonMap();
+    var jsonMap = toJsonMap();
     jsonMap['cell'] = cell.toJsonMap();
     return jsonMap;
   }

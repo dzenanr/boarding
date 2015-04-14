@@ -21,3 +21,15 @@ no super in MovablePiece
 class MovablePiece extends Object with Piece {
 
 http://blog.sethladd.com/2013/03/first-look-at-dart-mixins.html
+
+Answer by Gilad Bracha
+
+MovablePiece isn't direct subclass of Object; the superclass of MovablePiece is Object with Piece, which is an application of the mixin Piece to Object (and as such, the same as class Piece).  So it is just like saying class MovablePiece extends Piece.
+In short, you can't do this right now.
+
+Solution
+
+move MovablePiece into Piece
+&&
+move MovablePieces into Pieces
+

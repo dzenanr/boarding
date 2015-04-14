@@ -1,6 +1,6 @@
 part of lanes;
 
-class YellowLine extends MovablePiece {
+class YellowLine extends Object with Piece {
   YellowLine nextLine;
 
   YellowLine(int id) {
@@ -22,7 +22,7 @@ class YellowLine extends MovablePiece {
   }
  }
 
-class YellowLines extends MovablePieces {
+class YellowLines extends Object with Pieces {
   YellowLines(int count) {
     create(count);
   }

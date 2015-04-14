@@ -8,6 +8,9 @@
 + prepare classes in model/grid/composition.dart as mixins
 + prepare the Composition class in model/grid/composition.dart as mixin
 + prepare the Surface class in view/surface.dart as mixin
+in order to use mixins
++ move MovablePiece into Piece
++ move MovablePieces into Pieces
 + update examples
 
 *0.2.5* 2015-04-09

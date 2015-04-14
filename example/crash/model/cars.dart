@@ -1,6 +1,6 @@
 part of crash;
 
-abstract class Car extends MovablePiece {
+abstract class Car extends Object with Piece {
   static const num defaultWidth = 75;
   static const num defaultHeight = 30;
 
@@ -68,7 +68,7 @@ class RedCar extends Car {
   }
 }
 
-class Cars extends MovablePieces {
+class Cars extends Object with Pieces {
   RedCar redCar;
 
   Cars(int count) {

@@ -1,7 +1,6 @@
 part of stars;
 
-class Star extends MovablePiece {
-//class Star extends Object with MovablePiece {
+class Star extends Object with Piece {
 
   Star(int id) {
     this.id = id;
@@ -11,7 +10,7 @@ class Star extends MovablePiece {
   bool decrease() => size.decreaseWithin(minMaxArea.minArea);
 }
 
-class Stars extends MovablePieces {
+class Stars extends Object with Pieces {
 
   Stars(int count) {
     create(count);

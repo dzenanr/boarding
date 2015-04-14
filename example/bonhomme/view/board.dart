@@ -1,6 +1,6 @@
 part of bonhomme;
 
-class Board extends Surface {
+class Board extends Object with Surface {
   static const int treeCount = 8;
 
   Trees trees;
@@ -12,7 +12,7 @@ class Board extends Surface {
 
   Board(CanvasElement canvas, this.trees) {
     this.canvas = canvas;
-    movablePieces = trees;
+    pieces = trees;
     winner = querySelector("#winner");
     space = new Area.from(width, height);
     trees.forEach((Tree tree) {

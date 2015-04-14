@@ -1,6 +1,6 @@
 part of invaders;
 
-class Spaceship extends MovablePiece {
+class Spaceship extends Object with Piece {
   Spaceship() {
     randomInit();
     width = 70;
@@ -12,7 +12,7 @@ class Spaceship extends MovablePiece {
   }
 }
 
-class Laser extends MovablePiece {
+class Laser extends Object with Piece {
   Laser() {
     randomInit();
     width = 4;
@@ -27,7 +27,7 @@ class Laser extends MovablePiece {
   }
 }
 
-class Cloud extends MovablePiece {
+class Cloud extends Object with Piece {
   Cloud(int id) {
     this.id = id;
     randomInit();
@@ -38,7 +38,7 @@ class Cloud extends MovablePiece {
   }
 }
 
-class Creature extends MovablePiece {
+class Creature extends Object with Piece {
   Creature(int id) {
     this.id = id;
     randomExtraInit();
@@ -59,7 +59,7 @@ class Creature extends MovablePiece {
   }
 }
 
-class Clouds extends MovablePieces {
+class Clouds extends Object with Pieces {
   Clouds(int count) {
     create(count);
   }
@@ -71,7 +71,7 @@ class Clouds extends MovablePieces {
   }
 }
 
-class Creatures extends MovablePieces {
+class Creatures extends Object with Pieces {
   Creatures(int count) {
     create(count);
   }

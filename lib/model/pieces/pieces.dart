@@ -3,7 +3,7 @@ part of pieces;
 enum PieceShape {CIRCLE, ELLIPSE, FACE, IMG, LINE, POLYGON, RECT, ROUNDED_RECT,
   SELECTED_RECT, SQUARE, STAR, TAG, TRIANGLE, VEHICLE}
 
-accelerate(MovablePiece p1, MovablePiece p2, {num coefficient: 2000}) {
+accelerate(Piece p1, Piece p2, {num coefficient: 2000}) {
   // Some acceleration depending upon distance.
   var xd = p1.x - p2.x, yd = p1.y - p2.y;
   var ax = xd / coefficient, ay = yd / coefficient;
@@ -42,6 +42,9 @@ class Piece {
   bool isCovered = false;
   bool isSelected = false;
   bool isTagged = false;
+  // movable part
+  var speed = new Speed();
+  bool isMoving = true;
 
   Position get position => box.position;
   Area get size => box.area;
@@ -62,7 +65,13 @@ class Piece {
     box.stayWithinSpace(space);
   }
 
-  fromJsonMapToPiece(Map<String, Object> jsonMap) {
+  // movable part
+  num get dx => speed.dx;
+  set dx(num dx) => speed.dx = dx;
+  num get dy => speed.dy;
+  set dy(num dy) => speed.dy = dy;
+
+  fromJsonMap(Map<String, Object> jsonMap) {
     id  = jsonMap['id'];
     shape = PieceShape.values[jsonMap['index']];
     minMaxArea = new MinMaxArea.fromJson(jsonMap['minMaxArea']);
@@ -81,14 +90,17 @@ class Piece {
     isCovered = jsonMap['isCovered'];
     isSelected = jsonMap['isSelected'];
     isTagged = jsonMap['isTagged'];
+    // movable part
+    speed = new Speed.fromJson(jsonMap['speed']);
+    isMoving = jsonMap['isMoving'];
   }
 
   fromJsonString(String jsonString) {
     Map<String, Object> jsonMap = JSON.decode(jsonString);
-    fromJsonMapToPiece(jsonMap);
+    fromJsonMap(jsonMap);
   }
 
-  Map<String, Object> fromPieceToJsonMap() {
+  Map<String, Object> toJsonMap() {
     var jsonMap = new Map<String, Object>();
     jsonMap['id'] = id;
     jsonMap['index'] = shape.index;
@@ -108,12 +120,15 @@ class Piece {
     jsonMap['isCovered'] = isCovered;
     jsonMap['isSelected'] = isSelected;
     jsonMap['isTagged'] = isTagged;
+    // movable part
+    jsonMap['speed'] = speed.toJsonMap();
+    jsonMap['isMoving'] = isMoving;
     return jsonMap;
   }
 
-  String toJsonString() => JSON.encode(fromPieceToJsonMap());
+  String toJsonString() => JSON.encode(toJsonMap());
 
-  randomPieceInit() {
+  randomInit() {
     var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
     _space = minMaxSpace.randomSize();
@@ -122,12 +137,16 @@ class Piece {
     line = Line.random(space);
     tag = Tag.random();
     color = Color.random();
+    // movable part
+    speed = Speed.random();
   }
 
-  randomPieceExtraInit() {
-    randomPieceInit();
+  randomExtraInit() {
+    randomInit();
     isCovered = randomRareTrue();
     isTagged = randomRareTrue();
+    // movable part
+    speed = Speed.random();
   }
 
   /**
@@ -142,39 +161,8 @@ class Piece {
 
   bool contains(num xx, num yy) =>
       ((xx >= x && xx <= x + width) && (yy >= y && yy <= y + height));
-}
 
-class MovablePiece extends Object with Piece {
-  var speed = new Speed();
-  bool isMoving = true;
-
-  num get dx => speed.dx;
-  set dx(num dx) => speed.dx = dx;
-  num get dy => speed.dy;
-  set dy(num dy) => speed.dy = dy;
-
-  fromJsonMap(Map<String, Object> jsonMap) {
-    fromJsonMapToPiece(jsonMap);
-    speed = new Speed.fromJson(jsonMap['speed']);
-    isMoving = jsonMap['isMoving'];
-  }
-
-  Map<String, Object> toJsonMap() {
-    var jsonMap = fromPieceToJsonMap();
-    jsonMap['speed'] = speed.toJsonMap();
-    jsonMap['isMoving'] = isMoving;
-    return jsonMap;
-  }
-
-  randomInit() {
-    randomPieceInit();
-    speed = Speed.random();
-  }
-
-  randomExtraInit() {
-    randomPieceExtraInit();
-    speed = Speed.random();
-  }
+  // movable part
 
   move([Direction direction]) {
     if (isMoving) {
@@ -353,7 +341,7 @@ class Pieces {
 
   List<Map<String, Object>> toJsonList() {
     var jsonList = new List<Map<String, Object>>();
-    forEach((Piece p) => jsonList.add(p.fromPieceToJsonMap()));
+    forEach((Piece p) => jsonList.add(p.toJsonMap()));
     return jsonList;
   }
 
@@ -369,6 +357,14 @@ class Pieces {
 
   randomInit() => forEach((p) => p.randomInit());
   randomExtraInit() => forEach((p) => p.randomExtraInit());
+
+  create(int count) {
+    for (var i = 0; i < count; i++) {
+      var p = new Piece();
+      p.id = i;
+      add(p);
+    }
+  }
 
   int invisibleCount() {
     int count = 0;
@@ -386,26 +382,19 @@ class Pieces {
     }
     return null;
   }
-}
 
-class MovablePieces extends Object with Pieces {
+  // movable part
 
-  create(int count) {
-    for (var i = 0; i < count; i++) {
-      var mp = new MovablePiece();
-      mp.id = i;
-      add(mp);
-    }
-  }
+  onOff() => forEach((Piece p) => p.onOff());
 
-  onOff() => forEach((MovablePiece mp) => mp.onOff());
-
-  avoidCollisions(MovablePiece mp) {
+  avoidCollisions(Piece piece) {
     for (var p in this) {
-      if (p != mp) {
-        mp.avoidCollision(p);
+      if (p != piece) {
+        piece.avoidCollision(p);
       }
     }
   }
 }
+
+
 

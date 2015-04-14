@@ -60,6 +60,12 @@ Maybe
   https://www.dartlang.org/articles/emulating-functions/
   http://en.wikipedia.org/wiki/List_comprehension
 
+Good Games
+
+http://www.tapirgames.com/
+http://www.tapirgames.com/Games/PushOutFans
+http://www.tapirgames.com/App/Rectangle-Pushers
+
 New Games
 
 alaclair

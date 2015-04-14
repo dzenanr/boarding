@@ -363,6 +363,7 @@ Mobile
 
 http://www.smashingmagazine.com/2012/10/19/design-your-own-mobile-game/
 http://html5hub.com/how-to-make-a-mobile-virtual-pet-game-with-html5-and-cordova/
+https://thomashunter.name/blog/tips-for-building-mobile-games-in-html5/
 
 Particles
 
@@ -502,6 +503,7 @@ Tips
 
 https://msdn.microsoft.com/en-us/hh563503.aspx
 http://clay.io/blog/tag/html5-game-development-tips/
+https://thomashunter.name/blog/tips-for-building-mobile-games-in-html5/
 
 Tools
 

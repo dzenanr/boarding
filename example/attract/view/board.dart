@@ -8,10 +8,10 @@ class Board extends Object with Surface {
     color.main = 'black';
     this.canvas = canvas;
     stars = prepareStars(canvas, count);
-    movablePieces = new MovablePieces();
-    movablePieces.create(count);
-    movablePieces.randomInit();
-    movablePieces.forEach((MovablePiece p) {
+    pieces = new Pieces();
+    pieces.create(count);
+    pieces.randomInit();
+    pieces.forEach((Piece p) {
       p.shape = PieceShape.CIRCLE;
       p.width = 12;
       p.height = 12;
@@ -25,8 +25,8 @@ class Board extends Object with Surface {
   draw() {
     clear();
     drawStars(canvas, stars);
-    movablePieces.forEach((MovablePiece p1) {
-      movablePieces.forEach((MovablePiece p2) {
+    pieces.forEach((Piece p1) {
+      pieces.forEach((Piece p2) {
         if (p1.id != p2.id) {
           if (distance(p1, p2) <= minDistance) {
             drawDistanceLine(canvas, p1, p2, minDistance);

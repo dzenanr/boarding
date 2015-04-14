@@ -1,6 +1,6 @@
 part of breakout;
 
-class Brick extends Piece {
+class Brick extends Object with Piece {
   Brick(int id, num width, num height) {
     shape = PieceShape.RECT;
     this.id = id;
@@ -9,7 +9,7 @@ class Brick extends Piece {
   }
 }
 
-class Wall extends Pieces {
+class Wall extends Object with Pieces {
   static const num brickDefaultHeight = 15;
 
   num rowCount, colCount;

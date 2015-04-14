@@ -1,6 +1,6 @@
 part of bonhomme;
 
-class Bonhomme extends MovablePiece {
+class Bonhomme extends Object with Piece {
   Bonhomme() {
     randomInit();
     shape = PieceShape.IMG;

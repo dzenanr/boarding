@@ -1,8 +1,8 @@
 part of invaders;
 
 class Board extends Object with Surface {
-  MovablePieces clouds, creatures;
-  MovablePiece laser, spaceship;
+  Pieces clouds, creatures;
+  Piece laser, spaceship;
 
   AudioElement hitSound;
   VideoElement invaderVideo;
@@ -53,8 +53,6 @@ class Board extends Object with Surface {
     if (creatures.any((Piece p) => p.isVisible)) {
       clouds.forEach((Cloud cloud) {
         cloud.move(Direction.UP);
-        //cloud.minMaxSpace.minSize = new Size(width, height);
-        //cloud.minMaxSpace.maxSize = new Size(width + cloud.width, height + cloud.height);
         drawPiece(cloud);
       });
       creatures.forEach((Creature creature) {
