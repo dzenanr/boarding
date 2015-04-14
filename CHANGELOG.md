@@ -1,6 +1,11 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.8* 2015-04-14
+
++ rename game files to index files in examples
++ remove the draw method call from index.dart files in examples;
+
 *0.2.7* 2015-04-14 (Pub)
 
 + rename fallingPieces to pieces in the Board class of the stars example

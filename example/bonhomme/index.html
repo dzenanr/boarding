@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bonhomme example for the boarding package.</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <h1>Bonhomme</h1>
+    <p>
+      Move the mouse to exit the bonhomme to the right.
+      The goal is to avoid collisions with trees.<br/>
+      If the bonhomme is hit 5 times the game is over.<br/>
+    </p>
+    <canvas id="canvas" width="720" height="480">
+      <img id ="bonhomme" src="img/bonhomme.gif"></img>
+      <img id ="tree" src="img/tree.gif"></img>
+      <img id ="tree2" src="img/tree2.gif"></img>
+    </canvas>
+    <br/>
+    <label id="winner"></label>
+
+    <script type="application/dart" src="index.dart"></script>
+  </body>
+</html>

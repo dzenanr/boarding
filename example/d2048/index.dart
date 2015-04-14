@@ -1,6 +1,7 @@
-library order;
+library d2048;
 
 import 'dart:html';
+import 'dart:math';
 import 'package:boarding/grid.dart';
 import 'package:boarding/boarding.dart';
 import 'package:boarding/util.dart';
@@ -14,3 +15,5 @@ main() {
                              new Area.from(canvas.width, canvas.height));
   new Board(canvas, new TileGrid(table));
 }
+
+
