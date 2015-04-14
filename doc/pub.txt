@@ -19,8 +19,9 @@ C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub.ba
 cd C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin
 
 C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\boarding
+publish:
 cd C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\boarding
 C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub publish --dry-run
-C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub publish 
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\pub publish
 
 
