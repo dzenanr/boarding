@@ -11,3 +11,7 @@ dependencies:
   dartling: '>=1.0.6 <2.0.0'
 dev_dependencies:
   unittest: '>=0.9.3 <1.0.0'
+transformers:
+- $dart2js:
+    minify: true
+    terse: true

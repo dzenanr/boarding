@@ -93,6 +93,7 @@ http://it-ebooks.info/book/670/
 http://it-ebooks.info/book/1217/
 http://jessefreeman.com/books/
 http://corehtml5games.com/#/
+http://howtocodeinhtml.com/
 
 Bubble Shooter
 
@@ -272,6 +273,7 @@ https://gist.github.com/bebraw/768272
 https://playcanvas.com/
 https://github.com/playcanvas/engine
 http://booty5.com/booty5-html5-game-maker-1-9-available-tiled-maps/
+http://www.puzzlescript.net/
 
 Game Development Frameworks
 
@@ -398,6 +400,7 @@ http://www.funwithpuzzles.com/2015/02/mini-puzzles-series.html
 http://regexcrossword.com/challenges/hamlet/puzzles/1
 http://www.mit.edu/~puzzle/2013/coinheist.com/rubik/a_regular_crossword/answer/index.html
 http://www.puzzlegames.net/bubble-jungle.html
+http://www.puzzlescript.net/
 
 Questions
 

@@ -1,0 +1,20 @@
+dart2js
+
+https://www.dartlang.org/tools/dart2js/
+https://www.dartlang.org/tools/pub/dart2js-transformer.html
+
+js
+
+http://www.xn--ac-1va.com/dartlang/dartlang-for-javascript-developers/
+http://www.centurylinklabs.com/could-server-side-dart-replace-nodejs/
+https://github.com/lucperkins/mesh
+https://segment.com/blog/gotchas-from-two-years-of-node/
+https://news.ycombinator.com/item?id=9372303
+
+
+cd C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\boarding
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\dart2js --minify --out=util.js lib/util.dart
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\dart2js --minify --out=pieces.js lib/pieces.dart
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\dart2js --minify --out=grid.js lib/grid.dart
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\dart2js --minify --out=boarding.js lib/boarding.dart
+C:\Users\ridjanod.FSA-RIDJANOD-2\darteditor-windows-x64\dart\dart-sdk\bin\dart2js --minify --out=art_pen.js lib/art_pen.dart
