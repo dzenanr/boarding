@@ -111,11 +111,11 @@ class Board extends Object with Surface {
   }
 
   num loadBest() {
-    var best = window.localStorage[orderBest];
-    if (best != null) {
-      return num.parse(best);
+    var bestString = window.localStorage[orderBest];
+    if (bestString != null) {
+      return num.parse(bestString);
     }
-    return 0;
+    return 999;
   }
 
   newGame() {
