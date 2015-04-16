@@ -5,6 +5,7 @@
 
 + rename game files to index files in examples
 + remove the draw method call from index.dart files in examples
++ add blast example
 
 *0.2.7* 2015-04-14 (Pub)
 

@@ -4,7 +4,7 @@ class Surface {
   Area area; // in pixels
   CanvasElement _canvas;
   CanvasRenderingContext2D context;
-  Color color = new Color.from('white');
+  var color = new Color.from('white');
   bool withLines = false;
   bool avoidCollisions = false;
 

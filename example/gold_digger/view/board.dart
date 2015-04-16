@@ -2,6 +2,7 @@ part of gold_digger;
 
 class Board extends Object with Surface {
   static const String gold = '#ffd700';
+
   Ball ball;
   String mainColor;
   String borderColor;
