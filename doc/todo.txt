@@ -1,5 +1,6 @@
 To do
 
+- make local storage generic
 - include grid x and grid y when drawing a piece
 - draw shapes in multiple cells (5 x 1 or 1 x 5, e.g., battleships)
 - create different backgrounds for Surface and its canvas in view/surface.dart
