@@ -1,0 +1,72 @@
+Game Project
+
+How to convert an example to a separate project
+
+
+For the tint example from boarding,
+create a new folder with the following structure:
+
+
+tint
+  doc
+    links.txt
+    todo.txt
+  lib
+    model
+      grid.dart
+    view
+      board.dart
+    tint.dart
+  web
+    favicon.ico
+    index.css
+    index.dart
+    index.html
+  .gitignore
+  AUTHORS.md
+  CHANGELOG.md
+  LICENSE.md
+  pubspec.yaml
+  README.md
+
+
+pubspec.yaml:
+
+name: tint
+version: 0.2.8
+author: Dzenan Ridjanovic <dzenanr@gmail.com>
+description: An example from boarding.
+homepage: https://github.com/dzenanr/boarding
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+documentation: http://goo.gl/kXlDOJ
+dependencies:
+  boarding: any
+  browser: any
+transformers:
+- $dart2js:
+    minify: true
+    terse: true
+
+
+lib/tint.dart:
+
+library tint;
+
+import 'dart:html';
+import 'package:boarding/grid.dart';
+import 'package:boarding/util.dart';
+import 'package:boarding/boarding.dart';
+
+part 'model/grid.dart';
+part 'view/board.dart';
+
+
+web/index.dart:
+
+import 'dart:html';
+import 'package:tint/tint.dart';
+
+main() {
+  new Board(querySelector('#canvas'));
+}

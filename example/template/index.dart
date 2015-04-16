@@ -1,17 +1,18 @@
 library blast;
 
+/*
 import 'dart:html';
 import 'package:boarding/pieces.dart';
 import 'package:boarding/grid.dart';
 import 'package:boarding/boarding.dart';
 import 'package:boarding/util.dart';
 
-//part 'model/pieces.dart';
-//part 'model/grid.dart';
-//part 'view/board.dart';
-
+part 'model/pieces.dart';
+part 'model/grid.dart';
+part 'view/board.dart';
+*/
 main() {
-  new Board(querySelector('#canvas'));
+  //new Board(querySelector('#canvas'));
 }
 
 
