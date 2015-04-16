@@ -1,12 +1,10 @@
-part of blast;
+part of tint;
 
 class Tile extends CellPiece {
   Tile(TileGrid grid, Cell cell) {
     this.grid = grid;
     this.cell = cell;
     line.width = 0;
-    color.main = sevenColorCode[randomElement(sevenColorNames)];
-    color.border = color.main;
   }
 }
 

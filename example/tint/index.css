@@ -1,0 +1,40 @@
+
+body {
+  background-color: #f8f8f8;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+}
+
+h1, p, label {
+  color: #67707a;
+}
+
+.button {
+  padding: 1px;
+  background: #ffcc99; 
+  border-right: 1px solid #999;
+  border-bottom: 1px solid #999;
+  border-style: outset;
+  border-color: #d7b9c9; 
+  font-weight: bold;
+  text-align: center;
+}
+
+.marker {
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #003366;
+  background: #ffe4b5;
+  padding-left: 1px;
+  padding-right: 1px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+
+
+

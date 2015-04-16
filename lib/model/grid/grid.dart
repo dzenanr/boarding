@@ -48,6 +48,14 @@ class Grid {
 
   CellPiece cellPiece(int column, int row) => cellPieces.cellPiece(column, row);
   CellPiece randomCellPiece() => cellPieces.randomCellPiece();
+
+  colorAll(Color color) {
+    cellPieces.forEach((CellPiece cp) => cp.color = color);
+  }
+
+  colorAllExcept(Color color, CellPiece ecp) {
+    cellPieces.forEach((CellPiece cp) => cp != ecp ? cp.color = color : null);
+  }
 }
 
 class MazeCell extends CellPiece {

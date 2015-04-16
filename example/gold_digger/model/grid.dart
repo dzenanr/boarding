@@ -5,7 +5,7 @@ class DCell extends CellPiece {
     this.grid = grid;
     this.cell = cell;
     line.width = 0;
-    color.main = sevenColorMap()[randomElement(sevenColorNameList())];
+    color.main = sevenColorCode[randomElement(sevenColorNames)];
     color.border = color.main;
   }
 }

@@ -59,7 +59,7 @@ class Tag {
 
   static Tag random() {
     var tag = new Tag();
-    tag.text = randomElement(colorNameList());
+    tag.text = randomElement(colorNames);
     tag.size = randomRangeInt(8, 64);
     tag.color = Color.random();
     return tag;

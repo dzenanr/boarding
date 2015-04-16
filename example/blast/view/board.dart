@@ -1,7 +1,7 @@
 part of blast;
 
 class Board extends Object with Surface {
-  int size = 2;
+  int size = 0;
   Area area;
 
   Board(CanvasElement canvas) {

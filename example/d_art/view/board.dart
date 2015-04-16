@@ -7,7 +7,7 @@ class Board extends Object with shape.Surface {
 
   Board(CanvasElement canvas, this.artRepo) {
     this.canvas = canvas;
-    colors = util.colorMap();
+    colors = util.colorCode;
     pen = new d_pen.Pen(artRepo);
     pen.spaceWidth = width;
     pen.spaceHeight = height;

@@ -57,9 +57,9 @@ int randomSign(int max) {
 
 randomElement(List list) => list[randomInt(list.length)];
 
-String randomColorName() => randomElement(colorNameList());
+String randomColorName() => randomElement(colorNames);
 
-String randomColor() => colorMap()[randomColorName()];
+String randomColor() => colorCode[randomColorName()];
 
 
 

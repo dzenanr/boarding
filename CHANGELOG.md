@@ -1,6 +1,12 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.8* 2015-04-16
+
++ convert functions to maps and lists in util/color.dart
++ update examples
++ add tint example
+
 *0.2.8* 2015-04-15
 
 + rename game files to index files in examples
