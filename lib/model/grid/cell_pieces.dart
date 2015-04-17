@@ -250,10 +250,10 @@ class CellPieces {
             n.tag.number = n.tag.number + 1;
             cp.tag.empty();
           } else if (direction == Direction.UP) {
-            n.tag.number = n.tag.number - 1;
+            n.tag.number = n.tag.number + 1;
             cp.tag.empty();
           } else if (direction == Direction.DOWN) {
-            n.tag.number = n.tag.number + 1;
+            n.tag.number = n.tag.number - 1;
             cp.tag.empty();
           }
         }

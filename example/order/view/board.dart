@@ -26,9 +26,13 @@ class Board extends Object with Surface {
       int column = (e.offset.x ~/ tileGrid.cellWidth).toInt();
       int row = (e.offset.y ~/ tileGrid.cellHeight).toInt();
       CellPiece cellPiece = tileGrid.cellPieces.cellPiece(column, row);
-      if (!isGameOver && !cellPiece.tag.isEmpty && !cellPiece.tag.isMarked) {
-        cellPiece.tag.isMarked = true;
-        cellPiece.color.main = Tile.markedTileColor;
+      if (!isGameOver && !cellPiece.tag.isEmpty) {
+        cellPiece.tag.isMarked = !cellPiece.tag.isMarked;
+        if (cellPiece.tag.isMarked) {
+          cellPiece.color.main = Tile.markedTileColor;
+        } else {
+          cellPiece.color.main = Tile.tileColor;
+        }        
         if (tileGrid.cellPieces.every((CellPiece cp) => cp.tag.isMarked)) {
           var leftNeighbor =
               tileGrid.cellPieces.neighbor(cellPiece, Direction.LEFT);

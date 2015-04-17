@@ -1,6 +1,12 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.9* 2015-04-17
+
++ change in the bump method in model/grid/cell_piece.dart:
+  increases number (UP & RIGHT), decreases number (DOWN & LEFT);
+  before: increases number (DOWN & RIGHT), decreases number (UP & LEFT)
+
 *0.2.8* 2015-04-16 (Pub)
 
 + convert functions to maps and lists in util/color.dart
