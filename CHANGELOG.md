@@ -6,6 +6,7 @@
 + change in the bump method in model/grid/cell_piece.dart:
   increases number (UP & RIGHT), decreases number (DOWN & LEFT);
   before: increases number (DOWN & RIGHT), decreases number (UP & LEFT)
++ update view/board.dart in the Board constructor of the order example: a tile may be unmarked
 
 *0.2.8* 2015-04-16 (Pub)
 
