@@ -6,6 +6,8 @@
 + improve a number display within a non-tag piece (e.g., rectangle) in view/surface.dart
 + add 3 levels (grid sizes: 3 x 3, 4 x 4, 5 x 5) to the order example
 + improve the game description in index.html in the order example
++ add css for links in index.css in the order example
++ add a link to the source code at GitHub in the order example
 
 *0.2.9* 2015-04-17
 
@@ -24,7 +26,7 @@
 
 + rename game files to index files in examples
 + remove the draw method call from index.dart files in examples
-+ add blast example
++ add blast example 
 
 *0.2.7* 2015-04-14 (Pub)
 
