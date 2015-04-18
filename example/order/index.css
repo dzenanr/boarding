@@ -12,6 +12,24 @@ h1, p, label {
   color: #67707a;
 }
 
+a:link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #003366;
+}
+
+a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: #c50000;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #d9ece2;
+  background: #663117;
+}
+
 .button {
   padding: 1px;
   background: #ffcc99;
@@ -34,3 +52,4 @@ h1, p, label {
   margin-left: 1px;
   margin-right: 1px;
 }
+
