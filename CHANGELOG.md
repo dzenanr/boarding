@@ -1,6 +1,11 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.9* 2015-04-18
+
++ improve a number display within a non-tag piece (e.g., rectangle) in view/surface.dart
++ add 3 levels (grid sizes: 3 x 3, 4 x 4, 5 x 5) to the order example
+
 *0.2.9* 2015-04-17
 
 + change in the bump method in model/grid/cell_piece.dart:

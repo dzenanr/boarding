@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <h1>Order</h1>
+    <h2>Order</h2>
     <p>
       The goal is to order consecutive numbers, starting with 0, <br/> 
-      from left to right and from top to bottom. <br/>
-      When a tile is ordered, mark it by clicking on it. <br/>
-      You may demark the tile by clicking on it again. <br/>
-      Use the arrow keys to move tiles. <br/>
-      When a tile bumps into its neighbor,<br/>
-      the neighbor's number increases (UP & RIGHT) <br/>
-      or decreases (DOWN & LEFT).<br/>
-      Mark the last unmarked cell to see your score.
+      from left to right and from top to bottom, with a <span class="marker">low score</span>.<br/>
+      When a number tile is ordered, mark the tile (tap or click). <br/>
+      You may demark a marked tile, but the <span class="marker">score increases</span>. <br/>     
+      With each move (swipe or arrow key), a new number tile <br/>
+      appears in a random cell and the <span class="marker">score increases</span>. <br/>
+      When a tile bumps into its neighbor, the tile disappears, <br/>
+      while the <span class="marker">neighbor's number increases (UP & RIGHT)</span> <br/>
+      or <span class="marker">decreases (DOWN & LEFT)</span>. <br/>
+      Mark the last cell to see your score, <span class="marker">the lower the better</span>.
     </p>
     <canvas id="canvas" width="400" height="400"></canvas>
     <br/>
@@ -25,7 +26,13 @@
     <button id="load" class="button">Load</button>
     <button id="new" class="button">New</button>
     Score: <label id="score" class="marker">0</label>
-    Best: <label id="best" class="marker">0</label>
+    Best: <label id="best" class="marker">0</label> 
+    Level:
+    <select id="level">
+      <option selected>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select> 
 
     <script type="application/dart" src="index.dart"></script>
     <script src="packages/browser/dart.js"></script>

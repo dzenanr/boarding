@@ -1,18 +1,19 @@
 part of order;
 
 class Board extends Object with Surface {
-  static const String order = 'order';
-  static const String orderScore = 'orderScore';
-  static const String orderBest = 'orderBest';
-
   bool isGameOver = false;
   int score = 0;
+  int level = 1;
   LabelElement scoreLabel = querySelector('#score');
   LabelElement bestLabel = querySelector('#best');
+  SelectElement levelSelect = querySelector('#level');
 
-  Board(CanvasElement canvas, TileGrid tileGrid) {
+  Board(CanvasElement canvas) {
     this.canvas = canvas;
-    this.grid = tileGrid;
+    levelSelect.onChange.listen((Event e) {
+      level = int.parse(levelSelect.value);
+    });
+    newGame();
     querySelector('#save').onClick.listen((e) {
       save();
     });
@@ -23,21 +24,21 @@ class Board extends Object with Surface {
       newGame();
     });
     querySelector('#canvas').onMouseDown.listen((MouseEvent e) {
-      int column = (e.offset.x ~/ tileGrid.cellWidth).toInt();
-      int row = (e.offset.y ~/ tileGrid.cellHeight).toInt();
-      CellPiece cellPiece = tileGrid.cellPieces.cellPiece(column, row);
+      int column = (e.offset.x ~/ grid.cellWidth).toInt();
+      int row = (e.offset.y ~/ grid.cellHeight).toInt();
+      CellPiece cellPiece = grid.cellPieces.cellPiece(column, row);
       if (!isGameOver && !cellPiece.tag.isEmpty) {
         cellPiece.tag.isMarked = !cellPiece.tag.isMarked;
         if (cellPiece.tag.isMarked) {
           cellPiece.color.main = Tile.markedTileColor;
         } else {
+          score++;
           cellPiece.color.main = Tile.tileColor;
         }        
-        if (tileGrid.cellPieces.every((CellPiece cp) => cp.tag.isMarked)) {
-          var leftNeighbor =
-              tileGrid.cellPieces.neighbor(cellPiece, Direction.LEFT);
+        if (grid.cellPieces.every((CellPiece cp) => cp.tag.isMarked)) {
+          var leftNeighbor = grid.cellPieces.neighbor(cellPiece, Direction.LEFT);
           cellPiece.tag.number = leftNeighbor.tag.number + 1;
-          if (tileGrid.cellPieces.isCellOrdered()) {
+          if (grid.cellPieces.isCellOrdered()) {
             draw();
             saveScore(score);
             scoreLabel.text = score.toString();
@@ -51,27 +52,26 @@ class Board extends Object with Surface {
       if (!isGameOver) {
         switch(event.keyCode) {
           case KeyCode.LEFT:
-            tileGrid.cellPieces.move(Direction.LEFT);
-            tileGrid.cellPieces.bump(Direction.LEFT);
+            grid.cellPieces.move(Direction.LEFT);
+            grid.cellPieces.bump(Direction.LEFT);
             break;
           case KeyCode.RIGHT:
-            tileGrid.cellPieces.move(Direction.RIGHT);
-            tileGrid.cellPieces.bump(Direction.RIGHT);
+            grid.cellPieces.move(Direction.RIGHT);
+            grid.cellPieces.bump(Direction.RIGHT);
             break;
           case KeyCode.UP:
-            tileGrid.cellPieces.move(Direction.UP);
-            tileGrid.cellPieces.bump(Direction.UP);
+            grid.cellPieces.move(Direction.UP);
+            grid.cellPieces.bump(Direction.UP);
             break;
           case KeyCode.DOWN:
-            tileGrid.cellPieces.move(Direction.DOWN);
-            tileGrid.cellPieces.bump(Direction.DOWN);
+            grid.cellPieces.move(Direction.DOWN);
+            grid.cellPieces.bump(Direction.DOWN);
         }
-        if (tileGrid.randomAvailableCellPiece() != null) {
+        if ((grid as TileGrid).randomAvailableCellPiece() != null) {
           score++;
         }
       }
     });
-    bestLabel.text = loadBest().toString();
   }
 
   draw() {
@@ -80,23 +80,43 @@ class Board extends Object with Surface {
     }
   }
 
-  save() => window.localStorage[order] = grid.cellPieces.toJsonString();
-
+  save() {
+    switch (levelSelect.value) {
+      case '1': window.localStorage['order1'] = grid.cellPieces.toJsonString(); break;
+      case '2': window.localStorage['order2'] = grid.cellPieces.toJsonString(); break;
+      case '3': window.localStorage['order3'] = grid.cellPieces.toJsonString();
+    }
+  }
+  
   saveScore(num score) {
-    window.localStorage[orderScore] = score.toString();
+    switch (levelSelect.value) {
+      case '1': window.localStorage['order1Score'] = score.toString(); break;
+      case '2': window.localStorage['order2Score'] = score.toString(); break;
+      case '3': window.localStorage['order3Score'] = score.toString();
+    }
+    window.localStorage['order1Score'] = score.toString();
   }
 
   num saveBest(num score) {
     var best = loadBest();
     if (score < best) {
-      window.localStorage[orderBest] = score.toString();
+      switch (levelSelect.value) {
+        case '1': window.localStorage['order1Best'] = score.toString(); break;
+        case '2': window.localStorage['order2Best'] = score.toString(); break;
+        case '3': window.localStorage['order3Best'] = score.toString();
+      }
       return score;
     }
     return best;
   }
 
   load() {
-    var gameString = window.localStorage[order];
+    var gameString;
+    switch (levelSelect.value) {
+      case '1': gameString = window.localStorage['order1']; break;
+      case '2': gameString = window.localStorage['order2']; break;
+      case '3': gameString = window.localStorage['order3'];
+    }
     if (gameString != null) {
       grid.cellPieces.empty();
       grid.cellPieces.unmark();
@@ -107,7 +127,12 @@ class Board extends Object with Surface {
   }
 
   num loadScore() {
-    var scoreString = window.localStorage[orderScore];
+    var scoreString;
+    switch (levelSelect.value) {
+      case '1': scoreString = window.localStorage['order1Score']; break;
+      case '2': scoreString = window.localStorage['order2Score']; break;
+      case '3': scoreString = window.localStorage['order3Score'];
+    }
     if (scoreString != null) {
       return num.parse(scoreString);
     }
@@ -115,7 +140,12 @@ class Board extends Object with Surface {
   }
 
   num loadBest() {
-    var bestString = window.localStorage[orderBest];
+    var bestString;
+    switch (levelSelect.value) {
+      case '1': bestString = window.localStorage['order1Best']; break;
+      case '2': bestString = window.localStorage['order2Best']; break;
+      case '3': bestString = window.localStorage['order3Best'];
+    }
     if (bestString != null) {
       return num.parse(bestString);
     }
@@ -123,11 +153,13 @@ class Board extends Object with Surface {
   }
 
   newGame() {
-    grid.cellPieces.empty();
-    grid.cellPieces.unmark();
-    (grid as TileGrid).randomAvailableCellPiece();
-    grid.cellPieces.forEach((CellPiece cp) => cp.color.main = Tile.tileColor);
+    var length = level + 2;
+    var table = new Table.from(new Size.from(length, length),
+                               new Area.from(canvas.width, canvas.height));
+    grid = new TileGrid(table);
     score = 0;
+    scoreLabel.text = score.toString();
+    bestLabel.text = loadBest().toString();
     isGameOver = false;
   }
 }

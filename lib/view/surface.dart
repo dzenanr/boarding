@@ -152,9 +152,8 @@ class Surface {
       }
     }
     if (piece != PieceShape.TAG && piece.isTagged) {
-      var x = piece.x + piece.width / 2 - (piece.width / 2 - piece.tag.size) / 2;
-      var y = piece.y + piece.height / 2 + (piece.width / 2 - piece.tag.size) / 2;
-      x = x + piece.tag.size / 4;
+      var x = piece.x + piece.width / 2 - piece.tag.size / 8;
+      var y = piece.y + piece.height / 2 + piece.tag.size / 4;
       drawTag(canvas, x, y, piece.tag.text, size: piece.tag.size, color: piece.tag.color.main);
     }
   }

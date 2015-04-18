@@ -170,6 +170,9 @@ Dart Games
 http://ondart.me/web_programming.md
 http://www.snakepiece.com/
 
+http://dartrocket.blogspot.ca/2015/03/dartrocket-0171-is-out.html
+http://dartrocket.blogspot.ca/2014/11/release-of-v016.html
+
 Design
 
 http://www.gamasutra.com/category/design/
