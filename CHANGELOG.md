@@ -1,6 +1,11 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.9* 2015-04-20
+
++ update the Board class in lib/view/board.dart in the order example:
+  make the select element remove the focus from itself by using the blur() method
+
 *0.2.9* 2015-04-18
 
 + improve a number display within a non-tag piece (e.g., rectangle) in view/surface.dart

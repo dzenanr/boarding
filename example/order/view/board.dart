@@ -11,7 +11,9 @@ class Board extends Object with Surface {
   Board(CanvasElement canvas) {
     this.canvas = canvas;
     levelSelect.onChange.listen((Event e) {
+      levelSelect.blur();
       level = int.parse(levelSelect.value);
+      newGame();
     });
     newGame();
     querySelector('#save').onClick.listen((e) {
