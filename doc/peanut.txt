@@ -1,0 +1,45 @@
+Peanut
+
+https://github.com/kevmoo/peanut.dart
+http://www.dartdocs.org/documentation/peanut/0.0.1+1/index.html#peanut
+
+Create a GitHub page for the project:
+https://pages.github.com/
+
+Activate peanut:
+
+cd C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\d2048
+C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\d2048>pub global activate peanut
+
+Run peanut:
+
+C:\Users\ridjanod.FSA-RIDJANOD-2\dart\game\d2048>peanut
+
+Based on https://pub.dartlang.org/packages/peanut:
+
+git update-ref refs/heads/gh-pages origin/gh-pages
+
+Play the game at http://dzenanr.github.io/d2048/web/
+
+See also
+http://leereilly.net/2012/11/29/hosting-games-on-github.html
+
+Alertnative:
+
+Pub Build - Minified the project
+Save the web folder outside the project.
+
+https://pages.github.com/
+
+git status
+git pull
+git checkout gh-pages
+add the web folder with packages from build
+remove build .pub, .packages, ...
+commit
+push
+add .gitignore
+commit
+push
+git checkout master
+

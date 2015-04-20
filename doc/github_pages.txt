@@ -1,0 +1,19 @@
+GitHub Pages
+
+https://pages.github.com/
+
+https://help.github.com/categories/github-pages-basics/
+http://dzenanr.github.io/order/
+
+
+git status
+git pull
+git checkout gh-pages
+add the web folder with packages from build
+remove build .pub, .packages, ...
+commit
+push
+add .gitignore
+commit
+push
+git checkout master

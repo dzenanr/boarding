@@ -33,7 +33,7 @@ tint
 pubspec.yaml:
 
 name: tint
-version: 0.2.8
+version: 0.2.9
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 description: An example from boarding.
 homepage: https://github.com/dzenanr/boarding
@@ -70,3 +70,8 @@ import 'package:tint/tint.dart';
 main() {
   new Board(querySelector('#canvas'));
 }
+
+
+Create a GitHub project at https://github.com/dzenanr.
+Create a GitHub page for the project at https://pages.github.com/.
+Update README.md of the GitGub page to include a link to the game at GitHub: http://dzenanr.github.io/blast/web/

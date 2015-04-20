@@ -118,6 +118,10 @@ https://gist.github.com/geoffb/6392450
 http://tutorials.jenkov.com/html5-canvas/transformation.html
 http://www.w3resource.com/html5-canvas/html5-canvas-translation-rotation-scaling.php
 
+Card Games
+
+http://www.pagat.com/
+
 Code Review
 
 http://fabiensanglard.net/doom3_bfg/index.php
@@ -406,6 +410,8 @@ http://regexcrossword.com/challenges/hamlet/puzzles/1
 http://www.mit.edu/~puzzle/2013/coinheist.com/rubik/a_regular_crossword/answer/index.html
 http://www.puzzlegames.net/bubble-jungle.html
 http://www.puzzlescript.net/
+http://qntm.org/gods
+https://news.ycombinator.com/item?id=9401621
 
 Questions
 
@@ -506,6 +512,10 @@ Tetris
 
 https://news.ycombinator.com/item?id=9282391
 https://github.com/mbrenman/TetrisPlayground
+
+Tile Games
+
+http://www.pagat.com/
 
 Tips
 
