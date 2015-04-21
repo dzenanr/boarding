@@ -22,6 +22,6 @@ main() {
   var table = new util.Table.from(new util.Size.from(6, 6),
                                   new util.Area.from(canvas.width, canvas.height));
   var grid = new Grid(table);
-  var board = new Board(canvas, grid, model, zone: 'beginner', parking: 1);
+  new Board(canvas, grid, model, zone: 'beginner', parking: 1);
       //zone: 'intermediate', parking: 2);
 }
