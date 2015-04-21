@@ -6,7 +6,6 @@ class Board extends Object with Surface {
   Trees trees;
   Bonhomme bonhomme;
   Area space;
-  bool gameOver = false;
   LabelElement winner;
   int hitCount = 0;
 
@@ -28,7 +27,7 @@ class Board extends Object with Surface {
   }
 
   draw() {
-    if (!gameOver) {
+    if (!isGameOver) {
       super.draw();
       trees.forEach((Tree tree) {
         if (tree.isMovable && bonhomme.hit(tree)) {
@@ -39,12 +38,12 @@ class Board extends Object with Surface {
         }
       });
       if (hitCount > 4) {
-        gameOver = true;
+        isGameOver = true;
         winner.text = 'you lost';
       }
       drawPiece(bonhomme);
       if (bonhomme.x > width) {
-        gameOver = true;
+        isGameOver = true;
         winner.text = 'you won';
       }
     }

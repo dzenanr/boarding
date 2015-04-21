@@ -7,7 +7,6 @@ class Board extends Object with Surface {
   Pieces leftPieces;
   int hitRightCount = 0;
   int hitLeftCount = 0;
-  bool isGameOver;
   InputElement pieceCountInput = querySelector('#piece-count');
   LabelElement hitRightCountLabel = querySelector('#hit-right-count');
   LabelElement hitLeftCountLabel = querySelector('#hit-left-count');

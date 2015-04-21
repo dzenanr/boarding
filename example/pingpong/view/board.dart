@@ -14,7 +14,6 @@ class Board extends Object with Surface {
   Ball ball;
   Racket northRacket;
   Racket southRacket;
-  bool isGameOver;
 
   Board(CanvasElement canvas) {
     this.canvas = canvas;

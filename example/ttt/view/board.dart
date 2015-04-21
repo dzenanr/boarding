@@ -4,8 +4,6 @@ class Board extends Object with Surface {
   static const String xxColor = 'blue';
   static const String ooColor = 'orange';
 
-  bool play = true;
-
   Board(CanvasElement canvas, TttGrid grid) {
     this.canvas = canvas;
     this.grid = grid;
@@ -16,7 +14,7 @@ class Board extends Object with Surface {
     }
     LabelElement winnerLabel = querySelector("#winner");
     canvas.onMouseDown.listen((MouseEvent e) {
-      if (play) {
+      if (!isGameOver) {
         var column = (e.offset.x ~/ grid.cellWidth).toInt();
         var row = (e.offset.y ~/ grid.cellHeight).toInt();
         CellPiece cp = grid.cellPieces.cellPiece(column, row);
@@ -33,7 +31,7 @@ class Board extends Object with Surface {
           }
           if (grid.lineCompleted()) {
             winnerLabel.text = 'winner is ${cp.tag.text}';
-            play = false;
+            isGameOver = true;
           }
         }
       }

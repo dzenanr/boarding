@@ -6,6 +6,11 @@
 + add saveBy and loadBy methods to the Surface class in lib/view/surface.dart
 + update the d2048 example
 + update the drop example
++ update the bonhomme example
++ update the breakout example
++ update the dash example
++ update the pingpong example
++ update the ttt example
 
 *0.2.9* 2015-04-20
 

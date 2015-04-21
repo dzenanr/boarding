@@ -4,7 +4,6 @@ class Board extends Object with Surface {
   Bricks bricks;
   var ball = new Ball();
   var racket = new Racket();
-  bool isGameOver;
 
   SelectElement selectSpeed;
 
