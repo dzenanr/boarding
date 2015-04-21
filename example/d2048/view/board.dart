@@ -4,17 +4,16 @@ class Board extends Object with Surface {
   static const String d2048 = 'd2048';
   static const String d2048Best = 'd2048Best';
 
-  bool isGameOver = false;
   LabelElement bestLabel = querySelector('#best');
 
   Board(CanvasElement canvas, TileGrid tileGrid) {
     this.canvas = canvas;
     this.grid = tileGrid;
     querySelector('#save').onClick.listen((e) {
-      save();
+      saveBy(d2048);
     });
     querySelector('#load').onClick.listen((e) {
-      load();
+      loadBy(d2048);
     });
     querySelector('#new').onClick.listen((e) {
       newGame();
@@ -48,14 +47,6 @@ class Board extends Object with Surface {
     bestLabel.text = loadBest().toString();
   }
 
-  draw() {
-    if (!isGameOver) {
-      super.draw();
-    }
-  }
-
-  save() => window.localStorage[d2048] = grid.cellPieces.toJsonString();
-
   num saveBest(num current) {
     var best = loadBest();
     if (current > best) {
@@ -63,15 +54,6 @@ class Board extends Object with Surface {
       return current;
     }
     return best;
-  }
-
-  load() {
-    var gameString = window.localStorage[d2048];
-    if (gameString != null) {
-      grid.cellPieces.empty();
-      grid.cellPieces.fromJsonString(gameString);
-      isGameOver = false;
-    }
   }
 
   num loadBest() {

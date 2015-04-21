@@ -1,7 +1,6 @@
 part of order;
 
 class Board extends Object with Surface {
-  bool isGameOver = false;
   int score = 0;
   int level = 1;
   LabelElement scoreLabel = querySelector('#score');
@@ -74,12 +73,6 @@ class Board extends Object with Surface {
         }
       }
     });
-  }
-
-  draw() {
-    if (!isGameOver) {
-      super.draw();
-    }
   }
 
   save() {

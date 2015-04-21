@@ -6,8 +6,6 @@ class Board extends Object with Surface {
   static const String count = 'count';
   static const String hitCount = 'hitCount';
 
-  Pieces pieces;
-  bool isGameOver;
   InputElement pieceCountInput = querySelector('#piece-count');
   LabelElement hitCountLabel = querySelector('#hit-count');
 
@@ -80,7 +78,7 @@ class Board extends Object with Surface {
 
   save() {
     window.localStorage[count] = pieces.length.toString();
-    window.localStorage[drop] = pieces.toJsonString();
+    saveBy(drop);
     window.localStorage[hitCount] = pieces.invisibleCount().toString();
   }
 
@@ -96,10 +94,7 @@ class Board extends Object with Surface {
     } else {
       pieceCountInput.value = pieceCount.toString();
     }
-    String gameString = window.localStorage[drop];
-    if (gameString != null) {
-      pieces.fromJsonString(gameString);
-    }
+    loadBy(drop);
     String hitCountString = window.localStorage[hitCount];
     if (hitCountString != null) {
       hitCountLabel.text = hitCountString;

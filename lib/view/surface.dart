@@ -7,6 +7,7 @@ class Surface {
   var color = new Color.from('white');
   bool withLines = false;
   bool avoidCollisions = false;
+  bool isGameOver = false;
 
   Grid grid;
   Pieces pieces;
@@ -39,19 +40,23 @@ class Surface {
   }
 
   draw() {
-    clear();
-    if (grid != null) {
-      if (withLines) drawLines();
-      drawCellPieces();
-    }
-    if (pieces != null) {
-      pieces.forEach((Piece p) {
-        p.move();
-        if (avoidCollisions) {
-          pieces.avoidCollisions(p);
-        }
-        drawPiece(p);
-      });
+    if (!isGameOver) {
+      clear();
+      if (grid != null) {
+        if (withLines) drawLines();
+        drawCellPieces();
+      }
+      if (pieces != null) {
+        pieces.forEach((Piece p) {
+          if (p.isMovable) {
+            p.move();
+          }
+          if (avoidCollisions) {
+            pieces.avoidCollisions(p);
+          }
+          drawPiece(p);
+        });
+      }
     }
   }
 
@@ -155,6 +160,33 @@ class Surface {
       var x = piece.x + piece.width / 2 - piece.tag.size / 8;
       var y = piece.y + piece.height / 2 + piece.tag.size / 4;
       drawTag(canvas, x, y, piece.tag.text, size: piece.tag.size, color: piece.tag.color.main);
+    }
+  }
+  
+  saveBy(String key) {
+    if (grid != null) {
+      window.localStorage['${key}-grid'] = grid.cellPieces.toJsonString();
+    }
+    if (pieces != null) {
+      window.localStorage['${key}-pieces'] = pieces.toJsonString();
+    }
+  }
+  
+  loadBy(String key) {
+    var gameString;
+    if (grid != null) {
+      gameString = window.localStorage['${key}-grid'];
+      if (gameString != null) {
+        grid.cellPieces.empty();
+        grid.cellPieces.fromJsonString(gameString);
+        isGameOver = false;
+      }
+    }
+    if (pieces != null) {
+      gameString = window.localStorage['${key}-pieces'];
+      if (gameString != null) {
+        pieces.fromJsonString(gameString);
+      }
     }
   }
 }

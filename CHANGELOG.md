@@ -1,6 +1,12 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.2.9* 2015-04-21
+
++ add saveBy and loadBy methods to the Surface class in lib/view/surface.dart
++ update the d2048 example
++ update the drop example
+
 *0.2.9* 2015-04-20
 
 + update the Board class in lib/view/board.dart in the order example:

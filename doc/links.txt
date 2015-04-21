@@ -188,6 +188,7 @@ http://modeling-languages.com/javascript-drawing-libraries-diagrams/
 DOM
 
 http://buildnewgames.com/dom-sprites/
+http://webreflection.blogspot.ca/2015/04/the-dom-is-not-slow-your-abstraction-is.html
 
 DOM & Canvas
 
@@ -429,6 +430,7 @@ http://appinventor.mit.edu/explore/research.html
 
 Resources
 
+https://game-assets.zeef.com/andre.antonio.schmitz
 http://www.html5gamedevelopment.com/
 http://html5devstarter.enclavegames.com/
 http://www.gamedevacademy.org/
@@ -508,6 +510,10 @@ Swap
 
 http://code.tutsplus.com/tutorials/create-an-html5-canvas-tile-swapping-puzzle--active-10747
 
+Tables
+
+http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions/
+
 Tetris
 
 https://news.ycombinator.com/item?id=9282391
@@ -522,6 +528,7 @@ Tips
 https://msdn.microsoft.com/en-us/hh563503.aspx
 http://clay.io/blog/tag/html5-game-development-tips/
 https://thomashunter.name/blog/tips-for-building-mobile-games-in-html5/
+http://www.merseyremakes.co.uk/gibber/every-indie-developer-should-read-this/
 
 Tools
 
