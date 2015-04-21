@@ -185,6 +185,10 @@ Diagrams
 
 http://modeling-languages.com/javascript-drawing-libraries-diagrams/
 
+Dice
+
+http://www.keithschwarz.com/darts-dice-coins/
+
 DOM
 
 http://buildnewgames.com/dom-sprites/
