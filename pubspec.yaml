@@ -8,9 +8,9 @@ environment:
 documentation: http://goo.gl/kXlDOJ
 dependencies:
   browser: '>=0.10.0+2 <1.0.0'
-  dartling: '>=1.0.6 <2.0.0'
+  dartling: any
 dev_dependencies:
-  unittest: '>=0.9.3 <1.0.0'
+  unittest: '>=0.11.5 <0.12.0'
 transformers:
 - $dart2js:
     minify: true

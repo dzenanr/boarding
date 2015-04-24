@@ -4,6 +4,11 @@ Links
 
 http://www.greatandlittle.com/studios/index.php?post/2013/05/31/Simplot-A-2D-Canvas-Plotting-Library-for-Dart
 
+AI
+
+https://codinggame.wordpress.com/2015/04/23/codinggame-a-real-time-strategy-game-for-programmers/
+https://robotgame.net/
+
 Algorithms
 
 http://bost.ocks.org/mike/algorithms/
@@ -74,6 +79,7 @@ http://brokenbytes.blogspot.ca/2015/03/the-making-of-p0-snake-part-1.html
 http://www.cnet.com/news/top-ten-gaming-blogs/
 http://nerdbusiness.com/blog/top-2-most-popular-game-blogs-web/
 http://www.games2girls.com/p/thefamousblogger
+http://www.eldergame.com/
 
 Board Games
 
@@ -177,9 +183,15 @@ http://www.snakepiece.com/
 http://dartrocket.blogspot.ca/2015/03/dartrocket-0171-is-out.html
 http://dartrocket.blogspot.ca/2014/11/release-of-v016.html
 
+Database Games
+
+https://schemaverse.com/tutorial/tutorial.php
+
 Design
 
 http://www.gamasutra.com/category/design/
+http://www.cnet.com/news/behind-the-prototyping-of-spore/
+http://www.gamasutra.com/view/feature/3384/the_anatomy_of_a_design_document_.php
 
 Diagrams
 
@@ -288,6 +300,7 @@ https://playcanvas.com/
 https://github.com/playcanvas/engine
 http://booty5.com/booty5-html5-game-maker-1-9-available-tiled-maps/
 http://www.puzzlescript.net/
+http://www.eldergame.com/2010/05/unity-2-6-for-indie-mmos-yes-but/
 
 Game Development Frameworks
 
@@ -375,6 +388,11 @@ Minesweeper
 
 http://code.tutsplus.com/tutorials/build-a-minesweeper-game-within-200-lines-of-code--active-8578
 
+MMO (massively multiplayer online games)
+
+http://en.wikipedia.org/wiki/List_of_massively_multiplayer_online_games
+http://www.wired.com/2015/04/multiplayer-hack-to-win/
+
 Mobile
 
 http://www.smashingmagazine.com/2012/10/19/design-your-own-mobile-game/
@@ -407,7 +425,7 @@ http://www.theguardian.com/technology/2015/mar/12/how-my-son-and-i-became-game-p
 
 Puzzles
 
-https://news.ycombinator.com/item?id=9162585
+https://news.ycombinator.com/item?id=9162http://en.wikipedia.org/wiki/List_of_massively_multiplayer_online_games585
 http://www.mathematische-basteleien.de/snakecube.htm
 http://imgur.com/a/nxA4Y
 http://www.funwithpuzzles.com/2015/02/mini-puzzles-series.html
@@ -448,6 +466,7 @@ http://www.quora.com/What-are-best-free-resources-for-learning-HTML5-game-develo
 http://www.reddit.com/r/html5gamedevs/
 http://blog.digitaltutors.com/
 http://www.sitepoint.com/web-designers-guide-to-programming/
+https://www.reddit.com/r/gaming
 
 Semantic Versioning
 
@@ -522,6 +541,7 @@ Tetris
 
 https://news.ycombinator.com/item?id=9282391
 https://github.com/mbrenman/TetrisPlayground
+http://www.toothris.org/
 
 Tile Games
 
