@@ -1,6 +1,14 @@
 
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
+*0.3.1* 2015-04-27 (Pub)
+
++ update to dartling 2.0.1
+
+*0.3.0* 2015-04-24 
+
++ use new test package
+
 *0.2.9* 2015-04-21 (Pub)
 
 + add saveBy and loadBy methods to the Surface class in lib/view/surface.dart

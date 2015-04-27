@@ -1,9 +1,6 @@
 .DS_Store
-.idea
-packages
+.pub
 build
+packages
 pubspec.lock
-*.js
-*.js.deps
-*.js.map
 *~
