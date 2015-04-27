@@ -1,0 +1,8 @@
+Dart Editor
+
+Ubuntu
+
+ctrl-h too see files like .gitignore
+
+in Home remove .dartEditor to delete work state
+

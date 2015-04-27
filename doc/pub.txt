@@ -3,6 +3,9 @@ Pub Package Manager
 https://pub.dartlang.org/
 https://pub.dartlang.org/packages/boarding
 
+https://www.dartlang.org/tools/pub/cmd/pub-cache.html
+pub cache repair
+
 Dart Standalone VM
 
 https://www.dartlang.org/tools/dart-vm/
