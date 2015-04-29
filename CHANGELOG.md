@@ -1,7 +1,12 @@
-
 ## Version history of [boarding](http://pub.dartlang.org/packages/boarding)
 
-*0.3.0* 2015-04-27 (Pub)
+based on [Semantic Versioning](http://semver.org/)
+
+*0.3.1* 2015-04-29 (Pub)
+
++ update pubspec to depend on dartling at Pub
+
+*0.3.0* 2015-04-27 
 
 + update to dartling 2.0.1
 

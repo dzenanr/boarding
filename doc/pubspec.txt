@@ -1,5 +1,23 @@
+pubspec.yaml
+
+
 name: boarding
-version: 0.2.0
+version: 0.3.1
+author: Dzenan Ridjanovic <dzenanr@gmail.com>
+description: A package for board games or canvas drawings. The package has both model and view libraries. See the example folder to see how to use the boarding package.
+homepage: https://github.com/dzenanr/boarding
+environment:
+  sdk: '>=1.9.3 <2.0.0'
+documentation: http://goo.gl/kXlDOJ
+dependencies:
+  browser: any
+  dartling: any
+dev_dependencies:
+  test: any
+
+
+name: boarding
+version: 0.3.1
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 description: A package for board games or canvas drawings. The package has both model and view libraries. See the example folder to see how to use the boarding package.
 homepage: https://github.com/dzenanr/boarding
@@ -11,5 +29,5 @@ dependencies:
   dartling:
     git: git://github.com/dzenanr/dartling.git
 dev_dependencies:
-  unittest: any
+  test: any
   
