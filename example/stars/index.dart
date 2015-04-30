@@ -8,6 +8,6 @@ import 'package:boarding/boarding.dart';
 part 'model/stars.dart';
 part 'view/board.dart';
 
-main() {
+void main() {
   new Board(querySelector('#canvas'));
 }

@@ -16,7 +16,7 @@ part 'model/model.dart';
 part 'model/parkings.dart';
 part 'view/board.dart';
 
-main() {
+void main() {
   var model = new CarParkingModel();
   var canvas = querySelector('#canvas');
   var table = new util.Table.from(new util.Size.from(6, 6),

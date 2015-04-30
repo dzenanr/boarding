@@ -26,7 +26,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     if (!isGameOver) {
       super.draw();
       trees.forEach((Tree tree) {

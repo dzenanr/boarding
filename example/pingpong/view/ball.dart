@@ -9,7 +9,7 @@ class Ball {
     draw();
   }
 
-  draw() {
+  void draw() {
     drawCircle(board.canvas, x, y, r);
   }
 }

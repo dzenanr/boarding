@@ -3,7 +3,7 @@ part of pieces;
 enum PieceShape {CIRCLE, ELLIPSE, FACE, IMG, LINE, POLYGON, RECT, ROUNDED_RECT,
   SELECTED_RECT, SQUARE, STAR, TAG, TRIANGLE, VEHICLE}
 
-accelerate(Piece p1, Piece p2, {num coefficient: 2000}) {
+void accelerate(Piece p1, Piece p2, {num coefficient: 2000}) {
   // Some acceleration depending upon distance.
   var xd = p1.x - p2.x, yd = p1.y - p2.y;
   var ax = xd / coefficient, ay = yd / coefficient;
@@ -50,28 +50,28 @@ class Piece {
   Area get size => box.area;
 
   num get x => box.x;
-  set x(num x) => box.x = x;
+  void set x(num x) { box.x = x; }
   num get y => box.y;
-  set y(num y) => box.y = y;
+  void set y(num y) { box.y = y; }
 
   num get width => box.width;
-  set width(num width) => box.width = width;
+  void set width(num width) { box.width = width; }
   num get height => box.height;
-  set height(num height) => box.height = height;
+  void set height(num height) { box.height = height; }
 
   Area get space => _space;
-  set space(Area space) {
+  void set space(Area space) {
     _space = space;
     box.stayWithinSpace(space);
   }
 
   // movable part
   num get dx => speed.dx;
-  set dx(num dx) => speed.dx = dx;
+  void set dx(num dx) { speed.dx = dx; }
   num get dy => speed.dy;
-  set dy(num dy) => speed.dy = dy;
+  void set dy(num dy) { speed.dy = dy; }
 
-  fromJsonMap(Map<String, Object> jsonMap) {
+  void fromJsonMap(Map<String, Object> jsonMap) {
     id  = jsonMap['id'];
     shape = PieceShape.values[jsonMap['index']];
     minMaxArea = new MinMaxArea.fromJson(jsonMap['minMaxArea']);
@@ -95,7 +95,7 @@ class Piece {
     speed = new Speed.fromJson(jsonMap['speed']);
   }
 
-  fromJsonString(String jsonString) {
+  void fromJsonString(String jsonString) {
     Map<String, Object> jsonMap = JSON.decode(jsonString);
     fromJsonMap(jsonMap);
   }
@@ -128,7 +128,7 @@ class Piece {
 
   String toJsonString() => JSON.encode(toJsonMap());
 
-  randomInit() {
+  void randomInit() {
     var i = randomInt(PieceShape.values.length);
     shape = PieceShape.values[i];
     _space = minMaxSpace.randomSize();
@@ -141,7 +141,7 @@ class Piece {
     speed = Speed.random();
   }
 
-  randomExtraInit() {
+  void randomExtraInit() {
     randomInit();
     isCovered = randomRareTrue();
     isTagged = randomRareTrue();
@@ -164,7 +164,7 @@ class Piece {
 
   // movable part
 
-  move([Direction direction]) {
+  void move([Direction direction]) {
     if (isMovable) {
       if (direction == null) {
         x += speed.dx;
@@ -264,13 +264,15 @@ class Piece {
     }
   }
 
-  onOff() => isMovable = !isMovable;
+  void onOff() { 
+    isMovable = !isMovable; 
+  }
 
-  jump() {
+  void jump() {
     box.position = space.randomPosition();
   }
 
-  changeDirectionIfOutOfSpace() {
+  void changeDirectionIfOutOfSpace() {
     if (x > space.width - width || x < 0) {
       speed.dx = -speed.dx;
     }
@@ -301,7 +303,7 @@ class Piece {
     return isHit;
   }
 
-  avoidCollision(Piece p) {
+  void avoidCollision(Piece p) {
     if (p.x < x  && p.y < y) {
       if (p.x + p.width >= x && p.y + p.height >= y) {
         speed.changeDirection();
@@ -325,7 +327,7 @@ class Piece {
 class Pieces {
   var _pieceList = new List();
 
-  fromJsonList(List<Map<String, Object>> jsonList) {
+  void fromJsonList(List<Map<String, Object>> jsonList) {
     jsonList.forEach((jsonMap) {
       var p = piece(jsonMap['id']);
       if (p != null) {
@@ -334,7 +336,7 @@ class Pieces {
     });
   }
 
-  fromJsonString(String jsonString) {
+  void fromJsonString(String jsonString) {
     List<Map<String, Object>> jsonList = JSON.decode(jsonString);
     fromJsonList(jsonList);
   }
@@ -349,16 +351,16 @@ class Pieces {
 
   Iterator get iterator => _pieceList.iterator;
   int get length => _pieceList.length;
-  add(Piece piece) => _pieceList.add(piece);
-  forEach(Function f(Piece p)) => _pieceList.forEach(f);
+  void add(Piece piece) { _pieceList.add(piece); }
+  void forEach(Function f(Piece p)) { _pieceList.forEach(f); }
   bool any(bool f(Piece p)) => _pieceList.any(f);
   bool every(bool f(Piece p)) => _pieceList.every(f);
   Piece firstWhere(bool f(Piece p)) => _pieceList.firstWhere(f);
 
-  randomInit() => forEach((p) => p.randomInit());
-  randomExtraInit() => forEach((p) => p.randomExtraInit());
+  void randomInit() { forEach((p) => p.randomInit()); }
+  void randomExtraInit() { forEach((p) => p.randomExtraInit()); }
 
-  create(int count) {
+  void create(int count) {
     for (var i = 0; i < count; i++) {
       var p = new Piece();
       p.id = i;
@@ -385,9 +387,13 @@ class Pieces {
 
   // movable part
 
-  onOff() => forEach((Piece p) => p.onOff());
+  void onOff() {
+    for (Piece p in this) {
+      p.onOff();
+    }
+  }
 
-  avoidCollisions(Piece piece) {
+  void avoidCollisions(Piece piece) {
     for (var p in this) {
       if (p != piece) {
         piece.avoidCollision(p);

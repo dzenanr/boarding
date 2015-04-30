@@ -8,6 +8,6 @@ part 'view/ball.dart';
 part 'view/board.dart';
 part 'view/racket.dart';
 
-main() {
+void main() {
   new Board(querySelector('#canvas'));
 }

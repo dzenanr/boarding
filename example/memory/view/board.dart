@@ -24,7 +24,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     super.draw();
     if (memory.recalled) { // game over
       drawTag(canvas, memory.cellWidth * 2, memory.cellHeight * 2, 'YOU WIN', size: 32,

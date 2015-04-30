@@ -9,7 +9,7 @@ class Composition {
   Grid _grid;
 
   Grid get grid => _grid;
-  set grid(Grid grid) {
+  void set grid(Grid grid) {
     _grid = grid;
     cellPieces = new CellPieces();
     cellPieces.grid = grid;
@@ -33,14 +33,14 @@ class Composition {
   bool isDownOf(int column, int row) =>
       cellPieces.any((CellPiece cp) => cp.cell.isDownOf(column, row));
 
-  select() => cellPieces.forEach((CellPiece cp) => cp.isSelected = true);
-  deselect() => cellPieces.forEach((CellPiece cp) => cp.isSelected = false);
+  void select() { cellPieces.forEach((CellPiece cp) => cp.isSelected = true); }
+  void deselect() { cellPieces.forEach((CellPiece cp) => cp.isSelected = false); }
 
-  moveToCell(Cell c) {
+  void moveToCell(Cell c) {
     currentCell = c;
   }
 
-  moveToColumnRow(int column, int row) {
+  void moveToColumnRow(int column, int row) {
     currentCell.column = column;
     currentCell.row = row;
   }

@@ -103,22 +103,22 @@ class Speed {
     return jsonMap;
   }
 
-  increase() {
+  void increase() {
     dx++;
     dy++;
   }
 
-  double() {
+  void double() {
     dx = 2 * dx;
     dy = 2 * dy;
   }
 
-  decrease() {
+  void decrease() {
     dx--;
     dy--;
   }
 
-  changeDirection() {
+  void changeDirection() {
     dx = -dx;
     dy = -dy;
   }
@@ -149,17 +149,17 @@ class Area {
     return jsonMap;
   }
 
-  increase() {
+  void increase() {
     width++;
     height++;
   }
 
-  double() {
+  void double() {
     width = 2 * width;
     height = 2 * height;
   }
 
-  decrease() {
+  void decrease() {
     width--;
     height--;
   }
@@ -178,7 +178,7 @@ class Area {
     return isIncreased;
   }
 
-  doubleWithin(Area max) {
+  bool doubleWithin(Area max) {
     var isDoubled = true;
     double();
     if (width > max.width) {
@@ -232,7 +232,7 @@ class Box {
     fromJsonMap(jsonMap);
   }
 
-  fromJsonMap(Map<String, Object> jsonMap) {
+  void fromJsonMap(Map<String, Object> jsonMap) {
     position = new Position.fromJson(jsonMap['position']);
     area = new Area.fromJson(jsonMap['area']);
   }
@@ -245,16 +245,16 @@ class Box {
   }
 
   num get x => position.x;
-  set x(num x) => position.x = x;
+  void set x(num x) { position.x = x; }
   num get y => position.y;
-  set y(num y) => position.y = y;
+  void set y(num y) { position.y = y; }
 
   num get width => area.width;
-  set width(num width) => area.width = width;
+  void set width(num width) { area.width = width; }
   num get height => area.height;
-  set height(num height) => area.height = height;
+  void set height(num height) { area.height = height; }
 
-  stayWithinSpace(Area space) {
+  void stayWithinSpace(Area space) {
     if (x < 0) {
       x = 0;
     }
@@ -304,7 +304,7 @@ class Table extends Box {
     size = new Size.fromJson(jsonMap['size']);
   }
 
-  fromJsonMap(Map<String, Object> jsonMap) {
+  void fromJsonMap(Map<String, Object> jsonMap) {
     size = new Size.fromJson(jsonMap['size']);
     super.fromJsonMap(jsonMap);
   }

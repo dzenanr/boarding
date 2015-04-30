@@ -34,7 +34,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     clear();
     for (Car car in currentParking.cars) {
       context.beginPath();

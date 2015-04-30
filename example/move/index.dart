@@ -4,7 +4,7 @@ import 'dart:html';
 import 'package:boarding/pieces.dart';
 import 'package:boarding/boarding.dart';
 
-main() {
+void main() {
   var surface = new Surface();
   surface.canvas = querySelector('#canvas');
   surface.pieces = new Pieces();

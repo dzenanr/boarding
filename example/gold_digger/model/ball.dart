@@ -11,7 +11,7 @@ class Ball extends Object with Piece {
   }
 
   DCell get dCell => _dCell;
-  set dCell(DCell dCell) {
+  void set dCell(DCell dCell) {
     _dCell = dCell;
     x = dCell.width * dCell.cell.column;
     y = dCell.height * dCell.cell.row;

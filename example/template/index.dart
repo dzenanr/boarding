@@ -11,7 +11,7 @@ part 'model/pieces.dart';
 part 'model/grid.dart';
 part 'view/board.dart';
 */
-main() {
+void main() {
   //new Board(querySelector('#canvas'));
 }
 

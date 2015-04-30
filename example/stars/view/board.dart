@@ -14,7 +14,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     clear();
     stars.forEach((Star star) {
       if (isUp) {

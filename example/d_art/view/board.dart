@@ -14,7 +14,7 @@ class Board extends Object with shape.Surface {
     draw();
   }
 
-  draw() {
+  void draw() {
     for (d_pen.Segment segment in pen.segments) {
       if (segment.visible) {
         context.beginPath();

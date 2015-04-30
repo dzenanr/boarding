@@ -37,7 +37,7 @@ var randomCommands = [
                      ];
 */
 
-onako(d_pen.Pen pen) {
+void onako(d_pen.Pen pen) {
   var tako = '''
 move, 177, 200, 11;
 art, 4;
@@ -45,7 +45,7 @@ art, 4;
   pen.interpret(tako);
 }
 
-rotateSquare(d_pen.Pen pen) {
+void rotateSquare(d_pen.Pen pen) {
   square() {
     pen.move(90, 100, 3);
   }
@@ -58,7 +58,7 @@ rotateSquare(d_pen.Pen pen) {
   }
 }
 
-stairSquare(d_pen.Pen pen, {num size: 60}) {
+void stairSquare(d_pen.Pen pen, {num size: 60}) {
   multicolorSquare(var size) {
     for (var color in ['blue', 'gray', 'red', 'yellow']) {
       pen.color = color;
@@ -76,7 +76,7 @@ stairSquare(d_pen.Pen pen, {num size: 60}) {
   }
 }
 
-barGraph(d_pen.Pen pen) {
+void barGraph(d_pen.Pen pen) {
   pen.erase();
   pen.color = 'blue';
   pen.left(90);
@@ -115,7 +115,7 @@ barGraph(d_pen.Pen pen) {
   pen.left(90);
 }
 
-mapMap(d_pen.Pen pen) {
+void mapMap(d_pen.Pen pen) {
   zig(int level) {
     pen.forward(level * 30);
     var l = level - 1;
@@ -134,7 +134,7 @@ mapMap(d_pen.Pen pen) {
   zig(6);
 }
 
-zigZag(d_pen.Pen pen) {
+void zigZag(d_pen.Pen pen) {
   f(var length, var depth) {
     if (depth == 0) {
       pen.forward(length);
@@ -152,14 +152,14 @@ zigZag(d_pen.Pen pen) {
   f(240, 4);
 }
 
-runRandom(d_pen.Pen pen) {
+void runRandom(d_pen.Pen pen) {
   d_pen.randomProgram(pen);
   //d_pen.randomCommandSequence(pen);
   //d_pen.randomExample(pen);
   //d_pen.randomDemo(pen);
 }
 
-runProgram(d_pen.Pen pen) {
+void runProgram(d_pen.Pen pen) {
   //onako(pen);
   //rotateSquare(pen);
   //stairSquare(pen);
@@ -168,7 +168,7 @@ runProgram(d_pen.Pen pen) {
   //zigZag(pen);
 }
 
-main() {
+void main() {
   final repo = new d_pen.ArtRepo();
   final board = new Board(querySelector('#canvas'), repo);
   var pen = board.pen;

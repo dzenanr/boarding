@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 import 'package:boarding/grid.dart';
 import 'package:boarding/util.dart';
 
-testModel(Grid grid) {
+void testModel(Grid grid) {
   group('Testing model', () {
     var cc = grid.table.columnCount;
     var rc = grid.table.rowCount;
@@ -36,7 +36,7 @@ testModel(Grid grid) {
   });
 }
 
-main() {
+void main() {
   var table = new Table.from(new Size.from(16, 20), new Area.from(400, 600));
   var grid = new Grid(table);
   for (CellPiece cp in grid.cellPieces) {

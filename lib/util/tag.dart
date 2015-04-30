@@ -39,12 +39,12 @@ class Tag {
   }
 
   num get number => _number;
-  set number(num n) {
+  void set number(num n) {
     _number = n;
     text = _number.toString();
   }
 
-  empty() => text = '';
+  void empty() {text = '';}
   bool get isEmpty => text == '';
 
   /**

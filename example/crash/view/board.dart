@@ -27,7 +27,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     clear();
     bool isAccident = false;
     for (NonRedCar car in cars) {

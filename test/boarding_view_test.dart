@@ -1,7 +1,7 @@
 import 'package:boarding/boarding.dart';
 import 'dart:html';
 
-main() {
+void main() {
   var canvas = querySelector('#canvas');
   drawPosition(canvas, 10, 20);
   drawPosition(canvas, 20, 20, lineWidth: 2);

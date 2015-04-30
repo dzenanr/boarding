@@ -29,7 +29,7 @@ class Board extends Object with Surface {
     init();
   }
 
-  _setBallSpeed() {
+  void _setBallSpeed() {
     switch (selectSpeed.value) {
       case '1': ball.speed = new Speed.from(2, 4); break;
       case '2': ball.speed = new Speed.from(3, 6); break;
@@ -37,7 +37,7 @@ class Board extends Object with Surface {
     }
   }
 
-  init() {
+  void init() {
     isGameOver = false;
     bricks = new Bricks(this);
     ball.x = width / 4;
@@ -47,25 +47,28 @@ class Board extends Object with Surface {
     racket.y = height - racket.height;
   }
 
-  clear() {
+  void clear() {
     drawRect(canvas, 0, 0, width, height, color: 'black');
   }
 
-  draw() {
+  void draw() {
     if (!isGameOver) {
       clear();
       drawPiece(ball);
       drawPiece(racket);
-      if (!bricks.draw()) return false; // user wins
-      // If hit, reverse the ball.
-      if (bricks.wall.contains(ball.x, ball.y)) ball.dy = -ball.dy;
-      if ((ball.y + ball.dy + ball.height > height - racket.height) &&
-          (ball.x > racket.x && ball.x < racket.x + racket.width)) {
-        // Move the ball differently based on where it hits the racket.
-        ball.dx = 8 * ((ball.x - (racket.x + racket.width / 2)) / racket.width);
-        ball.dy = -ball.dy;
-      } else if (ball.y + ball.dy + ball.height > height) isGameOver = true;
-      ball.move();
+      if (bricks.draw()) {
+        // If hit, reverse the ball.
+        if (bricks.wall.contains(ball.x, ball.y)) ball.dy = -ball.dy;
+        if ((ball.y + ball.dy + ball.height > height - racket.height) &&
+            (ball.x > racket.x && ball.x < racket.x + racket.width)) {
+          // Move the ball differently based on where it hits the racket.
+          ball.dx = 8 * ((ball.x - (racket.x + racket.width / 2)) / racket.width);
+          ball.dy = -ball.dy;
+        } else if (ball.y + ball.dy + ball.height > height) isGameOver = true;
+        ball.move();
+      } else {
+        isGameOver = true;
+      }
     }
   }
 }

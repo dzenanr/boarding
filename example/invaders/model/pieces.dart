@@ -64,7 +64,7 @@ class Clouds extends Object with Pieces {
     create(count);
   }
 
-  create(int count) {
+  void create(int count) {
     for (var i = 0; i < count; i++) {
       add(new Cloud(i));
     }
@@ -76,7 +76,7 @@ class Creatures extends Object with Pieces {
     create(count);
   }
 
-  create(int count) {
+  void create(int count) {
     for (var i = 0; i < count; i++) {
       add(new Creature(i));
     }

@@ -1,6 +1,6 @@
 part of art_pen;
 
-randomExample(Pen pen) {
+void randomExample(Pen pen) {
   var examples = exampleList();
   int seq = util.randomInt(examples.length);
   var commands = examples[seq];

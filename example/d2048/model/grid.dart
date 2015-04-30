@@ -19,7 +19,7 @@ class TileGrid extends Grid {
     addTwoRandomAvailableCellPieces();
   }
 
-  addTwoRandomAvailableCellPieces() {
+  void addTwoRandomAvailableCellPieces() {
     randomAvailableCellPiece();
     randomAvailableCellPiece();
   }

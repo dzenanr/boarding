@@ -7,6 +7,6 @@ import 'package:boarding/boarding.dart';
 
 part 'view/board.dart';
 
-main() {
+void main() {
   new Board(querySelector('#canvas'));
 }

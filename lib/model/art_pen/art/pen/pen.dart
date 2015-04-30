@@ -35,7 +35,7 @@ class Pen {
     _init();
   }
 
-  _init() {
+  void _init() {
     _color = 'black';
     _width = 1;
     _down = true;
@@ -52,7 +52,7 @@ class Pen {
     commands = new List<List>();
   }
 
-  erase() {
+  void erase() {
     segments.clear();
     _init();
   }
@@ -60,7 +60,7 @@ class Pen {
   num get startX => spaceWidth / 2;
   num get startY => spaceHeight / 2;
 
-  set color(String color) {
+  void set color(String color) {
     _color = color;
     if (!lastSegment.lines.isEmpty) {
       lastSegment = new Segment(segments.concept);
@@ -75,7 +75,7 @@ class Pen {
 
   String get color => _color;
 
-  set width(int width) {
+  void set width(int width) {
     if (width == 0) {
       _width = 1;
     } else {
@@ -94,7 +94,7 @@ class Pen {
 
   int get width => _width;
 
-  set down(bool down) {
+  void set down(bool down) {
     _down = down;
     if (!lastSegment.lines.isEmpty) {
       lastSegment = new Segment(segments.concept);
@@ -124,9 +124,9 @@ class Pen {
 
   String get write => _write;
 
-  moveToStart() => moveTo(startX, startY);
+  void moveToStart() => moveTo(startX, startY);
 
-  moveTo(num x, num y) {
+  void moveTo(num x, num y) {
     if (lastLine == null) {
       lastLine = new Line.first(lastSegment.lines.concept, x, y);
     } else {
@@ -144,7 +144,7 @@ class Pen {
     commands.add(['moveTo', x, y]);
   }
 
-  move(num turn, [num steps= 0, int repeat= 0]) {
+  void move(num turn, [num steps= 0, int repeat= 0]) {
     if (lastLine == null) {
       lastLine = new Line.first(lastSegment.lines.concept, startX, startY);
     } else {
@@ -170,14 +170,14 @@ class Pen {
     commands.add(['move', turn, steps, repeat]);
   }
 
-  art([int times = 1]) {
+  void art([int times = 1]) {
     for (var i = 0; i < times; i++) {
       _duplicate();
     }
     commands.add(['art', times]);
   }
 
-  _duplicate() {
+  void _duplicate() {
     if (lastLine != null) {
       Segments copiedSegments = new Segments(segments.concept);
       for (Segment segment in segments) {
@@ -226,31 +226,31 @@ class Pen {
     }
   }
 
-  right(num angle) {
+  void right(num angle) {
     if (angle > 0) {
       move(angle);
     }
   }
 
-  left(num angle) {
+  void left(num angle) {
     if (angle > 0) {
       move(-angle);
     }
   }
 
-  forward(num steps) {
+  void forward(num steps) {
     if (steps > 0) {
       move(0, steps);
     }
   }
 
-  backward(num steps) {
+  void backward(num steps) {
     if (steps > 0) {
       move(0, -steps);
     }
   }
 
-  go(num steps, {num angle: 0, int repeat: 0}) {
+  void go(num steps, {num angle: 0, int repeat: 0}) {
     var i = 0;
     while (i++ < repeat + 1) {
       move(0, steps);
@@ -258,7 +258,7 @@ class Pen {
     }
   }
 
-  skip(num steps, {num angle: 0, int repeat: 0}) {
+  void skip(num steps, {num angle: 0, int repeat: 0}) {
     down = false;
     var i = 0;
     while (i++ < repeat + 1) {
@@ -268,33 +268,33 @@ class Pen {
     down = true;
   }
 
-  colorRandom() => color = util.randomColorName();
-  widthRandom() => width = util.randomInt(randomMaxInt);
-  downRandom() => down = util.randomBool();
+  void colorRandom() {color = util.randomColorName();}
+  void widthRandom() {width = util.randomInt(randomMaxInt);}
+  void downRandom() {down = util.randomBool();}
 
-  moveRandom() =>
+  void moveRandom() =>
       move(util.randomSign(randomMaxInt) * util.randomDouble(randomAngleMax),
           util.randomSign(randomMaxInt) * util.randomDouble(randomStepsMax),
           util.randomInt(randomRepeatMax));
 
-  moveToRandom() =>
+  void moveToRandom() =>
       moveTo(util.randomDouble(randomMaxNum), util.randomDouble(randomMaxNum));
 
-  leftRandom() => left(util.randomDouble(randomAngleMax));
-  rightRandom() => right(util.randomDouble(randomAngleMax));
-  backwardRandom() => backward(util.randomDouble(randomStepsMax));
-  forwardRandom() => forward(util.randomDouble(randomStepsMax));
+  void leftRandom() { left(util.randomDouble(randomAngleMax)); }
+  void rightRandom() { right(util.randomDouble(randomAngleMax)); }
+  void backwardRandom() { backward(util.randomDouble(randomStepsMax)); }
+  void forwardRandom() { forward(util.randomDouble(randomStepsMax)); }
 
-  artRandom() {
+  void artRandom() {
     art(randomInt(randomMaxInt));
   }
 
-  goRandom() =>
+  void goRandom() =>
       go(util.randomSign(randomMaxInt) * util.randomDouble(randomStepsMax),
           angle: util.randomSign(randomMaxInt) * util.randomDouble(randomAngleMax),
           repeat: util.randomInt(randomRepeatMax));
 
-  skipRandom() =>
+  void skipRandom() =>
       skip(util.randomSign(randomMaxInt) * util.randomDouble(randomStepsMax),
           angle: util.randomSign(randomMaxInt) * util.randomDouble(randomAngleMax),
           repeat: util.randomInt(randomRepeatMax));
@@ -328,7 +328,7 @@ class Pen {
     return commandList;
   }
 
-  interpret(String commandsString) {
+  void interpret(String commandsString) {
     try {
       List<List> commandList = _toCommands(commandsString);
       for (var command in commandList) {
@@ -446,7 +446,7 @@ class Pen {
     }
   }
   
-  displayCommands() {
+  void displayCommands() {
     print('');
     commands.forEach((c) => print('${c.join(', ')};'));
   }

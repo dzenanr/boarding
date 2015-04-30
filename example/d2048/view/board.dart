@@ -64,7 +64,7 @@ class Board extends Object with Surface {
     return 0;
   }
 
-  newGame() {
+  void newGame() {
     grid.cellPieces.empty();
     (grid as TileGrid).addTwoRandomAvailableCellPieces();
     isGameOver = false;

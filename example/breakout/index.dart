@@ -11,6 +11,6 @@ part 'model/wall.dart';
 part 'view/board.dart';
 part 'view/bricks.dart';
 
-main() {
+void main() {
   new Board(querySelector('#canvas'));
 }

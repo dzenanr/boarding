@@ -1,15 +1,15 @@
 part of util;
 
-randomBool() => new Random().nextBool();
+bool randomBool() => new Random().nextBool();
 
-randomRareTrue() {
+bool randomRareTrue() {
   int sign = randomSign(10);
   if (sign == -1) return true;
   else return false;
 }
 
 // nextInt(max): range from 0, inclusive, to max, exclusive.
-randomInt(int max) => new Random().nextInt(max);
+int randomInt(int max) => new Random().nextInt(max);
 
 int randomRangeInt(int min, int max) {
   int random = new Random().nextInt(max);
@@ -55,7 +55,7 @@ int randomSign(int max) {
   return result;
 }
 
-randomElement(List list) => list[randomInt(list.length)];
+dynamic randomElement(List list) => list[randomInt(list.length)];
 
 String randomColorName() => randomElement(colorNames);
 

@@ -13,7 +13,7 @@ class YellowLine extends Object with Piece {
     shape = PieceShape.RECT;
   }
 
-  calcY() {
+  void calcY() {
     if (nextLine == null) {
       y = -height;
     } else {
@@ -27,7 +27,7 @@ class YellowLines extends Object with Pieces {
     create(count);
   }
 
-  create(int count) {
+  void create(int count) {
     var nextLine = new YellowLine(0);
     nextLine.y = -nextLine.height;
     add(nextLine);
@@ -39,7 +39,7 @@ class YellowLines extends Object with Pieces {
     }
   }
 
-  calcY() {
+  void calcY() {
     var frontLine = firstWhere((YellowLine yl) => yl.nextLine == null);
     frontLine.y = frontLine.space.height - frontLine.height;
     for (var line in this) {
@@ -49,7 +49,7 @@ class YellowLines extends Object with Pieces {
     }
   }
 
-  moveDown() {
+  void moveDown() {
     for (var line in this) {
       line.y += line.speed.dy;
       if (line.y > line.space.height) {

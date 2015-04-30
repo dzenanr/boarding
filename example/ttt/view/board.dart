@@ -3,6 +3,8 @@ part of icacoe;
 class Board extends Object with Surface {
   static const String xxColor = 'blue';
   static const String ooColor = 'orange';
+  
+  bool isLineCompleted = false;
 
   Board(CanvasElement canvas, TttGrid grid) {
     this.canvas = canvas;
@@ -29,9 +31,13 @@ class Board extends Object with Surface {
             lastPlay = TttGrid.oo;
             cp.tag.color.main = ooColor;
           }
-          if (grid.lineCompleted()) {
-            winnerLabel.text = 'winner is ${cp.tag.text}';
+          if (isLineCompleted) {
             isGameOver = true;
+          } else {
+            isLineCompleted = grid.lineCompleted();
+            if (isLineCompleted) {
+              winnerLabel.text = 'winner is ${cp.tag.text}';
+            }
           }
         }
       }

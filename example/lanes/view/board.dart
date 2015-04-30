@@ -17,7 +17,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     clear();
     yellowLines.moveDown();
     yellowLines.forEach((var yellowLine) {

@@ -9,6 +9,6 @@ part 'model/trees.dart';
 part 'model/bonhomme.dart';
 part 'view/board.dart';
 
-main() {
+void main() {
   new Board(querySelector('#canvas'), new Trees(64));
 }

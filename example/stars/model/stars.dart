@@ -16,7 +16,7 @@ class Stars extends Object with Pieces {
     create(count);
   }
 
-  create(int count) {
+  void create(int count) {
     for (var i = 0; i < count; i++) {
       add(new Star(i));
     }

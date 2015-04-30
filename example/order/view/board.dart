@@ -75,7 +75,7 @@ class Board extends Object with Surface {
     });
   }
 
-  save() {
+  void save() {
     switch (levelSelect.value) {
       case '1': window.localStorage['order1'] = grid.cellPieces.toJsonString(); break;
       case '2': window.localStorage['order2'] = grid.cellPieces.toJsonString(); break;
@@ -83,7 +83,7 @@ class Board extends Object with Surface {
     }
   }
   
-  saveScore(num score) {
+  void saveScore(num score) {
     switch (levelSelect.value) {
       case '1': window.localStorage['order1Score'] = score.toString(); break;
       case '2': window.localStorage['order2Score'] = score.toString(); break;
@@ -105,7 +105,7 @@ class Board extends Object with Surface {
     return best;
   }
 
-  load() {
+  void load() {
     var gameString;
     switch (levelSelect.value) {
       case '1': gameString = window.localStorage['order1']; break;
@@ -147,7 +147,7 @@ class Board extends Object with Surface {
     return 999;
   }
 
-  newGame() {
+  void newGame() {
     var length = level + 2;
     var table = new Table.from(new Size.from(length, length),
                                new Area.from(canvas.width, canvas.height));

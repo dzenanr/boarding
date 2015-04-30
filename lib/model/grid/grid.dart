@@ -49,11 +49,11 @@ class Grid {
   CellPiece cellPiece(int column, int row) => cellPieces.cellPiece(column, row);
   CellPiece randomCellPiece() => cellPieces.randomCellPiece();
 
-  colorAll(Color color) {
+  void colorAll(Color color) {
     cellPieces.forEach((CellPiece cp) => cp.color = color);
   }
 
-  colorAllExcept(Color color, CellPiece ecp) {
+  void colorAllExcept(Color color, CellPiece ecp) {
     cellPieces.forEach((CellPiece cp) => cp != ecp ? cp.color = color : null);
   }
 }
@@ -77,7 +77,7 @@ class MazeGrid extends Grid {
     path(sp.cell.column, sp.cell.row);
   }
 
-  path(int c, int r) {
+  void path(int c, int r) {
     var dds = new List<DirectDirection>();
     for (var i = 0; i < 4; i++) {
       dds.add(randomDirectDirection());

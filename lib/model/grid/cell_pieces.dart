@@ -4,7 +4,7 @@ class CellPiece extends Object with Piece {
   Cell cell;
   Grid grid;
 
-  fromJsonMap(Map<String, Object> jsonMap) {
+  void fromJsonMap(Map<String, Object> jsonMap) {
     super.fromJsonMap(jsonMap);
     cell = new Cell.fromJson(jsonMap['cell']);
   }
@@ -33,7 +33,7 @@ class CellPiece extends Object with Piece {
     return isDirectNeighborOf(np) || isDiagonalNeighborOf(np);
   }
 
-  swap(CellPiece np) {
+  void swap(CellPiece np) {
     var cpx = x;
     var cpy = y;
     var cpc = cell.column;
@@ -48,7 +48,7 @@ class CellPiece extends Object with Piece {
     np.cell.row = cpr;
   }
 
-  move([Direction direction]) {
+  void move([Direction direction]) {
     if (isMovable) {
       if (direction == null) {
         var i = randomInt(Direction.values.length);
@@ -92,7 +92,7 @@ class CellPieces {
 
   Grid grid;
 
-  fromJsonList(List<Map<String, Object>> jsonList) {
+  void fromJsonList(List<Map<String, Object>> jsonList) {
     jsonList.forEach((jsonMap) {
       var cell = jsonMap['cell'];
       var cp = cellPiece(cell['column'], cell['row']);
@@ -102,7 +102,7 @@ class CellPieces {
     });
   }
 
-  fromJsonString(String jsonString) {
+  void fromJsonString(String jsonString) {
     List<Map<String, Object>> jsonList = JSON.decode(jsonString);
     fromJsonList(jsonList);
   }
@@ -122,18 +122,18 @@ class CellPieces {
   int get length => _list.length;
   Iterator get iterator => _list.iterator;
 
-  add(CellPiece cp) => _list.add(cp);
-  empty() => forEach((CellPiece cp) => cp.tag.empty());
-  unmark() => forEach((CellPiece cp) => cp.tag.isMarked = false);
+  void add(CellPiece cp) { _list.add(cp); }
+  void empty() { forEach((CellPiece cp) => cp.tag.empty()); }
+  void unmark() { forEach((CellPiece cp) => cp.tag.isMarked = false); }
 
-  forEach(f(CellPiece cp)) => _list.forEach(f);
+  void forEach(f(CellPiece cp)) { _list.forEach(f); }
   bool any(bool f(CellPiece cp)) => _list.any(f);
   bool every(bool f(CellPiece cp)) => _list.every(f);
   CellPiece maxCellPiece() =>
       _list.reduce((CellPiece cp1, CellPiece cp2) => cp1.compareTo(cp2) == -1 ? cp2 : cp1);
 
-  select() => forEach((CellPiece cp) => cp.isSelected = true);
-  deselect() => forEach((CellPiece cp) => cp.isSelected = false);
+  void select() { forEach((CellPiece cp) => cp.isSelected = true); }
+  void deselect() { forEach((CellPiece cp) => cp.isSelected = false); }
 
   CellPiece firstSelectedCellPiece() {
     for (CellPiece cp in this) {
@@ -207,7 +207,7 @@ class CellPieces {
     return null;
   }
 
-  move(Direction direction) {
+  void move(Direction direction) {
     var moved = false;
     for (CellPiece cp in this) {
       if (!cp.tag.isEmpty && !cp.tag.isMarked) {
@@ -221,7 +221,7 @@ class CellPieces {
     if (moved) move(direction);
   }
 
-  merge(Direction direction) {
+  void merge(Direction direction) {
     var merged = false;
     for (CellPiece cp in this) {
       if (!cp.tag.isEmpty) {
@@ -238,7 +238,7 @@ class CellPieces {
     if (merged) merge(direction);
   }
 
-  bump(Direction direction) {
+  void bump(Direction direction) {
     for (CellPiece cp in this) {
       if (!cp.tag.isEmpty && !cp.tag.isMarked) {
         CellPiece n = neighbor(cp, direction);

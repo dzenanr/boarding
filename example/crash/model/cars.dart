@@ -34,7 +34,7 @@ class RedCar extends Car {
 
   bool get isBig => !isSmall;
 
-  move([Direction direction]) {
+  void move([Direction direction]) {
     if (x > space.width - width) {
       x = space.width - width;
     }
@@ -49,7 +49,7 @@ class RedCar extends Car {
     }
   }
 
-  bigger() {
+  void bigger() {
     if (isSmall) {
       isSmall = false;
       width = 75;
@@ -58,7 +58,7 @@ class RedCar extends Car {
     }
   }
 
-  smaller() {
+  void smaller() {
     if (isBig) {
       isSmall = true;
       width = smallWidth;
@@ -76,7 +76,7 @@ class Cars extends Object with Pieces {
     create(count);
   }
 
-  create(int count) {
+  void create(int count) {
     for (var i = 0; i < count - 1; i++) {
       add(new NonRedCar(i + 1));
     }

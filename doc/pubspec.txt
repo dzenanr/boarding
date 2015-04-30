@@ -2,12 +2,12 @@ pubspec.yaml
 
 
 name: boarding
-version: 0.3.1
+version: 0.3.2
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 description: A package for board games or canvas drawings. The package has both model and view libraries. See the example folder to see how to use the boarding package.
 homepage: https://github.com/dzenanr/boarding
 environment:
-  sdk: '>=1.9.3 <2.0.0'
+  sdk: ^1.10.0
 documentation: http://goo.gl/kXlDOJ
 dependencies:
   browser: any
@@ -17,12 +17,12 @@ dev_dependencies:
 
 
 name: boarding
-version: 0.3.1
+version: 0.3.2
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 description: A package for board games or canvas drawings. The package has both model and view libraries. See the example folder to see how to use the boarding package.
 homepage: https://github.com/dzenanr/boarding
 environment:
-  sdk: '>=1.9.3 <2.0.0'
+  sdk: ^1.10.0
 documentation: http://goo.gl/kXlDOJ
 dependencies:
   browser: any

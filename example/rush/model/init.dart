@@ -2,14 +2,14 @@ part of rush;
 
 CarParkingModel model;
 
-init(CarParkingModel carParkingModel) {
+void init(CarParkingModel carParkingModel) {
   model = carParkingModel;
   initAreas();
   initCarBrands();
   initParkings();
 }
 
-initAreas() {
+void initAreas() {
   Area areaBeginner = new Area('beginner');
   model.areas.add(areaBeginner);
 
@@ -17,7 +17,7 @@ initAreas() {
   model.areas.add(areaIntermediate);
 }
 
-initCarBrands() {
+void initCarBrands() {
   CarBrand carBrandA = new CarBrand('A');
   carBrandA.size = 2;
   carBrandA.colorName = 'green';
@@ -163,7 +163,7 @@ initCarBrands() {
   model.carBrands.add(carBrandX);
 }
 
-initParkings() {
+void initParkings() {
   Area beginnerArea = model.areas.getArea('beginner');
   if (beginnerArea != null) {
     beginnerArea.parkings = new Parkings.ofArea(beginnerArea);
@@ -177,7 +177,7 @@ initParkings() {
 
 }
 
-initParkingsOfBeginnerArea(Area area) {
+void initParkingsOfBeginnerArea(Area area) {
   if (area.code == 'beginner') {
     Parking parking1 = new Parking(area, 1);
     model.parkings.add(parking1);
@@ -191,7 +191,7 @@ initParkingsOfBeginnerArea(Area area) {
   }
 }
 
-initParkingsOfIntermediateArea(Area area) {
+void initParkingsOfIntermediateArea(Area area) {
   if (area.code == 'intermediate') {
     Parking parking1 = new Parking(area, 1);
     model.parkings.add(parking1);
@@ -205,7 +205,7 @@ initParkingsOfIntermediateArea(Area area) {
   }
 }
 
-initCarsOfParking1OfBeginnerArea(Area area, Parking parking) {
+void initCarsOfParking1OfBeginnerArea(Area area, Parking parking) {
   if (area.code == 'beginner' && parking.number == 1) {
     CarBrand carBrandA = model.carBrands.getCarBrand('A');
     if (carBrandA != null) {
@@ -294,7 +294,7 @@ initCarsOfParking1OfBeginnerArea(Area area, Parking parking) {
   }
 }
 
-initCarsOfParking2OfBeginnerArea(Area area, Parking parking) {
+void initCarsOfParking2OfBeginnerArea(Area area, Parking parking) {
   if (area.code == 'beginner' && parking.number == 2) {
     CarBrand carBrandA = model.carBrands.getCarBrand('A');
     if (carBrandA != null) {
@@ -413,7 +413,7 @@ initCarsOfParking2OfBeginnerArea(Area area, Parking parking) {
   }
 }
 
-initCarsOfParking1OfIntermediateArea(Area area, Parking parking) {
+void initCarsOfParking1OfIntermediateArea(Area area, Parking parking) {
   if (area.code == 'intermediate' && parking.number == 1) {
     CarBrand carBrandA = model.carBrands.getCarBrand('A');
     if (carBrandA != null) {
@@ -502,7 +502,7 @@ initCarsOfParking1OfIntermediateArea(Area area, Parking parking) {
   }
 }
 
-initCarsOfParking2OfIntermediateArea(Area area, Parking parking) {
+void initCarsOfParking2OfIntermediateArea(Area area, Parking parking) {
   if (area.code == 'intermediate' && parking.number == 2) {
     CarBrand carBrandA = model.carBrands.getCarBrand('A');
     if (carBrandA != null) {

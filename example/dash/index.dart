@@ -7,6 +7,6 @@ import 'package:boarding/util.dart' show Direction;
 
 part 'view/board.dart';
 
-main() {
+void main() {
   new Board(querySelector('#canvas'));
 }

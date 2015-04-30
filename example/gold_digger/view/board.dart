@@ -38,7 +38,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     super.draw();
     drawPiece(ball);
   }

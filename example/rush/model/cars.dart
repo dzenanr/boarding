@@ -110,7 +110,7 @@ class Car extends Concept {
     return false;
   }
 
-  moveToCell(int row, int column) {
+  void moveToCell(int row, int column) {
     if (afterCell(row, column)) {
       currentRow = row;
       currentColumn = column;

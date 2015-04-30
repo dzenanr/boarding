@@ -13,5 +13,5 @@ class Concepts {
   }
 
   Iterator<Concept> get iterator => list.iterator;
-  forEach(f(Concept concept)) => list.forEach(f);
+  void forEach(f(Concept concept)) { list.forEach(f); }
 }

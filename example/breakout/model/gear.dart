@@ -13,7 +13,7 @@ class Ball extends Object with Piece {
   }
 
   num get radius => _radius;
-  set radius(num r) {
+  void set radius(num r) {
     _radius = r;
     width = 2 * radius;
     height = 2 * radius;

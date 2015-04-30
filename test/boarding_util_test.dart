@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:boarding/util.dart';
 
-testUtil() {
+void testUtil() {
   group('Testing utilities', () {
     test('Random integer', () {
       var r = randomInt(10);
@@ -51,6 +51,6 @@ testUtil() {
   });
 }
 
-main() {
+void main() {
   testUtil();
 }

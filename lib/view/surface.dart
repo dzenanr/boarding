@@ -13,7 +13,7 @@ class Surface {
   Pieces pieces;
 
   CanvasElement get canvas => _canvas;
-  set canvas(CanvasElement canvas) {
+  void set canvas(CanvasElement canvas) {
     _canvas = canvas;
     context = canvas.getContext('2d');
     area = new Area.from(canvas.width, canvas.height);
@@ -24,12 +24,12 @@ class Surface {
   num get width => area.width;
   num get height => area.height;
 
-  gameLoop(num delta) {
+  void gameLoop(num delta) {
     draw();
     window.animationFrame.then(gameLoop);
   }
 
-  clear() {
+  void clear() {
     if (grid == null) {
       drawRect(canvas, 0, 0, width, height,
           color: color.main, borderColor: color.border);
@@ -39,7 +39,7 @@ class Surface {
     }
   }
 
-  draw() {
+  void draw() {
     if (!isGameOver) {
       clear();
       if (grid != null) {
@@ -60,7 +60,7 @@ class Surface {
     }
   }
 
-  drawLines() {
+  void drawLines() {
     var x, y;
     for (var col = 1; col < grid.table.columnCount; col++) {
       x = grid.table.cellWidth * col;
@@ -74,13 +74,13 @@ class Surface {
     }
   }
 
-  drawCellPieces() {
+  void drawCellPieces() {
     for (CellPiece cellPiece in grid.cellPieces) {
       drawPiece(cellPiece);
     }
   }
 
-  drawPiece(Piece piece) {
+  void drawPiece(Piece piece) {
     if (piece.isVisible) {
       if (piece.isCovered) {
         drawRect(canvas, piece.x, piece.y, piece.width, piece.height,
@@ -163,7 +163,7 @@ class Surface {
     }
   }
   
-  saveBy(String key) {
+  void saveBy(String key) {
     if (grid != null) {
       window.localStorage['${key}-grid'] = grid.cellPieces.toJsonString();
     }
@@ -172,7 +172,7 @@ class Surface {
     }
   }
   
-  loadBy(String key) {
+  void loadBy(String key) {
     var gameString;
     if (grid != null) {
       gameString = window.localStorage['${key}-grid'];

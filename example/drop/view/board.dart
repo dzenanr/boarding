@@ -44,7 +44,7 @@ class Board extends Object with Surface {
     });
   }
 
-  init(int numberOfPieces) {
+  void init(int numberOfPieces) {
     pieces = new Pieces();
     pieces.create(numberOfPieces);
     pieces.randomInit();
@@ -61,7 +61,7 @@ class Board extends Object with Surface {
     isGameOver = false;
   }
 
-  draw() {
+  void draw() {
     if (!isGameOver) {
       clear();
       pieces.forEach((Piece p) {
@@ -76,19 +76,19 @@ class Board extends Object with Surface {
     }
   }
 
-  save() {
+  void save() {
     window.localStorage[count] = pieces.length.toString();
     saveBy(drop);
     window.localStorage[hitCount] = pieces.invisibleCount().toString();
   }
 
-  load() {
+  void load() {
     String countString = window.localStorage[count];
     if (countString != null) {
       pieceCountInput.value = countString;
       try {
         init(int.parse(countString));
-      } on FormatException catch(e) {
+      } on FormatException {
         init(pieceCount);
       }
     } else {
@@ -103,7 +103,7 @@ class Board extends Object with Surface {
     }
   }
 
-  restart() {
+  void restart() {
     pieces.forEach((Piece fp) {
       fp.isVisible = true;
       fp.isSelected = false;
@@ -113,10 +113,10 @@ class Board extends Object with Surface {
     isGameOver = false;
   }
 
-  start() {
+  void start() {
     try {
       init(int.parse(pieceCountInput.value));
-    } on FormatException catch(e) {
+    } on FormatException {
       init(pieceCount);
     }
   }

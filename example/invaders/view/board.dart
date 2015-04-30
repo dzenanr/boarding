@@ -35,7 +35,7 @@ class Board extends Object with Surface {
     });
   }
 
-  background() {
+  void background() {
     context
         ..fillStyle = '#76a8b1'
         ..beginPath()
@@ -43,12 +43,12 @@ class Board extends Object with Surface {
         ..closePath();
   }
 
-  clear() {
+  void clear() {
     super.clear();
     background();
   }
 
-  draw() {
+  void draw() {
     clear();
     if (creatures.any((Piece p) => p.isVisible)) {
       clouds.forEach((Cloud cloud) {

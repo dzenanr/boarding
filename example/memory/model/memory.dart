@@ -26,7 +26,7 @@ class Memory extends Grid {
 
   CellPiece newCellPiece(Grid grid, Cell cell) => new MemoryCell(this, cell);
 
-  _setFreeTwinRandomCell(MemoryCell mc) {
+  void _setFreeTwinRandomCell(MemoryCell mc) {
     if (mc.twin == null) {
       var column;
       var row;
@@ -52,7 +52,7 @@ class Memory extends Grid {
     return _recalled;
   }
 
-  hide() {
+  void hide() {
     for (final cell in cellPieces) cell.isCovered = true;
     _recalled = false;
   }

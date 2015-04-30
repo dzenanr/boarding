@@ -22,7 +22,7 @@ class Board extends Object with Surface {
     });
   }
 
-  draw() {
+  void draw() {
     clear();
     drawStars(canvas, stars);
     pieces.forEach((Piece p1) {

@@ -2,6 +2,10 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.3.2* 2015-04-30
+
++ add void where it was not used
+
 *0.3.1* 2015-04-29 (Pub)
 
 + update pubspec to depend on dartling at Pub

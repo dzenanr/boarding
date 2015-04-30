@@ -25,7 +25,7 @@ class Board extends Object with Surface {
     });
   }
 
-  init() {
+  void init() {
     clear();
     ball = new Ball(this, startBallX, startBallY, ballRadius);
     northRacket = new Racket(this, width/2, y, racketWidth, racketHeight);
@@ -34,13 +34,13 @@ class Board extends Object with Surface {
     isGameOver = false;
   }
 
-  clear() {
+  void clear() {
     drawRect(canvas, 0, 0, width, height, color: 'lightgreen');
     drawLine(canvas, 0, height / 2, width, height / 2, color: 'green');
     drawLine(canvas, width / 2, 0, width / 2, height, color: 'white');
   }
 
-  draw() {
+  void draw() {
     if (!isGameOver) {
       clear();
       ball.draw();

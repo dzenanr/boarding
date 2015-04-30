@@ -19,7 +19,7 @@ class Board extends Object with Surface {
     });
   }
 
-  init(int numberOfPieces) {
+  void init(int numberOfPieces) {
     rightPieces = new Pieces();
     rightPieces.create(numberOfPieces);
     rightPieces.randomInit();
@@ -52,7 +52,7 @@ class Board extends Object with Surface {
     isGameOver = false;
   }
 
-  draw() {
+  void draw() {
     if (!isGameOver) {
       clear();
       rightPieces.forEach((Piece rp) {
@@ -96,10 +96,10 @@ class Board extends Object with Surface {
     }
   }
 
-  start() {
+  void start() {
     try {
       init(int.parse(pieceCountInput.value));
-    } on FormatException catch(e) {
+    } on FormatException {
       init(pieceCount);
     }
   }

@@ -11,7 +11,7 @@ part 'model/ball.dart';
 part 'model/grid.dart';
 part 'view/board.dart';
 
-main() {
+void main() {
   var canvas = querySelector('#canvas');
   var table = new Table.from(new Size.from(20, 20),
                              new Area.from(canvas.width, canvas.height));

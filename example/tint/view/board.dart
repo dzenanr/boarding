@@ -25,7 +25,7 @@ class Board extends Object with Surface {
     });
   }
 
-  zoomOut() {
+  void zoomOut() {
     size++;
     var table = new Table.from(new Size.from(size, size), area);
     grid = new TileGrid(table);
