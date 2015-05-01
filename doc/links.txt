@@ -467,6 +467,8 @@ http://www.reddit.com/r/html5gamedevs/
 http://blog.digitaltutors.com/
 http://www.sitepoint.com/web-designers-guide-to-programming/
 https://www.reddit.com/r/gaming
+http://www.raywenderlich.com/
+http://www.reddit.com/r/unity2d
 
 Semantic Versioning
 

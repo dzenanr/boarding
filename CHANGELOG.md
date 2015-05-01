@@ -2,7 +2,7 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
-*0.3.2* 2015-04-30
+*0.3.2* 2015-05-01 (Pub)
 
 + add void where it was not used
 
