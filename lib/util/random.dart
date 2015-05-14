@@ -55,7 +55,7 @@ int randomSign(int max) {
   return result;
 }
 
-dynamic randomElement(List list) => list[randomInt(list.length)];
+randomElement(List list) => list[randomInt(list.length)];
 
 String randomColorName() => randomElement(colorNames);
 

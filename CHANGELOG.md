@@ -2,6 +2,10 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.3.3* 2015-05-14 
+
++ remove dynamic as return type for randomElement in lib/util/random.dart
+
 *0.3.3* 2015-05-04 
 
 + use test: ^0.12.0 in pubspec
