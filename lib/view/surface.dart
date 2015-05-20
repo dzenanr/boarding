@@ -8,6 +8,7 @@ class Surface {
   bool withLines = false;
   bool avoidCollisions = false;
   bool isGameOver = false;
+  bool running = true;
 
   Grid grid;
   Pieces pieces;
@@ -18,17 +19,28 @@ class Surface {
     context = canvas.getContext('2d');
     area = new Area.from(canvas.width, canvas.height);
     color.border = color.main;
-    window.animationFrame.then(gameLoop);
+    //window.animationFrame.then(gameLoop);
+    gameLoop();
   }
-
+  
   num get width => area.width;
   num get height => area.height;
 
+  /*
   void gameLoop(num delta) {
     draw();
     window.animationFrame.then(gameLoop);
   }
+   */
 
+  Future gameLoop() async {
+    // https://www.dartlang.org/articles/await-async/
+    while (running) {
+      draw();
+      await window.animationFrame;
+    }
+  }
+  
   void clear() {
     if (grid == null) {
       drawRect(canvas, 0, 0, width, height,

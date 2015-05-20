@@ -2,6 +2,10 @@
 
 based on [Semantic Versioning](http://semver.org/)
 
+*0.3.3* 2015-05-20 
+
++ use the gameLoop async method in the Surface class in lib/view/surface.dart 
+
 *0.3.3* 2015-05-14 
 
 + remove dynamic as return type for randomElement in lib/util/random.dart
